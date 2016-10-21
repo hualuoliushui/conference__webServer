@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<script >
+    
+</script>
+<input type="button" id="jsonID" name="testPostJson" value="postJson" /><br />
+<fieldset>
+    <legend>
+        登录界面
+    </legend>
+    <form method="post" action="/Account/Login">
+        <label>用户名</label>
+        <input type="text" name="userName" /><br />
+        <label>密码</label>
+        <input type="password" name="password" /><br />
+        <input type="submit" value="登录" />
+    </form>
+</fieldset>
