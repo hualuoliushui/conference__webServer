@@ -140,14 +140,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Device\Devices.cs" />
+    <Compile Include="Models\Device\DeviceService.cs" />
+    <Compile Include="Models\Device\OleDevices.cs" />
     <Compile Include="Models\Forms.cs" />
+    <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />
     <Compile Include="Models\MeetingPlace\NewMeetingPlace.cs" />
-    <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaces.cs" />
     <Compile Include="Models\MeetingPlace\OldMeetingPlaces.cs" />
     <Compile Include="Models\RBACUser.cs" />
     <Compile Include="Models\RespondModel.cs" />
-    <Compile Include="Models\tools\JsonHelper.cs" />
+    <Compile Include="Models\Tools\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -3251,7 +3254,6 @@
     <Folder Include="Models\Account\" />
     <Folder Include="Models\Agenda\" />
     <Folder Include="Models\Delegate\" />
-    <Folder Include="Models\Device\" />
     <Folder Include="Models\Document\" />
     <Folder Include="Models\Meeting\" />
     <Folder Include="Models\Role\" />
