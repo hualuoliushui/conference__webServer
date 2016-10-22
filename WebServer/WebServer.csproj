@@ -144,7 +144,7 @@
     <Compile Include="Models\Device\Devices.cs" />
     <Compile Include="Models\Device\DeviceService.cs" />
     <Compile Include="Models\Device\NewDevice.cs" />
-    <Compile Include="Models\Device\OleDevices.cs" />
+    <Compile Include="Models\Device\OldDevices.cs" />
     <Compile Include="Models\Forms.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />

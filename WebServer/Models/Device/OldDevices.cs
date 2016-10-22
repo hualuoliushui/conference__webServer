@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebServer.Models.Device
 {
-    public class OleDevices
+    public class OldDevices
     {
         public List<String> devices { set; get; }
     }

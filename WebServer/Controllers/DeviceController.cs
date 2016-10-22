@@ -84,7 +84,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用json解析
-            OleDevices devices = Models.Tools.JsonHelper.GetObjectService<OleDevices>(context);
+            OldDevices devices = Models.Tools.JsonHelper.GetObjectService<OldDevices>(context);
             //调用设备服务
             respond.Code = DeviceService.delete(devices);
 

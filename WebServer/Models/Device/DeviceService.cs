@@ -28,7 +28,7 @@ namespace WebServer.Models.Device
             return 1;
         }
 
-        public static int delete(OleDevices devices)
+        public static int delete(OldDevices devices)
         {
 
             return 1;
