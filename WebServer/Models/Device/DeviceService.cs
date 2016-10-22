@@ -9,7 +9,7 @@ namespace WebServer.Models.Device
     //增删改查服务
     public class DeviceService
     {
-        public static int create(DeviceVO device)
+        public static int create(Device device)
         {
             return 1;
         }
@@ -17,7 +17,7 @@ namespace WebServer.Models.Device
         public static int getAll(out Devices devices)
         {
             devices = new Devices();
-            devices.devices = new List<DeviceVO>();
+            devices.devices = new List<Device>();
 
             return 1;
         }

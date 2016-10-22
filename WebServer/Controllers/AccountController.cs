@@ -14,7 +14,7 @@ namespace WebServer.Controllers
 
         public ActionResult Index()
         {
-            return View("Login");
+            return View();
         }
 
         [HttpPost]

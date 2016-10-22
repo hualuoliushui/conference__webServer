@@ -8,6 +8,6 @@ namespace WebServer.Models.Device
 {
     public class Devices
     {
-        public List<DeviceVO> devices { set; get; }
+        public List<Device> devices { set; get; }
     }
 }

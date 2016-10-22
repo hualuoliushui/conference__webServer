@@ -24,7 +24,7 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             Devices devices;
-            //调用会场服务
+            //调用设备服务
             respond.Code = DeviceService.getAll(out devices);
             respond.Result = devices;
 
@@ -44,9 +44,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用json解析
-            DeviceVO device = Models.Tools.JsonHelper.GetObjectService<DeviceVO>(context);
-            //调用会场服务
-            respond.Code = DeviceService.create(newMeetingPlac);
+            Device device = Models.Tools.JsonHelper.GetObjectService<Device>(context);
+            //调用设备服务
+            respond.Code = DeviceService.create(device);
 
             if (respond.Code == 1)
             {
@@ -65,7 +65,7 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
             //调用json解析
             Devices devices = Models.Tools.JsonHelper.GetObjectService<Devices>(context);
-            //调用会场服务
+            //调用设备服务
             respond.Code = DeviceService.update(devices);
             if (respond.Code == 1)
             {
@@ -85,9 +85,9 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
             //调用json解析
             OleDevices devices = Models.Tools.JsonHelper.GetObjectService<OleDevices>(context);
-            //调用会场服务
+            //调用设备服务
             respond.Code = DeviceService.delete(devices);
-            // respond.Result = oldMeetingPlaces; //测试接口时使用
+
             if (respond.Code == 1)
             {
                 respond.Message = "success";

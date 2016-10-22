@@ -18,12 +18,12 @@ namespace WebServer.Models.MeetingPlace
         public static int getAll(out MeetingPlaces meetingPlaces)
         {
             meetingPlaces = new MeetingPlaces();
-            meetingPlaces.meetingPlaces = new List<MeetingPlaceVO>();
+            meetingPlaces.meetingPlaces = new List<MeetingPlace>();
 
 
             //查询数据
-            meetingPlaces.meetingPlaces.Add(new MeetingPlaceVO { meetingPlaceID = 1, meetingPlaceName = "人民大会堂", meetingPlaceType = 1, meetingPlaceCapacity = 200 });
-            meetingPlaces.meetingPlaces.Add(new MeetingPlaceVO { meetingPlaceID = 2, meetingPlaceName = "学术大讲堂", meetingPlaceType = 2, meetingPlaceCapacity = 100 });
+            meetingPlaces.meetingPlaces.Add(new MeetingPlace { meetingPlaceID = 1, meetingPlaceName = "人民大会堂", meetingPlaceType = 1, meetingPlaceCapacity = 200 });
+            meetingPlaces.meetingPlaces.Add(new MeetingPlace { meetingPlaceID = 2, meetingPlaceName = "学术大讲堂", meetingPlaceType = 2, meetingPlaceCapacity = 100 });
 
             return 1;
         }

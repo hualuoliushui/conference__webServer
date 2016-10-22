@@ -6,8 +6,9 @@ using DAL.DAOVO;
 
 namespace WebServer.Models.MeetingPlace
 {
+    //提供给浏览器的会场信息列表类
     public class MeetingPlaces
     {
-        public List<MeetingPlaceVO> meetingPlaces;
+        public List<MeetingPlace> meetingPlaces;
     }
 }
