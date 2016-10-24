@@ -145,7 +145,7 @@
     <Compile Include="Models\Device\DeviceService.cs" />
     <Compile Include="Models\Device\NewDevice.cs" />
     <Compile Include="Models\Device\OldDevices.cs" />
-    <Compile Include="Models\Forms.cs" />
+    <Compile Include="Models\Account\Forms.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />
     <Compile Include="Models\MeetingPlace\NewMeetingPlace.cs" />
@@ -156,7 +156,7 @@
     <Compile Include="Models\Meeting\MeetingService.cs" />
     <Compile Include="Models\Meeting\NewMeeting.cs" />
     <Compile Include="Models\Meeting\OldMeetings.cs" />
-    <Compile Include="Models\RBACUser.cs" />
+    <Compile Include="Models\Account\RBACUser.cs" />
     <Compile Include="Models\RespondModel.cs" />
     <Compile Include="Models\Tools\JsonHelper.cs" />
     <Compile Include="Models\User\NewUser.cs" />
@@ -3264,7 +3264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Account\" />
     <Folder Include="Models\Agenda\" />
     <Folder Include="Models\Delegate\" />
     <Folder Include="Models\Document\" />

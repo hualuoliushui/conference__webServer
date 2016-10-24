@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebServer.Models;
+using WebServer.App_Start;
 
 namespace WebServer.Controllers
 {
@@ -24,20 +25,30 @@ namespace WebServer.Controllers
             string password = form["password"];
             if (!Forms.Verigy(userName, password))
             {
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
+            Session["logined"] = "logined";
             Forms.Login(userName, 20);
-            return RedirectToAction("Index", "Admin", new { userName = userName });
+            return RedirectToAction("Admin");
         }
 
+        [RBAC]
         public ActionResult Admin()
         {
-            ViewData["organizors"] = 15;
+            if (Session["logined"] == null)
+            {
+                return View("Index");
+            }
             return View("Admin");
         }
 
+        [RBAC]
         public ActionResult Organizor()
         {
+            if (Session["logined"] == null)
+            {
+                return View("Index");
+            }
             return View("Organizor");
         }
     }

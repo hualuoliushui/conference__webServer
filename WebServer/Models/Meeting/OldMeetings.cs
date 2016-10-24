@@ -7,6 +7,6 @@ namespace WebServer.Models.Meeting
 {
     public class OldMeetings
     {
-        public List<int> meetings { set;get } 
+        public List<int> meetings { set; get; } 
     }
 }

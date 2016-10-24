@@ -6,6 +6,9 @@ using System.Security.Principal;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Security;
+using DAL.DAOFactory;
+using DAL.DAO;
+using DAL.DAOVO;
 
 namespace WebServer.Models
 {
@@ -34,6 +37,15 @@ namespace WebServer.Models
         /// <param name="password"></param>
         public static bool Verigy(string loginName, string password)
         {
+            if (string.IsNullOrEmpty(loginName) || string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+            UserDAO userDao = Factory.getUserDAOInstance();
+            UserVO user = userDao.getUserByUserName(loginName);
+
+            if (user == null) return false;
+            if (user.userPassword.CompareTo(password) != 0) return false;
             return true;
         }
         /// <summary>

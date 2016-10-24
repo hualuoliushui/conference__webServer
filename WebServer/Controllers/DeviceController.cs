@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.Models.Device;
-using DAL.DAOVO;
 
 namespace WebServer.Controllers
 {
