@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -146,6 +150,7 @@
     <Compile Include="Models\Device\NewDevice.cs" />
     <Compile Include="Models\Device\OldDevices.cs" />
     <Compile Include="Models\Account\Forms.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />
     <Compile Include="Models\MeetingPlace\NewMeetingPlace.cs" />
@@ -158,11 +163,12 @@
     <Compile Include="Models\Meeting\OldMeetings.cs" />
     <Compile Include="Models\Account\RBACUser.cs" />
     <Compile Include="Models\RespondModel.cs" />
+    <Compile Include="Models\Role\RoleForUser.cs" />
+    <Compile Include="Models\Role\RoleService.cs" />
     <Compile Include="Models\Tools\JsonHelper.cs" />
-    <Compile Include="Models\User\NewUser.cs" />
-    <Compile Include="Models\User\OldUsers.cs" />
+    <Compile Include="Models\User\CreateUser.cs" />
+    <Compile Include="Models\User\UpdateUser.cs" />
     <Compile Include="Models\User\User.cs" />
-    <Compile Include="Models\User\Users.cs" />
     <Compile Include="Models\User\UserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,6 +229,9 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\editpeople_role.js" />
+    <Content Include="js\people_role.js" />
+    <Content Include="js\addpeople_role.js" />
     <Content Include="less\index.less" />
     <Content Include="node_modules\.0.0.0%40prr\.jshintrc" />
     <Content Include="node_modules\.0.0.0%40prr\.npmignore" />
@@ -1563,6 +1572,9 @@
     <Content Include="node_modules\source-map\package.json" />
     <Content Include="node_modules\source-map\README.md" />
     <Content Include="package.json" />
+    <Content Include="less\people_role.less" />
+    <Content Include="less\editpeople_role.less" />
+    <Content Include="less\addpeople_role.less" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
     <Content Include="images\03120.png" />
@@ -3261,21 +3273,23 @@
     <Content Include="Views\Account\Admin.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Organizor.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Agenda\" />
     <Folder Include="Models\Delegate\" />
     <Folder Include="Models\Document\" />
-    <Folder Include="Models\Role\" />
     <Folder Include="Models\Vote\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Delegate\" />
     <Folder Include="Views\Device\" />
     <Folder Include="Views\Document\" />
+    <Folder Include="Views\MeetingPlace\" />
     <Folder Include="Views\Meeting\" />
-    <Folder Include="Views\Role\MeetingPlace\" />
-    <Folder Include="Views\User\" />
+    <Folder Include="Views\Role\" />
     <Folder Include="Views\Vote\" />
   </ItemGroup>
   <ItemGroup>

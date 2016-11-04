@@ -18,6 +18,16 @@ namespace WebServer.Models.Device
         {
             devices = new Devices();
             devices.devices = new List<Device>();
+            //判断操作成功与否,返回相应状态码
+            ///////
+
+
+            return 1;
+        }
+
+        public static int getOne(out Device device, string deviceID)
+        {
+            device = new Device();
 
             return 1;
         }

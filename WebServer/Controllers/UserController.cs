@@ -19,83 +19,82 @@ namespace WebServer.Controllers
             return View();
         }
 
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
         public JsonResult GetUsers()
         {
             RespondModel respond = new RespondModel();
 
-            Users users;
+            List<User> users;
             //调用用户服务
-            respond.Code = UserService.getAll(out users);
+            Status status = UserService.getAll(out users);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
             respond.Result = users;
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+           return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetUser(int userID)
+        {
+            RespondModel respond = new RespondModel();
+
+            UpdateUser user;
+            //调用设备服务
+            Status status = UserService.getOne(out user, userID);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = user;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Createuser(HttpContext context)
+        public JsonResult CreateUser(CreateUser user)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            User user = Models.Tools.JsonHelper.GetObjectService<User>(context);
             //调用用户服务
-            respond.Code = UserService.create(user);
+            Status status = UserService.create(user);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult UpdateUsers(HttpContext context)
+        public JsonResult UpdateUser(UpdateUser user)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            Users users = Models.Tools.JsonHelper.GetObjectService<Users>(context);
             //调用用户服务
-            respond.Code = UserService.update(users);
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            Status status = UserService.update(user);
 
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DeleteUsers(HttpContext context)
+        public JsonResult DeleteUsers(List<int> users)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            OldUsers users = Models.Tools.JsonHelper.GetObjectService<OldUsers>(context);
             //调用用户服务
-            respond.Code = UserService.delete(users);
+            Status status = UserService.delete(users);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
+
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
     }

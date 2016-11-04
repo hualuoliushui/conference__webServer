@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>中佰会议系统管理员</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/less/people_role.less" type="text/less" rel="stylesheet/less">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top" id="mainMenu">
+        <div class="container">
+            <div class="navbar-header col-md-2">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="./images/u46.png">
+                </a>
+            </div>
+            <p class="navbar-text col-md-6">中佰会议系统管理员界面</p>
+            <ul class="col-md-3" id="signUpWindow">
+                <ol class="col-md-3"><b>管理员</b>&nbsp<b>张三</b></ol>
+                <ol class="col-md-1">
+                    <button type="button" class="btn btn-xs">
+                        <!--超小按钮-->
+                        <span class="glyphicon glyphicon-user"></span>
+                        <!--这些图标的使用要引入boorstrap的font-->
+                    </button>
+                </ol>
+            </ul>
+        </div>
+    </div>
+    <div class="container" id="mainContent">
+        <div class="panel panel-default col-md-2" id="mainContentLeft">
+            <div class="panel-heading">
+                <p class="panel-title">管理导航</p>
+            </div>
+            <ul class="nav nav-stacked panel-body" role="tablist">
+                <li role="presentation" class="active"><a href="#">首页</a></li>
+                <li role="presentation"><a href="#">会场管理</a></li>
+                <li role="presentation"><a href="#">人员与角色选择</a></li>
+                <li role="presentation"><a href="#">角色管理</a></li>
+                <li role="presentation"><a href="#">设备管理</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
+            <div id="ContentRightHead" class="col-md-12">
+                <p id="ContentRightHeadTitle" class="col-md-4"><strong>人员与角色选择</strong></p>
+                <ol class="breadcrumb col-md-3">
+                    <li><a href="#">首页</a></li>
+                    <li class="active">人员与角色选择</li>
+                </ol>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <button class="btn btn-default col-md-2" type="button">返回主页</button>
+                <span id="ContentRightHeadState">
+                    状态:<span>创建成功</span>
+                </span>
+            </div>
+            <div class="ContentRightButtonGroup">
+                <button class="btn btn-default new" type="button">新增人员</button>
+                <button class="btn btn-default delete" type="button">批量删除</button>
+                <button class="btn btn-default deleteRedo" type="button">撤销删除</button>
+            </div>
+            <div id="ContentRightList">
+                <div id="contentRightListGroup">
+                    <ul class="list-group contentRightListGroupBanderList">
+                        <li href="#" class="list-group-item disabled container-fluid">
+                            <input type="checkbox" value="" class="col-md-1 contentRightListGroupBanderListInput">
+                            <label class="col-md-2 list-If">
+                                人员名字
+                            </label>
+                            <label class="col-md-2 list-If">
+                                人员部门
+                            </label>
+                            <label class="col-md-2 list-If">
+                                人员职位
+                            </label>
+                            <label class="col-md-2 list-If">
+                                人员角色
+                            </label>
+                        </li>
+                    </ul>
+                    <ul class="list-group contentRightListGroupOutWindow">
+                        <ul class="list-group contentRightListGroupOutWindowList"></ul>
+                    </ul>
+                </div>
+                <nav class="text-center" id="paginationOutWindow">
+                    <ul class="pagination">
+                        <!--<li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>-->
+                    </ul>
+                </nav>
+            </div>
+            <div id="buttonGroup" class="col-md-4 col-md-offset-8">
+                <button class="btn btn-default col-md-5" type="button">返回主页</button>
+                <button class="btn btn-default col-md-5 col-md-offset-1" type="button">保存</button>
+            </div>
+        </div>
+    </div>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js">
+    </script>
+    <script src="js/people_role.js"></script>
+</body>
+
+</html>

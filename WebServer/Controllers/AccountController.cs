@@ -17,6 +17,16 @@ namespace WebServer.Controllers
         {
             return View();
         }
+        public class student
+        {
+            public int userID { set; get; }
+            public string userName { set; get; }
+            public List<student> list { set; get; }
+        }
+        public JsonResult testPost(student s)
+        {
+            return Json(s, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public ActionResult Login(FormCollection form)
@@ -32,9 +42,9 @@ namespace WebServer.Controllers
             return RedirectToAction("Admin");
         }
 
-        [RBAC]
         public ActionResult Admin()
         {
+            return View("Admin");
             if (Session["logined"] == null)
             {
                 return View("Index");

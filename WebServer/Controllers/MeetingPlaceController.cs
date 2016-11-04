@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.Models.MeetingPlace;
@@ -22,11 +19,32 @@ namespace WebServer.Controllers
         public JsonResult GetMeetingPlaces()
         {
             RespondModel respond = new RespondModel();
-           
+
             MeetingPlaces meetingPlaces;
             //调用会场服务
-            respond.Code = MeetingPlaceService.getAll(out meetingPlaces);           
+            respond.Code = MeetingPlaceService.getAll(out meetingPlaces);
             respond.Result = meetingPlaces;
+
+            if (respond.Code == 1)
+            {
+                respond.Message = "success";
+            }
+            else
+            {
+                respond.Message = "failed";
+            }
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMeetingPlace(int meetingPlaceID)
+        {
+            RespondModel respond = new RespondModel();
+
+            MeetingPlace meetingPlace;
+            //调用设备服务
+            respond.Code = MeetingPlaceService.getOne(out meetingPlace, meetingPlaceID);
+            respond.Result = meetingPlace;
 
             if (respond.Code == 1)
             {
@@ -45,9 +63,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用json解析
-            NewMeetingPlace newMeetingPlace = Models.Tools.JsonHelper.GetObjectService<NewMeetingPlace>(context);
+            NewMeetingPlace meetingPlace = Models.Tools.JsonHelper.GetObjectService<NewMeetingPlace>(context);
             //调用会场服务
-            respond.Code = MeetingPlaceService.create(newMeetingPlace);
+            respond.Code = MeetingPlaceService.create(meetingPlace);
 
             if (respond.Code == 1)
             {
@@ -56,7 +74,7 @@ namespace WebServer.Controllers
             else
             {
                 respond.Message = "failed";
-            }        
+            }
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
@@ -77,7 +95,7 @@ namespace WebServer.Controllers
             {
                 respond.Message = "failed";
             }
-                 
+
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
@@ -87,9 +105,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用json解析
-            OldMeetingPlaces meetingPlaces = Models.Tools.JsonHelper.GetObjectService<OldMeetingPlaces>(context);
+            OldMeetingPlaces oldMeetingPlaces = Models.Tools.JsonHelper.GetObjectService<OldMeetingPlaces>(context);
             //调用会场服务
-            respond.Code = MeetingPlaceService.delete(meetingPlaces);
+            respond.Code = MeetingPlaceService.delete(oldMeetingPlaces);
             // respond.Result = oldMeetingPlaces; //测试接口时使用
             if (respond.Code == 1)
             {

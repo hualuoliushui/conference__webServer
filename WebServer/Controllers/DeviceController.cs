@@ -1,7 +1,11 @@
-﻿using System.Web;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.Models.Device;
+using DAL.DAOVO;
 
 namespace WebServer.Controllers
 {
@@ -23,6 +27,26 @@ namespace WebServer.Controllers
             //调用设备服务
             respond.Code = DeviceService.getAll(out devices);
             respond.Result = devices;
+
+            if (respond.Code == 1)
+            {
+                respond.Message = "success";
+            }
+            else
+            {
+                respond.Message = "failed";
+            }
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetDevice(string deviceID)
+        {
+            RespondModel respond = new RespondModel();
+
+            Device device;
+            //调用设备服务
+            respond.Code = DeviceService.getOne(out device, deviceID);
+            respond.Result = device;
 
             if (respond.Code == 1)
             {
@@ -80,9 +104,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用json解析
-            OldDevices devices = Models.Tools.JsonHelper.GetObjectService<OldDevices>(context);
+            OldDevices oldDevices = Models.Tools.JsonHelper.GetObjectService<OldDevices>(context);
             //调用设备服务
-            respond.Code = DeviceService.delete(devices);
+            respond.Code = DeviceService.delete(oldDevices);
 
             if (respond.Code == 1)
             {

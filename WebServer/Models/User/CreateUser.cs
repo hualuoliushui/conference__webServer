@@ -5,12 +5,12 @@ using System.Web;
 
 namespace WebServer.Models.User
 {
-    public class User
+    public class CreateUser
     {
-        public int userID { set; get; }
         public string userName { set; get; }
         public string userDepartment { set; get; }
         public string userJob { set; get; }
-        public string roleName { set; get; }
+        public string userDescription { set; get; }
+        public int roleID { set; get; }
     }
 }
