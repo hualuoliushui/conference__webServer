@@ -5,6 +5,10 @@ using System.Web;
 
 namespace WebServer.Models.User
 {
+    /// <summary>
+    /// 信息对象
+    /// 更新用户
+    /// </summary>
     public class UpdateUser
     {
         public int userID { set; get; }

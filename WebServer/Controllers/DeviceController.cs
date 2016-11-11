@@ -19,104 +19,84 @@ namespace WebServer.Controllers
             return View();
         }
 
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
         public JsonResult GetDevices()
         {
             RespondModel respond = new RespondModel();
 
-            Devices devices;
+            List<Device> devices;
             //调用设备服务
-            respond.Code = DeviceService.getAll(out devices);
-            respond.Result = devices;
+            Status status = DeviceService.getAll(out devices);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = devices;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult GetDevice(string deviceID)
         {
             RespondModel respond = new RespondModel();
 
-            Device device;
+            UpdateDevice device;
             //调用设备服务
-            respond.Code = DeviceService.getOne(out device, deviceID);
+            Status status = DeviceService.getOne(out device, deviceID);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
             respond.Result = device;
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
-
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateDevice(HttpContext context)
+        public JsonResult CreateDevice(Device device)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            Device device = Models.Tools.JsonHelper.GetObjectService<Device>(context);
             //调用设备服务
-            respond.Code = DeviceService.create(device);
+            Status status = DeviceService.create(device);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult UpdateDevices(HttpContext context)
+        public JsonResult UpdateDevice(UpdateDevice device)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            Devices devices = Models.Tools.JsonHelper.GetObjectService<Devices>(context);
             //调用设备服务
-            respond.Code = DeviceService.update(devices);
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            Status status = DeviceService.update(device);
 
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DeleteDevices(HttpContext context)
+        public JsonResult UpdateDeviceAvailable(string deviceID, int deviceFreezeState)//FreezeState对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            OldDevices oldDevices = Models.Tools.JsonHelper.GetObjectService<OldDevices>(context);
             //调用设备服务
-            respond.Code = DeviceService.delete(oldDevices);
+            Status status = DeviceService.UpdateDeviceAvailable(deviceID, deviceFreezeState);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
+
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
+        
     }
 }

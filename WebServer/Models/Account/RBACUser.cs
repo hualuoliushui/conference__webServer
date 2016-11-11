@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using DAL.DAOFactory;
 using DAL.DAO;
 using DAL.DAOVO;
@@ -42,6 +41,7 @@ namespace WebServer.Models
             User_RoleDAO userRoleDAO = Factory.getUser_RoleDAOInstance();
             List<int> roleIDList = userRoleDAO.getRoleIDListByUserID(this.userID);
             if (roleIDList == null) return;
+
             foreach (int roleID in roleIDList)
             {
                 UserRole userRole = new UserRole();
@@ -56,6 +56,7 @@ namespace WebServer.Models
                 Role_PermissionDAO rolePermissionDAO = Factory.getRole_PermissionDAOInstance();
                 List<int> permissionIDList = rolePermissionDAO.getPermissionIDListByRoleID(roleVo.roleID);
                 if (permissionIDList == null) continue;
+
                 foreach (int permissionID in permissionIDList)
                 {
                     RolePermission rolePermission = new RolePermission();
@@ -64,6 +65,7 @@ namespace WebServer.Models
                     PermissionDAO permissionDAO = Factory.getPermissionDAOInstance();
                     PermissionVO permissionVo = permissionDAO.getPermissionByPermissionID(permissionID);
                     if (permissionVo == null) continue;
+
                     rolePermission.PermissionDescription = permissionVo.permissionDescription;
 
                     userRole.permissions.Add(rolePermission);

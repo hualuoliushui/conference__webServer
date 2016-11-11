@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Security.Principal;
-using System.Web;
-using System.Web.Script.Serialization;
 using System.Web.Security;
+using System.Security.Cryptography;
+using System.Text;
 using DAL.DAOFactory;
 using DAL.DAO;
 using DAL.DAOVO;
@@ -15,6 +13,8 @@ namespace WebServer.Models
     public class Forms
     {
         public IIdentity _identity;
+
+        public int userID;
 
         public Forms(FormsAuthenticationTicket ticket)
         {
@@ -30,6 +30,14 @@ namespace WebServer.Models
             get { return _identity; }
         }
 
+        private static string MD5(string password)
+        {
+            byte[] temp = Encoding.Default.GetBytes(password.Trim());
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] output = md5.ComputeHash(temp);
+            return Encoding.Default.GetString(output);
+        }
+
         /// <summary>
         /// 执行登录前的验证
         /// </summary>
@@ -43,11 +51,14 @@ namespace WebServer.Models
             }
             UserDAO userDao = Factory.getUserDAOInstance();
             UserVO user = userDao.getUserByUserName(loginName);
+            if (user == null) 
+                return false;
+            if (user.userPassword.CompareTo((password)) != 0) 
+                return false;
 
-            if (user == null) return false;
-            if (user.userPassword.CompareTo(password) != 0) return false;
             return true;
         }
+
         /// <summary>
         /// 执行用户登录操作
         /// </summary>

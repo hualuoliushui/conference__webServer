@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using WebServer.Models;
-using DAL.DAOVO;
 using WebServer.Models.User;
 
 namespace WebServer.Controllers
@@ -49,7 +45,7 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             UpdateUser user;
-            //调用设备服务
+            //调用用户服务
             Status status = UserService.getOne(out user, userID);
 
             respond.Code = (int)status;
@@ -63,7 +59,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
-            Status status = UserService.create(user);
+            Status status = new UserService().create(user);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -85,11 +81,11 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DeleteUsers(List<int> users)
+        public JsonResult UpdateUserAvailable(int userID, int userFreezeState)//FreezeState对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
-            Status status = UserService.delete(users);
+            Status status = UserService.UpdateUserAvailable(userID, userFreezeState);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

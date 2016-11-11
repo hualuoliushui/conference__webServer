@@ -47,13 +47,13 @@
     function postDeleteUsers() {
         $.ajax({
             type: "POST",
-            url: "/User/DeleteUsers",
+            url: "/User/ChangeUserStatus",
             contentType: "application/json",
             dataType: "json",
-            data: JSON.stringify(
-                [
-                  24,25,26,27
-                ]
+            data: JSON.stringify({
+                "userID": 21,
+                "available":1
+            }
                 ),
             success: function (jsonResult) {
                 alert(JSON.stringify(jsonResult));
@@ -87,6 +87,11 @@
         <input type="text" name="userName" /><br />
         <label>密码</label>
         <input type="password" name="password" /><br />
+        <label>系统:</label>
+        <label>管理员</label>
+        <input type="radio" name="system" value="admin" checked />
+        <label>会议组织者</label>
+        <input type="radio" name="system" value="organizor" />
         <input type="submit" value="登录" />
     </form>
 </fieldset>

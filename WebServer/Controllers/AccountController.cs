@@ -17,16 +17,6 @@ namespace WebServer.Controllers
         {
             return View();
         }
-        public class student
-        {
-            public int userID { set; get; }
-            public string userName { set; get; }
-            public List<student> list { set; get; }
-        }
-        public JsonResult testPost(student s)
-        {
-            return Json(s, JsonRequestBehavior.AllowGet);
-        }
 
         [HttpPost]
         public ActionResult Login(FormCollection form)
@@ -39,12 +29,26 @@ namespace WebServer.Controllers
             }
             Session["logined"] = "logined";
             Forms.Login(userName, 20);
-            return RedirectToAction("Admin");
+
+            string system = form["system"];
+            if(string.IsNullOrWhiteSpace(system))
+                return View("Index");
+
+            if (string.Compare(system, "admin") == 0)
+            {
+                return RedirectToAction("Admin");
+            }
+            if (string.Compare(system, "organizor") == 0)
+            {
+                return RedirectToAction("Organizor");
+            }
+
+            return View("Index");
         }
 
+        [RBAC]
         public ActionResult Admin()
         {
-            return View("Admin");
             if (Session["logined"] == null)
             {
                 return View("Index");

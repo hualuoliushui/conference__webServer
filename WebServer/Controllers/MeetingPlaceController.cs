@@ -2,6 +2,10 @@
 using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.Models.MeetingPlace;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace WebServer.Controllers
 {
@@ -20,19 +24,13 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            MeetingPlaces meetingPlaces;
+            List<MeetingPlace> meetingPlaces = null;
             //调用会场服务
-            respond.Code = MeetingPlaceService.getAll(out meetingPlaces);
-            respond.Result = meetingPlaces;
+            Status status = MeetingPlaceService.getAll(out meetingPlaces);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = meetingPlaces;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
@@ -41,82 +39,56 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            MeetingPlace meetingPlace;
+            UpdateMeetingPlace meetingPlace;
             //调用设备服务
-            respond.Code = MeetingPlaceService.getOne(out meetingPlace, meetingPlaceID);
-            respond.Result = meetingPlace;
+            Status status = MeetingPlaceService.getOne(out meetingPlace, meetingPlaceID);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = meetingPlace;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
         //添加会场信息
-        public JsonResult CreateMeetingPlace(HttpContext context)
+        public JsonResult CreateMeetingPlace(CreateMeetingPlace meetingPlace)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            NewMeetingPlace meetingPlace = Models.Tools.JsonHelper.GetObjectService<NewMeetingPlace>(context);
             //调用会场服务
-            respond.Code = MeetingPlaceService.create(meetingPlace);
+            Status status = new MeetingPlaceService().create(meetingPlace);
 
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
         //更新会场信息
-        public JsonResult UpdateMeetingPlaces(HttpContext context)
+        public JsonResult UpdateMeetingPlaces(UpdateMeetingPlace meetingPlace)
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            MeetingPlaces meetingPlaces = Models.Tools.JsonHelper.GetObjectService<MeetingPlaces>(context);
-            //调用会场服务
-            respond.Code = MeetingPlaceService.update(meetingPlaces);
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
 
+            Status status = MeetingPlaceService.update(meetingPlace);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        //删除会场信息
-        public JsonResult DeleteMeetingPlaces(HttpContext context)
+
+        public JsonResult UpdateMeetingPlaceAvailable(int meetingPlaceID, int meetingPlaceFreezeState) //FreezeState对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();
-            //调用json解析
-            OldMeetingPlaces oldMeetingPlaces = Models.Tools.JsonHelper.GetObjectService<OldMeetingPlaces>(context);
-            //调用会场服务
-            respond.Code = MeetingPlaceService.delete(oldMeetingPlaces);
-            // respond.Result = oldMeetingPlaces; //测试接口时使用
-            if (respond.Code == 1)
-            {
-                respond.Message = "success";
-            }
-            else
-            {
-                respond.Message = "failed";
-            }
+
+            Status status = MeetingPlaceService.UpdateUserAvailable(meetingPlaceID, meetingPlaceFreezeState);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
+
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
     }

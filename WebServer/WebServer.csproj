@@ -145,17 +145,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Device\Device.cs" />
-    <Compile Include="Models\Device\Devices.cs" />
     <Compile Include="Models\Device\DeviceService.cs" />
-    <Compile Include="Models\Device\NewDevice.cs" />
-    <Compile Include="Models\Device\OldDevices.cs" />
     <Compile Include="Models\Account\Forms.cs" />
+    <Compile Include="Models\Device\UpdateDevice.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />
-    <Compile Include="Models\MeetingPlace\NewMeetingPlace.cs" />
-    <Compile Include="Models\MeetingPlace\MeetingPlaces.cs" />
-    <Compile Include="Models\MeetingPlace\OldMeetingPlaces.cs" />
+    <Compile Include="Models\MeetingPlace\CreateMeetingPlace.cs" />
+    <Compile Include="Models\MeetingPlace\UpdateMeetingPlace.cs" />
     <Compile Include="Models\Meeting\Meeting.cs" />
     <Compile Include="Models\Meeting\Meetings.cs" />
     <Compile Include="Models\Meeting\MeetingService.cs" />

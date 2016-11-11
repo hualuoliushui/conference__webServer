@@ -12,8 +12,8 @@ namespace WebServer.Models.MeetingPlace
 
         public string meetingPlaceName { set; get; }
 
-        public int meetingPlaceType { set; get; }
-
         public int meetingPlaceCapacity { set; get; }
+
+        public int meetingPlaceFreezeState { set; get; }
     }
 }

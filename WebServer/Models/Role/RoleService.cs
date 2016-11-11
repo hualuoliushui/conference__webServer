@@ -16,7 +16,7 @@ namespace WebServer.Models.Role
 
             RoleDAO roleDaoProxy = Factory.getRoleDAOInstance();
             List<RoleVO> roleVos = roleDaoProxy.getRoleList();
-            if (roleVos == null)
+            if (roleVos.Count==0)
                 return Status.NONFOUND;
             foreach (RoleVO vo in roleVos)
             {

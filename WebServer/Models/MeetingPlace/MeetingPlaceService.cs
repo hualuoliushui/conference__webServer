@@ -3,50 +3,182 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DAL.DAOVO;
+using DAL.DAO;
+using DAL.DAOFactory;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace WebServer.Models.MeetingPlace
 {
     public class MeetingPlaceService
     {
-        public static int create(NewMeetingPlace newMeetingPlace)
-        {
-            //执行数据库插入操作
+        private static int MeetingPlaceNameMin = 2;
+        private static int MeetingPlaceNameMax = 20;
 
-            return 1;
+        /// <summary>
+        /// 当前数据库中会场ID最大值
+        /// </summary>
+        private static int MeetingPlaceIDMax = Factory.getMeetingPlaceDAOInstance().getMeetingPlaceIDMax();
+
+        private int getMeetingPlaceID()
+        {
+            int id = 0;
+            object lockObject = new object();
+            lock (lockObject)
+            {
+                id = ++MeetingPlaceIDMax;
+            }
+            return id;
         }
 
-        public static int getAll(out MeetingPlaces meetingPlaces)
-        {
-            meetingPlaces = new MeetingPlaces();
-            meetingPlaces.meetingPlaces = new List<MeetingPlace>();
+        private static bool checkCreateMeetingPlace(ref CreateMeetingPlace meetingPlace){
+            //检查会场名称和容量参数
+            if (String.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName) || meetingPlace.meetingPlaceCapacity <= 0)
+            {
+                return false;
+            }
+            //修正会场名称
+            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
 
-            //查询数据
-            meetingPlaces.meetingPlaces.Add(new MeetingPlace { meetingPlaceID = 1, meetingPlaceName = "人民大会堂", meetingPlaceType = 1, meetingPlaceCapacity = 200 });
-            meetingPlaces.meetingPlaces.Add(new MeetingPlace { meetingPlaceID = 2, meetingPlaceName = "学术大讲堂", meetingPlaceType = 2, meetingPlaceCapacity = 100 });
+            //检查会场名称的长度是否符合要求
+            if(meetingPlace.meetingPlaceName.Length < MeetingPlaceNameMin ||
+                meetingPlace.meetingPlaceName.Length > MeetingPlaceNameMax)
+            {
+                return false;
+            }
 
-            return 1;
+            return true;
         }
 
-        public static int getOne(out MeetingPlace meetingPlace, int meetingPlaceID)
+        private static bool checkUpdateMeetingPlace(ref UpdateMeetingPlace meetingPlace)
         {
-            meetingPlace = new MeetingPlace();
+            //检查会场名称和容量参数
+            if (String.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName) || meetingPlace.meetingPlaceCapacity <= 0)
+            {
+                return false;
+            }
+            //修正会场名称
+            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
 
-            return 1;
+            //检查会场名称的长度是否符合要求
+            if (meetingPlace.meetingPlaceName.Length < MeetingPlaceNameMin ||
+                meetingPlace.meetingPlaceName.Length > MeetingPlaceNameMax)
+            {
+                return false;
+            }
+
+            return true;
+        }
+ 
+        public Status create(CreateMeetingPlace meetingPlace)
+        {
+            //检查并更正格式
+            if (!checkCreateMeetingPlace(ref meetingPlace))
+            {
+                return Status.FORMAT_ERROR;
+            }
+
+            //获取新会场ID
+            int meetingPlaceID = getMeetingPlaceID();
+
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            if (!meetingPlaceDao.addMeetingPlace(
+                new MeetingPlaceVO {
+                    meetingPlaceID = meetingPlaceID,
+                    meetingPlaceName = meetingPlace.meetingPlaceName,
+                    meetingPlaceType = 0,
+                    meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity,
+                    meetingPlaceAvailable = 0
+                }))
+            {
+                return Status.FAILURE;
+            }
+            return Status.SUCCESS;
         }
 
-        public static int update(MeetingPlaces meetingPlaces)
+        public static Status getAll(out List<MeetingPlace> meetingPlaces)
         {
-            //更新数据
+            meetingPlaces = new List<MeetingPlace>();
 
-            return 1;
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+
+            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getMeetingPlaceList();
+            if (meetingPlaceVos.Count == 0)
+            {
+                return Status.NONFOUND;
+            }
+            foreach (MeetingPlaceVO vo in meetingPlaceVos)
+            {
+                meetingPlaces.Add(new MeetingPlace
+                {
+                    meetingPlaceID = vo.meetingPlaceID,
+                    meetingPlaceName = vo.meetingPlaceName,
+                    meetingPlaceCapacity = vo.meetingPlaceCapacity,
+                    meetingPlaceFreezeState = vo.meetingPlaceAvailable
+                });
+            }
+
+            return Status.SUCCESS;
         }
 
-        public static int delete(OldMeetingPlaces meetingPlaces)
+        public static Status getOne(out UpdateMeetingPlace meetingPlace, int meetingPlaceID)
         {
-            //删除数据
+            meetingPlace = new UpdateMeetingPlace();
 
-            return 1;
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            MeetingPlaceVO vo = meetingPlaceDao.getMeetingPlaceByMeetingPlaceID(meetingPlaceID);
+
+            if (vo == null)
+            {
+                return Status.NONFOUND;
+            }
+            meetingPlace.meetingPlaceID = vo.meetingPlaceID;
+            meetingPlace.meetingPlaceName = vo.meetingPlaceName;
+            meetingPlace.meetingPlaceCapacity = vo.meetingPlaceCapacity;
+
+            return Status.SUCCESS;
         }
 
+        public static Status update(UpdateMeetingPlace meetingPlace)
+        {
+            //检查并更正格式
+            if (!checkUpdateMeetingPlace(ref meetingPlace))
+            {
+                return Status.FORMAT_ERROR;
+            }
+
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            if (!meetingPlaceDao.updateMeetingPlace(
+                new MeetingPlaceVO { 
+                    meetingPlaceID = meetingPlace.meetingPlaceID,
+                    meetingPlaceName = meetingPlace.meetingPlaceName, 
+                    meetingPlaceType = 0, 
+                    meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity
+                }))
+            {
+                return Status.FAILURE;
+            }
+                return Status.SUCCESS;
+        }
+
+        public static Status UpdateUserAvailable(int meetingPlaceID,int available){
+            //检查参数
+            if (meetingPlaceID < 0
+                || (available != 0 && available != 1))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
+
+            //数据库操作
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            if (!meetingPlaceDao.updateMeetingPlaceAvailable(meetingPlaceID,available))
+            {
+                return Status.FAILURE;
+            }
+            return Status.SUCCESS;
+        }
     }
 }

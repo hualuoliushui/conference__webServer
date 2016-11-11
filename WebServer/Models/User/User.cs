@@ -5,6 +5,10 @@ using System.Web;
 
 namespace WebServer.Models.User
 {
+    /// <summary>
+    /// 信息对象
+    /// 获取用户信息
+    /// </summary>
     public class User
     {
         public int userID { set; get; }
@@ -12,5 +16,6 @@ namespace WebServer.Models.User
         public string userDepartment { set; get; }
         public string userJob { set; get; }
         public string roleName { set; get; }
+        public int userFreezeState { set; get; }
     }
 }

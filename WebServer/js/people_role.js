@@ -7,7 +7,7 @@ $(function() {
         success: function(response) {
             var appendListHtml = "";
             var itemCount = 0;
-            $.each(response.people, function(i, item) {
+            $.each(response.Result, function(i, item) {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
                     "<li href='#' class='list-group-item container-fluid'>" +

@@ -5,6 +5,10 @@ using System.Web;
 
 namespace WebServer.Models.User
 {
+    /// <summary>
+    /// 信息对象
+    /// 创建用户
+    /// </summary>
     public class CreateUser
     {
         public string userName { set; get; }
