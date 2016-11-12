@@ -13,6 +13,7 @@ namespace WebServer.Controllers
         //
         // GET: /Account/
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -47,22 +48,24 @@ namespace WebServer.Controllers
         }
 
         [RBAC]
+        [HttpGet]
         public ActionResult Admin()
         {
-            if (Session["logined"] == null)
-            {
-                return View("Index");
-            }
+            //if (Session["logined"] == null)
+            //{
+            //    return View("Index");
+            //}
             return View("Admin");
         }
 
         [RBAC]
+        [HttpGet]
         public ActionResult Organizor()
         {
-            if (Session["logined"] == null)
-            {
-                return View("Index");
-            }
+            //if (Session["logined"] == null)
+            //{
+            //    return View("Index");
+            //}
             return View("Organizor");
         }
     }

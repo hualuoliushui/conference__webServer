@@ -66,12 +66,41 @@ namespace WebServer.Models.Device
         }
 
         /// <summary>
+        /// 为参会人员 请求 所有设备的 信息
+        /// </summary>
+        /// <param name="devices"></param>
+        /// <returns></returns>
+        public static Status getAllForDelegate(out List<DeviceForDelegate> devices)
+        {
+            devices = new List<DeviceForDelegate>();
+
+            DeviceDAO deviceDao = Factory.getDeviceDAOInstance();
+            List<DeviceVO> deviceVOs = deviceDao.getDeviceList();
+            for(int i = 0 ;i<deviceVOs.Count;i++)
+            {
+                //过滤已冻结
+                if (deviceVOs[i].deviceAvailable == 1)
+                {
+                    continue;
+                }
+                devices.Add(
+                    new DeviceForDelegate
+                    {
+                        deviceID = deviceVOs[i].deviceID,
+                        deviceIndex = deviceVOs[i].deviceIndex
+                    });
+            }
+
+            return Status.SUCCESS;
+        }
+
+        /// <summary>
         /// 更新时，请求 指定设备的 信息
         /// </summary>
         /// <param name="device"></param>
         /// <param name="deviceID"></param>
         /// <returns></returns>
-        public static Status getOne(out UpdateDevice device, string deviceID)
+        public static Status getOneForUpdate(out UpdateDevice device, string deviceID)
         {
             device = new UpdateDevice();
 
@@ -117,15 +146,15 @@ namespace WebServer.Models.Device
         /// <returns></returns>
         public static Status UpdateDeviceAvailable(string deviceID, int available)
         {
+            //修正字符串
+            deviceID = deviceID.Trim();
+
             //检查参数
             if (string.IsNullOrWhiteSpace(deviceID) 
                 || (available != 0 && available != 1))
             {
                 return Status.ARGUMENT_ERROR;
             }
-
-            //修正字符串
-            deviceID = deviceID.Trim();
 
             //数据库操作
             DeviceDAO deviceDao = Factory.getDeviceDAOInstance();

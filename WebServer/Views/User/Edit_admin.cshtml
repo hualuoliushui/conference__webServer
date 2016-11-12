@@ -5,7 +5,7 @@
     <title>中佰会议系统管理员</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/less/addpeople_role.less" type="text/less" rel="stylesheet">
+    <link href="~/less/editpeople_role.less" type="text/less" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 
@@ -14,7 +14,7 @@
         <div class="container">
             <div class="navbar-header col-md-2">
                 <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="./images/u46.png">
+                    <img alt="Brand" src="/images/u46.png">
                 </a>
             </div>
             <p class="navbar-text col-md-6">中佰会议系统管理员界面</p>
@@ -36,27 +36,27 @@
                 <p class="panel-title">管理导航</p>
             </div>
             <ul class="nav nav-stacked panel-body" role="tablist">
-                <li role="presentation" class="active"><a href="#">首页</a></li>
-                <li role="presentation"><a href="#">会场管理</a></li>
-                <li role="presentation"><a href="#">人员与角色选择</a></li>
-                <li role="presentation"><a href="#">角色管理</a></li>
-                <li role="presentation"><a href="#">设备管理</a></li>
+                <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
+                <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
+                <li role="presentation"><a href="/User/Index_admin">人员与角色选择</a></li>
+                <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
+                <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
             </ul>
         </div>
         <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
             <div>
                 <div class="col-md-3 ">
-                    <h1><strong>添加人员</strong></h1>
+                    <h1><strong>编辑人员</strong></h1>
                 </div>
                 <div class="col-md-6">
                     <br />
                     <ol class="breadcrumb">
-                        <li><a href="#">首页</a></li>
-                        <li><a href="#">人员与角色选择</a></li>
-                        <li class="active">添加人员与角色</li>
+                        <li><a href="/Account/Admin">首页</a></li>
+                        <li><a href="/User/Index_admin">人员与角色选择</a></li>
+                        <li class="active">编辑人员与角色</li>
                     </ol>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-3">
                     <br />
                     <button class="btn btn-default" type="button" id="cancel" href="#">取消编辑</button>
                 </div>
@@ -102,7 +102,7 @@
         <script src="/node_modules/jquery/dist/jquery.js"></script>
         <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
         <script src="/node_modules/angular/angular.js"> </script>
-        <script src="js/addpeople_role.js"></script>
+        <script src="js/editpeople_role.js"></script>
 </body>
 
 </html>

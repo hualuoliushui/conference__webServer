@@ -44,13 +44,28 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetDevice(string deviceID)
+        public JsonResult GetDevicesForDelegate()
+        {
+            RespondModel respond = new RespondModel();
+
+            List<DeviceForDelegate> devices;
+            //调用设备服务
+            Status status = DeviceService.getAllForDelegate(out devices);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = devices;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetDeviceForUpdate(string deviceID)
         {
             RespondModel respond = new RespondModel();
 
             UpdateDevice device;
             //调用设备服务
-            Status status = DeviceService.getOne(out device, deviceID);
+            Status status = DeviceService.getOneForUpdate(out device, deviceID);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

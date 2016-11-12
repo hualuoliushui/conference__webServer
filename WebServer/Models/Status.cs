@@ -16,6 +16,7 @@ namespace WebServer.Models
         DATABASE_OPERATOR_ERROR=2,
         DATABASE_CONTENT_ERROR=3,
         NONFOUND=4,
-        ARGUMENT_ERROR=5
+        ARGUMENT_ERROR=5,
+        PERMISSION_DENIED=6
     }
 }

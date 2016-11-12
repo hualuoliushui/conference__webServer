@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+using System.Diagnostics;
+using System.Net.Mail;
+
 namespace WebServer
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -47,6 +50,30 @@ namespace WebServer
             HttpContext.Current.Response.Write(errorMsg);
 
             Server.ClearError();//处理完及时清理异常
+
+
+            //Exception error = Server.GetLastError().GetBaseException();
+            ////在事件日志中记录异常  
+            //if (!EventLog.SourceExists("ApplicationException"))
+            //{
+            //    EventLog.CreateEventSource("ApplicationException", "Application");
+            //}
+
+            //EventLog eventLog = new EventLog();
+            //eventLog.Log = "Application";
+            //eventLog.Source = "ApplicationException";
+            //eventLog.WriteEntry(error.ToString(), EventLogEntryType.Error);
+
+            ////发送Email给开发人员  
+            //MailMessage email = new MailMessage("115089190@qq.com", "115089190@qq.com");
+            //email.Body = error.ToString();
+            //email.IsBodyHtml = true;
+            //email.Subject = "An error occurred in the  Application";
+            //SmtpClient smtpClient = new SmtpClient("stmp.qq.com", 465);
+            //smtpClient.Credentials = new System.Net.NetworkCredential("115089190@qq.com", "qq.5g5a5n");
+            //smtpClient.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            //smtpClient.Send(email);
+            //Response.Redirect("/Error/Index");
         }
     }
 }

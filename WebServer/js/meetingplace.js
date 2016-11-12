@@ -2,26 +2,26 @@
 $(function() {
     $.ajax({
         type: "GET",
-        url: "/User/GetUsers",
+        url: "/MeetingPlace/GetMeetingPlaces",
         dataType: "json",
         success: function(response) {
             var appendListHtml = "";
             var itemCount = 0;
+            var FreezeStateBtn = ["btn-default", ""];
+            var FreezeStateString = ["冻结", "已冻结"];
             $.each(response.Result, function(i, item) {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
-                    "<li href='#' class='list-group-item container-fluid'>" +
-                    "<input type='checkbox' value='' class='col-md-1'>" +
-                    "<label class='col-md-2 list-If'>" + item.userName + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.userDepartment + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.userJob + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.roleName + "</label>" +
-                    "<button class='btn btn-default col-md-1 col-md-offset-1' type='button'>编辑</button>" +
-                    "<a href='#' class='col-md-1 close'></a>" +
-                    "</li>";
+                    "<li href='#' class='list-group-item container-fluid' meetingPlaceID=" + item.meetingPlaceID + ">" +
+                    "<label class='col-md-4 list-If'>" + item.meetingPlaceName + "</label>" +
+                    "<label class='col-md-4 list-If'>" + item.meetingPlaceCapacity + "</label>" +
+                    "<button class='btn btn-default col-md-1 col-md-offset-1 edit' type='button'>编辑</button>" +
+                    "<button class='" + FreezeStateBtn[item.meetingPlaceFreezeState] + " " + "btn col-md-1 col-md-offset-1 freeze' buttonType=" + item.meetingPlaceFreezeState + " type='button'>" + FreezeStateString[item.meetingPlaceFreezeState] + "</button>" +
+                    "</li>"; //漏了一个空格
             });
             //alert(appendHtml);//测试完成
             //alert(itemCount);
+
             $(".contentRightListGroupOutWindowList").append(appendListHtml);
 
             //关于分页按钮生成
@@ -41,6 +41,11 @@ $(function() {
                     appendPageHtml += "<li><a href='#'>&raquo;</a></li>";
                     $(".pagination").append(appendPageHtml);
                 }
+            })();
+
+            //人员状态的生成
+            (function() {
+
             })();
         }
     });
@@ -111,6 +116,73 @@ $(function() {
     });
 });
 
+//编辑保存按钮的功能
+$(function() {
+    $(document).on("click", ".edit", function() {
+        location.href = "#";
+    });
+    $(document).on("click", ".freeze", function() {
+        var meetingPlaceID = $(this).parent().attr("meetingPlaceID");
+        //alert(userID);
+        if ($(this).attr("buttonType") == 1) {
+            $.ajax({
+                type: "POST",
+                url: "/MeetingPlace/UpdateMeetingPlaceAvailable",
+                data: {
+                    "meetingPlaceID": meetingPlaceID,
+                    "state": 0
+                },
+                dataType: "json",
+                success: function(response) {
+
+                }
+            });
+            $(this).attr("buttonType", 0);
+            $(this).addClass("btn-default");
+            $(this).html("冻结");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/MeetingPlace/UpdateMeetingPlaceAvailable",
+                data: {
+                    "meetingPlaceID": meetingPlaceID,
+                    "state": 1
+                },
+                dataType: "json",
+                success: function(response) {
+
+                }
+            });
+            $(this).attr("buttonType", 1);
+            $(this).removeClass("btn-default");
+            $(this).html("已冻结");
+        };
+    });
+});
+
+//右侧按钮功能
+$(function() {
+    $(document).on("click", ".returnIndex", function() {
+        window.location.href = "index.html";
+    });
+    $(document).on("click", ".new", function() {
+        window.location.href = "#";
+    });
+});
+
+$(function() {
+    $(document).on("click", "#mainContentRight .input-group .btn", function() {
+        //alert($("#mainContentRight .input-group .form-control").val());
+    });
+});
+
+//状态功能展示
+$(function() {
+    $("#ContentRightHeadState span");
+});
+
+
+/*功能作废 源代码作废
 //删除功能实现
 $(function() {
     //普通删除
@@ -127,4 +199,22 @@ $(function() {
     });
 
     //批量删除
+    $(document).on("change", ".contentRightListGroupBanderListInput", function() {
+        if ($(".contentRightListGroupBanderListInput").prop("checked") == true) {
+            $("input[name=items]:checkbox").prop('checked', true);
+        }
+        if ($(".contentRightListGroupBanderListInput").prop("checked") == false) {
+            $("input[name=items]:checkbox").prop('checked', false);
+        }
+    });
 });
+*/
+
+
+
+/*
+ * 
+ * 
+ * 
+ * 
+ */

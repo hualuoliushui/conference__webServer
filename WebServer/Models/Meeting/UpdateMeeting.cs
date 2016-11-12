@@ -5,14 +5,16 @@ using System.Web;
 
 namespace WebServer.Models.Meeting
 {
-    public class NewMeeting
+    public class UpdateMeeting
     {
-        public int meetingPlaceID { set; get; }
+        public int meetingID { set; get; }
 
         public string meetingName { set; get; }
 
+        public int meetingPlaceID { set; get; }
+
         public string meetingSummary { set; get; }
 
-        public DateTime meetingStartedTime { set; get; }
+        public DateTime meetingToStartTime { set; get; }
     }
 }

@@ -18,12 +18,48 @@ namespace WebServer.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 为用户赋予角色
+        /// </summary>
+        /// <returns></returns>
         public JsonResult GetRolesForUser()
         {
             RespondModel respond = new RespondModel();
-            //调用用户服务
+            //调用角色服务
             List<RoleForUser> list = null;
             Status status = RoleService.getAllForUser(out list);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = list;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// 为角色赋予权限
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GetPermissions()
+        {
+            RespondModel respond = new RespondModel();
+            //调用角色服务
+            List<Permission> list = null;
+            Status status = RoleService.getPermissions(out list);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = list;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetRoles()
+        {
+            RespondModel respond = new RespondModel();
+            //调用角色服务
+            List<Role> list = null;
+            Status status = RoleService.getAll(out list);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

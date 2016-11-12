@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using DAL.DAOVO;
 using DAL.DAO;
 using DAL.DAOFactory;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace WebServer.Models.MeetingPlace
 {
@@ -21,9 +14,9 @@ namespace WebServer.Models.MeetingPlace
         /// <summary>
         /// 当前数据库中会场ID最大值
         /// </summary>
-        private static int MeetingPlaceIDMax = Factory.getMeetingPlaceDAOInstance().getMeetingPlaceIDMax();
+        private static int MeetingPlaceIDMax = Factory.getMeetingPlaceDAOInstance().getIDMax();
 
-        private int getMeetingPlaceID()
+        private static int getMeetingPlaceID()
         {
             int id = 0;
             object lockObject = new object();
@@ -34,49 +27,19 @@ namespace WebServer.Models.MeetingPlace
             return id;
         }
 
-        private static bool checkCreateMeetingPlace(ref CreateMeetingPlace meetingPlace){
-            //检查会场名称和容量参数
-            if (String.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName) || meetingPlace.meetingPlaceCapacity <= 0)
-            {
-                return false;
-            }
-            //修正会场名称
-            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
+        //检查会场名称的长度是否符合要求
+        private static bool checkFormat(string meetingPlaceName){
 
-            //检查会场名称的长度是否符合要求
-            if(meetingPlace.meetingPlaceName.Length < MeetingPlaceNameMin ||
-                meetingPlace.meetingPlaceName.Length > MeetingPlaceNameMax)
-            {
-                return false;
-            }
-
-            return true;
+            return (meetingPlaceName.Length >= MeetingPlaceNameMin &&
+                meetingPlaceName.Length <= MeetingPlaceNameMax);
         }
 
-        private static bool checkUpdateMeetingPlace(ref UpdateMeetingPlace meetingPlace)
-        {
-            //检查会场名称和容量参数
-            if (String.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName) || meetingPlace.meetingPlaceCapacity <= 0)
-            {
-                return false;
-            }
-            //修正会场名称
-            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
-
-            //检查会场名称的长度是否符合要求
-            if (meetingPlace.meetingPlaceName.Length < MeetingPlaceNameMin ||
-                meetingPlace.meetingPlaceName.Length > MeetingPlaceNameMax)
-            {
-                return false;
-            }
-
-            return true;
-        }
- 
         public Status create(CreateMeetingPlace meetingPlace)
         {
-            //检查并更正格式
-            if (!checkCreateMeetingPlace(ref meetingPlace))
+            //修正字符串
+            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
+            //检查长度规范
+            if (!checkFormat(meetingPlace.meetingPlaceName))
             {
                 return Status.FORMAT_ERROR;
             }
@@ -96,6 +59,36 @@ namespace WebServer.Models.MeetingPlace
             {
                 return Status.FAILURE;
             }
+            return Status.SUCCESS;
+        }
+
+        public static Status getAllForMeeting(out List<MeetingPlaceForMeeting> meetingPlaces)
+        {
+            meetingPlaces = new List<MeetingPlaceForMeeting>();
+
+            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+
+            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getMeetingPlaceList();
+            if (meetingPlaceVos.Count == 0)
+            {
+                return Status.NONFOUND;
+            }
+            foreach (MeetingPlaceVO vo in meetingPlaceVos)
+            {
+                if (vo.meetingPlaceAvailable == 1)
+                {
+                    continue;
+                }
+                meetingPlaces.Add(
+                    new MeetingPlaceForMeeting
+                    {
+                        meetingPlaceID = vo.meetingPlaceID,
+                        meetingPlaceName = vo.meetingPlaceName
+                    });
+            }
+
+
+
             return Status.SUCCESS;
         }
 
@@ -124,7 +117,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status getOne(out UpdateMeetingPlace meetingPlace, int meetingPlaceID)
+        public static Status getOneForUpdate(out UpdateMeetingPlace meetingPlace, int meetingPlaceID)
         {
             meetingPlace = new UpdateMeetingPlace();
 
@@ -144,8 +137,11 @@ namespace WebServer.Models.MeetingPlace
 
         public static Status update(UpdateMeetingPlace meetingPlace)
         {
-            //检查并更正格式
-            if (!checkUpdateMeetingPlace(ref meetingPlace))
+
+            //修正字符串
+            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
+            //检查长度规范
+            if (!checkFormat(meetingPlace.meetingPlaceName))
             {
                 return Status.FORMAT_ERROR;
             }
@@ -180,5 +176,7 @@ namespace WebServer.Models.MeetingPlace
             }
             return Status.SUCCESS;
         }
+
+       
     }
 }

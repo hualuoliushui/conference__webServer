@@ -18,9 +18,9 @@ namespace WebServer.Models.User
         /// <summary>
         /// 当前数据库中用户ID最大值
         /// </summary>
-        private static int UserIDMax = Factory.getUserDAOInstance().getUserIDMax();
+        private static int UserIDMax = Factory.getUserDAOInstance().getIDMax();
 
-        private int getUserID()
+        private static int getUserID()
         {
             int userID = 0;
             Object lockObject = new object();
@@ -67,52 +67,6 @@ namespace WebServer.Models.User
         private static int autoIncreateUserID = 24;
 
         /// <summary>
-        /// 判断属性成员是否为空，并去除属性成员中的头、尾空白（创建用户时）
-        /// </summary>
-        /// <param name="newUser"></param>
-        /// <returns></returns>
-        private static bool _trim_new(ref CreateUser newUser)
-        {
-            if(string.IsNullOrWhiteSpace(newUser.userName)
-                || string.IsNullOrWhiteSpace(newUser.userDepartment)
-                || string.IsNullOrWhiteSpace(newUser.userJob)
-                || newUser.userDescription == null)
-            {
-                return false;
-            }
-            //字符串截去头尾
-            newUser.userName = newUser.userName.Trim();
-            newUser.userDepartment = newUser.userDepartment.Trim();
-            newUser.userJob = newUser.userJob.Trim();
-            newUser.userDescription = newUser.userDescription.Trim();
-
-            return true;
-        }
-
-        /// <summary>
-        /// 判断属性成员是否为空，并去除属性成员中的头、尾空白（更新用户时）
-        /// </summary>
-        /// <param name="updateUser"></param>
-        /// <returns></returns>
-        private static bool _trim_update(ref UpdateUser updateUser)
-        {
-            if (string.IsNullOrWhiteSpace(updateUser.userName)
-               || string.IsNullOrWhiteSpace(updateUser.userDepartment)
-               || string.IsNullOrWhiteSpace(updateUser.userJob)
-               || updateUser.userDescription == null)
-            {
-                return false;
-            }
-            //字符串截去头尾
-            updateUser.userName =  updateUser.userName.Trim();
-            updateUser.userDepartment = updateUser.userDepartment.Trim();
-            updateUser.userJob = updateUser.userJob.Trim();
-            updateUser.userDescription = updateUser.userDescription.Trim();
-
-            return true;
-        }
-
-        /// <summary>
         /// 检查参数是否符合长度规范
         /// </summary>
         /// <param name="userName"></param>
@@ -120,20 +74,45 @@ namespace WebServer.Models.User
         /// <param name="userJob"></param>
         /// <param name="userDescription"></param>
         /// <returns></returns>
-        private static bool _checkForm(string userName,string userDepartment,string userJob,string userDescription)
+        private static bool _checkFormat(string userName,string userDepartment,string userJob,string userDescription)
         {
-            if(!(UserName_MinLength <= userName.Length
+            return (UserName_MinLength <= userName.Length
                 && UserName_MaxLength >= userName.Length
                 && UserDepartment_MinLength <= userDepartment.Length
                 && UserDepartment_MaxLength >= userDepartment.Length
                 && UserJob_MinLenght <= userJob.Length
                 && UserJob_MaxLenght >= userJob.Length
                 && UserDescription_MaxLenght >= userDescription.Length
-                ))
+                );
+        }
+
+        public static Status getAllForDelegate(out List<UserForDelegate> users)
+        {
+            users = new List<UserForDelegate>();
+
+            UserDAO userDaoProxy = Factory.getUserDAOInstance();
+
+            List<UserVO> userVos = userDaoProxy.getUserList();
+
+            if (userVos.Count==0)
             {
-                return false;
+                return Status.NONFOUND;
             }
-            return true;
+
+            foreach (UserVO vo in userVos)
+            {
+                if (vo.userAvailable == 1) // 已冻结
+                {
+                    continue;
+                }
+                users.Add(
+                    new UserForDelegate
+                    {
+                        userID = vo.userID,
+                        userName = vo.userName
+                    });
+            }
+            return Status.SUCCESS;
         }
 
         /// <summary>
@@ -145,9 +124,12 @@ namespace WebServer.Models.User
         {
             
             //字符串截去头尾
+            newUser.userName = newUser.userName.Trim();
+            newUser.userDepartment = newUser.userDepartment.Trim();
+            newUser.userJob = newUser.userJob.Trim();
+            newUser.userDescription = newUser.userDescription.Trim();
             //格式是否满足需求, //人员描述可为空
-            if (!_trim_new(ref newUser) ||
-                !_checkForm(newUser.userName,newUser.userDepartment,
+            if(!_checkFormat(newUser.userName,newUser.userDepartment,
                 newUser.userJob,newUser.userDescription))
                 return Status.FORMAT_ERROR;
 
@@ -231,7 +213,7 @@ namespace WebServer.Models.User
         /// <param name="user"></param>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public static Status getOne(out UpdateUser user, int userID)
+        public static Status getOneUpdate(out UpdateUser user, int userID)
         {
             user = new UpdateUser();
 
@@ -270,9 +252,14 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public static Status update(UpdateUser user)
         {
-            if (!_trim_update(ref user)
-                ||
-                !_checkForm(user.userName, user.userDepartment,
+            //字符串截去头尾
+            user.userName = user.userName.Trim();
+            user.userDepartment = user.userDepartment.Trim();
+            user.userJob = user.userJob.Trim();
+            user.userDescription = user.userDescription.Trim();
+
+            //检查长度规范
+            if ( !_checkFormat(user.userName, user.userDepartment,
                 user.userJob, user.userDescription))
             {
                 return Status.FORMAT_ERROR;
@@ -317,11 +304,17 @@ namespace WebServer.Models.User
         public static Status UpdateUserAvailable(int userID,int available)
         {
             //检查参数
-            if(userID < 0 || userID == 1 // 不允许修改超级管理员的状态
+            if(userID < 0 
                 || (available != 0 && available != 1))
             {
                 return Status.ARGUMENT_ERROR;
             }
+
+            if( userID == 1 ) // 不允许修改超级管理员的状态)
+            {
+                return Status.FAILURE;
+            }
+
 
             //数据库操作
             UserDAO userDaoProxy = Factory.getUserDAOInstance();

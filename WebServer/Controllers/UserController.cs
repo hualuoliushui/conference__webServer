@@ -10,21 +10,39 @@ namespace WebServer.Controllers
         //
         // GET: /User/
 
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index_admin()
         {
             return View();
         }
 
-        public ActionResult Add()
+        [HttpGet]
+        public ActionResult Add_admin()
         {
             return View();
         }
 
-        public ActionResult Edit()
+        [HttpGet]
+        public ActionResult Edit_admin()
         {
             return View();
         }
 
+        public JsonResult GetUserssForDelegate()
+        {
+            RespondModel respond = new RespondModel();
+            //调用会场服务
+            List<UserForDelegate> list = null;
+            Status status = UserService.getAllForDelegate(out list);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = list;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
         public JsonResult GetUsers()
         {
             RespondModel respond = new RespondModel();
@@ -40,13 +58,14 @@ namespace WebServer.Controllers
            return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetUser(int userID)
+        [HttpGet]
+        public JsonResult GetUserForUpdate(int userID)
         {
             RespondModel respond = new RespondModel();
 
             UpdateUser user;
             //调用用户服务
-            Status status = UserService.getOne(out user, userID);
+            Status status = UserService.getOneUpdate(out user, userID);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -55,6 +74,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public JsonResult CreateUser(CreateUser user)
         {
             RespondModel respond = new RespondModel();
@@ -68,6 +88,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         public JsonResult UpdateUser(UpdateUser user)
         {
             RespondModel respond = new RespondModel();
@@ -81,11 +102,12 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult UpdateUserAvailable(int userID, int userFreezeState)//FreezeState对应数据库中的available字段
+        [HttpPost]
+        public JsonResult UpdateUserAvailable(int userID, int state)//state对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
-            Status status = UserService.UpdateUserAvailable(userID, userFreezeState);
+            Status status = UserService.UpdateUserAvailable(userID, state);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
