@@ -6,54 +6,50 @@ using DAL.DAOFactory;
 
 namespace WebServer.Models.Delegate
 {
-    public class DelegateService
+    public class DelegateService : Organizor
     {
-        private static bool validate(string userName,int meetingID){
-             //验证当前用户的更新当前会议权限
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
-            MeetingVO meetingVo = meetingDao.getMeetingByMeetingID(meetingID);
-            if (meetingVo == null)
-            {
-                return false;
-            }
-
-            UserDAO userDao = Factory.getUserDAOInstance();
-
-            UserVO userVo = userDao.getUserByUserID(meetingVo.userID);
-            if (userVo == null)
-            {
-                return false;
-            }
-
-            return (string.Compare(userVo.userName, userName) == 0);
-        }
+        /// <summary>
+        /// 获取指定会议的参会人员
+        /// </summary>
+        /// <param name="meetingID"></param>
+        /// <param name="delegates"></param>
+        /// <returns></returns>
         public static Status getAll(int meetingID, out List<Delegate> delegates){
             delegates = new List<Delegate>();
+            
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
 
-            DelegateDAO delegateDao = Factory.getDelegateDAOInstance();
+            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
 
-            DeviceDAO deviceDao = Factory.getDeviceDAOInstance();
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
 
-            UserDAO userDao = Factory.getUserDAOInstance();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
-            List<DelegateVO> delegateVos = delegateDao.getDelegateListByMeetingID(meetingID);
-            if (delegateVos.Count == 0)
+            wherelist.Add("meetingID", meetingID);
+            List<DelegateVO> delegateVos = delegateDao.getAll<DelegateVO>(wherelist);
+            if (delegateVos == null)
             {
                 return Status.NONFOUND;
             }
             foreach (DelegateVO delegateVo in delegateVos)
             {
-                DeviceVO deviceVo = deviceDao.getDeviceByDeviceID(delegateVo.deviceID);
-                UserVO userVo = userDao.getUserByUserID(delegateVo.userID);
+                //获取参会人员信息
+                DeviceVO deviceVo = deviceDao.getOne<DeviceVO>(delegateVo.deviceID);
+                //获取用户信息
+                PersonVO personVo = personDao.getOne<PersonVO>(delegateVo.personID);
+                if (deviceVo == null || personVo == null)
+                {
+                    return Status.FAILURE;
+                }
 
                 delegates.Add(
                     new Delegate
                     {
-                        userID = userVo.userID,
+                        userID = personVo.personID,
                         meetingID = meetingID,
-                        userName = userVo.userName,
-                        userDepartment = userVo.userDepartment,
-                        userMeetingRole = delegateVo.userMeetingRole,
+                        userName = personVo.personName,
+                        userDepartment = personVo.personDepartment,
+                        userMeetingRole = delegateVo.personMeetingRole,
                         deviceIndex = deviceVo.deviceIndex
                     });
             }
@@ -61,56 +57,75 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 更新参会人员信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="updateDelegate"></param>
+        /// <returns></returns>
         public static Status update(string userName, UpdateDelegate updateDelegate)
         {
             //验证当前用户的更新当前会议权限
-            if(!validate(userName,updateDelegate.meetingID)){
+            if (!validateMeeting(userName, updateDelegate.meetingID))
+            {
                 return Status.PERMISSION_DENIED;
             }
 
             //更新参会人员信息
-            DelegateDAO delegateDao = Factory.getDelegateDAOInstance();
-            DelegateVO delegateVo = delegateDao.
-                getDelegateByMeetingIDAndUserID(
-                updateDelegate.meetingID,
-                updateDelegate.userID);
-            if(delegateVo == null){
-                return Status.FAILURE;
-            }
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
 
-            if(!delegateDao.updateDelegate(
-                new DelegateVO
-                {
-                    deviceID = updateDelegate.deviceID,
-                    meetingID = delegateVo.meetingID,
-                    userID = delegateVo.userID,
-                    userMeetingRole = updateDelegate.userMeetingRole,
-                    isSignIn = delegateVo.isSignIn
-                })){
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+
+            setlist.Add("deviceID", updateDelegate.deviceID);
+            setlist.Add("personID", updateDelegate.userID);
+
+            if(delegateDao.update(setlist,updateDelegate.delegateID)!=1){
                 return Status.FAILURE;
             }
 
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 创建参会人员
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="createDelegate"></param>
+        /// <returns></returns>
         public static Status create(string userName, CreateDelegate createDelegate)
         {
             //验证当前用户的更新当前会议权限
-            if (!validate(userName, createDelegate.meetingID))
+            if (!validateMeeting(userName, createDelegate.meetingID))
             {
                 return Status.PERMISSION_DENIED;
             }
 
-            DelegateDAO delegateDao = Factory.getDelegateDAOInstance();
-            if (!delegateDao.addDelegate(
+            //获取会议状态
+            int meetingStatus = getMeetingStatus(createDelegate.meetingID);
+            //判断会议是否开启，如果开启，更新“会议更新状态”
+            if (IsOpening_Meeting(meetingStatus))
+            {
+                updateMeetingUpdateStatus(createDelegate.meetingID);
+            }
+            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            {
+                return Status.FAILURE;
+            }
+
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+
+            int delegateID = DelegateDAO.getID();
+
+            if (delegateDao.insert<DelegateVO>(
                 new DelegateVO
                 {
-                    userID = createDelegate.userID,
+                    delegateID = delegateID,
+                    personID = createDelegate.userID,
                     deviceID = createDelegate.deviceID,
                     meetingID = createDelegate.meetingID,
-                    userMeetingRole = createDelegate.userMeetingRole,
+                    personMeetingRole = createDelegate.userMeetingRole,
                     isSignIn = false
-                }))
+                }) != 1)
             {
                 return Status.FAILURE;
             }
@@ -118,6 +133,12 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 同时创建多个参会人员
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="createDelegates"></param>
+        /// <returns></returns>
         public static Status createMultiple(string userName, List<CreateDelegate> createDelegates)
         {
             if (createDelegates == null || createDelegates.Count == 0)
@@ -126,23 +147,37 @@ namespace WebServer.Models.Delegate
             }
 
             //验证当前用户的更新当前会议权限
-            if (!validate(userName, createDelegates[0].meetingID))
+            if (!validateMeeting(userName, createDelegates[0].meetingID))
             {
                 return Status.PERMISSION_DENIED;
             }
 
-            DelegateDAO delegateDao = Factory.getDelegateDAOInstance();
+            //获取会议状态
+            int meetingStatus = getMeetingStatus(createDelegates[0].meetingID);
+            //判断会议是否开启，如果开启，更新“会议更新状态”
+            if (IsOpening_Meeting(meetingStatus))
+            {
+                updateMeetingUpdateStatus(createDelegates[0].meetingID);
+            }
+            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            {
+                return Status.FAILURE;
+            }
+
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
             foreach (CreateDelegate createDelegate in createDelegates)
             {
-                if (!delegateDao.addDelegate(
+                int delegateID = DelegateDAO.getID();
+
+                if (delegateDao.insert<DelegateVO>(
                   new DelegateVO
                   {
-                      userID = createDelegate.userID,
+                      personID = createDelegate.userID,
                       deviceID = createDelegate.deviceID,
                       meetingID = createDelegate.meetingID,
-                      userMeetingRole = createDelegate.userMeetingRole,
+                      personMeetingRole = createDelegate.userMeetingRole,
                       isSignIn = false
-                  })) 
+                  }) != 1) 
                 {
                     continue;
                 }
@@ -151,29 +186,92 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
-        public static Status deleteMultipe(string userName, List<DeleteDelegate> delegates)
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="delegates"></param>
+        /// <returns></returns>
+        public static Status deleteMultipe(string userName, List<int> delegates)
         {
             if (delegates == null || delegates.Count == 0)
             {
                 return Status.ARGUMENT_ERROR;
             }
 
-            //验证当前用户的更新当前会议权限
-            if (!validate(userName, delegates[0].meetingID))
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            foreach (int delegateID in delegates)
             {
-                return Status.PERMISSION_DENIED;
+                DelegateVO delegateVo = delegateDao.getOne<DelegateVO>(delegateID);
+                if (validateMeeting(userName, delegateVo.meetingID))//有权限就执行删除
+                {
+                    //获取会议状态
+                    int meetingStatus = getMeetingStatus(delegateVo.meetingID);
+
+                    //判断会议是否开启，如果不是”未开启“，直接退出
+                    if (!IsNotOpen_Meeting(meetingStatus))
+                    {
+                        return Status.FAILURE;
+                    }
+            
+                    if (delegateDao.delete(delegateID) != 1)//删除失败就跳过
+                    {
+                        continue;
+                    }
+                }
+                else // 无权限，直接退出（已删除的不恢复）
+                {
+                    return Status.PERMISSION_DENIED;
+                }   
+            }
+            return Status.SUCCESS;
+        }
+
+
+        public static Status getSpeakerForAgenda(int meetingID, out List<SpeakerForAgenda> speakers)
+        {
+            speakers = new List<SpeakerForAgenda>();
+            //获取会议中的全部主讲人
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("meetingID", meetingID);
+            wherelist.Add("personMeetingRole", 2);//主讲人
+
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            List<DelegateVO> delegateVolist = delegateDao.getAll<DelegateVO>(wherelist);
+            if (delegateVolist == null)
+            {
+                return Status.NONFOUND;
             }
 
-            DelegateDAO delegateDao = Factory.getDelegateDAOInstance();
-            foreach (DeleteDelegate deleteDelegate in delegates)
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+
+            //将信息插入返回值
+            foreach (DelegateVO delegateVo in delegateVolist)
             {
-                if (!delegateDao.deleteDelegateByMeetingIDAndUserID(deleteDelegate.meetingID, deleteDelegate.userID))
-                {
+                //获取主讲人信息
+                PersonVO personVo = personDao.getOne<PersonVO>(delegateVo.personID);
+                if (personVo == null)
                     continue;
-                }
+
+                speakers.Add(
+                    new SpeakerForAgenda
+                    {
+                        userID = personVo.personID,
+                        userName = personVo.personName
+                    });
             }
 
             return Status.SUCCESS;
         }
+
+        public static Status deleteAll(int meetingID)
+        {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            wherelist.Add("meetingID", meetingID);
+            delegateDao.delete(wherelist);
+            return Status.SUCCESS;
+        }
+        
     }
 }

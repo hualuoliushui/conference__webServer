@@ -7,7 +7,8 @@ namespace WebServer.Models.Device
 {
     public class Device
     {
-        public string deviceID { set; get; }
+        public int deviceID { set; get; }
+        public string IMEI { set; get; }
         public int deviceIndex { set; get; }
         public int deviceAvailable { set; get; }
     }

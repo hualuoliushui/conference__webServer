@@ -12,7 +12,7 @@ namespace WebServer.App_Start
     {
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            /*Create permissions string based on the requested controller 
+            /*Create hasPermission string based on the requested controller 
              name and action name in the format 'controllername-action'*/
             string requiredPermission = String.Format("{0}-{1}",
                    filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,

@@ -58,12 +58,26 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用角色服务
-            List<Role> list = null;
-            Status status = RoleService.getAll(out list);
+            Roles roles;
+            Status status = RoleService.getAll(out roles);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
-            respond.Result = list;
+            respond.Result = roles;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CreateRole(CreateRole role)
+        {
+            RespondModel respond = new RespondModel();
+            //调用角色服务
+            Roles roles;
+            Status status = RoleService.create(role);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }

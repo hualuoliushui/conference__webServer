@@ -14,17 +14,17 @@ namespace WebServer.Controllers
         //
         // GET: /Device/
 
-        public ActionResult Index()
+        public ActionResult Index_admin()
         {
             return View();
         }
 
-        public ActionResult Add()
+        public ActionResult Add_admin()
         {
             return View();
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit_admin()
         {
             return View();
         }
@@ -59,7 +59,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetDeviceForUpdate(string deviceID)
+        public JsonResult GetDeviceForUpdate(int deviceID)
         {
             RespondModel respond = new RespondModel();
 
@@ -74,7 +74,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult CreateDevice(Device device)
+        public JsonResult CreateDevice(CreateDevice device)
         {
             RespondModel respond = new RespondModel();
             //调用设备服务
@@ -100,7 +100,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult UpdateDeviceAvailable(string deviceID, int deviceFreezeState)//FreezeState对应数据库中的available字段
+        public JsonResult UpdateDeviceAvailable(int deviceID, int deviceFreezeState)//FreezeState对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();
             //调用设备服务

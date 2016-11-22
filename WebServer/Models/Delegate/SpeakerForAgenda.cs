@@ -5,10 +5,9 @@ using System.Web;
 
 namespace WebServer.Models.Delegate
 {
-    public class DeleteDelegate
+    public class SpeakerForAgenda
     {
-        public int meetingID { set; get; }
-
         public int userID { set; get; }
+        public string userName { set; get; }
     }
 }

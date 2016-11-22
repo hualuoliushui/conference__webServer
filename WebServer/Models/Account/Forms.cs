@@ -7,6 +7,7 @@ using System.Text;
 using DAL.DAOFactory;
 using DAL.DAO;
 using DAL.DAOVO;
+using System.Collections.Generic;
 
 namespace WebServer.Models
 {
@@ -49,11 +50,14 @@ namespace WebServer.Models
             {
                 return false;
             }
-            UserDAO userDao = Factory.getUserDAOInstance();
-            UserVO user = userDao.getUserByUserName(loginName);
-            if (user == null) 
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("personName", loginName);
+
+            PersonVO person = personDao.getOne<PersonVO>(wherelist);
+            if (person == null) 
                 return false;
-            if (user.userPassword.CompareTo((password)) != 0) 
+            if (person.personPassword.CompareTo((password)) != 0) 
                 return false;
 
             return true;

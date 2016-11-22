@@ -120,8 +120,9 @@ $(function() {
 
 //编辑保存按钮的功能
 $(function() {
-    $(document).on("click", ".edit", function() {
-        location.href = "#";
+    $(document).on("click", ".edit", function () {
+        var userID = $(this).parent().attr("userID");
+        location.href = "/User/Edit_admin?userID="+userID;
     });
     $(document).on("click", ".freeze", function() {
         var userID = $(this).parent().attr("userID");

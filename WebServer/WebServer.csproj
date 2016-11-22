@@ -136,7 +136,6 @@
     <Compile Include="Controllers\DelegateController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\MeetingPlaceController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -145,20 +144,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Agenda\Agenda.cs" />
+    <Compile Include="Models\Agenda\AgendaService.cs" />
+    <Compile Include="Models\Agenda\CreateAgenda.cs" />
+    <Compile Include="Models\Agenda\UpdateAgenda.cs" />
     <Compile Include="Models\Delegate\CreateDelegate.cs" />
     <Compile Include="Models\Delegate\Delegate.cs" />
     <Compile Include="Models\Delegate\DelegateService.cs" />
-    <Compile Include="Models\Delegate\DeleteDelegate.cs" />
+    <Compile Include="Models\Delegate\SpeakerForAgenda.cs" />
     <Compile Include="Models\Delegate\UpdateDelegate.cs" />
+    <Compile Include="Models\Device\CreateDevice.cs" />
     <Compile Include="Models\Device\DeviceForDelegate.cs" />
     <Compile Include="Models\Device\Device.cs" />
     <Compile Include="Models\Device\DeviceService.cs" />
     <Compile Include="Models\Account\Forms.cs" />
     <Compile Include="Models\Device\UpdateDevice.cs" />
+    <Compile Include="Models\Document\Document.cs" />
+    <Compile Include="Models\Document\DocumentService.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceForMeeting.cs" />
+    <Compile Include="Models\Organizor.cs" />
     <Compile Include="Models\Role\CreateRole.cs" />
     <Compile Include="Models\Role\Permission.cs" />
     <Compile Include="Models\Role\Role.cs" />
+    <Compile Include="Models\Role\Roles.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlace.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceService.cs" />
@@ -175,6 +183,7 @@
     <Compile Include="Models\Role\RoleService.cs" />
     <Compile Include="Models\Tools\JsonHelper.cs" />
     <Compile Include="Models\User\CreateUser.cs" />
+    <Compile Include="Models\User\CreateUserForDelegate.cs" />
     <Compile Include="Models\User\UpdateUser.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Models\User\UserForDelegate.cs" />
@@ -238,9 +247,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="js\editpeople_role.js" />
+    <Content Include="js\editDevice.js" />
+    <Content Include="js\editPeopleAndRole.js" />
     <Content Include="js\index.js" />
-    <Content Include="js\addpeople_role.js" />
+    <Content Include="js\addPeopleAndRole.js" />
     <Content Include="js\meetingplace.js" />
     <Content Include="js\peopleAndrole.js" />
     <Content Include="node_modules\.0.0.0%40prr\.jshintrc" />
@@ -1582,11 +1592,13 @@
     <Content Include="node_modules\source-map\package.json" />
     <Content Include="node_modules\source-map\README.md" />
     <Content Include="package.json" />
-    <Content Include="less\editpeople_role.less" />
-    <Content Include="less\addpeople_role.less" />
+    <Content Include="less\addPeopleAndRole.less" />
     <Content Include="less\index.less" />
     <Content Include="less\peopleAndrole.less" />
     <Content Include="less\meetingplace.less" />
+    <Content Include="less\editPeopleAndRole.less" />
+    <Content Include="less\editDevice.less" />
+    <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
     <Content Include="images\03120.png" />
@@ -3288,16 +3300,13 @@
     <Content Include="Views\User\Edit_admin.cshtml" />
     <Content Include="Views\User\Add_admin.cshtml" />
     <Content Include="Views\MeetingPlace\Index_admin.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Device\Edit_admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Agenda\" />
-    <Folder Include="Models\Document\" />
     <Folder Include="Models\Vote\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Delegate\" />
-    <Folder Include="Views\Device\" />
     <Folder Include="Views\Document\" />
     <Folder Include="Views\Meeting\" />
     <Folder Include="Views\Role\" />
@@ -3307,8 +3316,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\API_Server\DAO\DAL\DAL.csproj">
-      <Project>{c8160532-92ef-40f5-b9fa-aeb72b2b8646}</Project>
+    <ProjectReference Include="..\..\DAL\DAL\DAL.csproj">
+      <Project>{4fe0dd93-8fa1-4778-ac76-ebd49c390857}</Project>
       <Name>DAL</Name>
     </ProjectReference>
   </ItemGroup>

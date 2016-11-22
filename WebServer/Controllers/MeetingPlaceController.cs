@@ -73,7 +73,7 @@ namespace WebServer.Controllers
         }
 
         //更新会场信息
-        public JsonResult UpdateMeetingPlaces(UpdateMeetingPlace meetingPlace)
+        public JsonResult UpdateMeetingPlace(UpdateMeetingPlace meetingPlace)
         {
             RespondModel respond = new RespondModel();
 

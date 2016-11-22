@@ -7,6 +7,7 @@ namespace WebServer.Models.Delegate
 {
     public class Delegate
     {
+        public int delegateID { set; get; }
         public int userID { set; get; }
         public int meetingID { set; get; }
         public string userName { set; get; }

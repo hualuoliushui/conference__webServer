@@ -28,7 +28,8 @@ namespace WebServer.Controllers
             {
                 return RedirectToAction("Index");
             }
-            Session["logined"] = "logined";
+            Session["logined"] = 1;
+
             Forms.Login(userName, 20);
 
             string system = form["system"];
@@ -51,10 +52,10 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Admin()
         {
-            //if (Session["logined"] == null)
-            //{
-            //    return View("Index");
-            //}
+            if (Session["logined"] == null)
+            {
+                return View("Index");
+            }
             return View("Admin");
         }
 
@@ -62,10 +63,10 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Organizor()
         {
-            //if (Session["logined"] == null)
-            //{
-            //    return View("Index");
-            //}
+            if (Session["logined"] == null)
+            {
+                return View("Index");
+            }
             return View("Organizor");
         }
     }

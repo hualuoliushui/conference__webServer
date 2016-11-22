@@ -11,22 +11,6 @@ namespace WebServer.Models.MeetingPlace
         private static int MeetingPlaceNameMin = 2;
         private static int MeetingPlaceNameMax = 20;
 
-        /// <summary>
-        /// 当前数据库中会场ID最大值
-        /// </summary>
-        private static int MeetingPlaceIDMax = Factory.getMeetingPlaceDAOInstance().getIDMax();
-
-        private static int getMeetingPlaceID()
-        {
-            int id = 0;
-            object lockObject = new object();
-            lock (lockObject)
-            {
-                id = ++MeetingPlaceIDMax;
-            }
-            return id;
-        }
-
         //检查会场名称的长度是否符合要求
         private static bool checkFormat(string meetingPlaceName){
 
@@ -45,17 +29,16 @@ namespace WebServer.Models.MeetingPlace
             }
 
             //获取新会场ID
-            int meetingPlaceID = getMeetingPlaceID();
+            int meetingPlaceID = MeetingDAO.getID();
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
-            if (!meetingPlaceDao.addMeetingPlace(
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+            if (meetingPlaceDao.insert<MeetingPlaceVO>(
                 new MeetingPlaceVO {
                     meetingPlaceID = meetingPlaceID,
                     meetingPlaceName = meetingPlace.meetingPlaceName,
-                    meetingPlaceType = 0,
                     meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity,
-                    meetingPlaceAvailable = 0
-                }))
+                    meetingPlaceState = 0
+                }) != 1 )
             {
                 return Status.FAILURE;
             }
@@ -66,19 +49,20 @@ namespace WebServer.Models.MeetingPlace
         {
             meetingPlaces = new List<MeetingPlaceForMeeting>();
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
 
-            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getMeetingPlaceList();
-            if (meetingPlaceVos.Count == 0)
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("meetingPlaceState", 0);
+            //获取未冻结的会场信息
+            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getAll<MeetingPlaceVO>(wherelist);
+        
+            if (meetingPlaceVos == null)
             {
                 return Status.NONFOUND;
             }
+
             foreach (MeetingPlaceVO vo in meetingPlaceVos)
             {
-                if (vo.meetingPlaceAvailable == 1)
-                {
-                    continue;
-                }
                 meetingPlaces.Add(
                     new MeetingPlaceForMeeting
                     {
@@ -96,10 +80,10 @@ namespace WebServer.Models.MeetingPlace
         {
             meetingPlaces = new List<MeetingPlace>();
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
 
-            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getMeetingPlaceList();
-            if (meetingPlaceVos.Count == 0)
+            List<MeetingPlaceVO> meetingPlaceVos = meetingPlaceDao.getAll<MeetingPlaceVO>();
+            if (meetingPlaceVos == null)
             {
                 return Status.NONFOUND;
             }
@@ -110,7 +94,7 @@ namespace WebServer.Models.MeetingPlace
                     meetingPlaceID = vo.meetingPlaceID,
                     meetingPlaceName = vo.meetingPlaceName,
                     meetingPlaceCapacity = vo.meetingPlaceCapacity,
-                    meetingPlaceFreezeState = vo.meetingPlaceAvailable
+                    meetingPlaceFreezeState = vo.meetingPlaceState
                 });
             }
 
@@ -121,8 +105,8 @@ namespace WebServer.Models.MeetingPlace
         {
             meetingPlace = new UpdateMeetingPlace();
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
-            MeetingPlaceVO vo = meetingPlaceDao.getMeetingPlaceByMeetingPlaceID(meetingPlaceID);
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+            MeetingPlaceVO vo = meetingPlaceDao.getOne<MeetingPlaceVO>(meetingPlaceID);
 
             if (vo == null)
             {
@@ -146,18 +130,18 @@ namespace WebServer.Models.MeetingPlace
                 return Status.FORMAT_ERROR;
             }
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
-            if (!meetingPlaceDao.updateMeetingPlace(
-                new MeetingPlaceVO { 
-                    meetingPlaceID = meetingPlace.meetingPlaceID,
-                    meetingPlaceName = meetingPlace.meetingPlaceName, 
-                    meetingPlaceType = 0, 
-                    meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity
-                }))
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+
+            setlist.Add("meetingPlaceName", meetingPlace.meetingPlaceName);
+            setlist.Add("meetingPlaceCapacity", meetingPlace.meetingPlaceCapacity);
+            if (meetingPlaceDao.update(setlist,meetingPlace.meetingPlaceID) != 1 )
             {
                 return Status.FAILURE;
             }
-                return Status.SUCCESS;
+            
+            return Status.SUCCESS;
         }
 
         public static Status UpdateUserAvailable(int meetingPlaceID,int available){
@@ -169,8 +153,13 @@ namespace WebServer.Models.MeetingPlace
             }
 
             //数据库操作
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
-            if (!meetingPlaceDao.updateMeetingPlaceAvailable(meetingPlaceID,available))
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+
+            setlist.Add("meetingPlaceState", available);
+
+            if (meetingPlaceDao.update(setlist,meetingPlaceID) != 1)
             {
                 return Status.FAILURE;
             }

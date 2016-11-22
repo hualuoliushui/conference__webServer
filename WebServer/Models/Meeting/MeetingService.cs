@@ -17,25 +17,12 @@ using System.Web;
 
 namespace WebServer.Models.Meeting
 {
-    public class MeetingService
+    public class MeetingService : Organizor
     {
         private static int MeetingNameMin = 2;
         private static int MeetingNameMax = 16;
 
         private static int MeetingSummaryMax = 50;
-
-        private static int MeetingIDMax = Factory.getMeetingDAOInstance().getIDMax();
-
-        private static int getMeetingID()
-        {
-            int id = 0;
-            object lockObject = new object();
-            lock (lockObject)
-            {
-                id = ++MeetingIDMax;
-            }
-            return id;
-        }
 
         //检查参数格式
         private static bool checkFormat(string meetingName, string meetingSummary, DateTime meetingToStartTime)
@@ -57,12 +44,14 @@ namespace WebServer.Models.Meeting
                 return Status.FORMAT_ERROR;
             }
 
-            UserDAO userDao = Factory.getUserDAOInstance();
-            UserVO userVo = userDao.getUserByUserName(userName);
+            PersonDAO personDao = Factory.getInstance < PersonDAO>();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("personName", userName);
+            PersonVO personVo = personDao.getOne<PersonVO>(wherelist);
 
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
-            int meetingID = getMeetingID();
-            if (!meetingDao.addMeeting(
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            int meetingID = MeetingDAO.getID();
+            if (meetingDao.insert<MeetingVO>(
                 new MeetingVO
                 {
                     meetingID = meetingID,
@@ -74,8 +63,8 @@ namespace WebServer.Models.Meeting
                     meetingDuration = 0,
                     meetingStartedTime = DateTime.Now,
                     meetingUpdateStatus = 0, //无更新
-                    userID = userVo.userID
-                }))
+                    personID = personVo.personID
+                }) != 1)
             {
                 return Status.FAILURE;
             }
@@ -88,16 +77,16 @@ namespace WebServer.Models.Meeting
         {
             meetings = new List<TipMeeting>();
 
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
-            List<MeetingVO> meetingVos = meetingDao.getMeetingList();
+            List<MeetingVO> meetingVolist = meetingDao.getAll<MeetingVO>();
 
-            if (meetingVos.Count == 0)
+            if (meetingVolist == null)
             {
                 return Status.NONFOUND;
             }
 
-            foreach (MeetingVO meetingVo in meetingVos)
+            foreach (MeetingVO meetingVo in meetingVolist)
             {
                 meetings.Add(
                     new TipMeeting
@@ -111,20 +100,26 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 展示指定会议
+        /// </summary>
+        /// <param name="meetingID"></param>
+        /// <param name="meeting"></param>
+        /// <returns></returns>
         public static Status getOne(int meetingID,out Meeting meeting){
             meeting = new Meeting();
 
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
-            MeetingVO meetingVo = meetingDao.getMeetingByMeetingID(meetingID);
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            MeetingVO meetingVo = meetingDao.getOne<MeetingVO>(meetingID);
 
             if (meetingVo == null)
             {
                 return Status.NONFOUND;
             }
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getMeetingPlaceDAOInstance();
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
             MeetingPlaceVO meetingPlaceVo = meetingPlaceDao.
-                getMeetingPlaceByMeetingPlaceID(meetingVo.meetingPlaceID);
+                getOne<MeetingPlaceVO>(meetingVo.meetingPlaceID);
 
             meeting.meetingID = meetingVo.meetingID;
             meeting.meetingName = meetingVo.meetingName;
@@ -136,22 +131,33 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 显示指定会议，用于更新
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="meetingID"></param>
+        /// <param name="meeting"></param>
+        /// <returns></returns>
         public static Status getOneForUpdate(string userName,int meetingID, out UpdateMeeting meeting)
         {
             meeting = new UpdateMeeting();
 
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
-            MeetingVO meetingVo = meetingDao.getMeetingByMeetingID(meetingID);
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            MeetingVO meetingVo = meetingDao.getOne<MeetingVO>(meetingID);
 
             if (meetingVo == null)
             {
                 return Status.NONFOUND;
             }
 
-            UserDAO userDao = Factory.getUserDAOInstance();
-            UserVO userVo = userDao.getUserByUserID(meetingVo.userID);
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            //验证当前用户是否为会议拥有者
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("personName", userName);
+            wherelist.Add("personID", meetingVo.personID);
+            PersonVO personVo = personDao.getOne<PersonVO>(wherelist);
 
-            if (string.Compare(userVo.userName, userName) != 0)
+            if (personVo == null)
             {
                 return Status.PERMISSION_DENIED;
             }
@@ -165,8 +171,12 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
-
-
+        /// <summary>
+        /// 更新会议信息
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="meeting"></param>
+        /// <returns></returns>
         public static Status update(string userName, UpdateMeeting meeting)
         {
             //修正字符串
@@ -178,29 +188,34 @@ namespace WebServer.Models.Meeting
                 return Status.FORMAT_ERROR;
             }
 
-            UserDAO userDao = Factory.getUserDAOInstance();
-            UserVO userVo = userDao.getUserByUserName(userName);
+            //验证当前用户的更新当前会议权限
+            if (!validateMeeting(userName, meeting.meetingID))
+            {
+                return Status.PERMISSION_DENIED;
+            }
 
-            MeetingDAO meetingDao = Factory.getMeetingDAOInstance();
-            MeetingVO meetingVo = meetingDao.getMeetingByMeetingID(meeting.meetingID);
-            if (meetingVo == null)
+            //获取会议状态
+            int meetingStatus = getMeetingStatus(meeting.meetingID);
+            //判断会议是否开启，如果开启，更新“会议更新状态”
+            if (IsOpening_Meeting(meetingStatus))
+            {
+                updateMeetingUpdateStatus(meeting.meetingID);
+            }
+            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
-            if (!meetingDao.updateMeeting(
-                new MeetingVO
-                {
-                    meetingID = meeting.meetingID,
-                    meetingName = meeting.meetingName,
-                    meetingPlaceID = meeting.meetingPlaceID,
-                    meetingSummary = meeting.meetingSummary,
-                    meetingToStartTime = meeting.meetingToStartTime,
-                    meetingStatus = meetingVo.meetingStatus,//未开
-                    meetingDuration = meetingVo.meetingDuration,
-                    meetingStartedTime = meetingVo.meetingStartedTime,
-                    meetingUpdateStatus = 1, //无更新
-                    userID = userVo.userID
-                }))
+
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            MeetingVO meetingVo = meetingDao.getOne<MeetingVO>(meeting.meetingID);
+           
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("meetingName", meeting.meetingName);
+            wherelist.Add("meetingPlace", meeting.meetingPlaceID);
+            wherelist.Add("meetingSummary", meeting.meetingSummary);
+            wherelist.Add("meetingToStartTime", meeting.meetingToStartTime);
+           
+            if ( meetingDao.update(wherelist,meeting.meetingID)!= 1)
             {
                 return Status.FAILURE;
             }
@@ -210,15 +225,41 @@ namespace WebServer.Models.Meeting
 
         public static Status deleteMultipe(string userName,List<int> meetingIDs)
         {
-            UserDAO userDao = Factory.getUserDAOInstance();
-            UserVO userVo = userDao.getUserByUserName(userName);
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
-            //检查该会议的userID与userVo中的userID是否相同，如果不相同，则无权限，立即返回
+            if (meetingIDs == null && meetingIDs.Count == 0)
+            {
+                return Status.SUCCESS;
+            }
 
-            //检查某一会议的状态，如果为2：已开，16：已结束，则失败，立即返回。
+            foreach (int meetingID in meetingIDs)
+            {
+                //验证权限
+                if (validateMeeting(userName, meetingID))//有权限就删除
+                {
+                    //获取会议状态
+                    int meetingStatus = getMeetingStatus(meetingID);
+                    //判断会议是否 未开启,如果 不是”未开启“，直接退出
+                    if (!IsNotOpen_Meeting(meetingStatus))
+                    {
+                        return Status.FAILURE;
+                    }
+                    //注意调用会议中其他内容的服务，级联删除。
+                    //删除议程
 
-            //注意调用会议中其他内容的服务，级联删除。
+                    //删除参会人员
 
+                    //删除当前会议
+                    if (meetingDao.delete(meetingID) != 1)
+                    {
+                        continue;//如果失败，跳过
+                    }
+                }
+                else // 无权限，直接退出（已删除的不恢复）
+                {
+                    return Status.PERMISSION_DENIED;
+                } 
+            }
             return Status.SUCCESS;
         }
     }

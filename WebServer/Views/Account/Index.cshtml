@@ -4,66 +4,10 @@
 }
 <head>
     <title></title>
-    <script>
-    function postCreateUser() {
-        $.ajax({
-            type: "POST",
-            url: "/User/CreateUser",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify({
-                "userName": "谢庆雄",
-                "userDepartment": "华工C16",
-                "userJob": "测试员",
-                "userDescription": "测试android",
-                "roleID": 3
-            }),
-            success: function (jsonResult) {
-                alert(JSON.stringify(jsonResult));
-            }
-        });
-    };
-
-    function postUpdateUser() {
-        $.ajax({
-            type: "POST",
-            url: "/User/UpdateUser",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify({
-                "userID":24,
-                "userName": "谢庆雄",
-                "userDepartment": "华工C16",
-                "userJob": "测试员",
-                "userDescription": "测试android",
-                "roleID": 2
-            }),
-            success: function (jsonResult) {
-                alert(JSON.stringify(jsonResult));
-            }
-        });
-    };
-
-    function postDeleteUsers() {
-        $.ajax({
-            type: "POST",
-            url: "/User/ChangeUserStatus",
-            contentType: "application/json",
-            dataType: "json",
-            data: JSON.stringify({
-                "userID": 21,
-                "available":1
-            }
-                ),
-            success: function (jsonResult) {
-                alert(JSON.stringify(jsonResult));
-            }
-        });
-    };
-
+    <script language="javascript">
     function getUsers() {
         $.ajax({
-            type: "POST",
+            type: "Get",
             url: "/User/GetUsers",
             contentType: "application/json",
             dataType: "json",
@@ -74,9 +18,6 @@
     };
     </script>
 </head>
-<input type="button" id="jsonID" name="testPostJson" value="postCreateUser" onclick="postCreateUser()"/><br />
-<input type="button" id="jsonID" name="testPostJson" value="postDeleteUsers" onclick="postDeleteUsers()" /><br />
-<input type="button" id="jsonID" name="testPostJson" value="postUpdateUser" onclick="postUpdateUser()" /><br />
 <input type="button" id="jsonID" name="testPostJson" value="getUsers" onclick="getUsers()" /><br />
 <fieldset>
     <legend>

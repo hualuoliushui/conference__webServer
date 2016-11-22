@@ -9,6 +9,6 @@ namespace WebServer.Models.Role
     {
         public int roleID { set; get; }
         public string roleName { set; get; }
-        public List<Permission> permissions;
+        public int[] hasPermission { set; get; }
     }
 }

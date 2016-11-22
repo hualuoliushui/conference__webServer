@@ -28,7 +28,7 @@ namespace WebServer.Controllers
             return View();
         }
 
-        public JsonResult GetUserssForDelegate()
+        public JsonResult GetUsersForDelegate()
         {
             RespondModel respond = new RespondModel();
             //调用会场服务

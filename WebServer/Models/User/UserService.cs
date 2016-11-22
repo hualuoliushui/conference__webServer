@@ -16,21 +16,6 @@ namespace WebServer.Models.User
     public class UserService
     {
         /// <summary>
-        /// 当前数据库中用户ID最大值
-        /// </summary>
-        private static int UserIDMax = Factory.getUserDAOInstance().getIDMax();
-
-        private static int getUserID()
-        {
-            int userID = 0;
-            Object lockObject = new object();
-            lock(lockObject){
-                userID = ++UserIDMax;
-            }
-            return userID;
-        }
-
-        /// <summary>
         /// 用户名
         /// 长度规范
         /// </summary>
@@ -86,30 +71,30 @@ namespace WebServer.Models.User
                 );
         }
 
+        //为参会人员提供用户列表
         public static Status getAllForDelegate(out List<UserForDelegate> users)
         {
             users = new List<UserForDelegate>();
 
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
 
-            List<UserVO> userVos = userDaoProxy.getUserList();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            wherelist.Add("personState", 0);
+            //获取未冻结的用户信息
+            List<PersonVO> personVolist = personDao.getAll<PersonVO>(wherelist);
 
-            if (userVos.Count==0)
+            if (personVolist.Count==0)
             {
                 return Status.NONFOUND;
             }
 
-            foreach (UserVO vo in userVos)
+            foreach (PersonVO vo in personVolist)
             {
-                if (vo.userAvailable == 1) // 已冻结
-                {
-                    continue;
-                }
                 users.Add(
                     new UserForDelegate
                     {
-                        userID = vo.userID,
-                        userName = vo.userName
+                        userID = vo.personID,
+                        userName = vo.personName
                     });
             }
             return Status.SUCCESS;
@@ -122,41 +107,77 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status create(CreateUser newUser)
         {
-            
-            //字符串截去头尾
-            newUser.userName = newUser.userName.Trim();
-            newUser.userDepartment = newUser.userDepartment.Trim();
-            newUser.userJob = newUser.userJob.Trim();
-            newUser.userDescription = newUser.userDescription.Trim();
-            //格式是否满足需求, //人员描述可为空
-            if(!_checkFormat(newUser.userName,newUser.userDepartment,
-                newUser.userJob,newUser.userDescription))
-                return Status.FORMAT_ERROR;
+            try
+            {
+                //字符串截去头尾
+                newUser.userName = newUser.userName.Trim();
+                newUser.userDepartment = newUser.userDepartment.Trim();
+                newUser.userJob = newUser.userJob.Trim();
+                newUser.userDescription = newUser.userDescription.Trim();
+                //格式是否满足需求, //人员描述可为空
+                if (!_checkFormat(newUser.userName, newUser.userDepartment,
+                    newUser.userJob, newUser.userDescription))
+                    return Status.FORMAT_ERROR;
+            }
+            catch (ArgumentNullException e)
+            {
+                return Status.FAILURE;
+            }
 
-            UserVO userVo = new UserVO();
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
+            PersonVO personVo = new PersonVO();
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
 
-            userVo.userID = getUserID();
-            userVo.userName = newUser.userName;
-            userVo.userDepartment = newUser.userDepartment;
-            userVo.userJob = newUser.userJob;
+            personVo.personID = PersonDAO.getID();
+            personVo.personName = newUser.userName;
+            personVo.personDepartment = newUser.userDepartment;
+            personVo.personJob = newUser.userJob;
             //默认密码："123456"
-            userVo.userPassword = "123456";
-            userVo.userDescription = newUser.userDescription;
+            personVo.personPassword = "123456";
+            personVo.personDescription = newUser.userDescription;
 
             //如果插入用户失败，返回error
-            if (!userDaoProxy.addUser(userVo)) 
+            if (personDao.insert<PersonVO>(personVo) != 1) 
                 return Status.DATABASE_OPERATOR_ERROR;
 
             //如果插入用户角色关联失败，则删除之前添加的数据，并返回error
-            User_RoleDAO user_roleDao = Factory.getUser_RoleDAOInstance();
-            if (!user_roleDao.addUser_Role(new User_RoleVO { userID = userVo.userID, roleID = newUser.roleID }))
+            Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
+            if (person_roleDao.insert<Person_RoleVO>(
+                new Person_RoleVO 
+                {
+                    person_roleID = Person_RoleDAO.getID(),
+                    personID = personVo.personID,
+                    roleID = newUser.roleID
+                }) != 1)
             {
-                userDaoProxy.deleteUserByUserID(userVo.userID);
+                personDao.delete(personVo.personID);
                 return Status.DATABASE_OPERATOR_ERROR;
             }
 
             return Status.SUCCESS;
+        }
+
+        /// <summary>
+        /// 为参会人员添加用户
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public Status createForDelegate(CreateUserForDelegate user)
+        {
+            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
+            List<RoleVO> roles = roleDao.getAll<RoleVO>();
+
+            //默认是member角色
+            int roleID = roles.Where(role => role.roleName == "Member").ToList()[0].roleID;
+
+            CreateUser createUser = new CreateUser
+            {
+                userName = user.userName,
+                userDepartment = user.userDepartment,
+                userJob = user.userJob,
+                userDescription = user.userDescription,
+                roleID = roleID
+            };
+            return create(createUser);
         }
 
         /// <summary>
@@ -166,14 +187,16 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public static Status getAll(out List<User> users)
         {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
             users = new List<User>();
 
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
-            User_RoleDAO user_RoleDaoProxy = Factory.getUser_RoleDAOInstance();
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            Person_RoleDAO person_roleDao = Factory.getInstance <Person_RoleDAO>();
 
-            List<UserVO> userVos = userDaoProxy.getUserList();
+            List<PersonVO> personVolist = personDao.getAll<PersonVO>();
 
-            if (userVos == null)
+            if (personVolist == null)
             {
                 return Status.NONFOUND;
             }
@@ -185,22 +208,28 @@ namespace WebServer.Models.User
                 return Status.NONFOUND;
             }
 
-            foreach(UserVO vo in userVos){
+            foreach(PersonVO vo in personVolist){
                 //如果用户角色关联找不到，返回error
-                List<int> roleIDs = user_RoleDaoProxy.getRoleIDListByUserID(vo.userID);
-                if (roleIDs == null)
+                wherelist.Clear();
+                wherelist.Add("personID", vo.personID);
+                List<Person_RoleVO> person_roleVolist = person_roleDao.getAll<Person_RoleVO>(wherelist);
+                if (person_roleVolist == null)
                 {
                     return Status.DATABASE_CONTENT_ERROR;
                 }
 
                 users.Add(new User
                 {
-                    userID = vo.userID,
-                    userName = vo.userName,
-                    userDepartment = vo.userDepartment,
-                    userJob = vo.userJob,
-                    roleName = (roles.Where(role=>role.roleID==roleIDs[0]).Select(p=>p.roleName)).ToList()[0],
-                    userFreezeState = vo.userAvailable
+                    userID = vo.personID,
+                    userName = vo.personName,
+                    userDepartment = vo.personDepartment,
+                    userJob = vo.personJob,
+                    //从角色列表中查询对应的角色名称
+                    roleName = (roles.Where(role=>
+                        role.roleID==person_roleVolist[0].roleID)
+                        .Select(p=>p.roleName))
+                        .ToList()[0],
+                    userFreezeState = vo.personState
                 });
 
             }
@@ -210,37 +239,40 @@ namespace WebServer.Models.User
         /// <summary>
         /// 更新时，请求 指定用户的 信息
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="person"></param>
         /// <param name="userID"></param>
         /// <returns></returns>
         public static Status getOneUpdate(out UpdateUser user, int userID)
         {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
             user = new UpdateUser();
 
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
-            User_RoleDAO user_RoleDaoProxy = Factory.getUser_RoleDAOInstance();
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
 
-            UserVO vo = userDaoProxy.getUserByUserID(userID);
-            if (vo == null)
+            PersonVO personVo = personDao.getOne<PersonVO>(userID);
+            if (personVo == null)
             {
                 return Status.NONFOUND;
             }
 
-
             //如果用户角色关联找不到，返回error
-            List<int> roleIDs = user_RoleDaoProxy.getRoleIDListByUserID(vo.userID);
-            if (roleIDs == null)
+            wherelist.Clear();
+            wherelist.Add("personID", personVo.personID);
+            List<Person_RoleVO> person_roleVolist = person_roleDao.getAll<Person_RoleVO>(wherelist);
+            if (person_roleVolist == null)
             {
                 return Status.DATABASE_CONTENT_ERROR;
             }
 
 
-             user.userID = vo.userID;
-             user.userName = vo.userName;
-             user.userDepartment = vo.userDepartment;
-             user.userJob = vo.userJob;
-             user.userDescription = vo.userDescription;
-             user.roleID = roleIDs[0];
+             user.userID = personVo.personID;
+             user.userName = personVo.personName;
+             user.userDepartment = personVo.personDepartment;
+             user.userJob = personVo.personJob;
+             user.userDescription = personVo.personDescription;
+             user.roleID = person_roleVolist[0].roleID; // 现在，用户与角色为 多对一 关系
 
             return Status.SUCCESS;
         }
@@ -248,7 +280,7 @@ namespace WebServer.Models.User
         /// <summary>
         /// 更新时，提交 更新用户的 信息
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="person"></param>
         /// <returns></returns>
         public static Status update(UpdateUser user)
         {
@@ -265,31 +297,39 @@ namespace WebServer.Models.User
                 return Status.FORMAT_ERROR;
             }
 
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
-            User_RoleDAO user_roleDao = Factory.getUser_RoleDAOInstance();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
-            UserVO vo = userDaoProxy.getUserByUserID(user.userID);
-            if (vo == null)
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
+
+            PersonVO personVo = personDao.getOne<PersonVO>(user.userID);
+            if (personVo == null)
                 return Status.NONFOUND;
-            vo.userName = user.userName;
-            vo.userDepartment = user.userDepartment;
-            vo.userJob = user.userJob;
-            vo.userDescription = user.userDescription;
+            personVo.personName = user.userName;
+            personVo.personDepartment = user.userDepartment;
+            personVo.personJob = user.userJob;
+            personVo.personDescription = user.userDescription;
+
+            wherelist.Clear();
+            wherelist.Add("personName", user.userName);
+            wherelist.Add("personDepartment", user.userDepartment);
+            wherelist.Add("personJob", user.userJob);
+            wherelist.Add("personDescription", user.userDescription);
+
 
             //更新user表
-            if (!userDaoProxy.updateUser(vo))//如果失败
+            if( personDao.update(wherelist,user.userID) != 1 )//如果失败
             {
                 return Status.DATABASE_OPERATOR_ERROR;
             }
 
             //更新user_role关联表
-            if (!user_roleDao.deleteUser_RoleByUserID(user.userID)){//如果删除原来的关联失败
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+            setlist.Add("roleID", user.roleID);
+            wherelist.Clear();
+            wherelist.Add("personID", user.userID);
+            if (person_roleDao.update(setlist,wherelist)!=1){//如果更新原来的关联失败
                 return Status.DATABASE_OPERATOR_ERROR;
-            }
-            else //删除成功
-            {
-                //添加新的关联
-                user_roleDao.addUser_Role(new User_RoleVO { userID=user.userID,roleID=user.roleID});
             }
 
             return Status.SUCCESS;
@@ -304,21 +344,25 @@ namespace WebServer.Models.User
         public static Status UpdateUserAvailable(int userID,int available)
         {
             //检查参数
-            if(userID < 0 
+            if (userID < 0
                 || (available != 0 && available != 1))
             {
                 return Status.ARGUMENT_ERROR;
             }
 
-            if( userID == 1 ) // 不允许修改超级管理员的状态)
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            PersonVO personVo = personDao.getOne<PersonVO>(userID);
+            if( personVo == null 
+                || string.Compare(personVo.personName,"admin")==0 ) // 不允许修改超级管理员的状态)
             {
                 return Status.FAILURE;
             }
 
-
-            //数据库操作
-            UserDAO userDaoProxy = Factory.getUserDAOInstance();
-            if (!userDaoProxy.updateUserAvailable(userID, available))
+            setlist.Clear();
+            setlist.Add("personState",available);
+            if (personDao.update(setlist,userID) != 1)
             {
                 return Status.FAILURE;
             }

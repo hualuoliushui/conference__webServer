@@ -27,23 +27,6 @@ namespace WebServer.Models.Role
             return roleName.Length >= 2 && roleName.Length <= 12;
         }
 
-        private static int RoleIDMax = Factory.getRoleDAOInstance().getIDMax();
-
-        /// <summary>
-        /// 获取角色ID
-        /// </summary>
-        /// <returns></returns>
-        private static int getRoleID()
-        {
-            int roleID = 0;
-            Object lockObject = new object();
-            lock (lockObject)
-            {
-                roleID = ++RoleIDMax;
-            }
-            return roleID;
-        }
-
         /// <summary>
         /// 为用户管理返回角色列表
         /// </summary>
@@ -53,11 +36,11 @@ namespace WebServer.Models.Role
         {
             roles = new List<RoleForUser>();
 
-            RoleDAO roleDaoProxy = Factory.getRoleDAOInstance();
-            List<RoleVO> roleVos = roleDaoProxy.getRoleList();
-            if (roleVos.Count==0)
+            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
+            List<RoleVO> roleVolist = roleDao.getAll<RoleVO>();
+            if (roleVolist == null )
                 return Status.NONFOUND;
-            foreach (RoleVO vo in roleVos)
+            foreach (RoleVO vo in roleVolist)
             {
                 roles.Add(
                     new RoleForUser { 
@@ -71,16 +54,18 @@ namespace WebServer.Models.Role
         /// <summary>
         /// 为创建角色返回权限列表
         /// </summary>
-        /// <param name="permissions"></param>
+        /// <param name="hasPermission"></param>
         /// <returns></returns>
         public static Status getPermissions(out List<Permission> permissions)
         {
             permissions = new List<Permission>();
 
-            PermissionDAO permissionDao = Factory.getPermissionDAOInstance();
-            List<PermissionVO> permissionVos = permissionDao.getPermissionList();
+            PermissionDAO permissionDao = Factory.getInstance<PermissionDAO>();
+            List<PermissionVO> permissionVos = permissionDao.getAll<PermissionVO>();
             if (permissionVos.Count == 0)
                 return Status.NONFOUND;
+
+
             foreach (PermissionVO vo in permissionVos)
             {
                 permissions.Add(
@@ -99,43 +84,61 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public static Status getAll(out List<Role> roles)
+        public static Status getAll(out Roles roles)
         {
-            roles = new List<Role>();
+            roles = new Roles();
+            roles.roles = new List<Role>();
 
-            RoleDAO roleDao = Factory.getRoleDAOInstance();
-            PermissionDAO permissionDao = Factory.getPermissionDAOInstance();
-            Role_PermissionDAO role_PermissionDao = Factory.getRole_PermissionDAOInstance();
-
-            List<RoleVO> roleVos = roleDao.getRoleList();
-            if (roleVos.Count == 0)
-                return Status.NONFOUND;
-            foreach (RoleVO roleVo in roleVos)
+            //获取所有的权限列表：permissionID,permissionName
+            List<Permission> permissionlist;
+            if ( RoleService.getPermissions(out permissionlist) != Status.SUCCESS)
             {
-                List<int> permissionIDs = role_PermissionDao.getPermissionIDListByRoleID(roleVo.roleID);
-                if (permissionIDs.Count == 0)
-                    continue;
-                List<Permission> permissions = new List<Permission>();
-                foreach (int permissionID in permissionIDs)
-                {
-                    PermissionVO vo = permissionDao.getPermissionByPermissionID(permissionID);
-                    if (vo == null)
-                        continue;
-                    permissions.Add(
-                        new Permission
-                        {
-                            permissionID = permissionID,
-                            permissionName = vo.permissionName
-                        });
-                }
+                return Status.NONFOUND;
+            }
 
-                roles.Add(
-                    new Role
+            roles.permissonNum = permissionlist.Count;
+
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
+            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
+            PermissionDAO permissionDao = Factory.getInstance<PermissionDAO>();
+            Role_PermissionDAO role_PermissionDao = Factory.getInstance<Role_PermissionDAO>();
+
+            //获取所有的角色列表:roleID,roleName
+            List<RoleVO> roleVolist = roleDao.getAll<RoleVO>();
+            if (roleVolist == null)
+                return Status.NONFOUND;
+
+            foreach (RoleVO roleVo in roleVolist)
+            {
+                //初始化当前角色权限列表
+                int[] hasPermissionlist = new int[permissionlist.Count];
+                //获取角色、权限关联
+                wherelist.Clear();
+                wherelist.Add("roleID", roleVo.roleID);
+                List<Role_PermissionVO> role_permissionVolist = role_PermissionDao.getAll<Role_PermissionVO>(wherelist);
+
+                List<Permission> permissions = new List<Permission>();
+                if (role_permissionVolist != null)
+                {
+                    foreach (Role_PermissionVO vo in role_permissionVolist)
                     {
-                        roleID = roleVo.roleID,
-                        roleName = roleVo.roleName,
-                        permissions = permissions
-                    });
+                        for (int i = 0; i < permissionlist.Count; i++)
+                        {
+                            if (permissionlist[i].permissionID == vo.permissionID)
+                            {
+                                hasPermissionlist[i] = 1;
+                            }
+                        }
+                    }
+                }
+                roles.roles.Add(
+                        new Role
+                        {
+                            roleID = roleVo.roleID,
+                            roleName = roleVo.roleName,
+                            hasPermission = hasPermissionlist
+                        });    
             }
 
             return Status.SUCCESS;
@@ -157,39 +160,48 @@ namespace WebServer.Models.Role
                 return Status.FORMAT_ERROR;
             }
 
-            RoleDAO roleDao = Factory.getRoleDAOInstance();
-            Role_PermissionDAO role_PermissionDao = Factory.getRole_PermissionDAOInstance();
+            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
+            Role_PermissionDAO role_PermissionDao = Factory.getInstance<Role_PermissionDAO>();
 
-            if (role.permissionIDs == null || role.permissionIDs.Count == 0)
+            //不允许添加无权限角色
+            if (role.permissionIDs == null )
             {
                 return Status.ARGUMENT_ERROR;
             }
 
-            int roleID = getRoleID();
-            if (!roleDao.addRole(new RoleVO { roleID = roleID, roleName = role.roleName }))
+            //插入角色
+            int roleID = RoleDAO.getID();
+            if (roleDao.insert<RoleVO>(
+                new RoleVO {
+                    roleID = roleID, 
+                    roleName = role.roleName 
+                }) != 1)
             {
                 return Status.FAILURE;
             }
-
+            //插入角色、权限关联
+            Queue<int> role_permissionIDs = new Queue<int>();
             for (int i = 0; i < role.permissionIDs.Count; i++)
             {
-                if (!role_PermissionDao.addRole_Permission(
+                int id = Role_PermissionDAO.getID();
+                if (role_PermissionDao.insert<Role_PermissionVO>(
                                     new Role_PermissionVO
                                     {
+                                        role_permissionID = id,
                                         roleID = roleID,
                                         permissionID = role.permissionIDs[i]
-                                    }))
-                {
-                    for (int j = --i; j >= 0; j--)
+                                    }) != 1)
+                { //如果失败，，回退
+                    while(role_permissionIDs.Count != 0)
                     {
-                        role_PermissionDao.
-                            deleteRole_PermissionByRoleIDAndPermissionID(
-                            roleID, role.permissionIDs[j]);
+                        id = role_permissionIDs.Dequeue();
+                        role_PermissionDao.delete(id);
                     }
-                    roleDao.deleteRoleByRoleID(roleID);
+                    roleDao.delete(roleID);
 
                     return Status.FAILURE;
                 }
+                role_permissionIDs.Enqueue(id);
             }
                 
             return Status.SUCCESS;
@@ -201,12 +213,21 @@ namespace WebServer.Models.Role
                 return Status.SUCCESS;
             }
 
-            RoleDAO roleDao = Factory.getRoleDAOInstance();
-            Role_PermissionDAO role_PermissionDao = Factory.getRole_PermissionDAOInstance();
+            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
 
+            Role_PermissionDAO role_PermissionDao = Factory.getInstance<Role_PermissionDAO>();
+            Dictionary<string,object> wherelist =new Dictionary<string,object>();
             foreach (int roleID in roleIDs)
             {
-                role_PermissionDao.deleteRole_PermissionByRoleID(roleID);
+                //获取角色信息
+                RoleVO roleVo = roleDao.getOne<RoleVO>(roleID);
+                if (string.Compare(roleVo.roleName, "admin") == 0//禁止删除管理员角色
+                    || string.Compare(roleVo.roleName, "organizor") == 0//禁止删除组织者角色
+                    || string.Compare(roleVo.roleName, "member") == 0)//禁止删除成员角色
+                    continue;
+                wherelist.Clear();
+                wherelist.Add("roleID",roleID);
+                role_PermissionDao.delete(wherelist);
             }
 
             return Status.SUCCESS;

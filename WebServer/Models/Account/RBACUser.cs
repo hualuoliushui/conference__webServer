@@ -32,38 +32,51 @@ namespace WebServer.Models
 
         private void GetDatabaseUserRolesPermissions()
         {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
             //根据用户名从数据库中填充角色列表和权限列表
-            UserDAO userDAO = Factory.getUserDAOInstance();
-            UserVO userVo = userDAO.getUserByUserName(this.userName);
-            if (userVo == null) return;
-            this.userID = userVo.userID;
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
 
-            User_RoleDAO userRoleDAO = Factory.getUser_RoleDAOInstance();
-            List<int> roleIDList = userRoleDAO.getRoleIDListByUserID(this.userID);
-            if (roleIDList == null) return;
+            wherelist.Add("personName", this.userName);
+            PersonVO personVo = personDao.getOne<PersonVO>(wherelist);
+            if (personVo == null) return;
+            this.userID = personVo.personID;
 
-            foreach (int roleID in roleIDList)
+            Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
+            wherelist.Clear();
+            wherelist.Add("personID", userID);
+            //获取用户、角色关联
+            List<Person_RoleVO> person_roleVolist = person_roleDao.getAll<Person_RoleVO>(wherelist);
+            if (person_roleVolist == null) return;
+
+            foreach (Person_RoleVO person_roleVo in person_roleVolist)
             {
                 UserRole userRole = new UserRole();
 
-                userRole.roleID = roleID;
-                RoleDAO roleDAO = Factory.getRoleDAOInstance();
-                RoleVO roleVo = roleDAO.getRoleByRoleID(roleID);
+                userRole.roleID = person_roleVo.roleID;
+                RoleDAO roleDAO = Factory.getInstance<RoleDAO>();
+                //获取角色信息
+                RoleVO roleVo = roleDAO.getOne<RoleVO>(userRole.roleID);
                 if (roleVo == null) continue;
                 userRole.roleID = roleVo.roleID;
                 userRole.roleName = roleVo.roleName;
 
-                Role_PermissionDAO rolePermissionDAO = Factory.getRole_PermissionDAOInstance();
-                List<int> permissionIDList = rolePermissionDAO.getPermissionIDListByRoleID(roleVo.roleID);
-                if (permissionIDList == null) continue;
+                Role_PermissionDAO rolePermissionDAO = Factory.getInstance<Role_PermissionDAO>();
+                
+                wherelist.Clear();
+                wherelist.Add("roleID",roleVo.roleID);
+                //获取角色、权限关联
+                List<Role_PermissionVO> role_permissionVolist = rolePermissionDAO.getAll<Role_PermissionVO>(wherelist);
+                if (role_permissionVolist == null) continue;
 
-                foreach (int permissionID in permissionIDList)
+                foreach (Role_PermissionVO role_permissionVo in role_permissionVolist)
                 {
                     RolePermission rolePermission = new RolePermission();
 
-                    rolePermission.permissionID = permissionID;
-                    PermissionDAO permissionDAO = Factory.getPermissionDAOInstance();
-                    PermissionVO permissionVo = permissionDAO.getPermissionByPermissionID(permissionID);
+                    rolePermission.permissionID = role_permissionVo.permissionID;
+                    PermissionDAO permissionDAO = Factory.getInstance<PermissionDAO>();
+                    //获取权限信息
+                    PermissionVO permissionVo = permissionDAO.getOne<PermissionVO>(role_permissionVo.permissionID);
                     if (permissionVo == null) continue;
 
                     rolePermission.PermissionDescription = permissionVo.permissionDescription;
