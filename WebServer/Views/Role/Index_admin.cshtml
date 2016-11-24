@@ -1,0 +1,445 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>中佰会议系统管理员</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/less/role/index.less" type="text/less" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top" id="mainMenu">
+        <div class="container">
+            <div class="navbar-header col-md-2">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="/images/u46.png">
+                </a>
+            </div>
+            <p class="navbar-text col-md-6">中佰会议系统管理员界面</p>
+            <ul class="col-md-3" id="signUpWindow">
+                <ol class="col-md-6"><b>管理员</b>&nbsp&nbsp<b>张三</b></ol>
+                <ol class="col-md-4">
+                    <button type="button" class="btn btn-xs">
+                        <!--超小按钮-->
+                        <span class="glyphicon glyphicon-user"></span>
+                        <!--这些图标的使用要引入boorstrap的font-->
+                    </button>
+                </ol>
+            </ul>
+        </div>
+    </div>
+    <div class="container" id="mainContent">
+        <div class="panel panel-default col-md-2" id="mainContentLeft">
+            <div class="panel-heading">
+                <p class="panel-title">管理导航</p>
+            </div>
+            <ul class="nav nav-stacked panel-body" role="tablist">
+                <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
+                <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
+                <li role="presentation"><a href="/User/Index_admin">人员与角色选择</a></li>
+                <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
+                <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
+            </ul>
+        </div>
+        <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
+            <div>
+                <div class="col-md-3 ">
+                    <h1><strong>角色管理</strong></h1>
+                </div>
+                <div class="col-md-6">
+                    <br />
+                    <ol class="breadcrumb">
+                        <li><a href="/Account/Admin">首页</a></li>
+                        <li class="active">角色管理</li>
+                    </ol>
+                </div>
+                <div class="col-md-3 " id="backToHome">
+                    <br /><button class="btn btn-default" type="button" id="backToHome" href="#">返回主页</button><br />
+                    状态：创建成功
+                </div>
+            </div>
+            <div>
+                <h5 id="buildRole">创建角色：</h5>
+                <p>角色名称：<input id="input1" type="text" name="roleName"></p>
+                <div id="authority">
+                    角色权限：
+                    <div id="scroll">
+                        &nbsp;&nbsp;<label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="option1"> 创建会议议程
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 查看会议议程信息
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 上传附件
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox4" value="option4"> 下载附件
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox5" value="option5"> 编辑投票
+                        </label>
+                        <label class="checkbox-inline" id="option6">
+                            <input type="checkbox" id="inlineCheckbox6" value="option6"> 查看投票结果
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="inlineCheckbox7" value="option7"> 查看人员设备
+                        </label>
+                    </div>
+
+                    <button class="btn btn-default" type="button" id="create" href="#">创  建</button>
+                </div>
+
+                <h5>所有角色：</h5>
+
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="table-responsive" id="roleTable">
+                            <table class="table table-bordered" id="column1">
+                                <th>角色</th>
+                                <tr>
+                                    <td>会议组织者</td>
+                                </tr>
+                                <tr>
+                                    <td>普通用户</td>
+                                </tr>
+                                <tr>
+                                    <td>系统管理员</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="col-md-10">
+                        <div class="table-responsive" id="scrollTable">
+                            <table class="table table-bordered" id="column2">
+                                <th></th>
+                                <th>创建会议议程</th>
+                                <th>查看会议议程信息</th>
+                                <th>上传附件</th>
+                                <th>下载附件</th>
+                                <th>编辑投票</th>
+                                <th>查看投票结果</th>
+                                <th>编辑人员设备</th>
+                                <th>查看人员设备</th>
+                                <th>查看人员设备</th>
+                                <th>查看人员设备</th>
+                                <th>查看人员设备</th>
+                                <th>查看人员设备</th>
+                                <th>查看人员设备</th>
+                                <tr>
+                                    <td><img src="images/u637.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/u637.png"></td>
+                                    <td></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td></td>
+                                    <td><img src="images/yes.png"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><img src="images/u637.png"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                                                        <div class="table-responsive" id="scrollTable">
+                                                            <table class="table table-bordered">
+                                                                <th>角色</th>
+                                                                <th>创建会议议程</th>
+                                                                <th>查看会议议程信息</th>
+                                                                <th>上传附件</th>
+                                                                <th>下载附件</th>
+                                                                <th>编辑投票</th>
+                                                                <th>查看投票结果</th>
+                                                                <th>编辑人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th>查看人员设备</th>
+                                                                <th></th>
+                                                                <tr>
+                                                                    <td>会议组织者</td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td><img src="images/u637.png"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>普通用户</td>
+                                                                    <td></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td></td>
+                                                                    <td><img src="images/yes.png"></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td><img src="images/u637.png"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>系统管理员</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                -->
+
+
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-3"></div>
+                    <div class="col-md-3 col-md-offset-3" id="cancel2Keep">
+                        <button class="btn btn-default" type="button" id="keep" href="#">保存编辑</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="/node_modules/less/dist/less.js"></script>
+        <script src="/node_modules/jquery/dist/jquery.js"></script>
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="/node_modules/angular/angular.js"> </script>
+        <script src="~/js/role/index.js"></script>
+</body>
+
+</html>

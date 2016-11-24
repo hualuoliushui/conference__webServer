@@ -13,12 +13,22 @@ namespace WebServer.Controllers
             return View();
         }
 
+        public ActionResult Add_admin()
+        {
+            return View();
+        }
+
+        public ActionResult Edit_admin()
+        {
+            return View();
+        }
+
         public JsonResult GetMeetingPlacesForMeeting()
         {
             RespondModel respond = new RespondModel();
             //调用会场服务
             List<MeetingPlaceForMeeting> list = null;
-            Status status = MeetingPlaceService.getAllForMeeting(out list);
+            Status status = new MeetingPlaceService().getAllForMeeting(out list);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -34,7 +44,7 @@ namespace WebServer.Controllers
 
             List<MeetingPlace> meetingPlaces = null;
             //调用会场服务
-            Status status = MeetingPlaceService.getAll(out meetingPlaces);
+            Status status = new MeetingPlaceService().getAll(out meetingPlaces);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -49,7 +59,7 @@ namespace WebServer.Controllers
 
             UpdateMeetingPlace meetingPlace;
             //调用设备服务
-            Status status = MeetingPlaceService.getOneForUpdate(out meetingPlace, meetingPlaceID);
+            Status status = new MeetingPlaceService().getOneForUpdate(out meetingPlace, meetingPlaceID);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -77,7 +87,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            Status status = MeetingPlaceService.update(meetingPlace);
+            Status status = new MeetingPlaceService().update(meetingPlace);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -91,7 +101,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            Status status = MeetingPlaceService.UpdateUserAvailable(meetingPlaceID, state);
+            Status status = new MeetingPlaceService().UpdateUserAvailable(meetingPlaceID, state);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

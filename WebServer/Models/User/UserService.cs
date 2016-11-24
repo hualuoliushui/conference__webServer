@@ -49,8 +49,6 @@ namespace WebServer.Models.User
         /// </summary>
         private static int UserDescription_MaxLenght = 25;
 
-        private static int autoIncreateUserID = 24;
-
         /// <summary>
         /// 检查参数是否符合长度规范
         /// </summary>
@@ -59,7 +57,7 @@ namespace WebServer.Models.User
         /// <param name="userJob"></param>
         /// <param name="userDescription"></param>
         /// <returns></returns>
-        private static bool _checkFormat(string userName,string userDepartment,string userJob,string userDescription)
+        private bool _checkFormat(string userName,string userDepartment,string userJob,string userDescription)
         {
             return (UserName_MinLength <= userName.Length
                 && UserName_MaxLength >= userName.Length
@@ -72,7 +70,7 @@ namespace WebServer.Models.User
         }
 
         //为参会人员提供用户列表
-        public static Status getAllForDelegate(out List<UserForDelegate> users)
+        public Status getAllForDelegate(out List<UserForDelegate> users)
         {
             users = new List<UserForDelegate>();
 
@@ -185,7 +183,7 @@ namespace WebServer.Models.User
         /// </summary>
         /// <param name="users"></param>
         /// <returns></returns>
-        public static Status getAll(out List<User> users)
+        public Status getAll(out List<User> users)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -203,7 +201,7 @@ namespace WebServer.Models.User
 
             //如果角色列表找不到，返回error
             List<RoleForUser> roles;
-            Status rolesForUser_Error =  RoleService.getAllForUser(out roles);
+            Status rolesForUser_Error = new RoleService().getAllForUser(out roles);
             if(rolesForUser_Error == Status.NONFOUND ){
                 return Status.NONFOUND;
             }
@@ -242,7 +240,7 @@ namespace WebServer.Models.User
         /// <param name="person"></param>
         /// <param name="userID"></param>
         /// <returns></returns>
-        public static Status getOneUpdate(out UpdateUser user, int userID)
+        public Status getOneUpdate(out UpdateUser user, int userID)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -282,7 +280,7 @@ namespace WebServer.Models.User
         /// </summary>
         /// <param name="person"></param>
         /// <returns></returns>
-        public static Status update(UpdateUser user)
+        public Status update(UpdateUser user)
         {
             //字符串截去头尾
             user.userName = user.userName.Trim();
@@ -341,7 +339,7 @@ namespace WebServer.Models.User
         /// <param name="userID"></param>
         /// <param name="available"></param>
         /// <returns></returns>
-        public static Status UpdateUserAvailable(int userID,int available)
+        public Status UpdateUserAvailable(int userID,int available)
         {
             //检查参数
             if (userID < 0

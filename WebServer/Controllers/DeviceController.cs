@@ -35,7 +35,7 @@ namespace WebServer.Controllers
 
             List<Device> devices;
             //调用设备服务
-            Status status = DeviceService.getAll(out devices);
+            Status status = new DeviceService().getAll(out devices);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -50,7 +50,7 @@ namespace WebServer.Controllers
 
             List<DeviceForDelegate> devices;
             //调用设备服务
-            Status status = DeviceService.getAllForDelegate(out devices);
+            Status status = new DeviceService().getAllForDelegate(out devices);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -65,7 +65,7 @@ namespace WebServer.Controllers
 
             UpdateDevice device;
             //调用设备服务
-            Status status = DeviceService.getOneForUpdate(out device, deviceID);
+            Status status = new DeviceService().getOneForUpdate(out device, deviceID);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -78,7 +78,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用设备服务
-            Status status = DeviceService.create(device);
+            Status status = new DeviceService().create(device);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -91,7 +91,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用设备服务
-            Status status = DeviceService.update(device);
+            Status status = new DeviceService().update(device);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -104,7 +104,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用设备服务
-            Status status = DeviceService.UpdateDeviceAvailable(deviceID, deviceFreezeState);
+            Status status = new DeviceService().UpdateDeviceAvailable(deviceID, deviceFreezeState);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

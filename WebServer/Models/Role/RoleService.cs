@@ -22,7 +22,7 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="roleName"></param>
         /// <returns></returns>
-        private static bool checkFormat(string roleName)
+        private bool checkFormat(string roleName)
         {
             return roleName.Length >= 2 && roleName.Length <= 12;
         }
@@ -32,7 +32,7 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public static Status getAllForUser(out List<RoleForUser> roles)
+        public Status getAllForUser(out List<RoleForUser> roles)
         {
             roles = new List<RoleForUser>();
 
@@ -56,7 +56,7 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="hasPermission"></param>
         /// <returns></returns>
-        public static Status getPermissions(out List<Permission> permissions)
+        public Status getPermissions(out List<Permission> permissions)
         {
             permissions = new List<Permission>();
 
@@ -84,14 +84,14 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public static Status getAll(out Roles roles)
+        public Status getAll(out Roles roles)
         {
             roles = new Roles();
             roles.roles = new List<Role>();
 
             //获取所有的权限列表：permissionID,permissionName
             List<Permission> permissionlist;
-            if ( RoleService.getPermissions(out permissionlist) != Status.SUCCESS)
+            if ( new RoleService().getPermissions(out permissionlist) != Status.SUCCESS)
             {
                 return Status.NONFOUND;
             }
@@ -150,7 +150,7 @@ namespace WebServer.Models.Role
         /// </summary>
         /// <param name="role"></param>
         /// <returns></returns>
-        public static Status create(CreateRole role)
+        public Status create(CreateRole role)
         {
             //修正字符串
             role.roleName = role.roleName.Trim();
@@ -207,7 +207,7 @@ namespace WebServer.Models.Role
             return Status.SUCCESS;
         }
 
-        public static Status delete(List<int> roleIDs){
+        public Status delete(List<int> roleIDs){
             if (roleIDs.Count == 0)
             {
                 return Status.SUCCESS;

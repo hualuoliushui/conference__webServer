@@ -5,8 +5,8 @@
     <title>中佰会议系统管理员</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/less/user/add.less" type="text/less" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="~/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="~/less/meetingPlace/add.less" type="text/less" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 
 <body>
@@ -46,63 +46,46 @@
         <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
             <div>
                 <div class="col-md-3 ">
-                    <h1><strong>添加人员</strong></h1>
+                    <h1><strong>添加会场</strong></h1>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <br />
                     <ol class="breadcrumb">
                         <li><a href="/Account/Admin">首页</a></li>
-                        <li><a href="/User/Index_admin">人员与角色选择</a></li>
-                        <li class="active">添加人员与角色</li>
+                        <li><a href="/MeetingPlace/Index_admin">会场管理</a></li>
+                        <li class="active">添加会场</li>
                     </ol>
                 </div>
-                <div class="col-md-3 ">
+                <div class="col-md-2 ">
                     <br />
-                    <button class="btn btn-default" type="button" id="cancel" href="/User/Index_admin">取消编辑</button>
+                    <button class="btn btn-default" type="button" id="cancel1" href="#">取 消</button>
                 </div>
             </div>
 
-            <div id="inputaddemployee">
-                <p id="addemployee1"><strong>人员姓名：</strong><input id="input1" type="text" name="addmeeting"></p>
-                <p id="addemployee2"><strong>人员部门单位：</strong><input id="input2" type="text" name="addmeeting"></p>
-                <p id="addemployee3"><strong>人员职务：</strong><input id="input3" type="text" name="addmeeting"></p>
-                <div>
-                    <strong>人员角色：</strong>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default">会议组织者</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div><strong>人员详细描述：</strong></div><textarea></textarea>
-
-            </div>
+            <p id="addMeeting1">
+                <strong>会场名称：</strong>
+                <input id="input1" type="text" name="addMeeting">
+            </p>
+            <p id="addMeeting2">
+                <strong>可容纳的人数：</strong>
+                <input id="input2" type="text" name="addMeeting">
+            </p>
 
 
             <div class="row">
                 <div class="col-md-4"></div>
-                <div class="col-md-4 col-md-offset-4" id="cancel2keep">
-                    <button class="btn btn-default" type="button" id="cancel2" href="/User/Index_admin">取消编辑</button>&nbsp;&nbsp;
-                    <button class="btn btn-default" type="button" id="keep" href="#">保存编辑</button>
+                <div class="col-md-4 col-md-offset-4" id="cancel2Keep">
+                    <button class="btn btn-default" type="button" id="cancel2" href="#">取 消</button>&nbsp;&nbsp;
+                    <button class="btn btn-default" type="button" id="keep" href="#">保 存</button>
                 </div>
             </div>
-
         </div>
         <script src="/node_modules/less/dist/less.js"></script>
         <script src="/node_modules/jquery/dist/jquery.js"></script>
         <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/node_modules/angular/angular.js"> </script>
-        <script src="~/js/user/add.js"></script>
+        <script src="/node_modules/angular/angular.js">
+        </script>
+        <script src="~/js/meetingPlace/add.js"></script>
 </body>
 
 </html>

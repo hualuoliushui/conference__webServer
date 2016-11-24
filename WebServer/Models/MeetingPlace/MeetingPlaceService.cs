@@ -12,7 +12,7 @@ namespace WebServer.Models.MeetingPlace
         private static int MeetingPlaceNameMax = 20;
 
         //检查会场名称的长度是否符合要求
-        private static bool checkFormat(string meetingPlaceName){
+        private bool checkFormat(string meetingPlaceName){
 
             return (meetingPlaceName.Length >= MeetingPlaceNameMin &&
                 meetingPlaceName.Length <= MeetingPlaceNameMax);
@@ -45,7 +45,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status getAllForMeeting(out List<MeetingPlaceForMeeting> meetingPlaces)
+        public Status getAllForMeeting(out List<MeetingPlaceForMeeting> meetingPlaces)
         {
             meetingPlaces = new List<MeetingPlaceForMeeting>();
 
@@ -76,7 +76,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status getAll(out List<MeetingPlace> meetingPlaces)
+        public Status getAll(out List<MeetingPlace> meetingPlaces)
         {
             meetingPlaces = new List<MeetingPlace>();
 
@@ -101,7 +101,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status getOneForUpdate(out UpdateMeetingPlace meetingPlace, int meetingPlaceID)
+        public Status getOneForUpdate(out UpdateMeetingPlace meetingPlace, int meetingPlaceID)
         {
             meetingPlace = new UpdateMeetingPlace();
 
@@ -119,7 +119,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status update(UpdateMeetingPlace meetingPlace)
+        public Status update(UpdateMeetingPlace meetingPlace)
         {
 
             //修正字符串
@@ -144,7 +144,7 @@ namespace WebServer.Models.MeetingPlace
             return Status.SUCCESS;
         }
 
-        public static Status UpdateUserAvailable(int meetingPlaceID,int available){
+        public Status UpdateUserAvailable(int meetingPlaceID,int available){
             //检查参数
             if (meetingPlaceID < 0
                 || (available != 0 && available != 1))

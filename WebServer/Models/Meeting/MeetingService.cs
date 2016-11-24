@@ -25,7 +25,7 @@ namespace WebServer.Models.Meeting
         private static int MeetingSummaryMax = 50;
 
         //检查参数格式
-        private static bool checkFormat(string meetingName, string meetingSummary, DateTime meetingToStartTime)
+        private bool checkFormat(string meetingName, string meetingSummary, DateTime meetingToStartTime)
         {
             return (meetingName.Length >= MeetingNameMin
                 && meetingName.Length <= MeetingNameMax
@@ -33,7 +33,7 @@ namespace WebServer.Models.Meeting
                 && (meetingToStartTime - DateTime.Now).TotalSeconds < 0 );  //时间：必须是未来
         }
 
-        public static Status create(string userName, CreateMeeting meeting)
+        public Status create(string userName, CreateMeeting meeting)
         {
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
@@ -73,7 +73,7 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
-        public static Status getAll(out List<TipMeeting> meetings)
+        public Status getAll(out List<TipMeeting> meetings)
         {
             meetings = new List<TipMeeting>();
 
@@ -106,7 +106,7 @@ namespace WebServer.Models.Meeting
         /// <param name="meetingID"></param>
         /// <param name="meeting"></param>
         /// <returns></returns>
-        public static Status getOne(int meetingID,out Meeting meeting){
+        public Status getOne(int meetingID,out Meeting meeting){
             meeting = new Meeting();
 
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
@@ -138,7 +138,7 @@ namespace WebServer.Models.Meeting
         /// <param name="meetingID"></param>
         /// <param name="meeting"></param>
         /// <returns></returns>
-        public static Status getOneForUpdate(string userName,int meetingID, out UpdateMeeting meeting)
+        public Status getOneForUpdate(string userName,int meetingID, out UpdateMeeting meeting)
         {
             meeting = new UpdateMeeting();
 
@@ -177,7 +177,7 @@ namespace WebServer.Models.Meeting
         /// <param name="userName"></param>
         /// <param name="meeting"></param>
         /// <returns></returns>
-        public static Status update(string userName, UpdateMeeting meeting)
+        public Status update(string userName, UpdateMeeting meeting)
         {
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
@@ -223,7 +223,7 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
-        public static Status deleteMultipe(string userName,List<int> meetingIDs)
+        public Status deleteMultipe(string userName,List<int> meetingIDs)
         {
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 

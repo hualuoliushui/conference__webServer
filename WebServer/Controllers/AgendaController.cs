@@ -27,7 +27,7 @@ namespace WebServer.Controllers
 
             List<Agenda> agendas;
 
-            Status status = AgendaService.getAll(meetingID,out agendas);
+            Status status = new AgendaService().getAll(meetingID,out agendas);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -45,9 +45,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = AgendaService.create(userName, agenda);
+            Status status = new AgendaService().create(userName, agenda);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -60,9 +60,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = AgendaService.update(userName, agenda);
+            Status status = new AgendaService().update(userName, agenda);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -75,9 +75,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = AgendaService.deleteMultipe(userName, agendas);
+            Status status = new AgendaService().deleteMultipe(userName, agendas);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

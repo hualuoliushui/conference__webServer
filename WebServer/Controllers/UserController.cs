@@ -33,7 +33,7 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
             //调用会场服务
             List<UserForDelegate> list = null;
-            Status status = UserService.getAllForDelegate(out list);
+            Status status = new UserService().getAllForDelegate(out list);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -49,7 +49,7 @@ namespace WebServer.Controllers
 
             List<User> users;
             //调用用户服务
-            Status status = UserService.getAll(out users);
+            Status status = new UserService().getAll(out users);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -65,7 +65,7 @@ namespace WebServer.Controllers
 
             UpdateUser user;
             //调用用户服务
-            Status status = UserService.getOneUpdate(out user, userID);
+            Status status = new UserService().getOneUpdate(out user, userID);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -89,11 +89,25 @@ namespace WebServer.Controllers
         }
 
         [HttpPost]
+        public JsonResult CreateForDelegate(CreateUserForDelegate user)
+        {
+            RespondModel respond = new RespondModel();
+            //调用用户服务
+            Status status = new UserService().createForDelegate(user);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = "";
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public JsonResult UpdateUser(UpdateUser user)
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
-            Status status = UserService.update(user);
+            Status status = new UserService().update(user);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -107,7 +121,7 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
-            Status status = UserService.UpdateUserAvailable(userID, state);
+            Status status = new UserService().UpdateUserAvailable(userID, state);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

@@ -14,7 +14,7 @@ namespace WebServer.Models.Document
         /// <param name="agendaID"></param>
         /// <param name="documents"></param>
         /// <returns></returns>
-        public static Status getAll(int agendaID, out List<Document> documents)
+        public Status getAll(int agendaID, out List<Document> documents)
         {
             documents = new List<Document>();
 
@@ -42,7 +42,7 @@ namespace WebServer.Models.Document
             return Status.SUCCESS;
         }
 
-        public static Status deleteMultipe(string userName, List<int> documents)
+        public Status deleteMultipe(string userName, List<int> documents)
         {
             if (documents == null || documents.Count == 0)
             {
@@ -96,7 +96,7 @@ namespace WebServer.Models.Document
         /// </summary>
         /// <param name="agendaID"></param>
         /// <returns></returns>
-        public static Status deleteAll(int agendaID)
+        public Status deleteAll(int agendaID)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             FileDAO fileDao = Factory.getInstance<FileDAO>();
@@ -104,5 +104,17 @@ namespace WebServer.Models.Document
             fileDao.delete(wherelist);
             return Status.SUCCESS;
         }
+
+        /// <summary>
+        /// 删除指定路径的文件？？
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        private static Status deleteFile(string filePath)
+        {
+            return Status.SUCCESS;
+        }
+
+        //文件的上传和下载
     }
 }

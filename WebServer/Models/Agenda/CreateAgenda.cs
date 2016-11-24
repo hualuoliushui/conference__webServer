@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebServer.Models.Agenda
 {
-    class CreateAgenda
+    public class CreateAgenda
     {
         public string agendaName { set; get; }
         public int agendaDuration { set; get; }

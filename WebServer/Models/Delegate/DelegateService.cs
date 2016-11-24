@@ -14,7 +14,7 @@ namespace WebServer.Models.Delegate
         /// <param name="meetingID"></param>
         /// <param name="delegates"></param>
         /// <returns></returns>
-        public static Status getAll(int meetingID, out List<Delegate> delegates){
+        public Status getAll(int meetingID, out List<Delegate> delegates){
             delegates = new List<Delegate>();
             
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
@@ -63,7 +63,7 @@ namespace WebServer.Models.Delegate
         /// <param name="userName"></param>
         /// <param name="updateDelegate"></param>
         /// <returns></returns>
-        public static Status update(string userName, UpdateDelegate updateDelegate)
+        public Status update(string userName, UpdateDelegate updateDelegate)
         {
             //验证当前用户的更新当前会议权限
             if (!validateMeeting(userName, updateDelegate.meetingID))
@@ -92,7 +92,7 @@ namespace WebServer.Models.Delegate
         /// <param name="userName"></param>
         /// <param name="createDelegate"></param>
         /// <returns></returns>
-        public static Status create(string userName, CreateDelegate createDelegate)
+        public Status create(string userName, CreateDelegate createDelegate)
         {
             //验证当前用户的更新当前会议权限
             if (!validateMeeting(userName, createDelegate.meetingID))
@@ -139,7 +139,7 @@ namespace WebServer.Models.Delegate
         /// <param name="userName"></param>
         /// <param name="createDelegates"></param>
         /// <returns></returns>
-        public static Status createMultiple(string userName, List<CreateDelegate> createDelegates)
+        public Status createMultiple(string userName, List<CreateDelegate> createDelegates)
         {
             if (createDelegates == null || createDelegates.Count == 0)
             {
@@ -192,7 +192,7 @@ namespace WebServer.Models.Delegate
         /// <param name="userName"></param>
         /// <param name="delegates"></param>
         /// <returns></returns>
-        public static Status deleteMultipe(string userName, List<int> delegates)
+        public Status deleteMultipe(string userName, List<int> delegates)
         {
             if (delegates == null || delegates.Count == 0)
             {
@@ -228,7 +228,7 @@ namespace WebServer.Models.Delegate
         }
 
 
-        public static Status getSpeakerForAgenda(int meetingID, out List<SpeakerForAgenda> speakers)
+        public Status getSpeakerForAgenda(int meetingID, out List<SpeakerForAgenda> speakers)
         {
             speakers = new List<SpeakerForAgenda>();
             //获取会议中的全部主讲人
@@ -264,7 +264,7 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
-        public static Status deleteAll(int meetingID)
+        public Status deleteAll(int meetingID)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();

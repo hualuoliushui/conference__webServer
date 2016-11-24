@@ -54,11 +54,7 @@ $(function(){
           userJob : $("#input3").val(),
           userDescription : $("#description").val()
        }, function (data, textStatus) {
-          
-          var userName = data.userName;
-          var userDepartment = data.userDepartment;
-          var userJob = data.userJob;
-          var userDescription = data.userDescription;
+           alert(JSON.stringify(data));
       },"json"); 
    }); 
 });

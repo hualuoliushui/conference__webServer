@@ -188,6 +188,8 @@
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Models\User\UserForDelegate.cs" />
     <Compile Include="Models\User\UserService.cs" />
+    <Compile Include="Models\Vote\Vote.cs" />
+    <Compile Include="Models\Vote\VoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -247,12 +249,17 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="js\editDevice.js" />
-    <Content Include="js\editPeopleAndRole.js" />
+    <Content Include="js\device\add.js" />
+    <Content Include="js\meetingPlace\add.js" />
+    <Content Include="js\device\edit.js" />
+    <Content Include="js\device\index.js" />
+    <Content Include="js\meetingPlace\edit.js" />
+    <Content Include="js\user\edit.js" />
     <Content Include="js\index.js" />
-    <Content Include="js\addPeopleAndRole.js" />
-    <Content Include="js\meetingplace.js" />
-    <Content Include="js\peopleAndrole.js" />
+    <Content Include="js\user\add.js" />
+    <Content Include="js\meetingPlace\index.js" />
+    <Content Include="js\user\index.js" />
+    <Content Include="js\role\role.js" />
     <Content Include="node_modules\.0.0.0%40prr\.jshintrc" />
     <Content Include="node_modules\.0.0.0%40prr\.npmignore" />
     <Content Include="node_modules\.0.0.0%40prr\.npminstall.done" />
@@ -1592,12 +1599,18 @@
     <Content Include="node_modules\source-map\package.json" />
     <Content Include="node_modules\source-map\README.md" />
     <Content Include="package.json" />
-    <Content Include="less\addPeopleAndRole.less" />
+    <Content Include="less\user\add.less" />
     <Content Include="less\index.less" />
-    <Content Include="less\peopleAndrole.less" />
-    <Content Include="less\meetingplace.less" />
-    <Content Include="less\editPeopleAndRole.less" />
-    <Content Include="less\editDevice.less" />
+    <Content Include="less\user\index.less" />
+    <Content Include="less\meetingPlace\index.less" />
+    <Content Include="less\user\edit.less" />
+    <Content Include="less\device\edit.less" />
+    <Content Include="less\device\add.less" />
+    <Content Include="less\meetingPlace\add.less" />
+    <Content Include="less\meetingPlace\edit.less" />
+    <Content Include="less\role.less" />
+    <Content Include="less\device\index.less" />
+    <Content Include="less\role\index.less" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
@@ -3301,15 +3314,18 @@
     <Content Include="Views\User\Add_admin.cshtml" />
     <Content Include="Views\MeetingPlace\Index_admin.cshtml" />
     <Content Include="Views\Device\Edit_admin.cshtml" />
+    <Content Include="Views\Device\Add_admin.cshtml" />
+    <Content Include="Views\MeetingPlace\Edit_admin.cshtml" />
+    <Content Include="Views\MeetingPlace\Add_admin.cshtml" />
+    <Content Include="Views\Device\Index_admin.cshtml" />
+    <Content Include="Views\Role\Index_admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Vote\" />
     <Folder Include="Views\Agenda\" />
     <Folder Include="Views\Delegate\" />
     <Folder Include="Views\Document\" />
     <Folder Include="Views\Meeting\" />
-    <Folder Include="Views\Role\" />
     <Folder Include="Views\Vote\" />
   </ItemGroup>
   <ItemGroup>

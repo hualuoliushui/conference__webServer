@@ -20,7 +20,7 @@ namespace WebServer.Models.Device
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>
-        public static Status create(CreateDevice device)
+        public Status create(CreateDevice device)
         {
             //检查参数
             if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
@@ -36,6 +36,7 @@ namespace WebServer.Models.Device
                 new DeviceVO {
                     deviceID = deviceID,
                     deviceIndex = device.deviceIndex, 
+                    IMEI=device.IMEI,
                     deviceState = 0 
                 }) != 1)
             {
@@ -48,9 +49,9 @@ namespace WebServer.Models.Device
         /// <summary>
         /// 请求 所有设备的 信息
         /// </summary>
-        /// <param name="devices"></param>
+        /// <param name="documents"></param>
         /// <returns></returns>
-        public static Status getAll(out List<Device> devices)
+        public Status getAll(out List<Device> devices)
         {
             devices = new List<Device>();
 
@@ -63,7 +64,7 @@ namespace WebServer.Models.Device
                         deviceID = deviceVo.deviceID, 
                         IMEI = deviceVo.IMEI,
                         deviceIndex = deviceVo.deviceIndex,
-                        deviceAvailable = deviceVo.deviceState 
+                        deviceFreezeState = deviceVo.deviceState 
                     });
             }
 
@@ -73,9 +74,9 @@ namespace WebServer.Models.Device
         /// <summary>
         /// 为参会人员 请求 所有设备的 信息
         /// </summary>
-        /// <param name="devices"></param>
+        /// <param name="documents"></param>
         /// <returns></returns>
-        public static Status getAllForDelegate(out List<DeviceForDelegate> devices)
+        public Status getAllForDelegate(out List<DeviceForDelegate> devices)
         {
             devices = new List<DeviceForDelegate>();
 
@@ -103,7 +104,7 @@ namespace WebServer.Models.Device
         /// <param name="device"></param>
         /// <param name="deviceID"></param>
         /// <returns></returns>
-        public static Status getOneForUpdate(out UpdateDevice device, int deviceID)
+        public Status getOneForUpdate(out UpdateDevice device, int deviceID)
         {
             device = new UpdateDevice();
 
@@ -126,7 +127,7 @@ namespace WebServer.Models.Device
         /// </summary>
         /// <param name="device"></param>
         /// <returns></returns>
-        public static Status update(UpdateDevice device)
+        public Status update(UpdateDevice device)
         {
             if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0 )
             {
@@ -151,7 +152,7 @@ namespace WebServer.Models.Device
         /// <param name="deviceID"></param>
         /// <param name="available"></param>
         /// <returns></returns>
-        public static Status UpdateDeviceAvailable(int deviceID, int available)
+        public Status UpdateDeviceAvailable(int deviceID, int available)
         {
             //数据库操作
             DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();

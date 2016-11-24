@@ -24,8 +24,8 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             List<TipMeeting> meetings = null;
-            //调用会场服务
-            Status status = MeetingService.getAll(out meetings);
+            //调用服务
+            Status status = new MeetingService().getAll(out meetings);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -39,8 +39,8 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             Meeting meeting = null;
-            //调用会场服务
-            Status status = MeetingService.getOne(meetingID, out meeting);
+            //调用服务
+            Status status = new MeetingService().getOne(meetingID, out meeting);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -53,9 +53,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = MeetingService.create(userName, meeting);
+            Status status = new MeetingService().create(userName, meeting);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -69,9 +69,9 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             UpdateMeeting meeting = null;
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = MeetingService.getOneForUpdate(userName, meetingID, out meeting);
+            Status status = new MeetingService().getOneForUpdate(userName, meetingID, out meeting);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -84,9 +84,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = MeetingService.update(userName, meeting);
+            Status status = new MeetingService().update(userName, meeting);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -100,9 +100,9 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
 
-            //调用会场服务
+            //调用服务
             string userName = HttpContext.User.Identity.Name;
-            Status status = MeetingService.deleteMultipe(userName, meetingIDs);
+            Status status = new MeetingService().deleteMultipe(userName, meetingIDs);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();

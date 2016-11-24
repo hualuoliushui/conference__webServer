@@ -10,6 +10,6 @@ namespace WebServer.Models.Device
         public int deviceID { set; get; }
         public string IMEI { set; get; }
         public int deviceIndex { set; get; }
-        public int deviceAvailable { set; get; }
+        public int deviceFreezeState { set; get; }
     }
 }

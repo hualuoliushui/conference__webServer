@@ -14,7 +14,7 @@ namespace WebServer.Models.Agenda
 
 
         //检查参数格式
-        private static bool checkFormat(string agendaName,int agendaDuration)
+        private bool checkFormat(string agendaName,int agendaDuration)
         {
             return ( agendaName.Length >= AgendaNameMin 
                 && agendaName.Length <= AgendaNameMax
@@ -24,7 +24,7 @@ namespace WebServer.Models.Agenda
 
 
         //获取指定会议的议程
-        public static Status getAll(int meetingID, out List<Agenda> agendas)
+        public Status getAll(int meetingID, out List<Agenda> agendas)
         {
             agendas = new List<Agenda>();
 
@@ -64,7 +64,7 @@ namespace WebServer.Models.Agenda
             return Status.SUCCESS;
         }
 
-        public static Status create(string userName,CreateAgenda createAgenda)
+        public Status create(string userName,CreateAgenda createAgenda)
         {
             //修正字符串
             createAgenda.agendaName = createAgenda.agendaName.Trim();
@@ -120,7 +120,7 @@ namespace WebServer.Models.Agenda
                 return Status.FAILURE;
         }
 
-        public static Status update(string userName,UpdateAgenda updateAgenda)
+        public Status update(string userName,UpdateAgenda updateAgenda)
         {
              //修正字符串
             updateAgenda.agendaName = updateAgenda.agendaName.Trim();
@@ -160,7 +160,7 @@ namespace WebServer.Models.Agenda
             return Status.SUCCESS;
         }
 
-        public static Status deleteMultipe(string userName, List<int> agendaIDs)
+        public Status deleteMultipe(string userName, List<int> agendaIDs)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -194,7 +194,7 @@ namespace WebServer.Models.Agenda
                 agendaDao.updateIndex(agendaVo.meetingID, agendaVo.agendaIndex);
 
                 //删除该议程下的附件
-                DocumentService.deleteAll(agendaVo.agendaID);
+                new DocumentService().deleteAll(agendaVo.agendaID);
                 //删除该议程下的表决
 
                 //删除该议程

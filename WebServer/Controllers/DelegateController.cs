@@ -27,7 +27,7 @@ namespace WebServer.Controllers
 
             List<Models.Delegate.Delegate> delegates;
 
-            Status status = DelegateService.getAll(meetingID,out delegates);
+            Status status = new DelegateService().getAll(meetingID,out delegates);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -47,7 +47,7 @@ namespace WebServer.Controllers
 
 
             string userName = HttpContext.User.Identity.Name;
-            Status status = DelegateService.createMultiple(userName, delegates);
+            Status status = new DelegateService().createMultiple(userName, delegates);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -67,7 +67,7 @@ namespace WebServer.Controllers
 
 
             string userName = HttpContext.User.Identity.Name;
-            Status status = DelegateService.create(userName, createDelegate);
+            Status status = new DelegateService().create(userName, createDelegate);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -87,7 +87,7 @@ namespace WebServer.Controllers
 
 
             string userName = HttpContext.User.Identity.Name;
-            Status status = DelegateService.update(userName, updateDelegate);
+            Status status = new DelegateService().update(userName, updateDelegate);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -107,7 +107,7 @@ namespace WebServer.Controllers
 
 
             string userName = HttpContext.User.Identity.Name;
-            Status status = DelegateService.deleteMultipe(userName, delegates);
+            Status status = new DelegateService().deleteMultipe(userName, delegates);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
@@ -121,7 +121,7 @@ namespace WebServer.Controllers
             RespondModel respond = new RespondModel();
 
             List<SpeakerForAgenda> speakers;
-            Status status = DelegateService.getSpeakerForAgenda(meetingID,out speakers );
+            Status status = new DelegateService().getSpeakerForAgenda(meetingID, out speakers);
 
             respond.Code = (int)status;
             respond.Message = status.ToString();
