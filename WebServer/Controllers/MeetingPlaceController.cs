@@ -31,7 +31,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().getAllForMeeting(out list);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = list;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -47,7 +47,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().getAll(out meetingPlaces);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = meetingPlaces;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -62,7 +62,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().getOneForUpdate(out meetingPlace, meetingPlaceID);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = meetingPlace;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -76,7 +76,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().create(meetingPlace);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -90,7 +90,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().update(meetingPlace);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -104,7 +104,7 @@ namespace WebServer.Controllers
             Status status = new MeetingPlaceService().UpdateUserAvailable(meetingPlaceID, state);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

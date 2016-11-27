@@ -30,7 +30,7 @@ namespace WebServer.Controllers
             Status status = new AgendaService().getAll(meetingID,out agendas);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = agendas;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -50,7 +50,7 @@ namespace WebServer.Controllers
             Status status = new AgendaService().create(userName, agenda);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -65,7 +65,7 @@ namespace WebServer.Controllers
             Status status = new AgendaService().update(userName, agenda);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -80,7 +80,7 @@ namespace WebServer.Controllers
             Status status = new AgendaService().deleteMultipe(userName, agendas);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

@@ -35,6 +35,11 @@ namespace WebServer.Models.Meeting
 
         public Status create(string userName, CreateMeeting meeting)
         {
+            if(string.IsNullOrWhiteSpace(meeting.meetingName)
+                || string.IsNullOrWhiteSpace(meeting.meetingSummary))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
             meeting.meetingSummary = meeting.meetingSummary.Trim();
@@ -179,6 +184,11 @@ namespace WebServer.Models.Meeting
         /// <returns></returns>
         public Status update(string userName, UpdateMeeting meeting)
         {
+            if(string.IsNullOrWhiteSpace(meeting.meetingName)
+                || string.IsNullOrWhiteSpace(meeting.meetingSummary))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
             meeting.meetingSummary = meeting.meetingSummary.Trim();

@@ -25,7 +25,7 @@ namespace WebServer.Controllers
             Status status = new DocumentService().getAll(agendaID,out documents);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = documents;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -40,7 +40,7 @@ namespace WebServer.Controllers
             Status status = new DocumentService().deleteMultipe(userName, documents);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

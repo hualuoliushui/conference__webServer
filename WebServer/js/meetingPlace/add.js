@@ -26,8 +26,8 @@ $(function(){
       $.post("/MeetingPlace/CreateMeetingPlace",{
           meetingPlaceName : $("#input1").val(),
           meetingPlaceCapacity : $("#input2").val()
-      },function(data,textStatus){
-          alert(JSON.stringify(data));
+      }, function (data, textStatus) {
+          $("#Status").text(data.Message);
           if (data.Code == 0) {
               window.location.href = "/MeetingPlace/Index_admin";
           }

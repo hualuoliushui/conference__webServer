@@ -105,6 +105,13 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status create(CreateUser newUser)
         {
+            if(string.IsNullOrWhiteSpace(newUser.userName)
+                || string.IsNullOrWhiteSpace(newUser.userDepartment)
+                || string.IsNullOrWhiteSpace(newUser.userJob)
+                || string.IsNullOrWhiteSpace(newUser.userDescription))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             try
             {
                 //字符串截去头尾
@@ -135,7 +142,7 @@ namespace WebServer.Models.User
 
             //如果插入用户失败，返回error
             if (personDao.insert<PersonVO>(personVo) != 1) 
-                return Status.DATABASE_OPERATOR_ERROR;
+                return Status.FAILURE;
 
             //如果插入用户角色关联失败，则删除之前添加的数据，并返回error
             Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
@@ -161,6 +168,14 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status createForDelegate(CreateUserForDelegate user)
         {
+            if(string.IsNullOrWhiteSpace(user.userName)
+                || string.IsNullOrWhiteSpace(user.userDepartment)
+                || string.IsNullOrWhiteSpace(user.userJob)
+                || string.IsNullOrWhiteSpace(user.userDescription)
+                )
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             RoleDAO roleDao = Factory.getInstance<RoleDAO>();
             List<RoleVO> roles = roleDao.getAll<RoleVO>();
 
@@ -282,6 +297,13 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status update(UpdateUser user)
         {
+            if(string.IsNullOrWhiteSpace(user.userName)
+                || string.IsNullOrWhiteSpace(user.userDepartment)
+                || string.IsNullOrWhiteSpace(user.userJob)
+                || string.IsNullOrWhiteSpace(user.userDescription))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //字符串截去头尾
             user.userName = user.userName.Trim();
             user.userDepartment = user.userDepartment.Trim();
@@ -303,6 +325,11 @@ namespace WebServer.Models.User
             PersonVO personVo = personDao.getOne<PersonVO>(user.userID);
             if (personVo == null)
                 return Status.NONFOUND;
+            if (string.Compare(personVo.personName, "Admin") == 0)
+            {
+                return Status.PERMISSION_DENIED;
+            }
+
             personVo.personName = user.userName;
             personVo.personDepartment = user.userDepartment;
             personVo.personJob = user.userJob;

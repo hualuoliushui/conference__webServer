@@ -26,7 +26,8 @@ $(function () {
         }
     }
     var meetingPlaceID = Request["meetingPlaceID"];
-   $.get("/MeetingPlace/GetMeetingPlaceForUpdate?MeetingPlaceID="+meetingPlaceID,function(data,textStatus){
+    $.get("/MeetingPlace/GetMeetingPlaceForUpdate?MeetingPlaceID=" + meetingPlaceID, function (data, textStatus) {
+        $("#Status").text(data.Message);
        var meetingPlaceID = data.Result.meetingPlaceID;
        var meetingPlaceName = data.Result.meetingPlaceName;
        var meetingPlaceCapacity = data.Result.meetingPlaceCapacity;
@@ -43,8 +44,8 @@ $(function(){
            meetingPlaceID : $("#input1").attr("meetingPlaceID"),
            meetingPlaceName : $("#input1").val(),
            meetingPlaceCapacity : $("#input2").val()
-       },function(data,textStatus){
-           alert(JSON.stringify(data));
+       }, function (data, textStatus) {
+           $("#Status").text(data.Message);
            if (data.Code == 0) {
                window.location.href="/MeetingPlace/Index_admin"
            }

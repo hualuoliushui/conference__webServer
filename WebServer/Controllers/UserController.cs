@@ -36,7 +36,7 @@ namespace WebServer.Controllers
             Status status = new UserService().getAllForDelegate(out list);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = list;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -52,7 +52,7 @@ namespace WebServer.Controllers
             Status status = new UserService().getAll(out users);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = users;
 
            return Json(respond, JsonRequestBehavior.AllowGet);
@@ -68,7 +68,7 @@ namespace WebServer.Controllers
             Status status = new UserService().getOneUpdate(out user, userID);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = user;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -82,7 +82,7 @@ namespace WebServer.Controllers
             Status status = new UserService().create(user);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -96,7 +96,7 @@ namespace WebServer.Controllers
             Status status = new UserService().createForDelegate(user);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -110,7 +110,7 @@ namespace WebServer.Controllers
             Status status = new UserService().update(user);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -124,7 +124,7 @@ namespace WebServer.Controllers
             Status status = new UserService().UpdateUserAvailable(userID, state);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

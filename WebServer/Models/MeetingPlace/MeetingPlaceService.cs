@@ -20,6 +20,10 @@ namespace WebServer.Models.MeetingPlace
 
         public Status create(CreateMeetingPlace meetingPlace)
         {
+            if (string.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //修正字符串
             meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
             //检查长度规范
@@ -121,7 +125,10 @@ namespace WebServer.Models.MeetingPlace
 
         public Status update(UpdateMeetingPlace meetingPlace)
         {
-
+            if (string.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //修正字符串
             meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
             //检查长度规范

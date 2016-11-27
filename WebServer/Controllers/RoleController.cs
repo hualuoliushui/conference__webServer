@@ -13,7 +13,7 @@ namespace WebServer.Controllers
         //
         // GET: /Role/
 
-        public ActionResult Index()
+        public ActionResult Index_admin()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace WebServer.Controllers
             Status status = new RoleService().getAllForUser(out list);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = list;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -48,7 +48,7 @@ namespace WebServer.Controllers
             Status status = new RoleService().getPermissions(out list);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = list;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -62,7 +62,7 @@ namespace WebServer.Controllers
             Status status = new RoleService().getAll(out roles);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = roles;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -72,11 +72,10 @@ namespace WebServer.Controllers
         {
             RespondModel respond = new RespondModel();
             //调用角色服务
-            Roles roles;
             Status status = new RoleService().create(role);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

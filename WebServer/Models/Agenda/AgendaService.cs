@@ -66,6 +66,11 @@ namespace WebServer.Models.Agenda
 
         public Status create(string userName,CreateAgenda createAgenda)
         {
+            if(string.IsNullOrWhiteSpace(createAgenda.agendaName))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
+
             //修正字符串
             createAgenda.agendaName = createAgenda.agendaName.Trim();
             //检查参数格式
@@ -91,6 +96,7 @@ namespace WebServer.Models.Agenda
             }
 
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
             Dictionary<string,object> wherelist = new Dictionary<string,object>();
 
@@ -102,7 +108,7 @@ namespace WebServer.Models.Agenda
             int agendaID = AgendaDAO.getID();
 
             //设置新的议程编号
-            int agendaIndex = agendaVolist == null ? 0 : agendaVolist.Count;
+            int agendaIndex = agendaVolist == null ? 1 : agendaVolist.Count+1;
             //添加议程
             AgendaVO agendaVo = new AgendaVO
             {
@@ -117,11 +123,22 @@ namespace WebServer.Models.Agenda
             if( agendaDao.insert<AgendaVO>(agendaVo) != 1){
                 return Status.FAILURE;
             }else
-                return Status.FAILURE;
+            {
+                if (meetingDao.increateDuration(agendaVo.meetingID, agendaVo.agendaDuration) != 1)
+                {
+                    agendaDao.delete(agendaID);
+                    return Status.FAILURE;
+                }
+            }
+            return Status.SUCCESS;
         }
 
         public Status update(string userName,UpdateAgenda updateAgenda)
         {
+            if (string.IsNullOrWhiteSpace(updateAgenda.agendaName))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
              //修正字符串
             updateAgenda.agendaName = updateAgenda.agendaName.Trim();
             //检查参数格式

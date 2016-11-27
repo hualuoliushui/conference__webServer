@@ -38,7 +38,7 @@
             <ul class="nav nav-stacked panel-body" role="tablist">
                 <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
                 <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
-                <li role="presentation"><a href="/User/Index_admin">人员与角色选择</a></li>
+                <li role="presentation"><a href="/User/Index_admin">人员管理</a></li>
                 <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
                 <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
             </ul>
@@ -52,14 +52,17 @@
                     <br />
                     <ol class="breadcrumb">
                         <li><a href="/Account/Admin">首页</a></li>
-                        <li><a href="/User/Index_admin">人员与角色选择</a></li>
-                        <li class="active">编辑人员与角色</li>
+                        <li><a href="/User/Index_admin">人员管理</a></li>
+                        <li class="active">编辑人员</li>
                     </ol>
                 </div>
                 <div class="col-md-3">
                     <br />
-                    <button class="btn btn-default" type="button" id="cancel" href="/User/Index_admin">取消编辑</button>
+                    <button class="btn btn-default" type="button" id="cancel1" href="#">取消编辑</button>
                 </div>
+                <span id="ContentRightHeadState">
+                    状态:<span id="Status"></span>
+                </span>
             </div>
 
             <div id="inputEditPeople">
@@ -69,9 +72,6 @@
                 <div>
                     <strong>人员角色：</strong>
                     <select name="select" id="select" class="xla_k">
-                        <option value="会议组织者" id="select1">会议组织者</option>
-                        <option value="普通用户" id="select2">普通用户</option>
-                        <option value="其他" id="select3">其他</option>
                     </select>
                 </div>
 
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 col-md-offset-4" id="cancel2Keep">
-                    <button class="btn btn-default" type="button" id="cancel2" href="/User/Index_admin">取消编辑</button>&nbsp;&nbsp;
+                    <button class="btn btn-default" type="button" id="cancel2" href="#">取消编辑</button>&nbsp;&nbsp;
                     <button class="btn btn-default" type="button" id="keep" href="#">保存编辑</button>
                 </div>
             </div>

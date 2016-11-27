@@ -38,7 +38,7 @@
             <ul class="nav nav-stacked panel-body" role="tablist">
                 <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
                 <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
-                <li role="presentation"><a href="/User/Index_admin">人员与角色选择</a></li>
+                <li role="presentation"><a href="/User/Index_admin">人员管理</a></li>
                 <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
                 <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
             </ul>
@@ -52,39 +52,29 @@
                     <br />
                     <ol class="breadcrumb">
                         <li><a href="/Account/Admin">首页</a></li>
-                        <li><a href="/User/Index_admin">人员与角色选择</a></li>
-                        <li class="active">添加人员与角色</li>
+                        <li><a href="/User/Index_admin">人员管理</a></li>
+                        <li class="active">添加人员</li>
                     </ol>
                 </div>
                 <div class="col-md-3 ">
                     <br />
-                    <button class="btn btn-default" type="button" id="cancel" href="/User/Index_admin">取消编辑</button>
+                    <button class="btn btn-default" type="button" id="cancel1" href="#">取消编辑</button>
                 </div>
+                <span id="ContentRightHeadState">
+                    状态:<span id="Status"></span>
+                </span>
             </div>
 
             <div id="inputaddemployee">
-                <p id="addemployee1"><strong>人员姓名：</strong><input id="input1" type="text" name="addmeeting"></p>
-                <p id="addemployee2"><strong>人员部门单位：</strong><input id="input2" type="text" name="addmeeting"></p>
-                <p id="addemployee3"><strong>人员职务：</strong><input id="input3" type="text" name="addmeeting"></p>
+                <p id="addemployee1"><strong>人员姓名：</strong><input id="input1" type="text" name="addperson"></p>
+                <p id="addemployee2"><strong>人员部门单位：</strong><input id="input2" type="text" name="addperson"></p>
+                <p id="addemployee3"><strong>人员职务：</strong><input id="input3" type="text" name="addperson"></p>
                 <div>
                     <strong>人员角色：</strong>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default">会议组织者</button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
-                    </div>
+                    <select name="select" id="select" class="xla_k"></select>
                 </div>
 
-                <div><strong>人员详细描述：</strong></div><textarea></textarea>
+                <div><strong>人员详细描述：</strong></div><textarea id="description"></textarea>
 
             </div>
 
@@ -92,7 +82,7 @@
             <div class="row">
                 <div class="col-md-4"></div>
                 <div class="col-md-4 col-md-offset-4" id="cancel2keep">
-                    <button class="btn btn-default" type="button" id="cancel2" href="/User/Index_admin">取消编辑</button>&nbsp;&nbsp;
+                    <button class="btn btn-default" type="button" id="cancel2" href="#">取消编辑</button>&nbsp;&nbsp;
                     <button class="btn btn-default" type="button" id="keep" href="#">保存编辑</button>
                 </div>
             </div>

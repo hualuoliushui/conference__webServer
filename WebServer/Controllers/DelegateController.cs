@@ -90,7 +90,7 @@ namespace WebServer.Controllers
             Status status = new DelegateService().update(userName, updateDelegate);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -110,7 +110,7 @@ namespace WebServer.Controllers
             Status status = new DelegateService().deleteMultipe(userName, delegates);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -124,7 +124,7 @@ namespace WebServer.Controllers
             Status status = new DelegateService().getSpeakerForAgenda(meetingID, out speakers);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = speakers;
 
             return Json(respond, JsonRequestBehavior.AllowGet);

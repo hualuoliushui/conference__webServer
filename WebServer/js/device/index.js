@@ -5,6 +5,7 @@ $(function () {
         url: "/Device/GetDevices",
         dataType: "json",
         success: function (response) {
+            $("#Status").text(response.Message);
             var appendListHtml = "";
             var itemCount = 0;
             var FreezeStateBtn = ["btn-default", ""];
@@ -135,7 +136,7 @@ $(function () {
                 },
                 dataType: "json",
                 success: function (response) {
-
+                    $("#Status").text(data.Message);
                 }
             });
             $(this).attr("buttonType", 0);
@@ -151,7 +152,7 @@ $(function () {
                 },
                 dataType: "json",
                 success: function (response) {
-
+                    $("#Status").text(data.Message);
                 }
             });
             $(this).attr("buttonType", 1);

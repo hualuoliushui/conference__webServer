@@ -111,6 +111,11 @@ namespace WebServer.Models.Role
 
             foreach (RoleVO roleVo in roleVolist)
             {
+                if (string.Compare(roleVo.roleName, "管理员") == 0
+                    || string.Compare(roleVo.roleName, "管理员") == 0)
+                {
+                    continue;
+                }
                 //初始化当前角色权限列表
                 int[] hasPermissionlist = new int[permissionlist.Count];
                 //获取角色、权限关联
@@ -152,6 +157,10 @@ namespace WebServer.Models.Role
         /// <returns></returns>
         public Status create(CreateRole role)
         {
+            if (string.IsNullOrWhiteSpace(role.roleName))
+            {
+                return Status.ARGUMENT_ERROR;
+            }
             //修正字符串
             role.roleName = role.roleName.Trim();
             //检查长度规范
@@ -164,7 +173,7 @@ namespace WebServer.Models.Role
             Role_PermissionDAO role_PermissionDao = Factory.getInstance<Role_PermissionDAO>();
 
             //不允许添加无权限角色
-            if (role.permissionIDs == null )
+            if (role.permissionIDs == null || role.permissionIDs.Count ==0 )
             {
                 return Status.ARGUMENT_ERROR;
             }
@@ -221,10 +230,10 @@ namespace WebServer.Models.Role
             {
                 //获取角色信息
                 RoleVO roleVo = roleDao.getOne<RoleVO>(roleID);
-                if (string.Compare(roleVo.roleName, "admin") == 0//禁止删除管理员角色
-                    || string.Compare(roleVo.roleName, "organizor") == 0//禁止删除组织者角色
-                    || string.Compare(roleVo.roleName, "member") == 0)//禁止删除成员角色
-                    continue;
+                if (string.Compare(roleVo.roleName, "管理员") == 0//禁止删除管理员角色
+                    || string.Compare(roleVo.roleName, "会议组织者") == 0//禁止删除组织者角色
+                    || string.Compare(roleVo.roleName, "成员") == 0)//禁止删除成员角色
+                    return Status.PERMISSION_DENIED;
                 wherelist.Clear();
                 wherelist.Add("roleID",roleID);
                 role_PermissionDao.delete(wherelist);

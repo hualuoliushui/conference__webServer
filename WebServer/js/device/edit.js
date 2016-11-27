@@ -28,6 +28,7 @@ $(function () {
     var deviceID = Request["deviceID"];
 
     $.get("/Device/GetDeviceForUpdate?deviceID=" + deviceID, function (data, textStatus) {
+        $("#Status").text(data.Message);
         var deviceID = data.Result.deviceID;
         var IMEI = data.Result.IMEI;
         var deviceIndex = data.Result.deviceIndex;
@@ -37,13 +38,7 @@ $(function () {
         $("#input2").val(IMEI);
     }, "json");
 });
-
-$(function(){
-   $("#keep").click(function(){
-      alert("保存成功!");
-   }); 
-});
-
+ 
 $(function(){
    $("#keep").click(function(){
        $.post("/Device/UpdateDevice", {
@@ -51,11 +46,9 @@ $(function(){
            IMEI: $("#input2").val(),
            deviceIndex : $("#input1").val()
        }, function (data, textStatus) {
-           alert(textStatus);
-           alert(JSON.stringify(data));
-           if (data.Code == 0) {
-               window.location.href="/Device/Index_admin"
-           }
+           $("#Status").text(data.Message);
+           if (data.Code == 0)
+               window.location.href = "/Device/Index_admin";
 
       },"json"); 
    }); 

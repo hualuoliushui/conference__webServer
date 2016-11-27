@@ -28,7 +28,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().getAll(out meetings);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = meetings;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -43,7 +43,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().getOne(meetingID, out meeting);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = meeting;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -58,7 +58,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().create(userName, meeting);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -74,7 +74,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().getOneForUpdate(userName, meetingID, out meeting);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = meeting;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -89,7 +89,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().update(userName, meeting);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -105,7 +105,7 @@ namespace WebServer.Controllers
             Status status = new MeetingService().deleteMultipe(userName, meetingIDs);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

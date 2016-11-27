@@ -19,4 +19,31 @@ namespace WebServer.Models
         ARGUMENT_ERROR=5,
         PERMISSION_DENIED=6
     }
+
+    public class Message
+    {
+        public static Dictionary<int, string> msgs;
+        static Message()
+        {
+            msgs = new Dictionary<int, string>();
+            msgs.Add((int)Status.SUCCESS, "操作成功");
+            msgs.Add((int)Status.FAILURE, "操作失败");
+            msgs.Add((int)Status.ARGUMENT_ERROR, "参数不为空");
+            msgs.Add((int)Status.FORMAT_ERROR, "参数格式出错");
+            msgs.Add((int)Status.PERMISSION_DENIED, "无权限");
+            msgs.Add((int)Status.NONFOUND, "无数据");
+            msgs.Add((int)Status.DATABASE_CONTENT_ERROR, "数据库内容出错");
+            msgs.Add((int)Status.DATABASE_OPERATOR_ERROR, "数据库操作出错");
+        }
+    }
+
+    public class System_Info
+    {
+        public static Dictionary<int, string> info;
+        static System_Info()
+        {
+            info = new Dictionary<int, string>();
+           
+        }
+    }
 }

@@ -38,7 +38,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().getAll(out devices);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = devices;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -53,7 +53,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().getAllForDelegate(out devices);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = devices;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -68,7 +68,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().getOneForUpdate(out device, deviceID);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = device;
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -81,7 +81,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().create(device);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -94,7 +94,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().update(device);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
@@ -107,7 +107,7 @@ namespace WebServer.Controllers
             Status status = new DeviceService().UpdateDeviceAvailable(deviceID, deviceFreezeState);
 
             respond.Code = (int)status;
-            respond.Message = status.ToString();
+            respond.Message = Message.msgs[respond.Code];
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);

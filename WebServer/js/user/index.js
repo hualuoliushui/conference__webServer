@@ -4,7 +4,8 @@ $(function() {
         type: "GET",
         url: "/User/GetUsers",
         dataType: "json",
-        success: function(response) {
+        success: function (response) {
+            $("#Status").text(response.Message);
             var appendListHtml = "";
             var itemCount = 0;
             var FreezeStateBtn = ["btn-default", ""];
@@ -126,7 +127,7 @@ $(function() {
     });
     $(document).on("click", ".freeze", function() {
         var userID = $(this).parent().attr("userID");
-        //alert(userID);
+        var result = false;
         if ($(this).attr("buttonType") == 1) {
             $.ajax({
                 type: "POST",
@@ -136,13 +137,14 @@ $(function() {
                     "state": 0
                 },
                 dataType: "json",
-                success: function(response) {
-
+                success: function (response) {
+                    $("#Status").text(response.Message);
                 }
             });
-            $(this).attr("buttonType", 0);
-            $(this).addClass("btn-default");
-            $(this).html("冻结");
+
+                $(this).attr("buttonType", 0);
+                $(this).addClass("btn-default");
+                $(this).html("冻结");
         } else {
             $.ajax({
                 type: "POST",
@@ -152,13 +154,14 @@ $(function() {
                     "state": 1
                 },
                 dataType: "json",
-                success: function(response) {
-
+                success: function (response) {
+                    $("#Status").text(response.Message);
                 }
             });
-            $(this).attr("buttonType", 1);
-            $(this).removeClass("btn-default");
-            $(this).html("已冻结");
+           
+           $(this).attr("buttonType", 1);
+           $(this).addClass("btn-default");
+           $(this).html("已冻结");  
         };
     });
 });
@@ -166,10 +169,10 @@ $(function() {
 //右侧按钮功能
 $(function() {
     $(document).on("click", ".returnIndex", function() {
-        window.location.href = "index.html";
+        window.location.href = "/Account/Admin";
     });
     $(document).on("click", ".new", function() {
-        window.location.href = "#";
+        window.location.href = "/User/Add_admin";
     });
 });
 

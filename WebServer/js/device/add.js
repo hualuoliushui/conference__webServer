@@ -29,10 +29,10 @@ $(function(){
           deviceIndex : $("#input1").val(),
           IMEI : $("#input2").val()
       }, function (data, textStatus) {
+          $("#Status").text(data.Message);
           if (data.Code == 0) {
               window.location.href = "/Device/Index_admin";
           }
-          alert(JSON.stringify(data));
       },"json"); 
    }); 
 });
