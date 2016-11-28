@@ -128,6 +128,7 @@ $(function() {
     $(document).on("click", ".freeze", function() {
         var userID = $(this).parent().attr("userID");
         var result = false;
+       
         if ($(this).attr("buttonType") == 1) {
             $.ajax({
                 type: "POST",

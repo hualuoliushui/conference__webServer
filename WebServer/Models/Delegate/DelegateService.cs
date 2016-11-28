@@ -66,7 +66,7 @@ namespace WebServer.Models.Delegate
         public Status update(string userName, UpdateDelegate updateDelegate)
         {
             //验证当前用户的更新当前会议权限
-            if (!validateMeeting(userName, updateDelegate.meetingID))
+            if (!meeting_validatePermission(userName))
             {
                 return Status.PERMISSION_DENIED;
             }
@@ -94,20 +94,20 @@ namespace WebServer.Models.Delegate
         /// <returns></returns>
         public Status create(string userName, CreateDelegate createDelegate)
         {
+            //初始化会议操作
+            meeting_initOperator(createDelegate.meetingID);
             //验证当前用户的更新当前会议权限
-            if (!validateMeeting(userName, createDelegate.meetingID))
+            if (!meeting_validatePermission(userName))
             {
                 return Status.PERMISSION_DENIED;
             }
 
-            //获取会议状态
-            int meetingStatus = getMeetingStatus(createDelegate.meetingID);
             //判断会议是否开启，如果开启，更新“会议更新状态”
-            if (IsOpening_Meeting(meetingStatus))
+            if (meeting_isOpening())
             {
-                updateMeetingUpdateStatus(createDelegate.meetingID);
+                meeting_updateMeetingUpdateStatus();
             }
-            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
@@ -145,21 +145,20 @@ namespace WebServer.Models.Delegate
             {
                 return Status.ARGUMENT_ERROR;
             }
-
+            //初始化会议操作
+            meeting_initOperator(createDelegates[0].meetingID);
             //验证当前用户的更新当前会议权限
-            if (!validateMeeting(userName, createDelegates[0].meetingID))
+            if (!meeting_validatePermission(userName))
             {
                 return Status.PERMISSION_DENIED;
             }
 
-            //获取会议状态
-            int meetingStatus = getMeetingStatus(createDelegates[0].meetingID);
             //判断会议是否开启，如果开启，更新“会议更新状态”
-            if (IsOpening_Meeting(meetingStatus))
+            if (meeting_isOpening())
             {
-                updateMeetingUpdateStatus(createDelegates[0].meetingID);
+                meeting_updateMeetingUpdateStatus();
             }
-            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
@@ -203,13 +202,12 @@ namespace WebServer.Models.Delegate
             foreach (int delegateID in delegates)
             {
                 DelegateVO delegateVo = delegateDao.getOne<DelegateVO>(delegateID);
-                if (validateMeeting(userName, delegateVo.meetingID))//有权限就执行删除
+                //初始化会议操作
+                meeting_initOperator(delegateVo.meetingID);
+                if (meeting_validatePermission(userName))//有权限就执行删除
                 {
-                    //获取会议状态
-                    int meetingStatus = getMeetingStatus(delegateVo.meetingID);
-
                     //判断会议是否开启，如果不是”未开启“，直接退出
-                    if (!IsNotOpen_Meeting(meetingStatus))
+                    if (!meeting_isNotOpen())
                     {
                         return Status.FAILURE;
                     }
@@ -269,8 +267,11 @@ namespace WebServer.Models.Delegate
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
             wherelist.Add("meetingID", meetingID);
-            delegateDao.delete(wherelist);
-            return Status.SUCCESS;
+            if (delegateDao.delete(wherelist) != -1)
+            {
+                return Status.SUCCESS;
+            }
+            return Status.FAILURE;
         }
         
     }

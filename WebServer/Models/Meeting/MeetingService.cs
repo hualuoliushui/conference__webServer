@@ -198,20 +198,20 @@ namespace WebServer.Models.Meeting
                 return Status.FORMAT_ERROR;
             }
 
+            //初始化会议操作
+            meeting_initOperator(meeting.meetingID);
             //验证当前用户的更新当前会议权限
-            if (!validateMeeting(userName, meeting.meetingID))
+            if (!meeting_validatePermission(userName))
             {
                 return Status.PERMISSION_DENIED;
             }
 
-            //获取会议状态
-            int meetingStatus = getMeetingStatus(meeting.meetingID);
             //判断会议是否开启，如果开启，更新“会议更新状态”
-            if (IsOpening_Meeting(meetingStatus))
+            if (meeting_isOpening())
             {
-                updateMeetingUpdateStatus(meeting.meetingID);
+                meeting_updateMeetingUpdateStatus();
             }
-            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
@@ -244,13 +244,13 @@ namespace WebServer.Models.Meeting
 
             foreach (int meetingID in meetingIDs)
             {
+                //初始化会议操作
+                meeting_initOperator(meetingID);
                 //验证权限
-                if (validateMeeting(userName, meetingID))//有权限就删除
+                if (meeting_validatePermission(userName))//有权限就删除
                 {
-                    //获取会议状态
-                    int meetingStatus = getMeetingStatus(meetingID);
                     //判断会议是否 未开启,如果 不是”未开启“，直接退出
-                    if (!IsNotOpen_Meeting(meetingStatus))
+                    if (!meeting_isNotOpen())
                     {
                         return Status.FAILURE;
                     }

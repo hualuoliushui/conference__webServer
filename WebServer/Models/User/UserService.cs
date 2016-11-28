@@ -126,7 +126,7 @@ namespace WebServer.Models.User
             }
             catch (ArgumentNullException e)
             {
-                return Status.FAILURE;
+                return Status.ARGUMENT_ERROR;
             }
 
             PersonVO personVo = new PersonVO();

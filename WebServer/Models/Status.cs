@@ -17,7 +17,9 @@ namespace WebServer.Models
         DATABASE_CONTENT_ERROR=3,
         NONFOUND=4,
         ARGUMENT_ERROR=5,
-        PERMISSION_DENIED=6
+        PERMISSION_DENIED=6,
+        FILE_NOT_SUPPORT=7,
+        FILE_PATH_ERROR=8
     }
 
     public class Message
@@ -34,6 +36,8 @@ namespace WebServer.Models
             msgs.Add((int)Status.NONFOUND, "无数据");
             msgs.Add((int)Status.DATABASE_CONTENT_ERROR, "数据库内容出错");
             msgs.Add((int)Status.DATABASE_OPERATOR_ERROR, "数据库操作出错");
+            msgs.Add((int)Status.FILE_NOT_SUPPORT, "文件格式不支持上传");
+            msgs.Add((int)Status.FILE_PATH_ERROR, "文件路径或文件不存在");
         }
     }
 

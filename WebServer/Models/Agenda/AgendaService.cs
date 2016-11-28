@@ -77,20 +77,20 @@ namespace WebServer.Models.Agenda
             if(!checkFormat(createAgenda.agendaName,createAgenda.agendaDuration)){
                 return Status.FORMAT_ERROR;
             }
+            //初始化会议操作
+            meeting_initOperator(createAgenda.meetingID);
 
             //验证拥有者权限
-            if(!validateMeeting(userName,createAgenda.meetingID)){
+            if(!meeting_validatePermission(userName)){
                 return Status.PERMISSION_DENIED;
             }
-            //获取会议状态
-            int meetingStatus = getMeetingStatus(createAgenda.meetingID);
 
             //判断会议是否开启，如果开启，更新“会议更新状态”
-            if (IsOpening_Meeting(meetingStatus))
+            if (meeting_isOpening())
             {
-                updateMeetingUpdateStatus(createAgenda.meetingID);
+                meeting_updateMeetingUpdateStatus();
             }
-            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
@@ -145,21 +145,20 @@ namespace WebServer.Models.Agenda
             if(!checkFormat(updateAgenda.agendaName,updateAgenda.agendaDuration)){
                 return Status.FORMAT_ERROR;
             }
-
+            //初始化会议操作
+            meeting_initOperator(updateAgenda.meetingID);
             //验证拥有者权限
-            if (!validateMeeting(userName, updateAgenda.meetingID))
+            if (!meeting_validatePermission(userName))
             {
                 return Status.PERMISSION_DENIED;
             }
-            //获取会议状态
-            int meetingStatus = getMeetingStatus(updateAgenda.meetingID);
 
             //判断会议是否开启，如果开启，更新“会议更新状态”
-            if (IsOpening_Meeting(meetingStatus))
+            if (meeting_isOpening())
             {
-                updateMeetingUpdateStatus(updateAgenda.meetingID);
+                meeting_updateMeetingUpdateStatus();
             }
-            else if (IsOpended_Meeting(meetingStatus))//如果会议已结束，直接退出
+            else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
             }
@@ -195,14 +194,14 @@ namespace WebServer.Models.Agenda
                    return Status.FAILURE;
                 }
 
+                //初始化会议操作
+                meeting_initOperator(agendaVo.meetingID);
                 //检查权限
-                if(!validateMeeting(userName,agendaVo.meetingID)){
+                if(!meeting_validatePermission(userName)){
                     return Status.PERMISSION_DENIED;
                 }
-                //获取会议状态
-                int meetingStatus = getMeetingStatus(agendaVo.meetingID);
                 //判断会议是否 未开启,如果 不是”未开启“，直接退出
-                if (!IsNotOpen_Meeting(meetingStatus))
+                if (!meeting_isNotOpen())
                 {
                     return Status.FAILURE;
                 }
