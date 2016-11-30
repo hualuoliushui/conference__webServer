@@ -65,6 +65,8 @@ namespace WebServer.Models.Delegate
         /// <returns></returns>
         public Status update(string userName, UpdateDelegate updateDelegate)
         {
+            //初始化会议操作
+            meeting_initOperator(updateDelegate.meetingID);
             //验证当前用户的更新当前会议权限
             if (!meeting_validatePermission(userName))
             {

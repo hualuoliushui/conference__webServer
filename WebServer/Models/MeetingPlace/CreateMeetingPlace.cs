@@ -11,5 +11,14 @@ namespace WebServer.Models.MeetingPlace
         public string meetingPlaceName { set; get; }
 
         public int meetingPlaceCapacity { set; get; }
+
+
+        public override String ToString()
+        {
+            return "{添加会场：" +
+                "会场名称：" + meetingPlaceName +
+                ",会场容量：" + meetingPlaceCapacity +
+                "}";
+        }
     }
 }

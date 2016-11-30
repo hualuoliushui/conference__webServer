@@ -105,5 +105,17 @@ namespace WebServer.Models
             }
             return false;
         }
+
+        /// <summary>
+        /// 表决是否 未开启 voteStatus==1
+        /// </summary>
+        /// <param name="voteStatus"></param>
+        /// <returns></returns>
+        public bool IsNotOpen_Vote(int voteStatus)
+        {
+            if (voteStatus == 1)
+                return true;
+            return false;
+        }
     }
 }

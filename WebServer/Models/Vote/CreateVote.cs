@@ -5,14 +5,18 @@ using System.Web;
 
 namespace WebServer.Models.Vote
 {
-    public class Vote
+    public class CreateVote
     {
-        public int voteID { set; get; }
-        public string voteName { set; get; }
-        public string voteDescription { set; get; }
-        public int voteType { set; get; }
-        public int optionNum { set; get; }
-        public List<string> options { set; get; }
         public int agendaID { set; get; }
+
+        public string voteName { set; get; }
+
+        public string voteDescription { get; set; }
+
+        public int voteType { set; get; }
+
+        public int optionNum { set; get; }
+
+        public List<string> voteOptions { set; get; }
     }
 }

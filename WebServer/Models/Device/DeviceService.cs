@@ -6,6 +6,7 @@ using DAL.DAOVO;
 using DAL.DAO;
 using DAL.DAOFactory;
 using WebServer.Models.Role;
+using WebServer.App_Start;
 
 namespace WebServer.Models.Device
 {
@@ -22,28 +23,39 @@ namespace WebServer.Models.Device
         /// <returns></returns>
         public Status create(CreateDevice device)
         {
-            //检查参数
-            if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
+            try
             {
-                return Status.ARGUMENT_ERROR;
-            }
-            //创建设备ID
-            int deviceID = DeviceDAO.getID();
+                Log.DebugInfo(device.ToString());
+                //检查参数
+                if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
+                {
+                    return Status.ARGUMENT_ERROR;
+                }
+                //创建设备ID
+                int deviceID = DeviceDAO.getID();
 
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-            //插入数据
-            if (deviceDao.insert<DeviceVO>(
-                new DeviceVO {
-                    deviceID = deviceID,
-                    deviceIndex = device.deviceIndex, 
-                    IMEI=device.IMEI,
-                    deviceState = 0 
-                }) != 1)
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                //插入数据
+                if (deviceDao.insert<DeviceVO>(
+                    new DeviceVO
+                    {
+                        deviceID = deviceID,
+                        deviceIndex = device.deviceIndex,
+                        IMEI = device.IMEI,
+                        deviceState = 0
+                    }) != 1)
+                {
+                    return Status.FAILURE;
+                }
+
+                return Status.SUCCESS;
+            }
+            catch (Exception e)
             {
-                return Status.FAILURE;
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
             }
-
-            return Status.SUCCESS;
+           
         }
 
         /// <summary>
@@ -54,21 +66,29 @@ namespace WebServer.Models.Device
         public Status getAll(out List<Device> devices)
         {
             devices = new List<Device>();
-
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-            List<DeviceVO> deviceVolist = deviceDao.getAll<DeviceVO>();
-            foreach (DeviceVO deviceVo in deviceVolist)
+            try
             {
-                devices.Add(
-                    new Device { 
-                        deviceID = deviceVo.deviceID, 
-                        IMEI = deviceVo.IMEI,
-                        deviceIndex = deviceVo.deviceIndex,
-                        deviceFreezeState = deviceVo.deviceState 
-                    });
-            }
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                List<DeviceVO> deviceVolist = deviceDao.getAll<DeviceVO>();
+                foreach (DeviceVO deviceVo in deviceVolist)
+                {
+                    devices.Add(
+                        new Device
+                        {
+                            deviceID = deviceVo.deviceID,
+                            IMEI = deviceVo.IMEI,
+                            deviceIndex = deviceVo.deviceIndex,
+                            deviceFreezeState = deviceVo.deviceState
+                        });
+                }
 
-            return Status.SUCCESS;
+                return Status.SUCCESS;
+            }
+            catch (Exception e)
+            {
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
+            }
         }
 
         /// <summary>
@@ -80,22 +100,30 @@ namespace WebServer.Models.Device
         {
             devices = new List<DeviceForDelegate>();
 
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-
-            Dictionary<string, object> wherelist = new Dictionary<string, object>();
-            wherelist.Add("deviceState", 0);
-            //只允许未冻结的人员作为参会人员。
-            List<DeviceVO> deviceVolist = deviceDao.getAll<DeviceVO>(wherelist);
-            foreach (DeviceVO deviceVo in deviceVolist)
+            try
             {
-                devices.Add(
-                    new DeviceForDelegate
-                    {
-                        deviceID = deviceVo.deviceID,
-                        deviceIndex = deviceVo.deviceIndex
-                    });
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+
+                Dictionary<string, object> wherelist = new Dictionary<string, object>();
+                wherelist.Add("deviceState", 0);
+                //只允许未冻结的人员作为参会人员。
+                List<DeviceVO> deviceVolist = deviceDao.getAll<DeviceVO>(wherelist);
+                foreach (DeviceVO deviceVo in deviceVolist)
+                {
+                    devices.Add(
+                        new DeviceForDelegate
+                        {
+                            deviceID = deviceVo.deviceID,
+                            deviceIndex = deviceVo.deviceIndex
+                        });
+                }
+                return Status.SUCCESS;
             }
-            return Status.SUCCESS;
+            catch (Exception e)
+            {
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
+            }
         }
 
         /// <summary>
@@ -108,18 +136,26 @@ namespace WebServer.Models.Device
         {
             device = new UpdateDevice();
 
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-            DeviceVO deviceVo = deviceDao.getOne<DeviceVO>(deviceID);
-            if (deviceVo == null)
+            try
             {
-                return Status.NONFOUND;
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                DeviceVO deviceVo = deviceDao.getOne<DeviceVO>(deviceID);
+                if (deviceVo == null)
+                {
+                    return Status.NONFOUND;
+                }
+
+                device.deviceID = deviceVo.deviceID;
+                device.IMEI = deviceVo.IMEI;
+                device.deviceIndex = deviceVo.deviceIndex;
+
+                return Status.SUCCESS;
             }
-
-            device.deviceID = deviceVo.deviceID;
-            device.IMEI = deviceVo.IMEI;
-            device.deviceIndex = deviceVo.deviceIndex;
-
-            return Status.SUCCESS;
+            catch (Exception e)
+            {
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
+            }
         }
 
         /// <summary>
@@ -129,21 +165,30 @@ namespace WebServer.Models.Device
         /// <returns></returns>
         public Status update(UpdateDevice device)
         {
-            if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0 )
+            Log.DebugInfo(device.ToString());
+            try
             {
-                return Status.ARGUMENT_ERROR;
+                if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
+                {
+                    return Status.ARGUMENT_ERROR;
+                }
+
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+
+                Dictionary<string, object> setlist = new Dictionary<string, object>();
+                setlist.Add("IMEI", device.IMEI);
+                setlist.Add("deviceIndex", device.deviceIndex);
+                if (deviceDao.update(
+                    setlist, device.deviceID) != 1)
+                    return Status.FAILURE;
+
+                return Status.SUCCESS;
             }
-
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-
-            Dictionary<string, object> setlist = new Dictionary<string, object>();
-            setlist.Add("IMEI", device.IMEI);
-            setlist.Add("deviceIndex", device.deviceIndex);
-            if (deviceDao.update(
-                setlist, device.deviceID) != 1)
-                return Status.FAILURE;
-
-            return Status.SUCCESS;
+            catch (Exception e)
+            {
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
+            }
         }
 
         /// <summary>
@@ -154,18 +199,26 @@ namespace WebServer.Models.Device
         /// <returns></returns>
         public Status UpdateDeviceAvailable(int deviceID, int available)
         {
-            //数据库操作
-            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-
-            Dictionary<string, object> setlist = new Dictionary<string, object>();
-
-            setlist.Add("deviceState", available);
-            if (deviceDao.update(setlist,deviceID)!=1)
+            try
             {
-                return Status.FAILURE;
-            }
+                //数据库操作
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
 
-            return Status.SUCCESS;
+                Dictionary<string, object> setlist = new Dictionary<string, object>();
+
+                setlist.Add("deviceState", available);
+                if (deviceDao.update(setlist, deviceID) != 1)
+                {
+                    return Status.FAILURE;
+                }
+
+                return Status.SUCCESS;
+            }
+            catch (Exception e)
+            {
+                Log.ErrorInfo(e.StackTrace);
+                return Status.SERVER_EXCEPTION;
+            }
         }
     }
 }

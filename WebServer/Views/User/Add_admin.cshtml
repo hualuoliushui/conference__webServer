@@ -65,6 +65,18 @@
                 </span>
             </div>
 
+            <div id="importExcel">
+                <form action="/User/Upload" method="post" enctype="multipart/form-data">
+                    <label>
+                        导入Excel文件<input type="file" name="file" title="导入Excel文件" />
+                    </label>
+                    <label>
+                        输入文件表格名称，默认为Sheet1<input type="text" name="tableName" />
+                    </label>
+                    <input type="submit" value="导入" />
+                </form>
+            </div>
+
             <div id="inputaddemployee">
                 <p id="addemployee1"><strong>人员姓名：</strong><input id="input1" type="text" name="addperson"></p>
                 <p id="addemployee2"><strong>人员部门单位：</strong><input id="input2" type="text" name="addperson"></p>

@@ -6,6 +6,7 @@ using DAL.DAOVO;
 using DAL.DAO;
 using DAL.DAOFactory;
 using WebServer.Models.Role;
+using WebServer.Models.Excel;
 
 namespace WebServer.Models.User
 {
@@ -161,6 +162,23 @@ namespace WebServer.Models.User
             return Status.SUCCESS;
         }
 
+        public Status createMultiple(String excelFilePath,String tableName,ref List<Status> checkList)
+        {
+            List<CreateUserForDelegate> list;
+            Status status = new Excel.Excel().import<CreateUserForDelegate>(excelFilePath, tableName, out list);
+            if (status != Status.SUCCESS)
+            {
+                return status;
+            }
+
+            foreach (CreateUserForDelegate user in list)
+            {
+                Status createStatus = createForDelegate(user);
+                checkList.Add(createStatus);
+            }
+            return Status.SUCCESS;
+        }
+
         /// <summary>
         /// 为参会人员添加用户
         /// </summary>
@@ -180,7 +198,7 @@ namespace WebServer.Models.User
             List<RoleVO> roles = roleDao.getAll<RoleVO>();
 
             //默认是member角色
-            int roleID = roles.Where(role => role.roleName == "Member").ToList()[0].roleID;
+            int roleID = roles.Where(role => role.roleName == "成员").ToList()[0].roleID;
 
             CreateUser createUser = new CreateUser
             {

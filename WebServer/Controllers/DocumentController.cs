@@ -20,7 +20,7 @@ namespace WebServer.Controllers
 
 
         //上传文件,已完成----李杭澍
-        [System.Web.Http.HttpPost]
+        [HttpPost]
         public JsonResult Upload(FormCollection form)
         {
             RespondModel respond = new RespondModel();
@@ -59,7 +59,7 @@ namespace WebServer.Controllers
 
                     string userName = HttpContext.User.Identity.Name;//登录时的用户名
                     //将文件信息写入数据库的操作失败时，删除已上传的相应文件
-                    if (documentService.addFile(userName, agendaID, fileName, fileSize, fileFullPath) == Status.FAILURE)
+                    if (documentService.addFile(userName, agendaID, fileName, fileSize, fileFullPath) != Status.SUCCESS)
                     {
                         fi.Delete();
                         status = Status.FAILURE;
