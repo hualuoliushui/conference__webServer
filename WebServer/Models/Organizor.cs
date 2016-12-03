@@ -91,14 +91,62 @@ namespace WebServer.Models
             return false;
         }
         /// <summary>
-        /// 更新“会议更新状态“
+        /// 更新“会议中，议程更新状态“
         /// </summary>
         /// <returns></returns>
-        public  bool meeting_updateMeetingUpdateStatus()
+        public  bool meeting_updateAgenda()
         {
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
             Dictionary<string, object> setlist = new Dictionary<string, object>();
-            setlist.Add("meetingUpdateStatus", 1);
+            setlist.Add("agendaUpdateStatus", 1);
+            if (meetingDao.update(setlist, meetingVo.meetingID) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 更新“会议中，参会人员更新状态“
+        /// </summary>
+        /// <returns></returns>
+        public bool meeting_updateDelegate()
+        {
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+            setlist.Add("delegateUpdateStatus", 1);
+            if (meetingDao.update(setlist, meetingVo.meetingID) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 更新“会议中,附件更新状态“
+        /// </summary>
+        /// <returns></returns>
+        public bool meeting_updatefile()
+        {
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+            setlist.Add("fileUpdateStatus", 1);
+            if (meetingDao.update(setlist, meetingVo.meetingID) == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 更新“会议中，表决更新状态“
+        /// </summary>
+        /// <returns></returns>
+        public bool meeting_updatevote()
+        {
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+            setlist.Add("voteUpdateStatus", 1);
             if (meetingDao.update(setlist, meetingVo.meetingID) == 1)
             {
                 return true;

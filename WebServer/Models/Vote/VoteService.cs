@@ -137,12 +137,19 @@ namespace WebServer.Models.Vote
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 删除会议时使用
+        /// </summary>
+        /// <param name="agendaID"></param>
+        /// <returns></returns>
         public Status deleteAll(int agendaID)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
+            VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
             wherelist.Add("agendaID", agendaID);
-            voteDao.delete(wherelist);
+            voteOptionDao.delete(wherelist);//删除选项
+            voteDao.delete(wherelist);//删除表决
             return Status.SUCCESS;
         }
 
@@ -174,10 +181,10 @@ namespace WebServer.Models.Vote
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            //判断会议是否开启，如果正在开启，直接退出
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                return Status.MEETING_OPENING;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
@@ -252,10 +259,12 @@ namespace WebServer.Models.Vote
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            bool isUpdate = false;
+            //判断会议是否开启，如果开启，更新"更新状态”,设置数据更新状态
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                meeting_updatevote();
+                isUpdate = true;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
@@ -276,7 +285,9 @@ namespace WebServer.Models.Vote
                         voteName = vote.voteName,
                         voteDescription = vote.voteDescription,
                         voteType = vote.voteType,
-                        voteStatus = 1 // 未开
+                        voteStatus = 1, // 未开
+                        agendaID = vote.agendaID,
+                        isUpdate = isUpdate
                     }) != 1)
             {
                 return Status.FAILURE;

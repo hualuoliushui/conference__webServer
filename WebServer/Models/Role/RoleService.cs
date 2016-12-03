@@ -111,11 +111,6 @@ namespace WebServer.Models.Role
 
             foreach (RoleVO roleVo in roleVolist)
             {
-                if (string.Compare(roleVo.roleName, "管理员") == 0
-                    || string.Compare(roleVo.roleName, "管理员") == 0)
-                {
-                    continue;
-                }
                 //初始化当前角色权限列表
                 int[] hasPermissionlist = new int[permissionlist.Count];
                 //获取角色、权限关联
@@ -230,9 +225,7 @@ namespace WebServer.Models.Role
             {
                 //获取角色信息
                 RoleVO roleVo = roleDao.getOne<RoleVO>(roleID);
-                if (string.Compare(roleVo.roleName, "管理员") == 0//禁止删除管理员角色
-                    || string.Compare(roleVo.roleName, "会议组织者") == 0//禁止删除组织者角色
-                    || string.Compare(roleVo.roleName, "成员") == 0)//禁止删除成员角色
+                if (roleVo.isIntegrant)//禁止删除系统角色
                     return Status.PERMISSION_DENIED;
                 wherelist.Clear();
                 wherelist.Add("roleID",roleID);

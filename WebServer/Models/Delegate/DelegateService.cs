@@ -73,6 +73,16 @@ namespace WebServer.Models.Delegate
                 return Status.PERMISSION_DENIED;
             }
 
+            //判断会议是否开启，如果正在开启，直接退出
+            if (meeting_isOpening())
+            {
+                return Status.MEETING_OPENING;
+            }
+            else if (meeting_isOpended())//如果会议已结束，直接退出
+            {
+                return Status.FAILURE;
+            }
+
             //更新参会人员信息
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
 
@@ -104,10 +114,12 @@ namespace WebServer.Models.Delegate
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            bool isUpdate = false;
+            //判断会议是否开启，如果正在开启，更新“参会人员更新状态”，数据设置”更新“状态
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                meeting_updateDelegate();
+                isUpdate = true;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
@@ -126,7 +138,8 @@ namespace WebServer.Models.Delegate
                     deviceID = createDelegate.deviceID,
                     meetingID = createDelegate.meetingID,
                     personMeetingRole = createDelegate.userMeetingRole,
-                    isSignIn = false
+                    isSignIn = false,
+                    isUpdate = isUpdate //判断是否属于会议中新加入的信息
                 }) != 1)
             {
                 return Status.FAILURE;
@@ -155,10 +168,12 @@ namespace WebServer.Models.Delegate
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            bool isUpdate = false;
+            //判断会议是否开启，如果开启，更新“更新状态”,设置数据更新状态
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                meeting_updateDelegate();
+                isUpdate = true;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
@@ -177,7 +192,8 @@ namespace WebServer.Models.Delegate
                       deviceID = createDelegate.deviceID,
                       meetingID = createDelegate.meetingID,
                       personMeetingRole = createDelegate.userMeetingRole,
-                      isSignIn = false
+                      isSignIn = false,
+                      isUpdate = isUpdate //判断是否属于会议中新加入的信息
                   }) != 1) 
                 {
                     continue;
@@ -264,6 +280,11 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
+        /// <summary>
+        /// 删除会议时使用
+        /// </summary>
+        /// <param name="meetingID"></param>
+        /// <returns></returns>
         public Status deleteAll(int meetingID)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();

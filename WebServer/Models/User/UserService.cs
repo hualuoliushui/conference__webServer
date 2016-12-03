@@ -197,8 +197,8 @@ namespace WebServer.Models.User
             RoleDAO roleDao = Factory.getInstance<RoleDAO>();
             List<RoleVO> roles = roleDao.getAll<RoleVO>();
 
-            //默认是member角色
-            int roleID = roles.Where(role => role.roleName == "成员").ToList()[0].roleID;
+            //默认是“成员”角色//基础角色ID为3，默认无权限
+            int roleID = 3;
 
             CreateUser createUser = new CreateUser
             {
@@ -343,7 +343,7 @@ namespace WebServer.Models.User
             PersonVO personVo = personDao.getOne<PersonVO>(user.userID);
             if (personVo == null)
                 return Status.NONFOUND;
-            if (string.Compare(personVo.personName, "Admin") == 0)
+            if (personVo.isAdmin) //不允许修改超级管理员
             {
                 return Status.PERMISSION_DENIED;
             }
@@ -398,7 +398,7 @@ namespace WebServer.Models.User
             PersonDAO personDao = Factory.getInstance<PersonDAO>();
             PersonVO personVo = personDao.getOne<PersonVO>(userID);
             if( personVo == null 
-                || string.Compare(personVo.personName,"admin")==0 ) // 不允许修改超级管理员的状态)
+                || personVo.isAdmin ) // 不允许修改超级管理员的状态)
             {
                 return Status.FAILURE;
             }

@@ -37,6 +37,7 @@ namespace WebServer.Models.Agenda
             //获取指定会议的议程
             wherelist.Add("meetingID", meetingID);
             List<AgendaVO> AgendaVolist = agendaDao.getAll<AgendaVO>(wherelist);
+
             if (AgendaVolist == null)
             {
                 return Status.NONFOUND;
@@ -86,10 +87,12 @@ namespace WebServer.Models.Agenda
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            bool isUpdate = false;
+            //判断会议是否开启，如果开启，更新“议程更新状态”，数据设置更新状态
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                meeting_updateAgenda();
+                isUpdate = true;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
@@ -118,7 +121,8 @@ namespace WebServer.Models.Agenda
                 agendaDuration = createAgenda.agendaDuration,
                 agendaIndex = agendaIndex,
                 meetingID = createAgenda.meetingID,
-                personID = createAgenda.userID
+                personID = createAgenda.userID,
+                isUpdate = isUpdate //判断是否属于会议中新加入的信息
             };
 
             if( agendaDao.insert<AgendaVO>(agendaVo) != 1){
@@ -154,10 +158,10 @@ namespace WebServer.Models.Agenda
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            //判断会议是否开启，如果正在开启，直接退出
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                return Status.MEETING_OPENING;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {

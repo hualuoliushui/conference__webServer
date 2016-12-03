@@ -20,7 +20,9 @@ namespace WebServer.Models
         PERMISSION_DENIED=6,
         FILE_NOT_SUPPORT=7,
         FILE_PATH_ERROR=8,
-        SERVER_EXCEPTION=9
+        SERVER_EXCEPTION=9,
+        MEETING_OPENING,
+        MEETING_OPENED
     }
 
     public class Message
@@ -40,6 +42,8 @@ namespace WebServer.Models
             msgs.Add((int)Status.FILE_NOT_SUPPORT, "文件格式不支持上传");
             msgs.Add((int)Status.FILE_PATH_ERROR, "文件路径或文件不存在");
             msgs.Add((int)Status.SERVER_EXCEPTION, "服务器异常");
+            msgs.Add((int)Status.MEETING_OPENING, "会议正在开启，无法修改");
+            msgs.Add((int)Status.MEETING_OPENED, "会议已结束");
         }
     }
 

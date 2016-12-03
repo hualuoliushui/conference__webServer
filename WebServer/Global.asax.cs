@@ -9,6 +9,7 @@ using System.Web.Routing;
 
 using System.Diagnostics;
 using WebServer.App_Start;
+using DAL;
 
 namespace WebServer
 {
@@ -25,6 +26,9 @@ namespace WebServer
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //添加数据库测试数据
+            TestData.init();
         }
 
         void Application_Error(object sender, EventArgs e)
@@ -34,20 +38,8 @@ namespace WebServer
             //实际发生的异常
             Exception iex = ex.InnerException;
             Log.LogInfo("服务器异常", ex);
-            //string errorMsg = String.Empty;
-            //string particular = String.Empty;
-            //if (iex != null)
-            //{
-            //    errorMsg = iex.Message;
-            //    particular = iex.StackTrace;
-            //}
-            //else
-            //{
-            //    errorMsg = ex.Message;
-            //    particular = ex.StackTrace;
-            //}
-            HttpContext.Current.Response.Write("服务器异常<br />");
-            //HttpContext.Current.Response.Write(errorMsg);
+
+            HttpContext.Current.Response.Write("服务器异常<br /><div>"+ex.StackTrace+"</div>");
 
             Server.ClearError();//处理完及时清理异常
         }

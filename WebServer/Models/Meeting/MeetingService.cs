@@ -68,7 +68,10 @@ namespace WebServer.Models.Meeting
                     meetingStatus = 1,//未开
                     meetingDuration = 0,
                     meetingStartedTime = DateTime.Now,
-                    meetingUpdateStatus = 0, //无更新
+                    delegateUpdateStatus = 0,//无更新
+                    agendaUpdateStatus = 0, //无更新
+                    fileUpdateStatus = 0, //无更新
+                    voteUpdateStatus = 0, //无更新
                     personID = personVo.personID
                 }) != 1)
             {
@@ -207,10 +210,10 @@ namespace WebServer.Models.Meeting
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            //判断会议是否开启，如果正在开启，直接退出
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                return Status.MEETING_OPENING;
             }
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {

@@ -27,10 +27,12 @@ namespace WebServer.Models.Document
                 return Status.PERMISSION_DENIED;
             }
 
-            //判断会议是否开启，如果开启，更新“会议更新状态”
+            bool isUpdate = false;
+            //判断会议是否开启，如果开启，更新“会议更新状态”，设置数据更新状态
             if (meeting_isOpening())
             {
-                meeting_updateMeetingUpdateStatus();
+                meeting_updatefile();//这里file与document指代同一种事物
+                isUpdate = true;
             }
             else if (meeting_isOpended())//会议已结束,不允许添加
             {
@@ -57,7 +59,8 @@ namespace WebServer.Models.Document
                 fileIndex = fileIndex,
                 fileSize = filesize,
                 filePath = fileFullPath,
-                agendaID = agendaID
+                agendaID = agendaID,
+                isUpdate = isUpdate //判断是否属于会议中新加入的信息
             };
 
             if (fileDao.insert<FileVO>(fileVo) != 1)
