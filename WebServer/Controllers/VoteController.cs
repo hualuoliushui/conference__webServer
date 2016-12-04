@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Vote;
 
@@ -18,6 +19,7 @@ namespace WebServer.Controllers
             return View();
         }
 
+        [RBAC]
         public JsonResult GetVotes(int agendaID)
         {
             RespondModel respond = new RespondModel();
@@ -33,6 +35,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         public JsonResult DeleteVoteMultipe(List<int> votes)
         {
             RespondModel respond = new RespondModel();
@@ -48,6 +51,23 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
+        public JsonResult GetVoteForUpdate(int voteID)
+        {
+            RespondModel respond = new RespondModel();
+
+            //调用服务
+            UpdateVote vote;
+            Status status = new VoteService().getOneForUpdate(voteID,out vote);
+
+            respond.Code = (int)status;
+            respond.Message = status.ToString();
+            respond.Result = vote;
+
+            return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        [RBAC]
         public JsonResult UpdateVote(UpdateVote vote)
         {
             RespondModel respond = new RespondModel();
@@ -63,6 +83,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         public JsonResult CreateVote(CreateVote vote)
         {
             RespondModel respond = new RespondModel();

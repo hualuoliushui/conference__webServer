@@ -28,7 +28,6 @@ namespace WebServer.Controllers
             {
                 return RedirectToAction("Index");
             }
-            Session["logined"] = 1;
 
             Forms.Login(userName, 20);
 
@@ -52,10 +51,6 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Admin()
         {
-            if (Session["logined"] == null)
-            {
-                return View("Index");
-            }
             return View("Admin");
         }
 
@@ -63,10 +58,6 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Organizor()
         {
-            if (Session["logined"] == null)
-            {
-                return View("Index");
-            }
             return View("Organizor");
         }
     }

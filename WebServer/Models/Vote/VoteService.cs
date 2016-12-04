@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebServer.App_Start;
 
 namespace WebServer.Models.Vote
 {
@@ -81,6 +82,54 @@ namespace WebServer.Models.Vote
             return Status.SUCCESS;
         }
 
+        public Status getOneForUpdate(int voteID,out UpdateVote vote)
+        {
+            vote = new UpdateVote();
+            try
+            {
+                Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
+                VoteDAO voteDao = Factory.getInstance<VoteDAO>();
+                VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
+
+                VoteVO voteVo = voteDao.getOne<VoteVO>(voteID);
+                if (voteVo == null)
+                {
+                    return Status.NONFOUND;
+                }
+                //获取表决选项列表
+                List<string> voteOptions = new List<string>();
+                wherelist.Add("voteID", voteID);
+                List<VoteOptionVO> voteOptionVolist = voteOptionDao.getAll<VoteOptionVO>(wherelist);
+                //将选项按序号排序
+                voteOptionVolist.Sort((x, y) => x.voteOptionIndex - y.voteOptionIndex);
+                //填充返回列表
+                if (voteOptionVolist != null)
+                {
+                    foreach (VoteOptionVO voteOptionVo in voteOptionVolist)
+                    {
+                        voteOptions.Add(voteOptionVo.voteOptionName);
+                    }
+                }
+                vote.agendaID = voteVo.agendaID;
+                vote.voteID = voteVo.voteID;
+                vote.voteIndex = voteVo.voteIndex;
+                vote.voteName = voteVo.voteName;
+                vote.voteDescription = voteVo.voteDescription;
+                vote.voteType = voteVo.voteType;
+                vote.optionNum = voteOptions.Count;
+                vote.voteOptions = voteOptions;
+
+                return Status.SUCCESS;
+            }
+            catch (Exception e)
+            {
+                Log.LogInfo("为更新获取表决信息",e);
+                return Status.SERVER_EXCEPTION;
+            }
+            
+        }
+
         public Status deleteMultipe(string userName, List<int> votes)
         {
             if (votes == null || votes.Count == 0)
@@ -94,7 +143,7 @@ namespace WebServer.Models.Vote
 
             foreach (int voteID in votes)
             {
-                //获取附件信息
+                //获取表决信息
                 VoteVO voteVo = voteDao.getOne<VoteVO>(voteID);
                 if (voteVo == null)
                     continue;

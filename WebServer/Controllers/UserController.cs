@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.User;
 
@@ -24,14 +25,24 @@ namespace WebServer.Controllers
             return View();
         }
 
+        [RBAC]
         [HttpGet]
         public ActionResult Edit_admin()
         {
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Account");
+            }
             return View();
         }
 
+        [RBAC]
         public JsonResult GetUsersForDelegate()
         {
+            if (Session["userID"] == null)
+            {
+                return null;
+            }
             RespondModel respond = new RespondModel();
             //调用会场服务
             List<UserForDelegate> list = null;
@@ -44,6 +55,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpGet]
         public JsonResult GetUsers()
         {
@@ -60,6 +72,7 @@ namespace WebServer.Controllers
            return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpGet]
         public JsonResult GetUserForUpdate(int userID)
         {
@@ -76,6 +89,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpPost]
         public JsonResult Upload(FormCollection form)
         {
@@ -149,6 +163,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpPost]
         public JsonResult CreateForDelegate(CreateUserForDelegate user)
         {
@@ -163,6 +178,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpPost]
         public JsonResult UpdateUser(UpdateUser user)
         {
@@ -177,6 +193,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         [HttpPost]
         public JsonResult UpdateUserAvailable(int userID, int state)//state对应数据库中的available字段
         {

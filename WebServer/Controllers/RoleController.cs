@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Role;
 
@@ -22,6 +23,7 @@ namespace WebServer.Controllers
         /// 为用户赋予角色
         /// </summary>
         /// <returns></returns>
+        [RBAC]
         public JsonResult GetRolesForUser()
         {
             RespondModel respond = new RespondModel();
@@ -40,6 +42,7 @@ namespace WebServer.Controllers
         /// 为角色赋予权限
         /// </summary>
         /// <returns></returns>
+        [RBAC]
         public JsonResult GetPermissions()
         {
             RespondModel respond = new RespondModel();
@@ -54,6 +57,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         public JsonResult GetRoles()
         {
             RespondModel respond = new RespondModel();
@@ -68,6 +72,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         public JsonResult CreateRole(CreateRole role)
         {
             RespondModel respond = new RespondModel();

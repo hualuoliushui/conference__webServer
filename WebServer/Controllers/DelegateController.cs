@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Delegate;
 
@@ -21,6 +22,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="meetingID"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult GetDelegates(int meetingID)
         {
             RespondModel respond = new RespondModel();
@@ -41,6 +43,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="delegates"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult CreateDelegateMultipe(List<CreateDelegate> delegates)
         {
             RespondModel respond = new RespondModel();
@@ -61,6 +64,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="createDelegate"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult CreateDelegate(CreateDelegate createDelegate)
         {
             RespondModel respond = new RespondModel();
@@ -81,6 +85,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="updateDelegate"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult UpdateDelegate(UpdateDelegate updateDelegate)
         {
             RespondModel respond = new RespondModel();
@@ -101,6 +106,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="delegates"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult DeleteDelegateMultipe(List<int> delegates)
         {
             RespondModel respond = new RespondModel();
@@ -115,7 +121,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetSpeakerForAgenda(int meetingID)
         {
             RespondModel respond = new RespondModel();

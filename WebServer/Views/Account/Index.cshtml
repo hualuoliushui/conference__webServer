@@ -2,23 +2,11 @@
 @{
     ViewBag.Title = "Index";
 }
-<head>
-    <title></title>
-    <script language="javascript">
-    function getUsers() {
-        $.ajax({
-            type: "Get",
-            url: "/User/GetUsers",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (jsonResult) {
-                alert(JSON.stringify(jsonResult));
-            }
-        });
-    };
-    </script>
-</head>
-<input type="button" id="jsonID" name="testPostJson" value="getUsers" onclick="getUsers()" /><br />
+<form action="/Document/Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="hidden" name="agendaID" value="2"/>
+    <input type="submit" value="上传"/>
+</form>
 <fieldset>
     <legend>
         登录界面

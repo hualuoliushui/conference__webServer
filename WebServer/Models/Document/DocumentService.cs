@@ -4,6 +4,7 @@ using DAL.DAO;
 using DAL.DAOVO;
 using DAL.DAOFactory;
 using System.IO;
+using System.Configuration;
 
 namespace WebServer.Models.Document
 {
@@ -22,10 +23,10 @@ namespace WebServer.Models.Document
             //初始化会议操作
             meeting_initOperator(agendaVo.meetingID);
             //验证拥有者权限
-            if (!meeting_validatePermission(userName))
-            {
-                return Status.PERMISSION_DENIED;
-            }
+            //if (!meeting_validatePermission(userName))
+            //{
+            //    return Status.PERMISSION_DENIED;
+            //}
 
             bool isUpdate = false;
             //判断会议是否开启，如果开启，更新“会议更新状态”，设置数据更新状态
@@ -74,8 +75,10 @@ namespace WebServer.Models.Document
         }
 
         //上传文件到服务器端的路径
-        public string getFilePath(int agendaID)
+        public string getFilePath(int agendaID,out string fileRelativePath)
         {
+            fileRelativePath = null;
+
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaID);
             if (agendaVo == null)//议程不存在，文件路径设置为空
@@ -84,7 +87,14 @@ namespace WebServer.Models.Document
             }
             int meetingID = agendaVo.meetingID;
             //上传后文件存储在服务器端的路径
-            string filePath = System.Web.HttpContext.Current.Server.MapPath(@"\upfiles\origin\" + meetingID + "\\" + agendaID + "\\");
+            //获取存储文件的根目录
+            string rootPath = ConfigurationManager.AppSettings["rootPath"];
+            if (rootPath == null)
+            {
+                rootPath = System.Web.HttpContext.Current.Server.MapPath("\\");//如果配置为空，则设置为当前网站根目录
+            }
+            fileRelativePath = @"\upfiles\origin\" + meetingID + "\\" + agendaID + "\\";
+            string filePath = rootPath + fileRelativePath;
             if (!Directory.Exists(filePath))
             {
                 Directory.CreateDirectory(filePath);

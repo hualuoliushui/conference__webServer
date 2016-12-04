@@ -7,6 +7,7 @@ using DAL.DAO;
 using DAL.DAOFactory;
 using WebServer.Models.Role;
 using WebServer.Models.Excel;
+using WebServer.App_Start;
 
 namespace WebServer.Models.User
 {
@@ -194,8 +195,6 @@ namespace WebServer.Models.User
             {
                 return Status.ARGUMENT_ERROR;
             }
-            RoleDAO roleDao = Factory.getInstance<RoleDAO>();
-            List<RoleVO> roles = roleDao.getAll<RoleVO>();
 
             //默认是“成员”角色//基础角色ID为3，默认无权限
             int roleID = 3;
@@ -248,21 +247,27 @@ namespace WebServer.Models.User
                 {
                     return Status.DATABASE_CONTENT_ERROR;
                 }
-
-                users.Add(new User
+                try
                 {
-                    userID = vo.personID,
-                    userName = vo.personName,
-                    userDepartment = vo.personDepartment,
-                    userJob = vo.personJob,
-                    //从角色列表中查询对应的角色名称
-                    roleName = (roles.Where(role=>
-                        role.roleID==person_roleVolist[0].roleID)
-                        .Select(p=>p.roleName))
-                        .ToList()[0],
-                    userFreezeState = vo.personState
-                });
-
+                    users.Add(new User
+                    {
+                        userID = vo.personID,
+                        userName = vo.personName,
+                        userDepartment = vo.personDepartment,
+                        userJob = vo.personJob,
+                        //从角色列表中查询对应的角色名称
+                        roleName = (roles.Where(role =>
+                            role.roleID == person_roleVolist[0].roleID)
+                            .Select(p => p.roleName))
+                            .ToList().First(),
+                        userFreezeState = vo.personState
+                    });
+                }
+                catch (Exception e)
+                {
+                    Log.LogInfo("查询用户列表,填充列表",e);
+                    return Status.SERVER_EXCEPTION;
+                }
             }
             return Status.SUCCESS;
         }

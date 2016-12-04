@@ -1,7 +1,7 @@
 $(function () {
     $.ajax({
         type: "get",
-        url: "/Role/getpermissions",
+        url: "/Role/GetPermissions",
         datatype: "json",
         success: function (data) {
             $("#Status").text(data.Message);
@@ -56,7 +56,7 @@ function getRoles() {
             var roles = data.Result.roles;
             for (var i = 0 ; i < roles.length; i++) {
                 var roleStr = "<div class='role_name_list' roleID=" + roles[i].roleID + ">" +
-                    roles[i].roleName + "</div>";
+                   roles[i].roleName + "</div>";
                 $("#roleTable").append(roleStr);
 
                 var permissions = roles[i].hasPermission;

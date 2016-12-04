@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebServer.App_Start;
 
 namespace WebServer.Controllers
 {
@@ -18,7 +19,7 @@ namespace WebServer.Controllers
         {
             return View();
         }
-
+        [RBAC]
         public JsonResult GetMeetings()
         {
             RespondModel respond = new RespondModel();
@@ -33,7 +34,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetMeeting(int meetingID)
         {
             RespondModel respond = new RespondModel();
@@ -48,7 +49,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult CreateMeeting(CreateMeeting meeting)
         {
             RespondModel respond = new RespondModel();
@@ -63,7 +64,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetMeetingForUpdate(int meetingID)
         {
             RespondModel respond = new RespondModel();
@@ -79,7 +80,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult UpdateMeeting(UpdateMeeting meeting)
         {
             RespondModel respond = new RespondModel();
@@ -95,7 +96,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-
+        [RBAC]
         public JsonResult DeleteMeetingMultipe(List<int> meetingIDs)
         {
             RespondModel respond = new RespondModel();

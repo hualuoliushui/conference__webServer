@@ -2,6 +2,7 @@
 using WebServer.Models;
 using WebServer.Models.MeetingPlace;
 using System.Collections.Generic;
+using WebServer.App_Start;
 
 namespace WebServer.Controllers
 {
@@ -22,7 +23,7 @@ namespace WebServer.Controllers
         {
             return View();
         }
-
+        [RBAC]
         public JsonResult GetMeetingPlacesForMeeting()
         {
             RespondModel respond = new RespondModel();
@@ -38,6 +39,7 @@ namespace WebServer.Controllers
         }
 
         //返回会场列表
+        [RBAC]
         public JsonResult GetMeetingPlaces()
         {
             RespondModel respond = new RespondModel();
@@ -52,7 +54,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetMeetingPlaceForUpdate(int meetingPlaceID)
         {
             RespondModel respond = new RespondModel();
@@ -69,6 +71,7 @@ namespace WebServer.Controllers
         }
 
         //添加会场信息
+        [RBAC]
         public JsonResult CreateMeetingPlace(CreateMeetingPlace meetingPlace)
         {
             RespondModel respond = new RespondModel();
@@ -83,6 +86,7 @@ namespace WebServer.Controllers
         }
 
         //更新会场信息
+        [RBAC]
         public JsonResult UpdateMeetingPlace(UpdateMeetingPlace meetingPlace)
         {
             RespondModel respond = new RespondModel();
@@ -96,7 +100,7 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-
+        [RBAC]
         public JsonResult UpdateMeetingPlaceAvailable(int meetingPlaceID, int state) //state对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();

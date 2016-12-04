@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.Models.Device;
 using DAL.DAOVO;
+using WebServer.App_Start;
 
 namespace WebServer.Controllers
 {
@@ -28,7 +29,7 @@ namespace WebServer.Controllers
         {
             return View();
         }
-
+        [RBAC]
         public JsonResult GetDevices()
         {
             RespondModel respond = new RespondModel();
@@ -43,7 +44,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetDevicesForDelegate()
         {
             RespondModel respond = new RespondModel();
@@ -58,7 +59,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult GetDeviceForUpdate(int deviceID)
         {
             RespondModel respond = new RespondModel();
@@ -73,7 +74,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult CreateDevice(CreateDevice device)
         {
             RespondModel respond = new RespondModel();
@@ -86,7 +87,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult UpdateDevice(UpdateDevice device)
         {
             RespondModel respond = new RespondModel();
@@ -99,7 +100,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult UpdateDeviceAvailable(int deviceID, int deviceFreezeState)//FreezeState对应数据库中的available字段
         {
             RespondModel respond = new RespondModel();

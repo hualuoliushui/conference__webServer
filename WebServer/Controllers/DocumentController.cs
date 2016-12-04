@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Document;
 
@@ -20,6 +21,7 @@ namespace WebServer.Controllers
 
 
         //上传文件,已完成----李杭澍
+        //[RBAC]
         [HttpPost]
         public JsonResult Upload(FormCollection form)
         {
@@ -29,8 +31,9 @@ namespace WebServer.Controllers
             int agendaID = Int32.Parse(form["agendaID"]);//从浏览器得到agendaID
             //初始化附件服务
             DocumentService documentService = new DocumentService();
-            //上传后文件存储在服务器端的路径
-            string filePath = documentService.getFilePath(agendaID);//注意：议程不存在时文件路径为空，会报FAILURE
+            //上传后文件存储在服务器端的路径,及相对路径
+            string fileRelativePath = null;
+            string filePath = documentService.getFilePath(agendaID,out fileRelativePath);//注意：议程不存在时文件路径为空，会报FAILURE
 
             //int meetingID = 2;
             ////上传后文件存储在服务器端的路径
@@ -40,7 +43,7 @@ namespace WebServer.Controllers
             //    Directory.CreateDirectory(filePath);
             //}
 
-            if (filePath != null && Request.Files["file"].ContentLength > 0)//文件路径存在和文件不为空时上传文件
+            if (filePath != null && fileRelativePath!=null && Request.Files["file"].ContentLength > 0)//文件路径存在和文件不为空时上传文件
             {
                 string fileName = Request.Files["file"].FileName;
                 string fileFullPath = filePath + fileName;//文件路径+文件名
@@ -59,7 +62,7 @@ namespace WebServer.Controllers
 
                     string userName = HttpContext.User.Identity.Name;//登录时的用户名
                     //将文件信息写入数据库的操作失败时，删除已上传的相应文件
-                    if (documentService.addFile(userName, agendaID, fileName, fileSize, fileFullPath) != Status.SUCCESS)
+                    if (documentService.addFile(userName, agendaID, fileName, fileSize, fileRelativePath) != Status.SUCCESS)
                     {
                         fi.Delete();
                         status = Status.FAILURE;
@@ -88,8 +91,9 @@ namespace WebServer.Controllers
         }
 
         //通过服务器相对路径进行文件下载，已完成----李杭澍
-        [System.Web.Http.HttpGet]
-        public void Downloadtest(string fileName)
+        [RBAC]
+        [HttpGet]
+        public void Download(string fileName)
         {
             //documentPath = "test.docx";
             Response.ContentType = "application/x-zip-compressed";
@@ -101,7 +105,7 @@ namespace WebServer.Controllers
             }
 
         }
-
+        [RBAC]
         public JsonResult GetDocuments(int agendaID)
         {
             RespondModel respond = new RespondModel();
@@ -116,7 +120,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult DeleteDocumentMultipe(List<int> documents)
         {
             RespondModel respond = new RespondModel();

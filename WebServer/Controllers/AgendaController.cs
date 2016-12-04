@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
+using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Agenda;
 
@@ -21,6 +22,7 @@ namespace WebServer.Controllers
          /// </summary>
          /// <param name="meetingID"></param>
          /// <returns></returns>
+        [RBAC]
         public JsonResult GetAgendas(int meetingID)
         {
             RespondModel respond = new RespondModel();
@@ -41,6 +43,7 @@ namespace WebServer.Controllers
         /// </summary>
         /// <param name="agenda"></param>
         /// <returns></returns>
+        [RBAC]
         public JsonResult CreateAgenda(CreateAgenda agenda)
         {
             RespondModel respond = new RespondModel();
@@ -55,7 +58,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult UpdateAgena(UpdateAgenda agenda)
         {
             RespondModel respond = new RespondModel();
@@ -70,7 +73,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-
+        [RBAC]
         public JsonResult DeleteAgendaMultipe(List<int> agendas)
         {
             RespondModel respond = new RespondModel();
