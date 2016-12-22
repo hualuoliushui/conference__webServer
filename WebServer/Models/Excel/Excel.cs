@@ -101,12 +101,14 @@ namespace WebServer.Models.Excel
                     {
                         return Status.NONFOUND;
                     }
+                    DateTime start = DateTime.Now;
                     foreach (DataRow dr in dt.Rows)
                     {
                         T t = new T();
                         setT<T>(ref t, dr);
                         tlist.Add(t);
                     }
+                    Log.DebugInfo("导入数据，花费时间:"+(DateTime.Now-start).TotalMilliseconds+"ms");
                 }
             }
             return Status.SUCCESS;

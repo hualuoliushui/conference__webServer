@@ -163,7 +163,7 @@ namespace WebServer.Models.User
             return Status.SUCCESS;
         }
 
-        public Status createMultiple(String excelFilePath,String tableName,ref List<Status> checkList)
+        public Status createMultiple(String excelFilePath,String tableName,ref List<String> checkList)
         {
             List<CreateUserForDelegate> list;
             Status status = new Excel.Excel().import<CreateUserForDelegate>(excelFilePath, tableName, out list);
@@ -175,7 +175,7 @@ namespace WebServer.Models.User
             foreach (CreateUserForDelegate user in list)
             {
                 Status createStatus = createForDelegate(user);
-                checkList.Add(createStatus);
+                checkList.Add(Message.msgs[(int)createStatus]);
             }
             return Status.SUCCESS;
         }

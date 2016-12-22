@@ -9,7 +9,7 @@ using System.Web.Routing;
 
 using System.Diagnostics;
 using WebServer.App_Start;
-using DAL;
+using WebServer.Models.Test;
 
 namespace WebServer
 {
@@ -28,7 +28,7 @@ namespace WebServer
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //添加数据库测试数据
-            TestData.init();
+            TestService.init();
         }
 
         void Application_Error(object sender, EventArgs e)

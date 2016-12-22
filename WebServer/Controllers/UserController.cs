@@ -89,23 +89,19 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        [RBAC]
+        //[RBAC]
         [HttpPost]
-        public JsonResult Upload(FormCollection form)
+        public ActionResult Import(FormCollection form)
         {
             RespondModel respond = new RespondModel();
             Status status = Status.SUCCESS;//初始化为SUCCESS
-            List<Status> checkList = new List<Status>();//导入数据结果清单
+            List<String> checkList = new List<String>();//导入数据结果清单
 
             //初始化附件服务
             UserService userService = new UserService();
 
-            //获取需要导入的表格名称
-            String tableName = form["tableName"];
-            if (string.IsNullOrWhiteSpace(tableName))
-            {
-                tableName = "Sheet1";//如果无输入，则默认为Sheet1
-            }
+            //强制使用user作为指定的表名
+            string tableName = "user";
             //上传后文件存储在服务器端的路径
             string filePath = System.Web.HttpContext.Current.Server.MapPath(@"\temp\");//注意：议程不存在时文件路径为空，会报FAILURE
             if (!Directory.Exists(filePath))
@@ -123,13 +119,15 @@ namespace WebServer.Controllers
                 if (
                     Extension == ".xls" || Extension == ".xlsx")
                 {
+                    DateTime start = DateTime.Now;
                     Request.Files["file"].SaveAs(fileFullPath);//上传
-
+                    Log.DebugInfo("上传“导入文件”时间：" + (DateTime.Now - start).TotalMilliseconds + "ms");
                     FileInfo fi = new FileInfo(fileFullPath);
 
                     string userName = HttpContext.User.Identity.Name;//登录时的用户名
                     //将文件信息写入数据库
                     status = userService.createMultiple(fileFullPath,tableName,ref checkList);
+                    //删除临时文件
                     fi.Delete();
                 }
                 else
@@ -146,9 +144,10 @@ namespace WebServer.Controllers
             respond.Message = Message.msgs[respond.Code];
             respond.Result = checkList;
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return RedirectToAction("Index_admin");
         }
 
+        [RBAC]
         [HttpPost]
         public JsonResult CreateUser(CreateUser user)
         {

@@ -1,26 +1,35 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
-<form action="/Document/Upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" />
-    <input type="hidden" name="agendaID" value="2"/>
-    <input type="submit" value="上传"/>
-</form>
-<fieldset>
-    <legend>
-        登录界面
-    </legend>
-    <form method="post" action="/Account/Login">
-        <label>用户名</label>
-        <input type="text" name="userName" /><br />
-        <label>密码</label>
-        <input type="password" name="password" /><br />
-        <label>系统:</label>
-        <label>管理员</label>
-        <input type="radio" name="system" value="admin" checked />
-        <label>会议组织者</label>
-        <input type="radio" name="system" value="organizor" />
-        <input type="submit" value="登录" />
-    </form>
-</fieldset>
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>登录界面</title>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="~/less/account/index.less" />
+</head>
+<body>
+    <fieldset id="login">
+        <p><strong>中佰会议管理系统</strong></p>
+        <p><strong>登录界面</strong></p>
+        <form method="post" action="/Account/Login">
+            <div id="input">
+                <div id="userName">
+                    <label>用户名</label>
+                    <input type="text" name="userName" id="userNameInput" />
+                </div>
+                <div id="password">
+                    <label>密码</label>
+                    <input type="password" name="password" id="passwordInput" />
+                </div>
+            </div>
+            <div id="select">
+                <label>系统 :</label>
+                <input type="radio" name="system" value="admin" checked />
+                <label>管理员</label>
+                <input type="radio" name="system" value="organizor" />
+                <label>会议组织者</label>
+            </div>
+            <hr />
+            <button type="submit" value="登录" id="loginBtn">登 录</button>
+        </form>
+    </fieldset>
+</body>
+</html>

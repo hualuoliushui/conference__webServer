@@ -21,8 +21,10 @@ namespace WebServer.Models
         FILE_NOT_SUPPORT=7,
         FILE_PATH_ERROR=8,
         SERVER_EXCEPTION=9,
-        MEETING_OPENING,
-        MEETING_OPENED
+        MEETING_OPENING=10,
+        MEETING_OPENED=11,
+        FILE_CONVERT_FAIL=12,
+        FILE_CONVERT_EXCEPTION=13
     }
 
     public class Message
@@ -44,6 +46,8 @@ namespace WebServer.Models
             msgs.Add((int)Status.SERVER_EXCEPTION, "服务器异常");
             msgs.Add((int)Status.MEETING_OPENING, "会议正在开启，无法修改");
             msgs.Add((int)Status.MEETING_OPENED, "会议已结束");
+            msgs.Add((int)Status.FILE_CONVERT_FAIL, "文件转换失败");
+            msgs.Add((int)Status.FILE_CONVERT_EXCEPTION, "文件转换异常");
         }
     }
 

@@ -1,0 +1,24 @@
+
+----------------------header--------------------------
+2016-12-22 13:01:20,349 [1] INFO  WebLogger - 系统启动
+2016-12-22 13:01:20,349 [1] INFO  WebLogger - 系统启动
+2016-12-22 13:01:22,074 [1] DEBUG WebLogger - 测试数据初始化...
+2016-12-22 13:01:22,074 [1] DEBUG WebLogger - 测试数据初始化...
+2016-12-22 13:01:25,550 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\竞品dy.docx
+2016-12-22 13:01:25,550 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\竞品dy.docx
+2016-12-22 13:01:25,551 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\竞品dy_docx\竞品dy_docx.html
+2016-12-22 13:01:25,551 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\竞品dy_docx\竞品dy_docx.html
+2016-12-22 13:01:28,754 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\竞品dy.docx
+2016-12-22 13:01:28,754 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\竞品dy.docx
+2016-12-22 13:01:28,754 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\竞品dy_docx\竞品dy_docx.html
+2016-12-22 13:01:28,754 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\竞品dy_docx\竞品dy_docx.html
+2016-12-22 13:01:33,112 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2016-12-22 13:01:33,112 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2016-12-22 13:01:33,112 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2016-12-22 13:01:33,112 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2016-12-22 13:01:35,465 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\干系人登记表.xlsx
+2016-12-22 13:01:35,465 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\干系人登记表.xlsx
+2016-12-22 13:01:35,465 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\干系人登记表_xlsx\干系人登记表_xlsx.html
+2016-12-22 13:01:35,465 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\干系人登记表_xlsx\干系人登记表_xlsx.html
+2016-12-22 13:01:43,343 [1] DEBUG WebLogger - 测试数据初始化结束
+2016-12-22 13:01:43,343 [1] DEBUG WebLogger - 测试数据初始化结束
