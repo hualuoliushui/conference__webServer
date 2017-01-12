@@ -1,0 +1,161 @@
+﻿@model WebServer.Models.Meeting.ShowMeetingModel
+@{
+    Layout = "~/Views/Shared/_Layout_organizor.cshtml";
+    ViewBag.Title = "中佰会议系统组织者";
+}
+
+@section BodyLess{
+    <link href="~/less/meeting/add.less" type="text/css" rel="stylesheet" />
+}
+
+<div class="container" id="mainContent">
+    <div class="panel panel-default" id="mainContentRight">
+        <div>
+            <div class="col-md-3 ">
+                <h1><strong>创建会议</strong></h1>
+            </div>
+            <div class="col-md-7">
+            </div>
+            <div class="col-md-2 ">
+                <br />
+                <button class="btn btn-default" type="button" id="cancel1" href="#">取消创建</button>
+            </div>
+        </div>
+        <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
+        <div class="row" id="steps">
+            <div class="col-md-3">会议信息 <img src="/images/BTNENTER_DOWN.png"></div>
+            <div class="col-md-3">指定人员 <img src="/images/BTNENTER_DOWN.png"></div>
+            <div class="col-md-3">自动捆绑设备 <img src="/images/BTNENTER_DOWN.png"></div>
+            <div class="col-md-3" id="finish">创建完成</div>
+        </div>
+        <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
+        <div id="foundmeeting">
+            <form action="/Meeting/Add_organizor" method="post" enctype="multipart/form-data" id="meetingForm"></form>
+            <div>
+                <input type="hidden" name="meeting.meetingID" value="-1" form="meetingForm"/>
+                <input type="hidden" name="meeting.meetingStatus" value="1" form="meetingForm"/>
+            </div>
+            <div id="meeting">
+                <div>
+                    <div id="meetingname">
+                        填写会议名称：
+                    </div>
+                    <input type="text" class="meetingName" name="meeting.meetingName" value="@Model.meeting.meetingName" form="meetingForm" />
+                    @*@Html.EditorFor(m => m.meeting.meetingName, new { form="meetingForm",@class="meetingName" })*@
+                    @Html.ValidationMessageFor(m => m.meeting.meetingName)
+                </div>
+                <div>
+                    <div id="meetingtime">
+                        会议开始时间：
+                    </div>
+                    <input type="text" class="meetingToStartTime" id="timeSelect1" name="meeting.meetingToStartTime" form="meetingForm"
+                           value="@Model.meeting.meetingToStartTime.ToString("yyyy-MM-dd hh:mm")" />
+                </div>
+                <div>
+                    <div id="meetingtime">
+                        会议结束时间：
+                    </div>
+                    <input type="text" class="meetingStartedTime" id="timeSelect2" name="meeting.meetingStartedTime" form="meetingForm"
+                           value="@Model.meeting.meetingStartedTime.ToString("yyyy-MM-dd hh:mm")" />
+                </div>
+                <div>
+                    <div id="meetingselect">会场选择：</div>
+                    <div class="btn-group" id="select">
+                        <select name="meeting.meetingPlaceID" class="xla_k meetingPlaceID" form="meetingForm">
+                            @foreach (var meetingPlace in Model.meetingPlaces)
+                            {
+                                if (meetingPlace.meetingPlaceID == Model.meeting.meetingPlaceID)
+                                {
+                                    <option value="@meetingPlace.meetingPlaceID" selected>@meetingPlace.meetingPlaceName</option>
+                                }
+                                else
+                                {
+                                    <option value="@meetingPlace.meetingPlaceID">@meetingPlace.meetingPlaceName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div id="meetingcontent">
+                    <div>会议概况：</div>
+                    <textarea name="meeting.meetingSummary" class="meetingSummary" form="meetingForm">
+                        @Model.meeting.meetingSummary
+                    </textarea>
+                </div>               
+                <input type="button" class="btn btn-default form-actions no-color" id="addMeeting_next" value="下一步" />
+                </div>
+
+            <div id="delegates">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong><h3>所有人员</h3></strong>
+                                <ul>
+                                    <select multiple id="select1">
+                                        @foreach (var user in Model.users)
+                                        {
+                                            <option value="@user.userID">@user.userName</option>
+                                        }
+                                    </select>
+                                </ul>
+                               
+                                <button class="btn btn-default" type="button" id="allSelect" href="#">全选</button>
+                            </div>
+                            <div class="col-md-2">
+                                <span id="right1">&gt;&gt;</span><br />
+                                <span id="left1">&lt;&lt;</span>
+                            </div>
+                            <div class="col-md-5">
+                                <strong><h3>参会人员</h3></strong>
+                                <select multiple id="select2"></select>
+                                <button class="btn btn-default" type="button" id="allUndo" href="#">全部撤销</button>
+                                <div class="row" id="speakerselect">
+                                    <div class="col-md-7">
+                                        <h5>主持人选择</h5>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="btn-group" id="select_delegate">
+                                            <select name="hostID" class="xla_k hostID" form="meetingForm">
+                                                @foreach (var user in Model.users)
+                                                {
+                                                    <option value="@user.userID">@user.userName</option>
+                                                }
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <strong><h3>参会人员</h3></strong>
+                                <select multiple class="otherID" id="select3" name="otherIDs" form="meetingForm"></select>
+                            </div>
+                            <div class="col-md-2">
+                                <span id="right2">&gt;&gt;</span><br />
+                                <span id="left2">&lt;&lt;</span>
+                            </div>
+                            <div class="col-md-5">
+                                <strong><h3>主讲人</h3></strong>
+                                <select multiple class="speakerID" id="select4" name="speackerIDs" form="meetingForm"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-3"></div>
+                    <div class="col-md-4 col-md-offset-3" id="cancel2next">
+                        <button class="btn btn-default last" type="button" id="cancel2" >上一步</button>&nbsp;&nbsp;
+                        <input type="submit" class="btn btn-default form-actions no-color add" value="创建" form="meetingForm" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/meeting/add.js"></script>

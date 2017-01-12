@@ -1,0 +1,639 @@
+
+----------------------header--------------------------
+2017-01-05 13:15:22,948 [1] INFO  WebLogger - 系统启动
+2017-01-05 13:20:27,341 [10] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 13:20:27,342 [10] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:20:27,343 [10] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:20:27,385 [10] DEBUG WebLogger - 待插入的文件路径:\1\1\广东985高校.docx
+2017-01-05 13:20:27,397 [10] DEBUG WebLogger - 文件数据插入失败
+2017-01-05 13:20:42,577 [10] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 13:20:42,578 [10] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:20:42,578 [10] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:20:50,660 [10] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:20:50,660 [10] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:20:50,661 [10] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:20:50,668 [10] DEBUG WebLogger - 待插入的文件路径:\1\2\广东985高校.docx
+2017-01-05 13:20:50,671 [10] DEBUG WebLogger - 文件数据插入失败
+2017-01-05 13:20:53,959 [12] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:20:53,959 [12] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:20:53,965 [12] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:23:11,946 [13] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:23:11,947 [13] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:23:11,949 [13] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:23:42,156 [10] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-05 13:23:42,156 [10] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:23:42,156 [10] DEBUG WebLogger - 文件保存成功
+
+----------------------header--------------------------
+2017-01-05 13:25:43,262 [1] INFO  WebLogger - 系统启动
+2017-01-05 13:25:50,937 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-05 13:25:50,937 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:25:50,938 [6] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:26:15,628 [6] DEBUG WebLogger - 待插入的文件路径:\1\3\广东985高校.docx
+2017-01-05 13:26:24,734 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\广东985高校.docx
+2017-01-05 13:26:24,734 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\广东985高校_docx\广东985高校_docx.html
+2017-01-05 13:26:25,113 [6] DEBUG WebLogger - 文件转换成功
+2017-01-05 13:26:39,187 [5] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:26:39,187 [5] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:26:39,188 [5] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:27:28,790 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:27:28,790 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:27:28,793 [6] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:27:35,723 [5] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 13:27:35,723 [5] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:27:35,724 [5] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:27:40,840 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 13:27:40,840 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:27:40,841 [6] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:27:40,847 [6] DEBUG WebLogger - 待插入的文件路径:\1\1\广东省大专.docx
+2017-01-05 13:27:44,314 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\广东省大专.docx
+2017-01-05 13:27:44,314 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\广东省大专_docx\广东省大专_docx.html
+2017-01-05 13:27:44,653 [6] DEBUG WebLogger - 文件转换成功
+2017-01-05 13:27:52,615 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-05 13:27:52,615 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:27:52,615 [6] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:27:52,623 [6] DEBUG WebLogger - 待插入的文件路径:\1\2\广东省大专.docx
+2017-01-05 13:27:55,555 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\广东省大专.docx
+2017-01-05 13:27:55,555 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\广东省大专_docx\广东省大专_docx.html
+2017-01-05 13:27:55,901 [6] DEBUG WebLogger - 文件转换成功
+2017-01-05 13:28:02,728 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-05 13:28:02,728 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-05 13:28:02,729 [6] DEBUG WebLogger - 文件保存成功
+2017-01-05 13:28:02,737 [6] DEBUG WebLogger - 待插入的文件路径:\1\3\广东省大专.docx
+2017-01-05 13:28:05,836 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\广东省大专.docx
+2017-01-05 13:28:05,836 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\广东省大专_docx\广东省大专_docx.html
+2017-01-05 13:28:06,222 [6] DEBUG WebLogger - 文件转换成功
+
+----------------------header--------------------------
+2017-01-05 14:44:28,165 [1] INFO  WebLogger - 系统启动
+2017-01-05 14:44:31,216 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 14:44:34,913 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-05 14:44:34,913 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-05 14:44:39,837 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-05 14:44:39,837 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-05 14:44:43,780 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-05 14:44:43,780 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-05 14:44:47,771 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-05 14:44:47,771 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-05 14:44:55,899 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 14:48:06,369 [11] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 14:48:50,082 [10] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-05 15:00:20,945 [1] INFO  WebLogger - 系统启动
+2017-01-05 15:03:12,067 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:18:31,375 [12] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:18:39,009 [12] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:18:44,469 [11] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:19:13,217 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:19:47,274 [7] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:20:13,167 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 15:22:30,526 [11] INFO  WebLogger - 文件上传
+System.ArgumentNullException: 值不能为 null。
+参数名: String
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 36
+2017-01-05 15:23:45,556 [21] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:23:54,168 [21] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:24:32,543 [11] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:24:54,115 [11] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:24:58,146 [12] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:24:58,170 [12] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:25:11,702 [12] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:25:11,722 [12] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:25:32,784 [14] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:26:09,415 [14] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:26:36,640 [14] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:28:06,620 [14] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:28:09,044 [11] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:28:14,900 [11] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:28:21,901 [11] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:28:45,965 [11] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+2017-01-05 15:28:49,665 [11] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:29:24,170 [11] INFO  WebLogger - 文件上传
+System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 WebServer.Controllers.DocumentController.Upload(FormCollection form) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 46
+
+----------------------header--------------------------
+2017-01-05 15:31:13,155 [1] INFO  WebLogger - 系统启动
+2017-01-05 15:31:39,850 [7] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:31:39,850 [7] DEBUG WebLogger - 源文件获取成功
+2017-01-05 15:31:39,851 [7] DEBUG WebLogger - 文件保存成功
+2017-01-05 15:31:39,895 [7] DEBUG WebLogger - 待插入的文件路径:\1\1\第13章课后作业.docx
+2017-01-05 15:31:43,257 [7] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\第13章课后作业.docx
+2017-01-05 15:31:43,257 [7] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\第13章课后作业_docx\第13章课后作业_docx.html
+2017-01-05 15:31:43,774 [7] DEBUG WebLogger - 文件转换成功
+2017-01-05 15:31:44,043 [9] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:31:44,043 [9] DEBUG WebLogger - 源文件获取成功
+2017-01-05 15:31:44,044 [9] DEBUG WebLogger - 文件保存成功
+2017-01-05 15:31:44,051 [9] DEBUG WebLogger - 待插入的文件路径:\1\1\软件4班甘寿枢201430611068.docx
+2017-01-05 15:31:47,030 [9] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\软件4班甘寿枢201430611068.docx
+2017-01-05 15:31:47,030 [9] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\软件4班甘寿枢201430611068_docx\软件4班甘寿枢201430611068_docx.html
+2017-01-05 15:31:47,472 [9] DEBUG WebLogger - 文件转换成功
+2017-01-05 15:32:00,992 [7] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-05 15:32:00,992 [7] DEBUG WebLogger - 源文件获取成功
+
+----------------------header--------------------------
+2017-01-05 18:02:26,395 [1] INFO  WebLogger - 系统启动
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-01-05 18:02:46,630 [9] INFO  WebLogger - 系统启动
+2017-01-05 18:02:46,936 [5] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/__browserLink/requestData/80d3a5b4ae07492b99aaa9361c84ef2f' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-05 18:11:27,802 [1] INFO  WebLogger - 系统启动
+2017-01-05 18:12:27,664 [7] INFO  WebLogger - 文件上传
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload() 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 37
+2017-01-05 18:12:31,041 [5] INFO  WebLogger - 服务器异常
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'agendaID' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult StartConvert(Int32)' in 'WebServer.Controllers.DocumentController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   在 System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 18:13:37,598 [7] INFO  WebLogger - 服务器异常
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'agendaID' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult StartConvert(Int32)' in 'WebServer.Controllers.DocumentController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   在 System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 18:18:48,266 [12] INFO  WebLogger - 文件上传
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload() 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 37
+2017-01-05 18:20:05,305 [18] INFO  WebLogger - 服务器异常
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'agendaID' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult StartConvert(Int32)' in 'WebServer.Controllers.DocumentController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   在 System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 18:20:13,909 [18] INFO  WebLogger - 文件上传
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload() 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 37
+2017-01-05 18:21:24,849 [12] INFO  WebLogger - 服务器异常
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'agendaID' of non-nullable type 'System.Int32' for method 'System.Web.Mvc.JsonResult StartConvert(Int32)' in 'WebServer.Controllers.DocumentController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+参数名: parameters
+   在 System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   在 System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   在 System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   在 System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   在 System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-05 18:22:23,022 [17] INFO  WebLogger - 文件上传
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload() 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 37
+2017-01-05 18:25:35,284 [13] INFO  WebLogger - 文件上传
+System.FormatException: 输入字符串的格式不正确。
+   在 System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   在 System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   在 System.Int32.Parse(String s)
+   在 WebServer.Controllers.DocumentController.Upload() 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DocumentController.cs:行号 37
+2017-01-05 18:30:09,127 [8] DEBUG WebLogger - 议程不存在
+2017-01-05 18:30:09,160 [8] INFO  WebLogger - 保存文件
+System.Exception: 文件数据插入失败
+   在 WebServer.Models.Document.DocumentService.upFile(HttpFileCollectionBase files, Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 101
+2017-01-05 18:30:41,707 [12] DEBUG WebLogger - 议程不存在
+2017-01-05 18:30:41,739 [12] INFO  WebLogger - 保存文件
+System.Exception: 文件数据插入失败
+   在 WebServer.Models.Document.DocumentService.upFile(HttpFileCollectionBase files, Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 101
+2017-01-05 18:34:01,549 [10] DEBUG WebLogger - 议程不存在
+2017-01-05 18:34:28,071 [10] INFO  WebLogger - 保存文件
+System.Exception: 文件数据插入失败
+   在 WebServer.Models.Document.DocumentService.upFile(HttpFileCollectionBase files, Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 101
+2017-01-05 18:34:57,813 [10] DEBUG WebLogger - 议程不存在
+2017-01-05 18:35:05,335 [10] INFO  WebLogger - 保存文件
+System.Exception: 文件数据插入失败
+   在 WebServer.Models.Document.DocumentService.upFile(HttpFileCollectionBase files, Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 101
+
+----------------------header--------------------------
+2017-01-05 18:38:30,729 [1] INFO  WebLogger - 系统启动
+2017-01-05 18:38:32,851 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 18:38:33,309 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 18:38:46,254 [11] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-38-43-518.doc
+2017-01-05 18:38:56,657 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-38-43-518.doc
+2017-01-05 18:38:56,657 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-38-43-518\2017-01-05-06-38-43-518.html
+2017-01-05 18:40:13,073 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-40-09-698.doc
+2017-01-05 18:40:24,433 [9] INFO  WebLogger - 文件转换失败
+System.IO.IOException: 目录不是空的。
+
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path)
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 219
+2017-01-05 18:40:40,347 [6] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-40-40-303.pptx
+2017-01-05 18:40:42,678 [8] INFO  WebLogger - 文件转换失败
+System.IO.IOException: 目录不是空的。
+
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path)
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 219
+2017-01-05 18:42:19,868 [13] INFO  WebLogger - 文件转换失败
+System.IO.IOException: 目录不是空的。
+
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive, Boolean throwOnTopLevelDirectoryNotFound)
+   在 System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive, Boolean checkHost)
+   在 System.IO.Directory.Delete(String path)
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 219
+
+----------------------header--------------------------
+2017-01-05 18:43:31,121 [1] INFO  WebLogger - 系统启动
+2017-01-05 18:43:33,269 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 18:43:33,727 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 18:44:12,560 [11] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-44-12-537.doc
+2017-01-05 18:45:39,776 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-44-12-537.doc
+2017-01-05 18:45:40,376 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-44-12-537\2017-01-05-06-44-12-537.html
+2017-01-05 18:47:26,666 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-47-26-609.doc
+2017-01-05 18:47:45,825 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-44-12-537.doc
+2017-01-05 18:47:45,825 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-44-12-537\2017-01-05-06-44-12-537.html
+2017-01-05 18:48:02,156 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-47-26-609.doc
+2017-01-05 18:48:02,156 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-47-26-609\2017-01-05-06-47-26-609.html
+
+----------------------header--------------------------
+2017-01-05 18:49:40,310 [1] INFO  WebLogger - 系统启动
+2017-01-05 18:49:42,604 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 18:49:43,040 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 18:49:56,023 [7] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-49-55-997.doc
+2017-01-05 18:50:01,494 [5] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-49-55-997.doc
+2017-01-05 18:50:01,494 [5] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-49-55-997\2017-01-05-06-49-55-997.html
+2017-01-05 18:50:05,746 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-49-55-997.doc
+2017-01-05 18:50:05,746 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-49-55-997\2017-01-05-06-49-55-997.html
+2017-01-05 18:50:35,225 [6] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-50-35-218.doc
+2017-01-05 18:50:40,530 [14] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-49-55-997.doc
+2017-01-05 18:50:40,530 [14] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-49-55-997\2017-01-05-06-49-55-997.html
+2017-01-05 18:50:43,468 [14] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-50-35-218.doc
+2017-01-05 18:50:43,469 [14] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-50-35-218\2017-01-05-06-50-35-218.html
+2017-01-05 18:51:01,414 [8] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-51-01-386.pptx
+2017-01-05 18:51:09,079 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-49-55-997.doc
+2017-01-05 18:51:09,079 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-49-55-997\2017-01-05-06-49-55-997.html
+2017-01-05 18:51:12,252 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-50-35-218.doc
+2017-01-05 18:51:12,252 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-50-35-218\2017-01-05-06-50-35-218.html
+2017-01-05 18:52:20,269 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-52-20-260.doc
+2017-01-05 18:52:24,679 [7] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-49-55-997.doc
+2017-01-05 18:52:24,679 [7] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-49-55-997\2017-01-05-06-49-55-997.html
+2017-01-05 18:52:27,762 [7] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-50-35-218.doc
+2017-01-05 18:52:27,762 [7] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-50-35-218\2017-01-05-06-50-35-218.html
+2017-01-05 18:52:40,413 [7] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-52-20-260.doc
+2017-01-05 18:52:40,413 [7] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-52-20-260\2017-01-05-06-52-20-260.html
+
+----------------------header--------------------------
+2017-01-05 18:54:52,857 [1] INFO  WebLogger - 系统启动
+2017-01-05 18:54:55,705 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 18:54:56,541 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 18:55:14,418 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-55-14-364.pptx
+2017-01-05 18:55:36,040 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-55-36-034.doc
+2017-01-05 18:55:40,667 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-55-36-034.doc
+2017-01-05 18:55:40,667 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-55-36-034\2017-01-05-06-55-36-034.html
+2017-01-05 18:56:28,928 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-56-28-921.doc
+2017-01-05 18:56:32,509 [9] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-56-28-921.doc
+2017-01-05 18:56:32,509 [9] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-56-28-921\2017-01-05-06-56-28-921.html
+2017-01-05 18:56:54,173 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-56-54-166.doc
+2017-01-05 18:56:57,472 [9] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-56-54-166.doc
+2017-01-05 18:56:57,472 [9] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-56-54-166\2017-01-05-06-56-54-166.html
+2017-01-05 18:57:04,377 [11] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-57-04-360.pptx
+2017-01-05 18:59:02,013 [6] DEBUG WebLogger - 待插入的文件路径:2017-01-05-06-59-01-999.doc
+2017-01-05 18:59:07,478 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-06-59-01-999.doc
+2017-01-05 18:59:07,479 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-06-59-01-999\2017-01-05-06-59-01-999.html
+
+----------------------header--------------------------
+2017-01-05 19:03:57,523 [1] INFO  WebLogger - 系统启动
+2017-01-05 19:04:00,263 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-05 19:04:01,154 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-05 19:04:25,601 [7] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-04-25-576.doc
+2017-01-05 19:04:29,223 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-07-04-25-576.doc
+2017-01-05 19:04:29,223 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-07-04-25-576\2017-01-05-07-04-25-576.html
+2017-01-05 19:04:39,984 [7] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-04-39-975.doc
+2017-01-05 19:04:45,205 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-07-04-39-975.doc
+2017-01-05 19:04:45,205 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-07-04-39-975\2017-01-05-07-04-39-975.html
+2017-01-05 19:05:07,045 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-05-07-038.doc
+2017-01-05 19:05:10,871 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-07-05-07-038.doc
+2017-01-05 19:05:10,871 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-07-05-07-038\2017-01-05-07-05-07-038.html
+2017-01-05 19:05:16,312 [7] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-05-16-306.doc
+2017-01-05 19:05:22,406 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-05-07-05-16-306.doc
+2017-01-05 19:05:22,406 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-05-07-05-16-306\2017-01-05-07-05-16-306.html
+2017-01-05 19:05:48,924 [7] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-05-48-891.pptx
+2017-01-05 19:11:22,916 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-05-07-11-22-907.rtf
+2017-01-05 19:11:24,035 [7] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 231

@@ -1,0 +1,108 @@
+
+----------------------header--------------------------
+2017-01-03 10:27:59,988 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-01-03 20:14:25,878 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-01-03 20:36:51,510 [1] INFO  WebLogger - 系统启动
+2017-01-03 20:36:54,204 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-03 20:36:58,467 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-03 20:36:58,467 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-03 20:37:03,315 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-03 20:37:03,315 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-03 20:37:06,735 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-03 20:37:06,735 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-03 20:37:10,415 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-03 20:37:10,415 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-03 20:37:17,686 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-03 20:37:47,676 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\接口定义V0.0.4.docx
+2017-01-03 20:37:47,676 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\接口定义V0.0.4_docx\接口定义V0.0.4_docx.html
+
+----------------------header--------------------------
+2017-01-03 20:59:23,590 [1] INFO  WebLogger - 系统启动
+2017-01-03 20:59:26,263 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-03 20:59:29,520 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-03 20:59:29,520 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-03 20:59:32,425 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-03 20:59:32,425 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-03 20:59:35,474 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-03 20:59:35,474 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-03 20:59:39,333 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-03 20:59:39,333 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-03 20:59:46,728 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-03 21:00:01,931 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:00:01,931 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:00:01,932 [6] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:00:04,374 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\组播接口V0.0.1.docx
+2017-01-03 21:00:04,374 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\组播接口V0.0.1_docx\组播接口V0.0.1_docx.html
+2017-01-03 21:00:04,767 [6] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:00:50,785 [5] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-03 21:00:50,785 [5] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:00:50,786 [5] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:00:53,272 [5] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\组播接口V0.0.1.docx
+2017-01-03 21:00:53,272 [5] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\组播接口V0.0.1_docx\组播接口V0.0.1_docx.html
+2017-01-03 21:00:53,610 [5] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:01:21,044 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-03 21:01:21,045 [8] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:01:21,046 [8] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:02:40,917 [6] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:02:40,917 [6] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:02:40,918 [6] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:02:43,368 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\接口定义V0.0.4.docx
+2017-01-03 21:02:43,369 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\接口定义V0.0.4_docx\接口定义V0.0.4_docx.html
+2017-01-03 21:02:43,779 [6] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:03:02,094 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:03:02,094 [8] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:03:02,095 [8] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:03:04,527 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\接口定义V0.0.7 .docx
+2017-01-03 21:03:04,527 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\接口定义V0.0.7 _docx\接口定义V0.0.7 _docx.html
+2017-01-03 21:03:05,065 [8] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:03:57,158 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\
+2017-01-03 21:04:21,172 [5] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-03 21:04:21,172 [5] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:04:21,173 [5] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:04:22,551 [5] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\接口定义V0.0.7 .docx
+2017-01-03 21:04:22,551 [5] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\接口定义V0.0.7 _docx\接口定义V0.0.7 _docx.html
+2017-01-03 21:04:23,160 [5] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:05:15,171 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\
+2017-01-03 21:05:15,171 [8] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:05:15,172 [8] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:05:33,019 [10] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:05:33,019 [10] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:05:33,020 [10] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:05:42,787 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:05:42,787 [8] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:05:42,788 [8] DEBUG WebLogger - 文件保存成功
+
+----------------------header--------------------------
+2017-01-03 21:29:28,042 [1] INFO  WebLogger - 系统启动
+2017-01-03 21:29:28,172 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-03 21:29:31,519 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-03 21:29:31,519 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-03 21:29:34,446 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-03 21:29:34,446 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-03 21:29:38,273 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-03 21:29:38,273 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-03 21:29:41,975 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-03 21:29:41,975 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-03 21:29:48,480 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-03 21:31:03,900 [9] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:31:03,900 [9] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:31:03,901 [9] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:31:06,125 [9] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\华南农业大学2015年公开招聘辅导员和管理人员.xls
+2017-01-03 21:31:06,125 [9] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\华南农业大学2015年公开招聘辅导员和管理人员_xls\华南农业大学2015年公开招聘辅导员和管理人员_xls.html
+2017-01-03 21:31:07,190 [9] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:31:20,493 [8] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:31:20,493 [8] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:31:20,494 [8] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:31:22,648 [8] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\2016年第二次招聘具有博士学位或高级职称人员需求.xlsx
+2017-01-03 21:31:22,648 [8] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\2016年第二次招聘具有博士学位或高级职称人员需求_xlsx\2016年第二次招聘具有博士学位或高级职称人员需求_xlsx.html
+2017-01-03 21:31:24,176 [8] DEBUG WebLogger - 文件转换成功
+2017-01-03 21:31:42,990 [9] DEBUG WebLogger - 获取源文件存储目录：D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\
+2017-01-03 21:31:42,991 [9] DEBUG WebLogger - 源文件获取成功
+2017-01-03 21:31:42,991 [9] DEBUG WebLogger - 文件保存成功
+2017-01-03 21:31:45,153 [9] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\顺德职业技术学院2016年第二批面向社会公开招聘教师职位.xls
+2017-01-03 21:31:45,153 [9] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\顺德职业技术学院2016年第二批面向社会公开招聘教师职位_xls\顺德职业技术学院2016年第二批面向社会公开招聘教师职位_xls.html
+2017-01-03 21:31:46,205 [9] DEBUG WebLogger - 文件转换成功

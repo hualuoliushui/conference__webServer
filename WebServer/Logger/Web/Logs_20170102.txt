@@ -1,0 +1,377 @@
+
+----------------------header--------------------------
+2017-01-02 10:47:13,419 [1] INFO  WebLogger - 系统启动
+2017-01-02 10:47:13,636 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 10:47:17,422 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 10:47:17,422 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 10:47:19,735 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 10:47:19,735 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 10:47:23,270 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 10:47:23,271 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 10:47:26,906 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 10:47:26,906 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 10:47:32,023 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-01-02 10:53:58,866 [1] INFO  WebLogger - 系统启动
+2017-01-02 10:53:59,042 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 10:54:02,311 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 10:54:02,311 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 10:54:05,007 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 10:54:05,008 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 10:54:08,843 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 10:54:08,843 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 10:54:12,831 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 10:54:12,831 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 10:54:17,848 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-02 14:26:11,915 [1] INFO  WebLogger - 系统启动
+2017-01-02 14:26:15,168 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 14:26:19,237 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 14:26:19,237 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 14:26:22,306 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 14:26:22,306 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 14:26:26,245 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 14:26:26,246 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 14:26:29,597 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 14:26:29,598 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 14:26:36,920 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-02 14:27:06,358 [9] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.RoleController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 14:27:17,307 [10] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.UserController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-02 14:51:09,599 [1] INFO  WebLogger - 系统启动
+2017-01-02 14:51:12,476 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 14:51:16,038 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 14:51:16,038 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 14:51:19,437 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 14:51:19,437 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 14:51:23,674 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 14:51:23,674 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 14:51:28,256 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 14:51:28,256 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 14:51:36,097 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-02 14:52:18,035 [1] INFO  WebLogger - 系统启动
+2017-01-02 14:52:18,206 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 14:52:21,536 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 14:52:21,536 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 14:52:24,561 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 14:52:24,561 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 14:52:28,990 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 14:52:28,990 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 14:52:33,134 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 14:52:33,135 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 14:52:38,911 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-02 14:54:08,014 [9] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The layout page "~/Views/Shared/_Layour_admin.cshtml" could not be found at the following path: "~/Views/Shared/_Layour_admin.cshtml".
+   在 System.Web.WebPages.WebPageExecutingBase.NormalizeLayoutPagePath(String layoutPagePath)
+   在 System.Web.WebPages.WebPageBase.PopContext()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 14:54:08,949 [5] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The layout page "~/Views/Shared/_Layour_admin.cshtml" could not be found at the following path: "~/Views/Shared/_Layour_admin.cshtml".
+   在 System.Web.WebPages.WebPageExecutingBase.NormalizeLayoutPagePath(String layoutPagePath)
+   在 System.Web.WebPages.WebPageBase.PopContext()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 14:54:20,872 [11] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The layout page "~/Views/Shared/_Layour_admin.cshtml" could not be found at the following path: "~/Views/Shared/_Layour_admin.cshtml".
+   在 System.Web.WebPages.WebPageExecutingBase.NormalizeLayoutPagePath(String layoutPagePath)
+   在 System.Web.WebPages.WebPageBase.PopContext()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 14:54:33,543 [12] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The layout page "~/Views/Shared/_Layour_admin.cshtml" could not be found at the following path: "~/Views/Shared/_Layour_admin.cshtml".
+   在 System.Web.WebPages.WebPageExecutingBase.NormalizeLayoutPagePath(String layoutPagePath)
+   在 System.Web.WebPages.WebPageBase.PopContext()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 15:05:32,696 [7] INFO  WebLogger - 服务器异常
+System.Web.HttpCompileException (0x80004005): d:\c#_workspace\WebServer\WebServer\Views\User\Add_admin.cshtml(9): error CS0103: 当前上下文中不存在名称“import”
+   在 System.Web.Compilation.AssemblyBuilder.Compile()
+   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   在 System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   在 Microsoft.Web.Mvc.FixedRazorViewEngine.Microsoft.Web.Mvc.IViewEngineProxy.FileExists(ControllerContext controllerContext, String virtualPath)
+   在 Microsoft.Web.Mvc.ViewEngineFixWorker`1.FileExists(ControllerContext controllerContext, String virtualPath)
+   在 Microsoft.Web.Mvc.ViewEngineFixWorker`1.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   在 System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   在 System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   在 System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   在 System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   在 System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   在 System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode)
+   在 Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   在 Microsoft.Web.Mvc.ViewEngineFixWorker`1.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   在 Microsoft.Web.Mvc.ViewEngineFixWorker`1.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   在 Microsoft.Web.Mvc.FixedRazorViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   在 System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   在 System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   在 System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-01-02 15:14:09,594 [1] INFO  WebLogger - 系统启动
+2017-01-02 15:14:09,722 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 15:14:13,024 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 15:14:13,024 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 15:14:15,787 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 15:14:15,788 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 15:14:19,659 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 15:14:19,660 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 15:14:23,732 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 15:14:23,732 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 15:14:30,997 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-02 15:41:51,836 [9] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/Admin/Index_admin' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-02 15:41:59,236 [9] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index_admin' was not found on controller 'WebServer.Controllers.AccountController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.End(IAsyncResult asyncResult, Object tag)
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-01-02 15:56:14,231 [1] INFO  WebLogger - 系统启动
+2017-01-02 15:56:14,380 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-02 15:56:17,545 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-02 15:56:17,545 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-02 15:56:20,401 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-02 15:56:20,401 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-02 15:56:24,558 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-02 15:56:24,559 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-02 15:56:29,363 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-02 15:56:29,363 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-02 15:56:37,244 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-02 16:19:45,058 [1] INFO  WebLogger - 系统启动
+2017-01-02 16:19:47,350 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.DocumentController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-02 16:20:57,471 [1] INFO  WebLogger - 系统启动
+2017-01-02 17:19:07,547 [29] DEBUG WebLogger - 上传“导入文件”时间：0ms
+2017-01-02 17:19:07,852 [29] DEBUG WebLogger - 导入数据，花费时间:3.0006ms

@@ -17,8 +17,8 @@ namespace WebServer.App_Start
             string requiredPermission = String.Format("{0}-{1}",
                    filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                    filterContext.ActionDescriptor.ActionName);
-
-            RBACUser requestingUser = new RBACUser(filterContext.RequestContext.HttpContext.User.Identity.Name);
+            //filterContext.RequestContext.HttpContext.User.Identity.Name
+            RBACUser requestingUser = new RBACUser("测试");
 
             if (!requestingUser.HasPermission(requiredPermission))
             {

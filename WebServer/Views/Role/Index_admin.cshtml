@@ -17,7 +17,7 @@
                     <img alt="Brand" src="/images/u46.png">
                 </a>
             </div>
-            <p class="navbar-text col-md-6">中佰会议系统管理员界面</p>
+            <p class="navbar-text col-md-6">中佰会议管理员界面</p>
             <ul class="col-md-3" id="signUpWindow">
                 <ol class="col-md-6"><b>管理员</b>&nbsp&nbsp<b>张三</b></ol>
                 <ol class="col-md-4">
@@ -40,23 +40,15 @@
                 <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
                 <li role="presentation"><a href="/User/Index_admin">人员管理</a></li>
                 <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
-                <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
+                <li role="presentation"><a href="/Device/Index_admin">设备管理</a> </li>
             </ul>
         </div>
         <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
-            <div>
-                <div class="col-md-3 ">
-                    <h1><strong>角色管理</strong></h1>
+            <div id="ContentRightHead">
+                <div class="col-md-4">
+                    <h2><strong>角色管理</strong></h2>
                 </div>
-                <div class="col-md-6">
-                    <br />
-                    <ol class="breadcrumb">
-                        <li><a href="/Account/Admin">首页</a></li>
-                        <li class="active">角色管理</li>
-                    </ol>
-                </div>
-                <div class="col-md-3 " id="backToHome">
-                    <br /><button class="btn btn-default" type="button" id="backToHome" href="#">返回主页</button><br />
+                <div class="col-md-4 col-md-offset-4">
                     <span id="ContentRightHeadState">
                         状态:<span id="Status"></span>
                     </span>
@@ -74,20 +66,16 @@
                 </div>
 
                 <h5>所有角色：</h5>
-                <div class="all_role_row" >
+                <div class="all_role_row">
                     <div class="col-md-2">
-                        <div class="table-responsive" >
-                            <table class="table table-bordered" id="roleTable">
-
-                            </table>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="roleTable"></table>
                         </div>
                     </div>
 
                     <div class="col-md-10">
                         <div class="table-responsive" id="scrollTable">
-                            <table class="table table-bordered" id="permissionTable">
-
-                            </table>
+                            <table class="table table-bordered" id="permissionTable"></table>
                         </div>
                     </div>
                 </div>
@@ -100,11 +88,12 @@
                 </div>
             </div>
         </div>
-        <script src="/node_modules/less/dist/less.js"></script>
-        <script src="/node_modules/jquery/dist/jquery.js"></script>
-        <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/node_modules/angular/angular.js"> </script>
-        <script src="~/js/role/index.js"></script>
+    </div>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js"> </script>
+    <script src="~/js/role/index.js"></script>
 </body>
 
 </html>

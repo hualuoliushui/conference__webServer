@@ -5,6 +5,7 @@ using DAL.DAOVO;
 using DAL.DAOFactory;
 using WebServer.Models.Document;
 using WebServer.App_Start;
+using WebServer.Models.Vote;
 
 namespace WebServer.Models.Agenda
 {
@@ -25,9 +26,9 @@ namespace WebServer.Models.Agenda
 
 
         //获取指定会议的议程
-        public Status getAll(int meetingID, out List<Agenda> agendas)
+        public Status getAll(int meetingID, out List<AgendaInfo> agendas)
         {
-            agendas = new List<Agenda>();
+            agendas = new List<AgendaInfo>();
 
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             PersonDAO personDao = Factory.getInstance<PersonDAO>();
@@ -53,7 +54,7 @@ namespace WebServer.Models.Agenda
                 }
                 //将信息插入到返回信息中
                 agendas.Add(
-                    new Agenda
+                    new AgendaInfo
                     {
                         agendaID = agendaVo.agendaID,
                         agendaName =agendaVo.agendaName,
@@ -66,7 +67,36 @@ namespace WebServer.Models.Agenda
             return Status.SUCCESS;
         }
 
-        public Status create(string userName,CreateAgenda createAgenda)
+        public Status getOne(int agendaID, out AgendaInfo agenda)
+        {
+            agenda = new AgendaInfo();
+
+            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaID);
+
+            if (agendaVo == null)
+            {
+                return Status.NONFOUND;
+            }
+
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            PersonVO personVo = personDao.getOne<PersonVO>(agendaVo.personID);
+            if (personVo == null)
+            {
+                return Status.FAILURE;
+            }
+
+            agenda.agendaID = agendaVo.agendaID;
+            agenda.agendaName = agendaVo.agendaName;
+            agenda.agendaDuration = agendaVo.agendaDuration;
+            agenda.userName = personVo.personName;
+            agenda.meetingID = agendaVo.meetingID;
+
+            return Status.SUCCESS;
+        }
+
+
+        public Status create(CreateAgenda createAgenda)
         {
             if(string.IsNullOrWhiteSpace(createAgenda.agendaName))
             {
@@ -81,11 +111,6 @@ namespace WebServer.Models.Agenda
             }
             //初始化会议操作
             meeting_initOperator(createAgenda.meetingID);
-
-            //验证拥有者权限
-            if(!meeting_validatePermission(userName)){
-                return Status.PERMISSION_DENIED;
-            }
 
             bool isUpdate = false;
             //判断会议是否开启，如果开启，更新“议程更新状态”，数据设置更新状态
@@ -125,38 +150,43 @@ namespace WebServer.Models.Agenda
                 isUpdate = isUpdate //判断是否属于会议中新加入的信息
             };
 
-            if( agendaDao.insert<AgendaVO>(agendaVo) != 1){
-                return Status.FAILURE;
+            if( agendaDao.insert<AgendaVO>(agendaVo) < 0){
+                return Status.DATABASE_OPERATOR_ERROR;
             }else
             {
-                if (meetingDao.increateDuration(agendaVo.meetingID, agendaVo.agendaDuration) != 1)
+                if (meetingDao.increateDuration(agendaVo.meetingID, agendaVo.agendaDuration) < 0)
                 {
                     agendaDao.delete(agendaID);
-                    return Status.FAILURE;
+                    return Status.DATABASE_OPERATOR_ERROR;
                 }
             }
             return Status.SUCCESS;
         }
 
-        public Status update(string userName,UpdateAgenda updateAgenda)
+        public Status update(UpdateAgenda updateAgenda)
         {
             if (string.IsNullOrWhiteSpace(updateAgenda.agendaName))
             {
                 return Status.ARGUMENT_ERROR;
             }
-             //修正字符串
+            //修正字符串
             updateAgenda.agendaName = updateAgenda.agendaName.Trim();
             //检查参数格式
-            if(!checkFormat(updateAgenda.agendaName,updateAgenda.agendaDuration)){
+            if (!checkFormat(updateAgenda.agendaName, updateAgenda.agendaDuration))
+            {
                 return Status.FORMAT_ERROR;
             }
-            //初始化会议操作
-            meeting_initOperator(updateAgenda.meetingID);
-            //验证拥有者权限
-            if (!meeting_validatePermission(userName))
+
+            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(updateAgenda.agendaID);
+
+            if (agendaVo == null)
             {
-                return Status.PERMISSION_DENIED;
+                return Status.NONFOUND;
             }
+
+            //初始化会议操作
+            meeting_initOperator(agendaVo.meetingID);
 
             //判断会议是否开启，如果正在开启，直接退出
             if (meeting_isOpening())
@@ -168,20 +198,19 @@ namespace WebServer.Models.Agenda
                 return Status.FAILURE;
             }
 
-            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
+            setlist.Add("agendaName", updateAgenda.agendaName);
+            setlist.Add("agendaDuration", updateAgenda.agendaDuration);
+            setlist.Add("personID", updateAgenda.userID);
 
-            Dictionary<string,object> setlist = new Dictionary<string,object>();
-            setlist.Add("agendaName",updateAgenda.agendaName);
-            setlist.Add("agendaDuration",updateAgenda.agendaDuration);
-            setlist.Add("personID",updateAgenda.userID);
-
-            if(agendaDao.update(setlist,updateAgenda.agendaID)!= 1){
+            if (agendaDao.update(setlist, updateAgenda.agendaID) < 0)
+            {
                 return Status.FAILURE;
             }
             return Status.SUCCESS;
         }
 
-        public Status deleteMultipe(string userName, List<int> agendaIDs)
+        public Status deleteMultipe(List<int> agendaIDs)
         {
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -196,19 +225,16 @@ namespace WebServer.Models.Agenda
                  AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaIDs[0]);
 
                 if( agendaVo == null){
-                   return Status.FAILURE;
+                   return Status.NONFOUND;
                 }
 
                 //初始化会议操作
                 meeting_initOperator(agendaVo.meetingID);
-                //检查权限
-                if(!meeting_validatePermission(userName)){
-                    return Status.PERMISSION_DENIED;
-                }
+
                 //判断会议是否 未开启,如果 不是”未开启“，直接退出
                 if (!meeting_isNotOpen())
                 {
-                    return Status.FAILURE;
+                    return Status.MEETING_OPENING;
                 }
                 
                 //修改其他议程的序号
@@ -217,9 +243,33 @@ namespace WebServer.Models.Agenda
                 //删除该议程下的附件
                 new DocumentService().deleteAll(agendaVo.agendaID);
                 //删除该议程下的表决
-
+                new VoteService().deleteAll(agendaVo.agendaID);
                 //删除该议程
                 agendaDao.delete(agendaID);
+            }
+            return Status.SUCCESS;
+        }
+
+        /// <summary>
+        /// 删除会议时使用
+        /// </summary>
+        /// <param name="meetingID"></param>
+        /// <returns></returns>
+        public Status deleteAll(int meetingID)
+        {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            wherelist.Add("meetingID", meetingID);
+            List<AgendaVO> agendaVolist = agendaDao.getAll<AgendaVO>(wherelist);
+            if (agendaVolist != null)
+            {
+                DocumentService documentService = new DocumentService();
+                VoteService voteService = new VoteService();
+                foreach (AgendaVO agendaVo in agendaVolist)
+                {
+                    documentService.deleteAll(agendaVo.agendaID);
+                    voteService.deleteAll(agendaVo.agendaID);
+                }
             }
             return Status.SUCCESS;
         }

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-datetimepicker-master/less/datetimepicker.less">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-datetimepicker-master/css/jquery-ui.css">
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js"> </script>
+    <script src="/node_modules/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"> </script>
+  
+    <link type="text/css" rel="stylesheet" href="~/less/common/organizor.less" />
+    
+    @RenderSection("BodyLess", required: false);
+</head>
+    @*@{
+        Html.EnableClientValidation();
+    }*@
+<body>
+    <div class="navbar navbar-fixed-top" id="mainMenu">
+        <div class="container">
+            <div class="navbar-header col-md-2">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="/images/u46.png">
+                </a>
+            </div>
+            <p class="navbar-text col-md-7">中佰会议系统会议组织者界面</p>
+            <ul class="col-md-3" id="signUpWindow">
+                <ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>@Session["userName"]</b></ol>
+                <ol class="col-md-4">
+                    <button type="button" class="btn btn-xs">
+                        <!--超小按钮-->
+                        <span class="glyphicon glyphicon-user"></span>
+                        <!--这些图标的使用要引入boorstrap的font-->
+                    </button>
+                </ol>
+            </ul>
+        </div>
+    </div>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/js/common/organizor.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

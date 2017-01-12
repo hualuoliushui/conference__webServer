@@ -1,0 +1,114 @@
+﻿@model List<WebServer.Models.Agenda.AgendaInfo>
+@{
+    Layout = "~/Views/Shared/_Layout_organizor.cshtml";
+    ViewBag.Title = "中佰会议系统组织者";
+}
+@section BodyLess{
+    <link href="~/less/agenda/index.less" type="text/css" rel="stylesheet">
+}
+
+<div>
+    <input type="hidden" id="meetingID" value="@Session["meetingID"]" />
+</div>
+
+<div class="container" id="mainContent">
+    <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
+        <div id="ContentRightHead" class="col-md-12">
+            <p id="ContentRightHeadTitle" class="col-md-4"><strong>议程</strong></p>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-default col-md-2 returnIndex" type="button">返回</button>
+            <span id="ContentRightHeadState">
+                状态:<span id="Status"></span>
+            </span>
+        </div>
+        <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
+        
+        <div class="ContentRightButtonGroup">
+            <button class="btn btn-default new" type="button">创建</button>
+            <button class="btn btn-default deleteMutiple" type="button">批量删除</button>
+            <button class="btn btn-default undoDelete" type="button">撤销删除</button>
+        </div>
+        <div id="ContentRightList">
+            <div id="contentRightListGroup">
+                <ul class="list-group contentRightListGroupBanderList">
+                    <li href="#" class="list-group-item disabled container-fluid">
+                        <input type="checkbox" value="" class="col-md-1 contentRightListGroupBanderListInput" id="selectAll">
+                        <label class="col-md-2 list-If">
+                            名称
+                        </label>
+                        <label class="col-md-2 list-If">
+                            主讲人
+                        </label>
+                        <label class="col-md-2 list-If">
+                            时长
+                        </label>
+                        <label class="col-md-2 list-If">
+                            附件
+                        </label>
+                        <label class="col-md-2 list-If">
+                            投票信息
+                        </label>
+                        <label class="col-md-2 list-If"></label>
+                    </li>
+                </ul>
+                <ul class="list-group contentRightListGroupOutWindow">           
+                        <ul class="list-group contentRightListGroupOutWindowList">
+                            @foreach (var agenda in Model)
+                            {
+                                <li href="#" class="list-group-item disabled container-fluid list_index">
+                                    <input type="hidden" class="ID" value="@agenda.agendaID" />
+                                    <input type="checkbox" class="col-md-1 check">
+                                    <label class="col-md-2 list-If">
+                                        @agenda.agendaName
+                                    </label>
+                                    <label class="col-md-2 list-If">
+                                        @agenda.agendaName
+                                    </label>
+                                    <label class="col-md-2 list-If">
+                                        @agenda.userName
+                                    </label>
+                                    <label class="col-md-2 list-If">
+                                        <input type="button" class="ui-icon-document document" />
+                                    </label>
+                                    <label class="col-md-2 list-If">
+                                        <input type="button" class="ui-icon-disk vote" />
+                                    </label>
+                                    <label class="col-md-2 list-If">
+                                        <img class="edit" src="~/images/10.bmp" />
+                                    </label>
+                                    <label >
+                                        <img class="delete" src="~/images/13.bmp" />
+                                    </label>
+                                </li>
+                            }
+                        </ul>
+                </ul>
+            </div>
+            <nav class="text-center" id="paginationOutWindow">
+                <ul class="pagination">
+                    <!--<li><a href="#">&laquo;</a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&raquo;</a></li>-->
+                </ul>
+            </nav>
+        </div>
+        <div class="ContentRightButtonGroup pull-right">
+            <button class="btn btn-default confirmDelete" type="button">确认删除</button>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/agenda/index.js"></script>

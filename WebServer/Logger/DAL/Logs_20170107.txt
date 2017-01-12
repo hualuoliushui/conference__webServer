@@ -1,0 +1,470 @@
+
+----------------------header--------------------------
+2017-01-07 10:39:37,710 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:39:38,048 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:39:38,063 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 10:39:38,063 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 10:39:38,063 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+
+----------------------header--------------------------
+2017-01-07 10:42:53,763 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 10:42:54,247 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 10:42:59,041 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+
+----------------------header--------------------------
+2017-01-07 10:45:53,286 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 10:45:53,666 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 10:45:53,666 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 10:45:53,666 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 10:45:53,666 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 10:45:53,683 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 10:45:53,683 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 10:45:53,684 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:45:53,685 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 10:45:53,686 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:45:53,686 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:45:53,687 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 10:45:53,688 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 10:45:53,689 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 10:45:59,069 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:46:35,383 [9] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:46:50,674 [9] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:46:50,683 [9] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:46:50,815 [9] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:48:54,501 [10] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:48:54,505 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:48:54,505 [10] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:49:45,088 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+
+----------------------header--------------------------
+2017-01-07 10:52:26,229 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 10:52:26,508 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 10:52:26,525 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 10:52:26,526 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 10:52:26,527 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 10:52:26,527 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 10:52:26,528 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 10:52:26,529 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 10:52:30,852 [10] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:53:33,166 [9] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 10:53:33,166 [9] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 10:53:33,178 [9] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 10:55:30,277 [9] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:04:08,775 [15] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:04:37,589 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:04:54,336 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:04:58,088 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:04:58,088 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:04:58,105 [13] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:04:58,107 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:04:58,109 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:05:01,711 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:05:12,986 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:05:12,986 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:05:12,990 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:05:12,990 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:05:13,104 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:05:13,104 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:05:13,260 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:07:03,419 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:07:03,527 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:07,155 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:09:07,159 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:09:07,159 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:09:07,159 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:09:07,163 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:07,163 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:07,513 [17] INFO  DalLogger - mysql 非查询执行 : update meeting set meetingName=@meetingName , meetingPlace=@meetingPlace , meetingSummary=@meetingSummary , meetingToStartTime=@meetingToStartTime where meetingID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingPlace' in 'field list'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 e:\Code\Visual Studio\C#\Project\Z100\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-07 11:09:07,644 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:09:07,644 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:10,641 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:09:10,645 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:09:10,645 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:09:10,645 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:09:10,649 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:10,649 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:10,733 [17] INFO  DalLogger - mysql 非查询执行 : update meeting set meetingName=@meetingName , meetingPlace=@meetingPlace , meetingSummary=@meetingSummary , meetingToStartTime=@meetingToStartTime where meetingID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingPlace' in 'field list'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 e:\Code\Visual Studio\C#\Project\Z100\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-07 11:09:10,753 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:09:10,753 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:14,622 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:09:14,622 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:09:14,622 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:09:14,626 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:09:14,628 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:14,630 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:09:14,686 [17] INFO  DalLogger - mysql 非查询执行 : update meeting set meetingName=@meetingName , meetingPlace=@meetingPlace , meetingSummary=@meetingSummary , meetingToStartTime=@meetingToStartTime where meetingID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingPlace' in 'field list'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 e:\Code\Visual Studio\C#\Project\Z100\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-07 11:09:14,702 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:09:14,702 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:11:23,437 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:11:23,438 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:11:23,439 [13] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:11:23,439 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:11:46,215 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:11:49,301 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:11:54,992 [13] INFO  DalLogger - mysql 非查询执行 : update meeting set meetingName=@meetingName , meetingPlace=@meetingPlace , meetingSummary=@meetingSummary , meetingToStartTime=@meetingToStartTime where meetingID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingPlace' in 'field list'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 e:\Code\Visual Studio\C#\Project\Z100\DAL\DAL\DB\MysqlDB.cs:行号 33
+
+----------------------header--------------------------
+2017-01-07 11:13:53,508 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:13:54,050 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:13:54,054 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:13:54,057 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 11:13:54,059 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:13:54,061 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 11:13:54,065 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:13:54,065 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:13:54,069 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 11:13:54,069 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 11:13:54,073 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:13:54,077 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 11:13:54,081 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 11:13:54,081 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 11:14:00,812 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:14:25,394 [5] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:15:00,552 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:15:00,556 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:15:00,556 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:15:00,560 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:15:09,097 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:15:09,113 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:15:13,963 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:15:20,890 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:16:17,102 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:16:39,689 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:16:39,690 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:16:39,691 [6] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:16:39,692 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:16:45,671 [6] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:16:45,671 [6] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:16:45,793 [6] INFO  DalLogger - mysql 非查询执行 : update meeting set meetingName=@meetingName , meetingPlace=@meetingPlace , meetingSummary=@meetingSummary , meetingToStartTime=@meetingToStartTime where meetingID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingPlace' in 'field list'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 e:\Code\Visual Studio\C#\Project\Z100\DAL\DAL\DB\MysqlDB.cs:行号 33
+
+----------------------header--------------------------
+2017-01-07 11:18:04,601 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:18:05,186 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:18:05,186 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:18:05,186 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 11:18:05,186 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:18:05,186 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 11:18:05,201 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 11:18:09,344 [6] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:18:26,147 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:18:26,321 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:18:33,584 [5] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:22:50,803 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:22:50,803 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:22:50,807 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:22:50,807 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:22:50,996 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:22:59,706 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:22:59,706 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:22:59,706 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:22:59,706 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:22:59,735 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:23:13,864 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:23:13,864 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:23:13,864 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:23:13,864 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:23:13,868 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:23:20,736 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:23:20,736 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:23:20,736 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:23:20,736 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:23:20,740 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:24:33,734 [11] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:24:33,734 [11] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:24:33,734 [11] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:24:33,738 [11] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:24:33,738 [11] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:26:02,393 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:26:18,844 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:27,739 [14] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:27,771 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:27,771 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:26:27,771 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:26:27,786 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:26:36,953 [15] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:36,969 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:36,973 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:26:36,973 [17] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:26:36,973 [17] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:26:36,973 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:26:38,969 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:26:56,107 [14] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:56,107 [14] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:26:56,111 [14] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:26:56,111 [14] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:26:58,063 [14] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:26:58,063 [14] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:26:58,182 [17] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:27:04,053 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:27:05,763 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:09,165 [15] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:27:09,165 [15] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:27:09,165 [15] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:27:09,165 [15] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:27:10,616 [15] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:10,618 [15] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:12,812 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:27:15,489 [17] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:20,304 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:27:20,308 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:27:20,308 [13] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:27:20,308 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:27:21,588 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:21,588 [13] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:22,607 [15] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:27:23,570 [15] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:27:46,165 [14] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:27:46,165 [14] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:27:46,165 [14] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:27:46,169 [14] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:28:00,767 [14] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:28:03,969 [14] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+
+----------------------header--------------------------
+2017-01-07 11:28:42,854 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:28:47,109 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:28:47,109 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:28:47,109 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 11:28:47,125 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 11:28:52,079 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 11:28:52,167 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:35:25,878 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:35:25,974 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:35:25,974 [6] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:35:25,974 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:35:25,990 [6] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:35:30,027 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:35:30,031 [7] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 11:35:30,031 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:35:30,035 [7] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 11:35:30,039 [7] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 11:35:30,039 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:35:30,043 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:36:10,420 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:10,434 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:10,438 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:36:10,438 [8] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:36:10,438 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:36:10,438 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 11:36:47,207 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:47,223 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:47,225 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:36:47,225 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:36:47,227 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:36:53,443 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:53,443 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:36:53,443 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:36:53,447 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:36:53,447 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:36:53,447 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:36:53,451 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:16,330 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:16,332 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:16,333 [8] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:16,334 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:37:16,337 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:37:17,883 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:17,883 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:17,887 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:17,887 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:37:34,719 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:34,719 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:34,719 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:34,723 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:37:34,723 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 11:37:37,358 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:37,359 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:37,359 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:37,359 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:37:48,666 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:48,666 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:48,666 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:48,666 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:37:48,670 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:48,670 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:48,670 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:54,757 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:37:54,758 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:37:54,759 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:37:54,759 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:38:06,662 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:38:06,664 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:38:06,665 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 11:38:06,666 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 11:38:06,667 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 11:38:06,667 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 11:38:06,668 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+
+----------------------header--------------------------
+2017-01-07 12:01:23,585 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 12:01:24,586 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 12:01:28,908 [6] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+
+----------------------header--------------------------
+2017-01-07 12:08:38,559 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:08:38,995 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:08:38,995 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:08:38,995 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 12:08:38,999 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:08:38,999 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 12:08:39,003 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:08:39,003 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 12:08:39,003 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 12:08:39,003 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 12:08:39,007 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 12:08:39,007 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 12:08:39,007 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 12:08:39,007 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 12:08:43,216 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+
+----------------------header--------------------------
+2017-01-07 12:10:06,660 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:10:06,845 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:10:06,845 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-07 12:10:06,860 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-07 12:10:11,286 [5] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-07 12:11:19,598 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:11:45,577 [5] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:12:04,008 [5] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:12:04,030 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:12:04,032 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:12:04,032 [8] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:12:04,032 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:12:04,032 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-07 12:12:06,870 [5] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:12:19,074 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:12:19,078 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:12:19,078 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:12:19,078 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:12:19,086 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:14:06,857 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:14:27,521 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:14:27,521 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:14:27,521 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:14:27,521 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:14:27,527 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:14:41,851 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:14:41,851 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:14:41,851 [8] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:14:41,855 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:14:41,855 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-07 12:14:59,754 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-07 12:14:59,754 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-07 12:14:59,754 [8] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-07 12:14:59,754 [8] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-07 12:14:59,758 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO

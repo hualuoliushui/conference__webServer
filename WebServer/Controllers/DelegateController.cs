@@ -1,139 +1,118 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Delegate;
+using WebServer.Models.Device;
+using WebServer.Models.Meeting;
+using WebServer.Models.Tools;
+using WebServer.Models.User;
 
 namespace WebServer.Controllers
 {
     public class DelegateController : Controller
     {
-        //
-        // GET: /Delegate/
-
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index_organizor(int meetingID)
         {
-            return View();
+            Session["meetingID"] = meetingID;
+
+            Status status = Status.SUCCESS;
+
+            MeetingService meetingService = new MeetingService();
+            MeetingInfo meeting = null;
+
+            status = meetingService.getOne(meetingID, out meeting);
+
+            DeviceService deviceService = new DeviceService();
+            List<DeviceForDelegate> devices = null;
+
+            status = deviceService.getAllForDelegate(meeting.meetingToStartTime, meeting.meetingStartedTime, out devices);
+
+            DelegateService delegateService = new DelegateService();
+            List<DelegateInfo> delegates = null;
+
+            status = delegateService.getAll(meetingID,out delegates);
+
+            return View(Tuple.Create(delegates,devices));
         }
 
-        /// <summary>
-        /// 获取指定会议的参会人员
-        /// </summary>
-        /// <param name="meetingID"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult GetDelegates(int meetingID)
+        [HttpPost]
+        public JsonResult Update_organizor(UpdateDelegate model)
         {
-            RespondModel respond = new RespondModel();
+            if (ModelState.IsValid)
+            {
+                Status status = Status.SUCCESS;
 
-            List<Models.Delegate.Delegate> delegates;
+                DelegateService delegateServcie = new DelegateService();
+                status = delegateServcie.update(model);
 
-            Status status = new DelegateService().getAll(meetingID,out delegates);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = delegates;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+                new RespondModel(
+                    Status.ARGUMENT_ERROR,
+                    ModelStateHelper.errorMessages(ModelState)),
+                    JsonRequestBehavior.AllowGet);
         }
 
-        /// <summary>
-        /// 添加多个参会人员
-        /// </summary>
-        /// <param name="delegates"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult CreateDelegateMultipe(List<CreateDelegate> delegates)
+        [HttpGet]
+        public ActionResult Add_organizor(int meetingID)
         {
-            RespondModel respond = new RespondModel();
+            Session["meetingID"] = meetingID;
 
+            Status status = Status.SUCCESS;
 
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new DelegateService().createMultiple(userName, delegates);
+            MeetingService meetingService = new MeetingService();
+            MeetingInfo meeting = null;
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = "";
+            status = meetingService.getOne(meetingID, out meeting);
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            DeviceService deviceService = new DeviceService();
+            List<DeviceForDelegate> devices = null;
+
+            status = deviceService.getAllForDelegate(meeting.meetingToStartTime, meeting.meetingStartedTime, out devices);
+
+            UserService userService = new UserService();
+            List<UserForDelegate> users = null;
+
+            status = userService.getNewForDelegate(meetingID, out users);
+
+            return View(Tuple.Create(users, devices));
         }
 
-        /// <summary>
-        /// 添加单个参会人员
-        /// </summary>
-        /// <param name="createDelegate"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult CreateDelegate(CreateDelegate createDelegate)
+        [HttpPost]
+        public JsonResult Add_organizor(CreateDelegate model)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
+            if (ModelState.IsValid)
+            {
+                DelegateService delegateService = new DelegateService();
+                status = delegateService.create(model);
 
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new DelegateService().create(userName, createDelegate);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+                new RespondModel(
+                    Status.ARGUMENT_ERROR, 
+                    ModelStateHelper.errorMessages(ModelState)), 
+                    JsonRequestBehavior.AllowGet);
+            
         }
 
-        /// <summary>
-        /// 更新参会人员
-        /// </summary>
-        /// <param name="updateDelegate"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult UpdateDelegate(UpdateDelegate updateDelegate)
+        [HttpPost]
+        public JsonResult Delete_organizor(List<int> delegateIDs)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new DelegateService().update(userName, updateDelegate);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
-        }
-
-        /// <summary>
-        /// 批量删除参会人员
-        /// </summary>
-        /// <param name="delegates"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult DeleteDelegateMultipe(List<int> delegates)
-        {
-            RespondModel respond = new RespondModel();
-
-
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new DelegateService().deleteMultipe(userName, delegates);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
-        }
-        [RBAC]
-        public JsonResult GetSpeakerForAgenda(int meetingID)
-        {
-            RespondModel respond = new RespondModel();
-
-            List<SpeakerForAgenda> speakers;
-            Status status = new DelegateService().getSpeakerForAgenda(meetingID, out speakers);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = speakers;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            DelegateService delegateService = new DelegateService();
+            status = delegateService.deleteMultipe(delegateIDs);
+            return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
         }
     }
 }

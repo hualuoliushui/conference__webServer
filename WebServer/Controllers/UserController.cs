@@ -25,14 +25,14 @@ namespace WebServer.Controllers
             return View();
         }
 
-        [RBAC]
+        //[RBAC]
         [HttpGet]
         public ActionResult Edit_admin()
         {
-            if (Session["userID"] == null)
-            {
-                return RedirectToAction("Index", "Account");
-            }
+            //if (Session["userID"] == null)
+            //{
+            //    return RedirectToAction("Index", "Account");
+            //}
             return View();
         }
 
@@ -162,9 +162,9 @@ namespace WebServer.Controllers
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
 
-        [RBAC]
+        //[RBAC]
         [HttpPost]
-        public JsonResult CreateForDelegate(CreateUserForDelegate user)
+        public JsonResult Add_organizor(CreateUserForDelegate user)
         {
             RespondModel respond = new RespondModel();
             //调用用户服务
@@ -205,6 +205,12 @@ namespace WebServer.Controllers
             respond.Result = "";
 
             return Json(respond, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Add_organizor()
+        {
+
+            return View();
         }
     }
 }

@@ -8,6 +8,7 @@ using DAL.DAOVO;
 using DAL.DB;
 using WebServer.App_Start;
 using WebServer.Models.Document;
+using System.IO;
 
 namespace WebServer.Models.Test
 {
@@ -55,10 +56,10 @@ namespace WebServer.Models.Test
             {
                 deviceIDs[i] = DeviceDAO.getID();
             }
-            IMEIs[0] = "862823023300546";
+            IMEIs[0] = "862823023300520";
             IMEIs[1] = "862823023301916";
             IMEIs[2] = "359365002515686";
-            IMEIs[3] = "862823023300520";
+            IMEIs[3] = "862823023300546";
             
            for(int i = 0 ; i < deviceNum;i++){
                devices.Add(IMEIs[i],
@@ -135,25 +136,61 @@ namespace WebServer.Models.Test
             {
                 personIDs[i] = PersonDAO.getID();
             }
-            personNames[0] = "张三丰";
-            personNames[1] = "李四爷";
-            personNames[2] = "王五哥";
-            personNames[3] = "张六姐";
+            personNames[0] = "彭洪云";
+            personNames[1] = "赵丽萍";
+            personNames[2] = "黄文欣";
+            personNames[3] = "林连南";
 
-            for (int i = 0; i < deviceNum; i++)
-            {
-                persons.Add(personNames[i],
-                new PersonVO
-                {
-                    personID = personIDs[i],
-                    personName = personNames[i],
-                    personDepartment = "华工" + personIDs[0],
-                    personJob = "学生" + personIDs[0],
-                    personDescription = "小学生",
-                    personPassword = "123456",
-                    personState = 0
-                });
-            }
+            int personIndex = 0;
+            persons.Add(personNames[personIndex],
+               new PersonVO
+               {
+                   personID = personIDs[personIndex],
+                   personName = personNames[personIndex],
+                   personDepartment = "董事",
+                   personJob = "董事长",
+                   personDescription = "测试",
+                   personPassword = "123456",
+                   personState = 0
+               });
+            personIndex++;
+            persons.Add(personNames[personIndex],
+               new PersonVO
+               {
+                   personID = personIDs[personIndex],
+                   personName = personNames[personIndex],
+                   personDepartment = "电子商务部",
+                   personJob = "股东",
+                   personDescription = "测试",
+                   personPassword = "123456",
+                   personState = 0
+               });
+            personIndex++;
+            persons.Add(personNames[personIndex],
+               new PersonVO
+               {
+                   personID = personIDs[personIndex],
+                   personName = personNames[personIndex],
+                   personDepartment = "财务部",
+                   personJob = "股东",
+                   personDescription = "测试",
+                   personPassword = "123456",
+                   personState = 0
+               });
+            personIndex++;
+            persons.Add(personNames[personIndex],
+               new PersonVO
+               {
+                   personID = personIDs[personIndex],
+                   personName = personNames[personIndex],
+                   personDepartment = "研发一部",
+                   personJob = "股东",
+                   personDescription = "测试",
+                   personPassword = "123456",
+                   personState = 0
+               });
+            personIndex++;
+
             //////////////////////////////////////
             Console.WriteLine("添加用户");
             for (int i = 0; i < deviceNum;i++)
@@ -195,19 +232,29 @@ namespace WebServer.Models.Test
                 Console.WriteLine(person_roleDao.insert<Person_RoleVO>(person_roles[i]));
             }
 
+
+            //删除表决、附件、议程、参会人员、会议
+            voteOptionPersonResultDao.deleteAll_test("voteOptionPersonResult");
+            voteOptionDao.deleteAll_test("voteOption");
+            voteDao.deleteAll_test("vote");
+            fileDao.deleteAll_test("file");
+            agendaDao.deleteAll_test("agenda");
+            delegateDao.deleteAll_test("delegate");
+            meetingDao.deleteAll_test("meeting");
+
             ///////////////////////////////////////
             Console.WriteLine("添加会议");
 
-            int meetingID = 1;
+            int meetingID = MeetingDAO.getID();
             MeetingVO meeting = new MeetingVO();
             meeting.meetingID = meetingID;
             meeting.meetingPlaceID = meetingPlaceIDs[0];
-            meeting.meetingName = "人民代表大会"+meetingID;
-            meeting.meetingSummary = "自由民主";
+            meeting.meetingName = "二零一六年年度股东大会暨股东扩大会议";
+            meeting.meetingSummary = "";
             meeting.meetingStatus = 1;
-            meeting.meetingStartedTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            meeting.meetingToStartTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-            meeting.meetingDuration = 0;
+            meeting.meetingStartedTime = (new DateTime(DateTime.Now.AddDays(5).Ticks));
+            meeting.meetingToStartTime = (new DateTime(DateTime.Now.AddDays(6).Ticks));
+            meeting.meetingDuration = 150;
             meeting.personID = personIDs[0];
 
             do
@@ -223,14 +270,6 @@ namespace WebServer.Models.Test
                 Console.WriteLine(meetingDao.insert<MeetingVO>(meeting));
             } while (false);
 
-            //删除表决、附件、议程、参会人员
-            voteOptionPersonResultDao.deleteAll_test("voteOptionPersonResult");
-            voteOptionDao.deleteAll_test("voteOption");
-            voteDao.deleteAll_test("vote");
-            fileDao.deleteAll_test("file");
-            agendaDao.deleteAll_test("agenda");
-            delegateDao.deleteAll_test("delegate");
-
             ////////////////////////////////////////////
             Console.WriteLine("添加参会人员");
             List<DelegateVO> delegates = new List<DelegateVO>();
@@ -240,46 +279,51 @@ namespace WebServer.Models.Test
             {
                 delegateIDs[i] = DelegateDAO.getID();
             }
+            int delegateIndex = 0;
             delegates.Add(
                 new DelegateVO
                 {
-                    delegateID = delegateIDs[0],
-                    deviceID = deviceIDs[0],
-                    personID = personIDs[0],
+                    delegateID = delegateIDs[delegateIndex],
+                    deviceID = deviceIDs[delegateIndex],
+                    personID = personIDs[delegateIndex],
                     meetingID = meetingID,
                     personMeetingRole = 1,
                     isSignIn = false
                 });
+            delegateIndex++;
             delegates.Add(
                 new DelegateVO
                 {
-                    delegateID = delegateIDs[1],
-                    deviceID = deviceIDs[1],
-                    personID = personIDs[1],
+                    delegateID = delegateIDs[delegateIndex],
+                    deviceID = deviceIDs[delegateIndex],
+                    personID = personIDs[delegateIndex],
                     meetingID = meetingID,
                     personMeetingRole = 0,
                     isSignIn = false
                 });
+            delegateIndex++;
             delegates.Add(
                 new DelegateVO
                 {
-                    delegateID = delegateIDs[2],
-                    deviceID = deviceIDs[2],
-                    personID = personIDs[2],
+                    delegateID = delegateIDs[delegateIndex],
+                    deviceID = deviceIDs[delegateIndex],
+                    personID = personIDs[delegateIndex],
+                    meetingID = meetingID,
+                    personMeetingRole = 0,
+                    isSignIn = false
+                });
+            delegateIndex++;
+            delegates.Add(
+                new DelegateVO
+                {
+                    delegateID = delegateIDs[delegateIndex],
+                    deviceID = deviceIDs[delegateIndex],
+                    personID = personIDs[delegateIndex],
                     meetingID = meetingID,
                     personMeetingRole = 2,
                     isSignIn = false
                 });
-            delegates.Add(
-                new DelegateVO
-                {
-                    delegateID = delegateIDs[3],
-                    deviceID = deviceIDs[3],
-                    personID = personIDs[3],
-                    meetingID = meetingID,
-                    personMeetingRole = 2,
-                    isSignIn = false
-                });
+            delegateIndex++;
             foreach (DelegateVO vo in delegates)
             {
                 Console.WriteLine(delegateDao.insert<DelegateVO>(vo));
@@ -287,122 +331,58 @@ namespace WebServer.Models.Test
 
             //////////////////////////////////////////
             Console.WriteLine("添加议程");
-            int[] agendaIDs = new int[2];
-            agendaIDs[0] = 1;
-            agendaIDs[1] = 2;
-            //议程1
-            AgendaVO agenda1 = new AgendaVO();
-            agenda1.agendaID = agendaIDs[0];
-            agenda1.agendaIndex = 1;
-            agenda1.agendaName = "测试议程"+agendaIDs[0];
-            agenda1.agendaDuration = 10;
-            agenda1.meetingID = meetingID;
-            agenda1.personID = personIDs[0];
+            int agendaNum = 3;
+            Dictionary<int, AgendaVO> agendas = new Dictionary<int, AgendaVO>();
+            int[] agendaIDs = new int[agendaNum];
+            for (int i = 0; i < agendaNum; i++)
+            {
+                agendaIDs[i] = AgendaDAO.getID();
+            }
 
-            Console.WriteLine(agendaDao.insert<AgendaVO>(agenda1));
-            //议程2
-            agenda1.agendaID = agendaIDs[1];
-            agenda1.agendaIndex = 2;
-            agenda1.agendaName = "测试议程" + agendaIDs[1];
-            agenda1.agendaDuration = 2;
-            agenda1.meetingID = meetingID;
-            agenda1.personID = personIDs[1];
-
-            Console.WriteLine(agendaDao.insert<AgendaVO>(agenda1));
-
+            int agendaIndex = 0;
+            agendas.Add(agendaIDs[agendaIndex],
+                new AgendaVO
+                {
+                    agendaID=agendaIDs[agendaIndex],
+                    agendaIndex=agendaIndex+1,
+                    agendaName="普通决议案",
+                    agendaDuration=50,
+                    meetingID = meetingID,
+                    personID = personIDs[3],//主讲人
+                    isUpdate = false
+                });
+            agendaIndex++;
+            agendas.Add(agendaIDs[agendaIndex],
+                new AgendaVO
+                {
+                    agendaID = agendaIDs[agendaIndex],
+                    agendaIndex = agendaIndex + 1,
+                    agendaName = "具体项目负责人汇报",
+                    agendaDuration = 50,
+                    meetingID = meetingID,
+                    personID = personIDs[0],
+                    isUpdate = false
+                });
+            agendaIndex++;
+            agendas.Add(agendaIDs[agendaIndex],
+                new AgendaVO
+                {
+                    agendaID = agendaIDs[agendaIndex],
+                    agendaIndex = agendaIndex + 1,
+                    agendaName = "特别决议案",
+                    agendaDuration = 50,
+                    meetingID = meetingID,
+                    personID = personIDs[0],
+                    isUpdate = false
+                });
+            agendaIndex++;
+            for (int i = 0; i < agendaNum; i++)
+            {
+                Console.WriteLine(agendaDao.insert<AgendaVO>(agendas[agendaIDs[i]]));
+            }
 
             //////////////////////////////////////////
             Console.WriteLine("添加附件");
-
-            List<FileVO> files = new List<FileVO>();
-            int tempID = 0;
-            //议程1中附件1
-            tempID = FileDAO.getID();
-            files.Add(
-                new FileVO
-                {
-                    agendaID = agendaIDs[0],
-                    fileID = tempID,
-                    fileName = "竞品dy.docx",
-                    fileIndex = 1,
-                    fileSize = 12,
-                    filePath = @"\"+meetingID+"\\"+agendaIDs[0]+"\\竞品dy.docx"
-                });
-            tempID = FileDAO.getID();
-            files.Add(
-                 new FileVO
-                 {
-                     agendaID = agendaIDs[1],
-                     fileID = tempID,
-                     fileName = "竞品dy.docx",
-                     fileIndex = 1,
-                     fileSize = 13,
-                     filePath = @"\"+meetingID+"\\"+agendaIDs[1]+"\\竞品dy.docx"
-                 });
-            tempID = FileDAO.getID();
-            files.Add(
-                new FileVO
-                {
-                    agendaID = agendaIDs[1],
-                    fileID = tempID,
-                    fileName = "test哈哈.docx",
-                    fileIndex = 2,
-                    fileSize = 14,
-                    filePath = @"\" + meetingID + "\\" + agendaIDs[1] + "\\test哈哈.docx"
-                });
-            tempID = FileDAO.getID();
-            files.Add(
-               new FileVO
-               {
-                   agendaID = agendaIDs[1],
-                   fileID = tempID,
-                   fileName = "干系人登记表.xlsx",
-                   fileIndex = 3,
-                   fileSize = 14,
-                   filePath = @"\" + meetingID + "\\" + agendaIDs[1] + "\\干系人登记表.xlsx"
-               });
-            tempID = FileDAO.getID();
-            files.Add(
-               new FileVO
-               {
-                   agendaID = agendaIDs[1],
-                   fileID = tempID,
-                   fileName = "p谷歌.pptx",
-                   fileIndex = 4,
-                   fileSize = 14,
-                   filePath = @"\" + meetingID + "\\" + agendaIDs[1] + "\\p谷歌.pptx"
-               });
-            tempID = FileDAO.getID();
-            files.Add(
-                new FileVO
-                {
-                    agendaID = agendaIDs[1],
-                    fileID = tempID,
-                    fileName = "test.pptx",
-                    fileIndex = 5,
-                    fileSize = 14,
-                    filePath = @"\" + meetingID + "\\" + agendaIDs[1] + "\\test.pptx"
-                });
-            
-            DocumentService documentService = new DocumentService();
-            foreach (FileVO vo in files)
-            {
-                Console.WriteLine(fileDao.insert<FileVO>(vo));
-                //重新获取fileID，避免 索引重复引起插入出错而造成agendaID不一致
-                wherelist.Clear();
-                wherelist.Add("filePath", vo.filePath);
-                FileVO tempVo = fileDao.getOne<FileVO>(wherelist);
-                //获取源文件存储在服务器端的目录的路径，及相对路径
-                string srcFileRelativeDirectory_Origin = null;
-                string srcFileAbsoluteDirectory = documentService.getSrcFileAbsoluteDirectory(tempVo.agendaID, out srcFileRelativeDirectory_Origin);
-                //获取源文件绝对路径名
-                string srcFileAbsolutePath = srcFileAbsoluteDirectory + tempVo.fileName;
-                //获取目标文件绝对路径名，和目标文件相对指定root目录的路径名
-                string targetFileRelativeDirectory_Root = null;
-                string targetFileAbsolutePath = documentService.getTargetFileAbsolutePath(srcFileAbsolutePath, srcFileRelativeDirectory_Origin, out targetFileRelativeDirectory_Root);
-                //文件转换开始
-                documentService.convertFile(srcFileAbsolutePath, targetFileAbsolutePath, targetFileRelativeDirectory_Root);
-            }
 
             //////////////////////////////////////////
 
@@ -411,14 +391,16 @@ namespace WebServer.Models.Test
             List<VoteOptionVO> vote1Options = new List<VoteOptionVO>();
             List<VoteOptionVO> vote2Options = new List<VoteOptionVO>();
 
-            int[] voteIDs = new int[2];
-            for (int i = 0; i < 2; i++)
+            int voteNum = 2;
+            int[] voteIDs = new int[voteNum];
+            for (int i = 0; i < voteNum; i++)
             {
                 voteIDs[i] = VoteDAO.getID();
             }
 
-            int[] vote1OptionIDs = new int[3];
-            int[] vote2OptionIDs = new int[3];
+            int voteOptionNum = 3;
+            int[] vote1OptionIDs = new int[voteOptionNum];
+            int[] vote2OptionIDs = new int[voteOptionNum];
             for (int i = 0; i < 3; i++)
             {
                 vote1OptionIDs[i] = VoteOptionDAO.getID();
@@ -486,46 +468,6 @@ namespace WebServer.Models.Test
                 Console.WriteLine(voteOptionDao.insert<VoteOptionVO>(vo));
             }
 
-            #endregion
-
-            #region//测试更新
-
-            #endregion
-
-
-            #region 重置数据
-            Dictionary<string, object> list = new Dictionary<string, object>();
-            list.Add("meetingStatus", 1);
-            meetingDao.update(list, meetingID);
-
-            list.Clear();
-            list.Add("meetingID", meetingID);
-            List<AgendaVO> agendas = agendaDao.getAll<AgendaVO>(list);
-            if (agendas != null)
-            {
-                foreach (AgendaVO agenda in agendas)
-                {
-                    list.Clear();
-                    list.Add("agendaID", agenda.agendaID);
-                    List<VoteVO> voteVolist = voteDao.getAll<VoteVO>(list);
-
-                    if (voteVolist != null)
-                    {
-                        foreach (VoteVO vote in voteVolist)
-                        {
-                            //恢复表决状态
-                            list.Clear();
-                            list.Add("voteStatus", 1);
-                            voteDao.update(list, vote.voteID);
-                            //清空表决结果
-                            list.Clear();
-                            list.Add("voteID",vote.voteID);
-                            voteOptionPersonResultDao.delete(list);
-
-                        }
-                    }
-                }
-            }
             #endregion
 
             Log.DebugInfo("测试数据初始化结束");

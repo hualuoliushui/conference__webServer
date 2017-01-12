@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="./less/meetingItem.less" type="text/less" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <div class="navbar navbar-fixed-top" id="mainMenu">
+        <div class="container">
+            <div class="navbar-header col-md-2">
+                <a class="navbar-brand" href="#">
+                    <img alt="Brand" src="./images/u46.png">
+                </a>
+            </div>
+            <p class="navbar-text col-md-7">中佰会议系统会议组织者界面</p>
+            <ul class="col-md-3" id="signUpWindow">
+                <ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>张三</b></ol>
+                <ol class="col-md-4">
+                    <button type="button" class="btn btn-xs">
+                            <!--超小按钮-->
+                            <span class="glyphicon glyphicon-user"></span>
+                            <!--这些图标的使用要引入boorstrap的font-->
+                        </button>
+                </ol>
+            </ul>
+        </div>
+    </div>
+    <div class="container" id="mainContent">
+        <div>
+            <div class="col-md-2 col-md-offset-1">
+                <h1><strong>股东大会</strong></h1>
+            </div>
+            <div class="col-md-6">
+                <br/>
+                <ol class="breadcrumb">
+                    <li><a href="#">首页</a></li>
+                    <li class="active">股东大会</li>
+                </ol>
+            </div>
+            <div class="col-md-3 ">
+                <br/>
+                <button class="btn btn-default" type="button" id="returnMeeting" href="#">返回所有会议</button>
+                <p>状态：<span>修改回忆状态成功</span></p>
+            </div>
+        </div>
+        <div id="mainContentRight">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default" id="meetingInfo">
+                        <div class="panel-heading">
+                            <h2 class="panel-title"><strong>会议信息</strong></h2>
+                        </div>
+                        <div class="panel-body">
+                            <p><label class="">会议名称：</label><span></span></p>
+                            <p><label class="">会议开始时间：</label><span></span></p>
+                            <p><label class="">会场：</label><span></span></p>
+                            <p><label class="">会议概况：</label><span></span></p>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="meetingPeopleDevice">
+                        <div class="panel-heading">
+                            <h2 class="panel-title"><strong>参会人员与设备</strong></h2>
+                        </div>
+                        <div class="panel-body">
+                            <div id="contentListGroup1">
+                                <ul class="list-group contentListGroupBanderList1">
+                                    <li href="#" class="list-group-item disabled container-fluid">
+                                        <label class="col-md-2 list-If">  
+                            人员名字
+                           </label>
+                                        <label class="col-md-2 list-If">
+                            人员ID
+                            </label>
+                                        <label class="col-md-2 list-If">
+                            人员职位
+                           </label>
+                                        <label class="col-md-2 list-If">
+                             会议角色
+                           </label>
+                                        <label class="col-md-2 list-If">
+                             设备编号
+                           </label>
+                                    </li>
+                                </ul>
+                                <ul class="list-group contentListGroupOutWindow1">
+                                    <ul class="list-group contentListGroupOutWindowList1">
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default" id="meetingAgenda">
+                        <div class="panel-heading">
+                            <h2 class="panel-title"><strong>会议议程</strong></h2>
+                        </div>
+                        <div class="panel-body">
+                            <div id="contentListGroup2">
+                                <ul class="list-group contentListGroupBanderList2">
+                                    <li href="#" class="list-group-item disabled container-fluid">
+                                        <label class="col-md-2 list-If">  
+                            议程名称
+                           </label>
+                                        <label class="col-md-2 list-If">
+                            主讲人
+                            </label>
+                                        <label class="col-md-2 list-If">
+                            议程时长
+                           </label>
+                                        <label class="col-md-2 list-If">
+                             议程附件
+                           </label>
+                                        <label class="col-md-2 list-If">
+                             投票信息
+                           </label>
+                                    </li>
+                                </ul>
+                                <ul class="list-group contentListGroupOutWindow2">
+                                    <ul class="list-group contentListGroupOutWindowList2">
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js">
+    </script>
+    <script src="js/meetingItem.js"></script>
+</body>
+
+</html>

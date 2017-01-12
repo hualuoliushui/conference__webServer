@@ -1,0 +1,165 @@
+
+----------------------header--------------------------
+2017-01-07 10:39:33,123 [1] INFO  WebLogger - 系统启动
+2017-01-07 10:39:37,710 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 10:39:40,636 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-07 10:42:53,551 [1] INFO  WebLogger - 系统启动
+2017-01-07 10:42:53,762 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 10:42:55,262 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-07 10:45:53,188 [1] INFO  WebLogger - 系统启动
+2017-01-07 10:45:53,285 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 10:45:54,969 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-07 10:46:50,823 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-07-10-46-50-659.pptx
+2017-01-07 10:48:54,505 [10] DEBUG WebLogger - 待插入的文件路径:2017-01-07-10-48-47-900.pptx
+2017-01-07 10:51:04,191 [8] INFO  WebLogger - ppt转换html:
+System.Runtime.InteropServices.COMException (0x80080005): 检索 COM 类工厂中 CLSID 为 {91493441-5A91-11CF-8700-00AA0060263B} 的组件失败，原因是出现以下错误: 80080005 服务器运行失败 (异常来自 HRESULT:0x80080005 (CO_E_SERVER_EXEC_FAILURE))。
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 e:\Code\Visual Studio\C#\Project\Z100\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 193
+2017-01-07 10:51:04,271 [8] DEBUG WebLogger - ppt文件转换失败
+2017-01-07 10:51:04,340 [8] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 e:\Code\Visual Studio\C#\Project\Z100\WebServer\WebServer\Models\Document\DocumentService.cs:行号 231
+
+----------------------header--------------------------
+2017-01-07 10:52:24,357 [1] INFO  WebLogger - 系统启动
+2017-01-07 10:52:26,229 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 10:52:27,676 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-07 10:53:33,182 [9] DEBUG WebLogger - 待插入的文件路径:2017-01-07-10-53-33-162.pptx
+2017-01-07 10:57:30,525 [9] INFO  WebLogger - ppt转换html:
+System.Runtime.InteropServices.COMException (0x80080005): 检索 COM 类工厂中 CLSID 为 {91493441-5A91-11CF-8700-00AA0060263B} 的组件失败，原因是出现以下错误: 80080005 服务器运行失败 (异常来自 HRESULT:0x80080005 (CO_E_SERVER_EXEC_FAILURE))。
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 e:\Code\Visual Studio\C#\Project\Z100\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 193
+2017-01-07 10:57:30,556 [9] DEBUG WebLogger - ppt文件转换失败
+2017-01-07 10:57:30,610 [9] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 e:\Code\Visual Studio\C#\Project\Z100\WebServer\WebServer\Models\Document\DocumentService.cs:行号 231
+
+----------------------header--------------------------
+2017-01-07 11:13:47,734 [1] INFO  WebLogger - 系统启动
+2017-01-07 11:13:53,508 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 11:13:55,338 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-07 11:18:01,381 [1] INFO  WebLogger - 系统启动
+2017-01-07 11:18:04,601 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 11:18:06,302 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-01-07 11:28:39,572 [1] INFO  WebLogger - 系统启动
+2017-01-07 11:28:42,854 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 11:28:48,156 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-07 11:35:05,860 [10] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/oganizor' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-07 11:35:05,860 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/oganizor' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-07 12:01:21,497 [1] INFO  WebLogger - 系统启动
+2017-01-07 12:01:23,585 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 12:01:25,855 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-07 12:02:06,160 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'CreateMeeting' was not found on controller 'WebServer.Controllers.MeetingController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-07 12:02:18,387 [5] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index_organizor' was not found on controller 'WebServer.Controllers.MeetingController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-01-07 12:02:28,249 [5] INFO  WebLogger - 服务器异常
+System.Reflection.AmbiguousMatchException: The current request for action 'add_organizor' on controller type 'MeetingController' is ambiguous between the following action methods:
+System.Web.Mvc.ActionResult Add_organizor(System.Nullable`1[System.Int32]) on type WebServer.Controllers.MeetingController
+System.Web.Mvc.ActionResult Add_organizor(WebServer.Models.Meeting.MeetingInfo) on type WebServer.Controllers.MeetingController
+   在 System.Web.Mvc.Async.AsyncActionMethodSelector.FindAction(ControllerContext controllerContext, String actionName)
+   在 System.Web.Mvc.Async.ReflectedAsyncControllerDescriptor.FindAction(ControllerContext controllerContext, String actionName)
+   在 System.Web.Mvc.ControllerActionInvoker.FindAction(ControllerContext controllerContext, ControllerDescriptor controllerDescriptor, String actionName)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__17(AsyncCallback asyncCallback, Object asyncState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__2(AsyncCallback asyncCallback, Object asyncState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-07 12:08:36,445 [1] INFO  WebLogger - 系统启动
+2017-01-07 12:08:38,559 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 12:08:40,113 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-07 12:08:53,539 [8] INFO  WebLogger - 服务器异常
+System.Reflection.AmbiguousMatchException: The current request for action 'Add_organizor' on controller type 'MeetingController' is ambiguous between the following action methods:
+System.Web.Mvc.ActionResult Add_organizor() on type WebServer.Controllers.MeetingController
+System.Web.Mvc.ActionResult Add_organizor(WebServer.Models.Meeting.MeetingInfo) on type WebServer.Controllers.MeetingController
+   在 System.Web.Mvc.Async.AsyncActionMethodSelector.FindAction(ControllerContext controllerContext, String actionName)
+   在 System.Web.Mvc.Async.ReflectedAsyncControllerDescriptor.FindAction(ControllerContext controllerContext, String actionName)
+   在 System.Web.Mvc.ControllerActionInvoker.FindAction(ControllerContext controllerContext, ControllerDescriptor controllerDescriptor, String actionName)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeAction(ControllerContext controllerContext, String actionName, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__17(AsyncCallback asyncCallback, Object asyncState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.Controller.BeginExecuteCore(AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.Controller.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.BeginExecute(RequestContext requestContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__2(AsyncCallback asyncCallback, Object asyncState)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-07 12:10:04,742 [1] INFO  WebLogger - 系统启动
+2017-01-07 12:10:06,660 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-07 12:10:07,913 [1] DEBUG WebLogger - 测试数据初始化结束

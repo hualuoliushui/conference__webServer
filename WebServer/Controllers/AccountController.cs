@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebServer.Models;
 using WebServer.App_Start;
+using WebServer.Models.Meeting;
 
 namespace WebServer.Controllers
 {
@@ -31,15 +32,20 @@ namespace WebServer.Controllers
 
             Forms.Login(userName, 20);
 
-            string system = form["system"];
-            if(string.IsNullOrWhiteSpace(system))
+            Session["userName"] = userName;
+
+            int system = 1;
+            
+            if(string.IsNullOrWhiteSpace(form["system"]))
                 return View("Index");
 
-            if (string.Compare(system, "admin") == 0)
+            system = Int32.Parse(form["system"]);
+
+            if ( system == 0)
             {
                 return RedirectToAction("Admin");
             }
-            if (string.Compare(system, "organizor") == 0)
+            if (system == 1)
             {
                 return RedirectToAction("Organizor");
             }
@@ -58,7 +64,11 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Organizor()
         {
-            return View("Organizor");
+            List<TipMeeting> meetings = null;
+            //调用服务
+            Status status = new MeetingService().getAll(out meetings);
+
+            return View(meetings);
         }
     }
 }

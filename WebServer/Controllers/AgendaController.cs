@@ -1,92 +1,114 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Agenda;
+using WebServer.Models.Delegate;
+using WebServer.Models.Tools;
 
 namespace WebServer.Controllers
 {
     public class AgendaController : Controller
     {
-        //
-        // GET: /Agenda/
-
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index_organizor(int meetingID)
         {
-            return View();
+            AgendaService agendaService = new AgendaService();
+            List<AgendaInfo> agendas = null;
+            Status status = agendaService.getAll(meetingID, out agendas);
+
+            if (status != Status.SUCCESS)
+                return RedirectToAction("Error", "Error");
+
+            return View(agendas);
         }
 
-         /// <summary>
-         /// 获取指定会议的议程
-         /// </summary>
-         /// <param name="meetingID"></param>
-         /// <returns></returns>
-        [RBAC]
-        public JsonResult GetAgendas(int meetingID)
+        [HttpGet]
+        public ActionResult Add_organizor(int meetingID)
         {
-            RespondModel respond = new RespondModel();
+            DelegateService delegateService = new DelegateService();
+            List<SpeakerForAgenda> speakersForAgenda = null;
+            Status status = delegateService.getSpeakerForAgenda(meetingID, out speakersForAgenda);
 
-            List<Agenda> agendas;
+            if (status != Status.SUCCESS)
+                return RedirectToAction("Error", "Error");
 
-            Status status = new AgendaService().getAll(meetingID,out agendas);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = agendas;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return View(Tuple.Create(meetingID, speakersForAgenda));
         }
 
-        /// <summary>
-        /// 创建议程
-        /// </summary>
-        /// <param name="agenda"></param>
-        /// <returns></returns>
-        [RBAC]
-        public JsonResult CreateAgenda(CreateAgenda agenda)
+        [HttpPost]
+        public JsonResult Add_organizor(CreateAgenda createAgenda)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new AgendaService().create(userName, agenda);
+            if (ModelState.IsValid)
+            {
+                AgendaService agendaService = new AgendaService();
+                status = agendaService.create(createAgenda);
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+                new RespondModel(
+                    Status.ARGUMENT_ERROR,
+                    ModelStateHelper.errorMessages(ModelState)),
+                    JsonRequestBehavior.AllowGet);
         }
-        [RBAC]
-        public JsonResult UpdateAgena(UpdateAgenda agenda)
+
+        [HttpGet]
+        public ActionResult Edit_organizor(int agendaID)
         {
-            RespondModel respond = new RespondModel();
+            AgendaService agendaService = new AgendaService();
+            AgendaInfo agenda = null;
+            Status status = agendaService.getOne(agendaID, out agenda);
 
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new AgendaService().update(userName, agenda);
+            if (status != Status.SUCCESS)
+                return RedirectToAction("Error", "Error");
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
+            DelegateService delegateService = new DelegateService();
+            List<SpeakerForAgenda> speakersForAgenda = null;
+            status = delegateService.getSpeakerForAgenda(agenda.meetingID, out speakersForAgenda);
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            if (status != Status.SUCCESS)
+                return RedirectToAction("Error", "Error");
+
+            return View(Tuple.Create(agenda, speakersForAgenda));
         }
-        [RBAC]
-        public JsonResult DeleteAgendaMultipe(List<int> agendas)
+
+        [HttpPost]
+        public JsonResult Edit_organizor(UpdateAgenda updateAgenda)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new AgendaService().deleteMultipe(userName, agendas);
+            if (ModelState.IsValid)
+            {
+                AgendaService agendaService = new AgendaService();
+                status = agendaService.update(updateAgenda);
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+               new RespondModel(
+                   Status.ARGUMENT_ERROR,
+                   ModelStateHelper.errorMessages(ModelState)),
+                   JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult Delete_organizor(List<int> IDs)
+        {
+            Status status = Status.SUCCESS;
+
+            AgendaService agendaService = new AgendaService();
+            status = agendaService.deleteMultipe(IDs);
+
+            return Json(
+               new RespondModel(status,""),
+                   JsonRequestBehavior.AllowGet);
         }
     }
 }

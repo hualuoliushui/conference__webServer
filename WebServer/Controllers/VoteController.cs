@@ -5,99 +5,97 @@ using System.Web;
 using System.Web.Mvc;
 using WebServer.App_Start;
 using WebServer.Models;
+using WebServer.Models.Tools;
 using WebServer.Models.Vote;
 
 namespace WebServer.Controllers
 {
     public class VoteController : Controller
     {
-        //
-        // GET: /Vote/
-
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index_organizor(int agendaID)
         {
+            Session["agendaID"] = agendaID;
+
+            RespondModel respond = new RespondModel();
+
+            List<VoteInfo> votes;
+            //调用附件服务
+            Status status = new VoteService().getAll(agendaID, out votes);
+
+            return View(votes);
+        }
+
+        [HttpGet]
+        public ActionResult Add_organizor(int agendaID)
+        {
+            Session["agendaID"] = agendaID;
             return View();
         }
 
-        [RBAC]
-        public JsonResult GetVotes(int agendaID)
+        [HttpPost]
+        public JsonResult Add_organizor(CreateVote createVote)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-            List<Vote> votes;
-            //调用附件服务
-            Status status =new VoteService().getAll(agendaID, out votes);
+            if (ModelState.IsValid)
+            {
+                VoteService voteService = new VoteService();
+                status = voteService.create(createVote);
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = votes;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
+           
+            return Json(
+               new RespondModel(
+                   Status.ARGUMENT_ERROR,
+                   ModelStateHelper.errorMessages(ModelState)),
+                   JsonRequestBehavior.AllowGet);
         }
 
-        [RBAC]
-        public JsonResult DeleteVoteMultipe(List<int> votes)
+        [HttpGet]
+        public ActionResult Edit_organizor(int voteID)
         {
-            RespondModel respond = new RespondModel();
+            VoteService voteService = new VoteService();
+            VoteInfo vote = null;
+            Status status = voteService.getOne(voteID, out vote);
 
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new VoteService().deleteMultipe(userName, votes);
+            if (status != Status.SUCCESS)
+                return RedirectToAction("Error", "Error");
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return View(vote);
         }
 
-        [RBAC]
-        public JsonResult GetVoteForUpdate(int voteID)
+        [HttpPost]
+        public ActionResult Edit_organizor(UpdateVote updateAgenda)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-            //调用服务
-            UpdateVote vote;
-            Status status = new VoteService().getOneForUpdate(voteID,out vote);
+            if (ModelState.IsValid)
+            {
+                VoteService voteService = new VoteService();
+                status = voteService.update(updateAgenda);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = vote;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+               new RespondModel(
+                   Status.ARGUMENT_ERROR,
+                   ModelStateHelper.errorMessages(ModelState)),
+                   JsonRequestBehavior.AllowGet);
         }
 
-        [RBAC]
-        public JsonResult UpdateVote(UpdateVote vote)
+        [HttpPost]
+        public JsonResult Delete_organizor(List<int> IDs)
         {
-            RespondModel respond = new RespondModel();
+            Status status = Status.SUCCESS;
 
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new VoteService().update(userName, vote);
+            VoteService voteService = new VoteService();
+            status = voteService.deleteMultipe(IDs);
 
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(
+               new RespondModel(status, ""),
+                   JsonRequestBehavior.AllowGet);
         }
-
-        [RBAC]
-        public JsonResult CreateVote(CreateVote vote)
-        {
-            RespondModel respond = new RespondModel();
-
-            //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new VoteService().create(userName, vote);
-
-            respond.Code = (int)status;
-            respond.Message = status.ToString();
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
-        }
-
     }
 }

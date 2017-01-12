@@ -43,7 +43,7 @@ namespace WebServer.Models.Device
                         deviceIndex = device.deviceIndex,
                         IMEI = device.IMEI,
                         deviceState = 0
-                    }) != 1)
+                    }) < 0)
                 {
                     return Status.FAILURE;
                 }
@@ -90,40 +90,71 @@ namespace WebServer.Models.Device
                 return Status.SERVER_EXCEPTION;
             }
         }
-
-        /// <summary>
-        /// 为参会人员 请求 所有设备的 信息
-        /// </summary>
-        /// <param name="documents"></param>
-        /// <returns></returns>
-        public Status getAllForDelegate(out List<DeviceForDelegate> devices)
+        public Status getAllForDelegate(DateTime start, DateTime end, out List<DeviceForDelegate> list)
         {
-            devices = new List<DeviceForDelegate>();
+            list = new List<DeviceForDelegate>();
 
-            try
+            MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
+            List<MeetingVO> meetingVolist = meetingDao.getAll<MeetingVO>();
+
+            int dx = 1;
+            var tempMeetings = meetingVolist
+                .Where(
+                m => (Math.Abs((m.meetingToStartTime - start).TotalHours) < dx ||
+                    Math.Abs((m.meetingToStartTime - end).TotalHours) < dx ||
+                    Math.Abs((m.meetingStartedTime - start).TotalHours) < dx ||
+                    Math.Abs((m.meetingStartedTime - end).TotalHours) < dx)
+                    )
+                    .Where(m=>m.meetingStatus==1 || m.meetingStatus == 2);
+
+            wherelist.Clear();
+            //只允许未冻结的设备作为参会设备
+            wherelist.Add("deviceState", 0);
+            var deviceVolist = deviceDao.getAll<DeviceVO>(wherelist);
+
+            if (tempMeetings != null && deviceVolist !=null)
             {
-                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
-
-                Dictionary<string, object> wherelist = new Dictionary<string, object>();
-                wherelist.Add("deviceState", 0);
-                //只允许未冻结的人员作为参会人员。
-                List<DeviceVO> deviceVolist = deviceDao.getAll<DeviceVO>(wherelist);
-                foreach (DeviceVO deviceVo in deviceVolist)
+                var meetinglist = tempMeetings.ToList();
+                foreach (var meetingvo in meetinglist)
                 {
-                    devices.Add(
-                        new DeviceForDelegate
+                    wherelist.Clear();
+                    wherelist.Add("meetingID", meetingvo.meetingID);
+                    var delegateVolist = delegateDao.getAll<DelegateVO>(wherelist);
+
+                    if (delegateVolist != null)
+                    {
+                        foreach (var delegateVo in delegateVolist)
                         {
-                            deviceID = deviceVo.deviceID,
-                            deviceIndex = deviceVo.deviceIndex
-                        });
+                            for (int i = 0; i < deviceVolist.Count; i++)
+                            {
+                                if (deviceVolist[i].deviceID == delegateVo.deviceID)
+                                {
+                                    deviceVolist.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
-                return Status.SUCCESS;
             }
-            catch (Exception e)
+
+            if (deviceVolist != null)
             {
-                Log.ErrorInfo(e.StackTrace);
-                return Status.SERVER_EXCEPTION;
+                foreach (var devicevo in deviceVolist)
+                {
+                    list.Add(new DeviceForDelegate
+                    {
+                        deviceID = devicevo.deviceID,
+                        deviceIndex = devicevo.deviceIndex
+                    });
+                }
             }
+
+            return Status.SUCCESS;
         }
 
         /// <summary>
@@ -179,7 +210,7 @@ namespace WebServer.Models.Device
                 setlist.Add("IMEI", device.IMEI);
                 setlist.Add("deviceIndex", device.deviceIndex);
                 if (deviceDao.update(
-                    setlist, device.deviceID) != 1)
+                    setlist, device.deviceID) < 0)
                     return Status.FAILURE;
 
                 return Status.SUCCESS;
@@ -207,7 +238,7 @@ namespace WebServer.Models.Device
                 Dictionary<string, object> setlist = new Dictionary<string, object>();
 
                 setlist.Add("deviceState", available);
-                if (deviceDao.update(setlist, deviceID) != 1)
+                if (deviceDao.update(setlist, deviceID) < 0)
                 {
                     return Status.FAILURE;
                 }

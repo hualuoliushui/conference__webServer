@@ -1,0 +1,35 @@
+
+----------------------header--------------------------
+2017-01-04 02:26:37,669 [1] INFO  WebLogger - 系统启动
+2017-01-04 02:26:40,035 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-04 02:26:46,418 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\中佰会议.docx
+2017-01-04 02:26:46,418 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\中佰会议_docx\中佰会议_docx.html
+2017-01-04 02:26:51,911 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\1\人员名单.xlsx
+2017-01-04 02:26:51,911 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\1\人员名单_xlsx\人员名单_xlsx.html
+2017-01-04 02:26:55,798 [1] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\2\test哈哈.docx
+2017-01-04 02:26:55,799 [1] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\upfiles\html\1\2\test哈哈_docx\test哈哈_docx.html
+2017-01-04 02:26:59,417 [1] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\upfiles\origin\1\3\干系人登记表.xlsx
+2017-01-04 02:26:59,417 [1] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\upfiles\html\1\3\干系人登记表_xlsx\干系人登记表_xlsx.html
+2017-01-04 02:27:06,597 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-04 02:27:22,505 [6] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/Admin/Index_admin' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-01-04 02:32:14,537 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-01-04 02:33:05,866 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-01-04 02:34:19,305 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-01-04 02:37:16,372 [1] INFO  WebLogger - 系统启动

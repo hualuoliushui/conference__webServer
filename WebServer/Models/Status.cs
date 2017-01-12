@@ -10,21 +10,35 @@ namespace WebServer.Models
     /// </summary>
     public enum Status
     {
+        //普遍
         FAILURE=-1,
         SUCCESS=0,
+        //格式
         FORMAT_ERROR=1,
+        //数据库数据不一致
         DATABASE_OPERATOR_ERROR=2,
         DATABASE_CONTENT_ERROR=3,
+        //无内容
         NONFOUND=4,
+        //参数错误
         ARGUMENT_ERROR=5,
+        //无权限
         PERMISSION_DENIED=6,
+        //文件格式不支持
         FILE_NOT_SUPPORT=7,
         FILE_PATH_ERROR=8,
+        //服务器异常
         SERVER_EXCEPTION=9,
+        //会议正在开始
         MEETING_OPENING=10,
+        //会议已结束
         MEETING_OPENED=11,
+        //文件转换失败
         FILE_CONVERT_FAIL=12,
-        FILE_CONVERT_EXCEPTION=13
+        //文件转换异常
+        FILE_CONVERT_EXCEPTION=13,
+        //文件已存在
+        FILE_ALREADY_EXIST=14
     }
 
     public class Message
@@ -48,6 +62,7 @@ namespace WebServer.Models
             msgs.Add((int)Status.MEETING_OPENED, "会议已结束");
             msgs.Add((int)Status.FILE_CONVERT_FAIL, "文件转换失败");
             msgs.Add((int)Status.FILE_CONVERT_EXCEPTION, "文件转换异常");
+            msgs.Add((int)Status.FILE_ALREADY_EXIST, "文件已存在");
         }
     }
 

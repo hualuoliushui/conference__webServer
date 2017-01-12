@@ -100,6 +100,48 @@ namespace WebServer.Models.User
             return Status.SUCCESS;
         }
 
+        //为参会人员提供用户列表//排除已有参会人员
+        public Status getNewForDelegate(int meetingID , out List<UserForDelegate> users)
+        {
+            users = new List<UserForDelegate>();
+
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
+            wherelist.Clear();
+            wherelist.Add("meetingID", meetingID);
+            var delegateVolist = delegateDao.getAll<DelegateVO>(wherelist);
+
+            wherelist.Add("personState", 0);
+            //获取未冻结的用户信息
+            List<PersonVO> personVolist = personDao.getAll<PersonVO>(wherelist);
+
+            if (personVolist == null || personVolist.Count == 0)
+            {
+                return Status.NONFOUND;
+            }
+
+            foreach (PersonVO vo in personVolist)
+            {
+                foreach (var delegateVo in delegateVolist)
+                {
+                    if (delegateVo.personID == vo.personID)
+                    {
+                        continue;
+                    }
+                    users.Add(
+                    new UserForDelegate
+                    {
+                        userID = vo.personID,
+                        userName = vo.personName
+                    });
+                }
+            }
+            return Status.SUCCESS;
+        }
+
         /// <summary>
         /// 创建用户
         /// </summary>

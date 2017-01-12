@@ -16,25 +16,28 @@ namespace WebServer.Models.Document.FileConvertService
         /// <param name="targetPath">目标文件路径</param>
         /// <param name="targetRelativeDirectory">目标文件相对目录路径（相对网站根目录）</param>
         /// <returns></returns>
-        abstract public bool WordToHTML(string sourcePath, string targetPath, string targetRelativeDirectory);
+        abstract public bool Word2HTML(string sourcePath, string targetPath, string targetRelativeDirectory);
 
-        abstract public bool ExcelToHTML(string sourcePath, string targetPath, string targetRelativeDirectory);
+        abstract public bool Excel2HTML(string sourcePath, string targetPath, string targetRelativeDirectory);
 
-        abstract public bool PPToHTML(string sourcePath, string targetPath, string targetRelativeDirectory);
+        abstract public bool PPT2HTML(string sourcePath, string targetPath, string targetRelativeDirectory);
+
+        private static System.Text.Encoding encoding = System.Text.Encoding.GetEncoding("GBK");
 
         protected static bool changeSrc(string htmlFilePath, string relativeDirectory)
         {
             try
             {
-                string content = File.ReadAllText(htmlFilePath, System.Text.Encoding.GetEncoding("GBK"));
+                string content = File.ReadAllText(htmlFilePath, encoding);
                 string pattern = @"src=""([^""]*)""";
                 Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
-                string resultContent = regex.Replace(content, "src=\"" + relativeDirectory + "\\$1\"");
-                File.WriteAllText(htmlFilePath, resultContent, System.Text.Encoding.GetEncoding("GBK"));
+                string resultContent = regex.Replace(content, "src=\"" + relativeDirectory + "$1\"");
+                File.WriteAllText(htmlFilePath, resultContent, encoding);
                 return true;
             }
             catch (Exception e)
             {
+                
                 return false;
             }
         }
@@ -43,15 +46,15 @@ namespace WebServer.Models.Document.FileConvertService
         {
             try
             {
-                string content = File.ReadAllText(htmlFilePath, System.Text.Encoding.GetEncoding("GBK"));
+                string content = File.ReadAllText(htmlFilePath, encoding);
                 string patternHref = @"href=""([^""]*)""";
                 Regex regexHref = new Regex(patternHref, RegexOptions.IgnoreCase);
-                string resultContent = regexHref.Replace(content, "href=\"" + relativeDirectory + "\\$1\"");
+                string resultContent = regexHref.Replace(content, "href=\"" + relativeDirectory + "$1\"");
 
                 string patternSrc = @"src=""([^""]*)""";
                 Regex regex = new Regex(patternSrc, RegexOptions.IgnoreCase);
-                resultContent = regex.Replace(resultContent, "src=\"" + relativeDirectory + "\\$1\"");
-                File.WriteAllText(htmlFilePath, resultContent, System.Text.Encoding.GetEncoding("GBK"));
+                resultContent = regex.Replace(resultContent, "src=\"" + relativeDirectory + "$1\"");
+                File.WriteAllText(htmlFilePath, resultContent, encoding);
                 return true;
             }
             catch (Exception e)

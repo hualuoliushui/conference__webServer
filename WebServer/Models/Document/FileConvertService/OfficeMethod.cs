@@ -12,7 +12,7 @@ namespace WebServer.Models.Document.FileConvertService
 {
     public class OfficeMethod:FileConvertBase
     {
-        public override bool WordToHTML(string sourcePath, string targetPath, string targetRelativeDirectory)
+        public override bool Word2HTML(string sourcePath, string targetPath, string targetRelativeDirectory)
         {
 
             Microsoft.Office.Interop.Word.Application docApp = null;
@@ -107,7 +107,7 @@ namespace WebServer.Models.Document.FileConvertService
             return true;
         }
 
-        public override bool ExcelToHTML(string sourcePath, string targetPath, string targetRelativeDirectory)
+        public override bool Excel2HTML(string sourcePath, string targetPath, string targetRelativeDirectory)
         {
             Microsoft.Office.Interop.Excel.XlFileFormat targetType = Microsoft.Office.Interop.Excel.XlFileFormat.xlHtml;
             object missing = Type.Missing;
@@ -136,9 +136,11 @@ namespace WebServer.Models.Document.FileConvertService
                 object target = targetPath;
                 object type = targetType;
                 Microsoft.Office.Interop.Excel.Workbooks workbooks = excelApp.Workbooks;
-                workbook = workbooks.Open(sourcePath, missing, missing, missing, missing, missing,
+                
+
+                    workbook = workbooks.Open(sourcePath, missing, missing, missing, missing, missing,
                         missing, missing, missing, missing, missing, missing, missing, missing, missing);
-                workbook.SaveAs(target, type, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
+                    workbook.SaveAs(target, type, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
 
             }
             catch (Exception e)
@@ -170,7 +172,7 @@ namespace WebServer.Models.Document.FileConvertService
             return true;
         }
 
-        public override bool PPToHTML(string sourcePath, string targetPath, string targetRelativeDirectory)
+        public override bool PPT2HTML(string sourcePath, string targetPath, string targetRelativeDirectory)
         {
             Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType targetFileType = Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsPNG;
             object missing = Type.Missing;
@@ -190,8 +192,9 @@ namespace WebServer.Models.Document.FileConvertService
                 object target = targetPath;
                 pptApp = new Microsoft.Office.Interop.PowerPoint.ApplicationClass();
                 Microsoft.Office.Interop.PowerPoint.Presentations presentations = pptApp.Presentations;
-                presentation = presentations.Open(sourcePath, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
-                presentation.SaveAs(target.ToString(), targetFileType, Microsoft.Office.Core.MsoTriState.msoTriStateMixed);
+               
+                    presentation = presentations.Open(sourcePath, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
+                    presentation.SaveAs(targetPath, targetFileType, Microsoft.Office.Core.MsoTriState.msoTriStateMixed);
             }
             catch (Exception e)
             {
@@ -227,11 +230,13 @@ namespace WebServer.Models.Document.FileConvertService
         /// <param name="targetRelativeDirctory"></param>
         private void pptHelper(String targetPath, String targetRelativeDirctory)
         {
+            //获取目录分割符
+            string separator = Path.DirectorySeparatorChar.ToString();
             //获取图片当前目录名称
             string pictureCurDir = System.IO.Path.GetFileNameWithoutExtension(targetPath);
             //构造图片目录路径
-            int pictureDirctoryLength = targetPath.LastIndexOf('\\');
-            string pictureDirectory = targetPath.Substring(0, pictureDirctoryLength) + "\\" + pictureCurDir;
+            int pictureDirctoryLength = targetPath.LastIndexOf(Path.DirectorySeparatorChar);
+            string pictureDirectory = targetPath.Substring(0, pictureDirctoryLength) + separator + pictureCurDir;
             //获取所有图片名称
             var fileArray = Directory.GetFiles(pictureDirectory);
 
@@ -269,10 +274,10 @@ namespace WebServer.Models.Document.FileConvertService
                 htmlContent.Append(" src=\"");
                 //添加网站相对根目录的目录路径
                 htmlContent.Append(targetRelativeDirctory);
-                htmlContent.Append("\\");
+                htmlContent.Append(separator);
                 //添加当前目录名
                 htmlContent.Append(pictureCurDir);
-                htmlContent.Append("\\");
+                htmlContent.Append(separator);
                 //添加当前文件名
                 htmlContent.Append(file);
                 htmlContent.Append("\"/>");

@@ -1,2 +1,47 @@
-﻿<h2>Organizor</h2>
-<fieldset>上传测试文件</fieldset>
+﻿@model System.Collections.Generic.List<WebServer.Models.Meeting.TipMeeting>
+@{
+    Layout = "~/Views/Shared/_Layout_organizor.cshtml";
+    ViewBag.Title = "会议";
+}
+
+@section BodyLess{
+    <link href="~/less/meeting/add.less" type="text/css" rel="stylesheet">
+}
+
+<div class="container" id="mainContent">
+    @if (Model != null)
+    {
+        var meetingStatus = "";
+        <div>
+            @foreach (var item in Model)
+            {
+                switch (item.meetingStatus)
+                {
+                    case 1:
+                        meetingStatus = "未开启";
+                        break;
+                    case 2:
+                        meetingStatus = "正在进行";
+                        break;
+                    case 16:
+                        meetingStatus = "已结束";
+                        break;
+                    default:
+                        meetingStatus = "状态出错";
+                        break;
+                }
+                <input type="hidden" class="meetingID" value="@item.meetingID" />
+                <a href="/Meeting/Show_organizor?meetingID=@item.meetingID">
+                    会议名称： @item.meetingName ，会议状态：@meetingStatus
+                </a>
+            }
+        </div>
+
+    }
+    <div>
+        <a href="/Meeting/Add_organizor">创建会议</a>
+    </div>
+</div>
+
+<script src="~/js/common/organizor.js"></script>
+

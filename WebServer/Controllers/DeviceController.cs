@@ -44,21 +44,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
-        [RBAC]
-        public JsonResult GetDevicesForDelegate()
-        {
-            RespondModel respond = new RespondModel();
-
-            List<DeviceForDelegate> devices;
-            //调用设备服务
-            Status status = new DeviceService().getAllForDelegate(out devices);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = devices;
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
-        }
+   
         [RBAC]
         public JsonResult GetDeviceForUpdate(int deviceID)
         {

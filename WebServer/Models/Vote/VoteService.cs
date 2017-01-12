@@ -39,9 +39,9 @@ namespace WebServer.Models.Vote
                 return false;
         }
 
-        public Status getAll(int agendaID, out List<Vote> votes)
+        public Status getAll(int agendaID, out List<VoteInfo> votes)
         {
-            votes = new List<Vote>();
+            votes = new List<VoteInfo>();
 
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -68,7 +68,7 @@ namespace WebServer.Models.Vote
                     optionList.Add(voteOptionVo.voteOptionName);
                 }
                 votes.Add(
-                    new Vote
+                    new VoteInfo
                     {
                         voteID = voteVo.voteID,
                         voteName = voteVo.voteName,
@@ -82,9 +82,9 @@ namespace WebServer.Models.Vote
             return Status.SUCCESS;
         }
 
-        public Status getOneForUpdate(int voteID,out UpdateVote vote)
+        public Status getOne(int voteID, out VoteInfo vote)
         {
-            vote = new UpdateVote();
+            vote = new VoteInfo();
             try
             {
                 Dictionary<string, object> wherelist = new Dictionary<string, object>();
@@ -111,26 +111,26 @@ namespace WebServer.Models.Vote
                         voteOptions.Add(voteOptionVo.voteOptionName);
                     }
                 }
+
                 vote.agendaID = voteVo.agendaID;
                 vote.voteID = voteVo.voteID;
-                vote.voteIndex = voteVo.voteIndex;
                 vote.voteName = voteVo.voteName;
                 vote.voteDescription = voteVo.voteDescription;
                 vote.voteType = voteVo.voteType;
                 vote.optionNum = voteOptions.Count;
-                vote.voteOptions = voteOptions;
+                vote.options = voteOptions;
 
                 return Status.SUCCESS;
             }
             catch (Exception e)
             {
-                Log.LogInfo("为更新获取表决信息",e);
+                Log.LogInfo("为更新获取表决信息", e);
                 return Status.SERVER_EXCEPTION;
             }
-            
+
         }
 
-        public Status deleteMultipe(string userName, List<int> votes)
+        public Status deleteMultipe(List<int> votes)
         {
             if (votes == null || votes.Count == 0)
             {
@@ -164,9 +164,6 @@ namespace WebServer.Models.Vote
                 //初始化会场操作
                 meeting_initOperator(agendaVo.meetingID);
 
-                //验证权限
-                if (meeting_validatePermission(userName))//有权限就删除
-                {      
                     //判断会议是否 未开启,如果 不是”未开启“，直接退出
                     if (!meeting_isNotOpen())
                     {
@@ -176,11 +173,6 @@ namespace WebServer.Models.Vote
                     voteDao.updateIndex(voteVo.agendaID, voteVo.voteIndex);
                     //删除当前投票
                     voteDao.delete(voteVo.voteID);
-                }
-                else // 无权限，直接退出（已删除的不恢复）
-                {
-                    return Status.PERMISSION_DENIED;
-                }
 
             }
             return Status.SUCCESS;
@@ -202,8 +194,15 @@ namespace WebServer.Models.Vote
             return Status.SUCCESS;
         }
 
-        public Status update(string userName, UpdateVote vote)
+        public Status update(UpdateVote vote)
         {
+            VoteDAO voteDao = Factory.getInstance<VoteDAO>();
+            VoteVO voteVo = voteDao.getOne<VoteVO>(vote.voteID);
+            if (voteVo == null)
+            {
+                return Status.NONFOUND;
+            }
+
             //修正字符串
             vote.voteName = vote.voteName.Trim();
             vote.voteDescription = vote.voteDescription.Trim();
@@ -214,9 +213,8 @@ namespace WebServer.Models.Vote
                 return Status.FORMAT_ERROR;
             }
 
-            //验证当前用户的更新当前会议权限
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
-            AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(vote.agendaID);
+            AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(voteVo.agendaID);
             if (agendaVo == null)
             {
                 return Status.FAILURE;
@@ -224,11 +222,6 @@ namespace WebServer.Models.Vote
 
             //初始化会议操作
             meeting_initOperator(agendaVo.meetingID);
-
-            if (!meeting_validatePermission(userName))
-            {
-                return Status.PERMISSION_DENIED;
-            }
 
             //判断会议是否开启，如果正在开启，直接退出
             if (meeting_isOpening())
@@ -241,7 +234,6 @@ namespace WebServer.Models.Vote
             }
 
             // 更新vote
-            VoteDAO voteDao = Factory.getInstance<VoteDAO>();
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             wherelist.Add("voteName", vote.voteName);
             wherelist.Add("voteDescription", vote.voteDescription);
@@ -269,7 +261,7 @@ namespace WebServer.Models.Vote
                         voteOptionName = voteOption,
                         voteOptionIndex = index,
                         voteID = vote.voteID
-                    }) != 1)
+                    }) < 0)
                 {
                     return Status.FAILURE;
                 }
@@ -280,7 +272,8 @@ namespace WebServer.Models.Vote
             return Status.SUCCESS;
         }
 
-        public Status create(string userName, CreateVote vote)
+
+        public Status create(CreateVote vote)
         {
             //修正字符串
             vote.voteName = vote.voteName.Trim();
@@ -303,11 +296,6 @@ namespace WebServer.Models.Vote
             //初始化会议操作
             meeting_initOperator(agendaVo.meetingID);
 
-            if (!meeting_validatePermission(userName))
-            {
-                return Status.PERMISSION_DENIED;
-            }
-
             bool isUpdate = false;
             //判断会议是否开启，如果开启，更新"更新状态”,设置数据更新状态
             if (meeting_isOpening())
@@ -322,7 +310,13 @@ namespace WebServer.Models.Vote
 
             // 插入投票
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
-            int maxIndex = voteDao.getMaxIndex(agendaVo.agendaIndex);
+            Dictionary<string,object> wherelist = new Dictionary<string,object>();
+            wherelist.Clear();
+            wherelist.Add("agendaID",vote.agendaID);
+            List<VoteVO> voteVolist = voteDao.getAll<VoteVO>(wherelist);
+
+            //设置新的投票编号
+            int voteIndex = voteVolist == null ? 1 : voteVolist.Count + 1;
 
             // 先获取新的ID
             int newVoteID = VoteDAO.getID();
@@ -330,7 +324,7 @@ namespace WebServer.Models.Vote
                     new VoteVO
                     {
                         voteID = newVoteID,
-                        voteIndex = maxIndex + 1,
+                        voteIndex = voteIndex,
                         voteName = vote.voteName,
                         voteDescription = vote.voteDescription,
                         voteType = vote.voteType,
@@ -350,10 +344,11 @@ namespace WebServer.Models.Vote
                 if (voteOptionDao.insert<VoteOptionVO>(
                     new VoteOptionVO
                     {
+                        voteOptionID = VoteDAO.getID(),
                         voteOptionName = voteOption,
                         voteOptionIndex = index,
                         voteID = newVoteID
-                    }) != 1)
+                    }) < 0 )
                 {
                     return Status.FAILURE;
                 }

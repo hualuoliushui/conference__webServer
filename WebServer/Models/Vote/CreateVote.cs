@@ -15,8 +15,6 @@ namespace WebServer.Models.Vote
 
         public int voteType { set; get; }
 
-        public int optionNum { set; get; }
-
         public List<string> voteOptions { set; get; }
     }
 }

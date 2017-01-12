@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<title>中佰会议系统组织者</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/less" href="less/appointPeople.less">
+	<link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+	<div class="navbar navbar-fixed-top" id="mainMenu">
+		<div class="container">
+			<div class="navbar-header col-md-2">
+				<a class="navbar-brand" href="#">
+					<img alt="Brand" src="./images/u46.png">
+				</a>
+			</div>
+			<p class="navbar-text col-md-7">中佰会议系统会议组织者界面</p>
+			<ul class="col-md-3" id="signUpWindow">
+				<ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>张三</b></ol>
+				<ol class="col-md-4">
+					<button type="button" class="btn btn-xs">
+                            <!--超小按钮-->
+                            <span class="glyphicon glyphicon-user"></span>
+                            <!--这些图标的使用要引入boorstrap的font-->
+                        </button>
+				</ol>
+			</ul>
+		</div>
+	</div>
+	<div class="container" id="mainContent">
+		<div class="panel panel-default" id="mainContentRight">
+			<div>
+				<div class="col-md-3 ">
+					<h1><strong>创建会议</strong></h1>
+				</div>
+				<div class="col-md-7">
+				</div>
+				<div class="col-md-2 ">
+					<br/>
+					<button class="btn btn-default" type="button" id="cancel1" href="#">取消创建</button>
+				</div>
+			</div>
+			<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+			<div class="row" id="steps">
+				<div class="col-md-3">会议信息 <img src="images/BTNENTER_DOWN.png"></div>
+				<div class="col-md-3">指定人员 <img src="images/BTNENTER_DOWN.png"></div>
+				<div class="col-md-3">自动捆绑设备 <img src="images/BTNENTER_DOWN.png"></div>
+				<div class="col-md-3" id="finish">创建完成</div>
+			</div>
+			<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-5">
+							<strong><h3>所有人员</h3></strong>
+							<select multiple id="select1">
+                        <option value="1">人员1</option>
+						 <option value="2">人员2</option>
+						  <option value="3">人员3</option>
+						   <option value="4">人员4</option>
+						    <option value="5">人员5</option>
+						</select>
+							<button class="btn btn-default" type="button" id="allSelect" href="#">全选</button>
+						</div>
+						<div class="col-md-2">
+							<span id="right1">&gt;&gt;</span><br/>
+							<span id="left1">&lt;&lt;</span>
+						</div>
+						<div class="col-md-5">
+							<strong><h3>参会人员</h3></strong>
+							<select multiple id="select2"></select>
+							<button class="btn btn-default" type="button" id="allUndo" href="#">全部撤销</button>
+							<div class="row">
+								<div class="col-md-7">
+									<h5>主持人选择</h5>
+								</div>
+								<div class="col-md-5">
+									<div class="btn-group" id="select">
+										<select name="select" id="select" class="xla_k">
+                        <option value="人员一" id="people1">人员一</option>
+                        <option value="人员二" id="people2">人员二</option>
+                        <option value="人员三" id="people3">人员三</option>
+                    </select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-5">
+							<strong><h3>参会人员</h3></strong>
+							<select multiple id="select3"></select>
+						</div>
+						<div class="col-md-2">
+							<span id="right2">&gt;&gt;</span><br/>
+							<span id="left2">&lt;&lt;</span>
+						</div>
+						<div class="col-md-5">
+							<strong><h3>主讲人</h3></strong>
+							<select multiple id="select4"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3 col-md-offset-3"></div>
+				<div class="col-md-6 " id="lastCancel2next">
+					<button class="btn btn-default" type="button" onclick="javascropt:history.back(-1);" id="last" href="#">上一步</button>&nbsp;&nbsp;
+					<button class="btn btn-default" type="button" id="cancel2" onclick="window.location.href='index1.html'">取消创建</button>&nbsp;&nbsp;
+					<button class="btn btn-default" type="button" id="next" onclick="window.location.href='registerDevice.html'">下一步</button>
+				</div>
+			</div>
+		</div>
+	</div>
+		<script src="/node_modules/less/dist/less.js"></script>
+		<script src="/node_modules/jquery/dist/jquery.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="/node_modules/angular/angular.js"> </script>
+		<script src="js/appointPeople.js"></script>
+</body>
+
+</html>

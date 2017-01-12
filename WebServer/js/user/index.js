@@ -127,8 +127,7 @@ $(function() {
     });
     $(document).on("click", ".freeze", function() {
         var userID = $(this).parent().attr("userID");
-        var result = false;
-       
+        var freeze = $(this);
         if ($(this).attr("buttonType") == 1) {
             $.ajax({
                 type: "POST",
@@ -140,12 +139,16 @@ $(function() {
                 dataType: "json",
                 success: function (response) {
                     $("#Status").text(response.Message);
+
+                    if (response.Code == 0) {
+                        freeze.attr("buttonType", 0);
+                        freeze.addClass("btn-default");
+                        freeze.html("冻结");
+                    }
                 }
             });
 
-                $(this).attr("buttonType", 0);
-                $(this).addClass("btn-default");
-                $(this).html("冻结");
+            
         } else {
             $.ajax({
                 type: "POST",
@@ -157,12 +160,16 @@ $(function() {
                 dataType: "json",
                 success: function (response) {
                     $("#Status").text(response.Message);
+
+                    if (response.Code == 0) {
+                        freeze.attr("buttonType", 1);
+                        freeze.addClass("btn-default");
+                        freeze.html("已冻结");
+                    }
                 }
             });
-           
-           $(this).attr("buttonType", 1);
-           $(this).addClass("btn-default");
-           $(this).html("已冻结");  
+
+            
         };
     });
 });

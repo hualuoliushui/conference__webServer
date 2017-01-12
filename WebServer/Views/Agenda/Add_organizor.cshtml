@@ -1,0 +1,59 @@
+﻿@model Tuple<int, List<WebServer.Models.Delegate.SpeakerForAgenda>>
+@{
+    Layout = "~/Views/Shared/_Layout_organizor.cshtml";
+    ViewBag.Title = "中佰会议系统组织者";
+}
+@section BodyLess{
+    <link href="~/less/agenda/add.less" type="text/css" rel="stylesheet">
+}
+
+<div class="container" id="mainContent">
+    <div class="panel panel-default" id="mainContentRight">
+        <div>
+            <div class="col-md-6 ">
+                <h2><strong>创建会议议程</strong></h2>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-2 ">
+                <br />
+                <button class="btn btn-default returnIndex" type="button" >返回</button>
+            </div>
+            <span id="ContentRightHeadState">
+                状态:<span id="Status"></span>
+            </span>
+        </div>
+        <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
+        <div id="createAgenda">
+            <div>
+                <input type="hidden" class="meetingID" value="@Model.Item1" />
+                <div>
+                    <div id="agendaName">填写议程名称：</div>
+                    <input type="text" id="agendaNameInput" class="agendaName">
+                </div>
+                <div>
+                    <div id="mainSpeaker">议程的主讲人：</div>
+                    <div class="btn-group userID" id="select">
+                        <select name="select" id="select" class="xla_k">
+                        @foreach (var speaker in Model.Item2)
+                        {
+                            <option value="@speaker.userID">@speaker.userName</option>
+                        }
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div id="agendaTime">议程时长：</div><input type="number" id="agendaTimeInput" class="agendaDuration">&nbsp;分钟
+                </div>
+            </input>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-3"></div>
+            <div class="col-md-4 col-md-offset-3" id="cancel2keep">
+                <button class="btn btn-default keep" type="button" id="keep" >保存编辑</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/agenda/add.js"></script>

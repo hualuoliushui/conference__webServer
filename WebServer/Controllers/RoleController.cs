@@ -23,7 +23,7 @@ namespace WebServer.Controllers
         /// 为用户赋予角色
         /// </summary>
         /// <returns></returns>
-        [RBAC]
+        //[RBAC]
         public JsonResult GetRolesForUser()
         {
             RespondModel respond = new RespondModel();
