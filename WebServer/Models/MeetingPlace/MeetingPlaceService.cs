@@ -143,7 +143,7 @@ namespace WebServer.Models.MeetingPlace
 
             setlist.Add("meetingPlaceName", meetingPlace.meetingPlaceName);
             setlist.Add("meetingPlaceCapacity", meetingPlace.meetingPlaceCapacity);
-            if (meetingPlaceDao.update(setlist,meetingPlace.meetingPlaceID) != 1 )
+            if (meetingPlaceDao.update(setlist,meetingPlace.meetingPlaceID)  < 0 )
             {
                 return Status.FAILURE;
             }
@@ -166,7 +166,7 @@ namespace WebServer.Models.MeetingPlace
 
             setlist.Add("meetingPlaceState", available);
 
-            if (meetingPlaceDao.update(setlist,meetingPlaceID) != 1)
+            if (meetingPlaceDao.update(setlist,meetingPlaceID) < 0)
             {
                 return Status.FAILURE;
             }

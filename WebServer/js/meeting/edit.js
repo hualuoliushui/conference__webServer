@@ -46,7 +46,7 @@ $(function () {
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     window.location.href = "/Meeting/Show_organizor?meetingID="+meetingID;
                 }

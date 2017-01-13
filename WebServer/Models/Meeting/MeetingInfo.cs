@@ -28,6 +28,7 @@ namespace WebServer.Models.Meeting
 
      public class MeetingInfo
     {
+        [Required(ErrorMessage = "会议ID不为空")]
         public int meetingID { set; get; }
 
         [Required(ErrorMessage="会议名称不为空")]

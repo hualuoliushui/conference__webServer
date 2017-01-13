@@ -30,7 +30,7 @@ $(function () {
             dataType: "json",
             success: function (respond) {
                 console.log(respond.Message);
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     window.location.href = "/Agenda/Index_organizor?meetingID=" + meetingID;
                 }

@@ -144,7 +144,7 @@ namespace WebServer.Models.Document
 
         public Status addFile(int agendaID, string fileName, long fileSize, string saveFileName)
         {
-            int filesize = (int)fileSize;//long转为int
+            int filesize = (int)((double)fileSize / 1024 + 0.5); //long转为int
 
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaID);
@@ -222,11 +222,11 @@ namespace WebServer.Models.Document
         public Status convertFile(int agendaID)
         {
             FileDAO fileDao = Factory.getInstance<FileDAO>();
-            Dictionary<string, object> where = new System.Collections.Generic.Dictionary<string, object>();
+            Dictionary<string, object> wherelist = new System.Collections.Generic.Dictionary<string, object>();
 
-            where.Add("agendaID", agendaID);
+            wherelist.Add("agendaID", agendaID);
 
-            var files = fileDao.getAll<FileVO>(where);
+            var files = fileDao.getAll<FileVO>(wherelist);
 
             try
             {
@@ -260,6 +260,7 @@ namespace WebServer.Models.Document
 
                         if (!FileConvert.run(sourcePath, targetPath, targetRelativeDirectory))
                         {
+                            fileDao.delete(file.fileID);
                             throw new Exception("文件转换失败");
                         }
                     }

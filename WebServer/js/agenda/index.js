@@ -5,7 +5,7 @@ $(function () {
     }
 
     function getAgendaID(currentObj) {
-        var agendaID = currentObj.parent().siblings(".agendaID").val();
+        var agendaID = currentObj.parent().parent().find(".ID").val();
         return agendaID;
     }
     //进入附件首页
@@ -15,7 +15,8 @@ $(function () {
     });
     //进入表决首页
     $(document).on("click", ".vote", function () {
-
+        var agendaID = getAgendaID($(this));
+        window.location.href = "/Vote/Index_organizor?agendaID=" + agendaID;
     });
     //进入会议项页面
     $(document).on("click", ".returnIndex", function () {
@@ -118,7 +119,7 @@ $(function () {
             },
             success: function (respond) {
                 console.log(respond);
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     $deletedList = new Array();
                     IDlist = new Array();

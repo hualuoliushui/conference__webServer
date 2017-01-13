@@ -7,7 +7,7 @@
     <link href="~/less/meeting/edit.less" type="text/css" rel="stylesheet">
 }
 <div>
-    <input type="hidden" id="meetingID" value="@Model.meeting.meetingID" />
+    <input type="hidden" id="meetingID" value="@Session["meetingID"]" />
 </div>
 <div class="container" id="mainContent">
     <div class="panel panel-default" id="mainContentRight">

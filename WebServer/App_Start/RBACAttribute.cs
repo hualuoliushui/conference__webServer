@@ -17,18 +17,31 @@ namespace WebServer.App_Start
             string requiredPermission = String.Format("{0}-{1}",
                    filterContext.ActionDescriptor.ControllerDescriptor.ControllerName,
                    filterContext.ActionDescriptor.ActionName);
-            //filterContext.RequestContext.HttpContext.User.Identity.Name
-            RBACUser requestingUser = new RBACUser("测试");
+            HttpContext content =  HttpContext.Current;
 
-            if (!requestingUser.HasPermission(requiredPermission))
+            do
             {
-                filterContext.Result = new RedirectToRouteResult(
-                    new System.Web.Routing.RouteValueDictionary{
+                if (content == null || content.Session["user"] == null)
+                {
+                    break;
+                }
+
+                RBACUser requestingUser = (RBACUser)content.Session["user"];
+
+                if (!requestingUser.HasPermission(requiredPermission))
+                {
+                    break;
+                }
+                base.OnAuthorization(filterContext);
+                return;
+            } while (false);
+       
+            base.OnAuthorization(filterContext);
+            filterContext.Result = new RedirectToRouteResult(
+                             new System.Web.Routing.RouteValueDictionary{
                         {"action","Index"},
                         {"controller","Account"}
                     });
-            }
-            base.OnAuthorization(filterContext);
         }
     }
 }

@@ -18,15 +18,8 @@ namespace WebServer.Controllers
 {
     public class MeetingController : Controller
     {
-        //
-        // GET: /MeetingInfo/
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
+        [RBAC]
         public ActionResult Add_organizor()
         {
             MeetingPlaceService meetingPlaceService = new MeetingPlaceService();
@@ -90,6 +83,7 @@ namespace WebServer.Controllers
             }
         }
 
+        [RBAC]
         public ActionResult Show_organizor(int meetingID)
         {
             Status status = Status.SUCCESS;
@@ -123,12 +117,8 @@ namespace WebServer.Controllers
             return View(model);
         }
 
-        public ActionResult Shows_organizor()
-        {
-            return View();
-        }
-
         [HttpGet]
+        [RBAC]
         public ActionResult Edit_organizor(int meetingID)
         {
             MeetingPlaceService meetingPlaceService = new MeetingPlaceService();
@@ -144,6 +134,9 @@ namespace WebServer.Controllers
                 meeting = meeting,
                 meetingPlaces = meetingPlaces
             };
+
+            Session["meetingID"] = meetingID;
+
             return View(model);
         }
 
@@ -157,8 +150,9 @@ namespace WebServer.Controllers
             return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
         [RBAC]
-        public JsonResult DeleteMeetingMultipe(List<int> meetingIDs)
+        public JsonResult Delete_organizor(List<int> meetingIDs)
         {
             //调用服务
             string userName = HttpContext.User.Identity.Name;

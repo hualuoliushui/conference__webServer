@@ -13,6 +13,7 @@ namespace WebServer.Controllers
     public class AgendaController : Controller
     {
         [HttpGet]
+        [RBAC]
         public ActionResult Index_organizor(int meetingID)
         {
             AgendaService agendaService = new AgendaService();
@@ -22,10 +23,13 @@ namespace WebServer.Controllers
             if (status != Status.SUCCESS)
                 return RedirectToAction("Error", "Error");
 
+            Session["meetingID"] = meetingID;
+
             return View(agendas);
         }
 
         [HttpGet]
+        [RBAC]
         public ActionResult Add_organizor(int meetingID)
         {
             DelegateService delegateService = new DelegateService();
@@ -35,10 +39,13 @@ namespace WebServer.Controllers
             if (status != Status.SUCCESS)
                 return RedirectToAction("Error", "Error");
 
+            Session["meetingID"] = meetingID;
+
             return View(Tuple.Create(meetingID, speakersForAgenda));
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Add_organizor(CreateAgenda createAgenda)
         {
             Status status = Status.SUCCESS;
@@ -59,6 +66,7 @@ namespace WebServer.Controllers
         }
 
         [HttpGet]
+        [RBAC]
         public ActionResult Edit_organizor(int agendaID)
         {
             AgendaService agendaService = new AgendaService();
@@ -75,10 +83,13 @@ namespace WebServer.Controllers
             if (status != Status.SUCCESS)
                 return RedirectToAction("Error", "Error");
 
+            Session["meetingID"] = agenda.meetingID;
+
             return View(Tuple.Create(agenda, speakersForAgenda));
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Edit_organizor(UpdateAgenda updateAgenda)
         {
             Status status = Status.SUCCESS;
@@ -99,6 +110,7 @@ namespace WebServer.Controllers
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Delete_organizor(List<int> IDs)
         {
             Status status = Status.SUCCESS;

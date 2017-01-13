@@ -1,25 +1,33 @@
-﻿$(function () {
-    function getMeetingID() {
-        return $("#meetingID").val();
-    }
+﻿//////
+function getMeetingID() {
+    return $("#meetingID").val();
+}
 
-    function getUserID() {
-        return $(".userID").val();
-    }
+function getUserID() {
+    return $(".userID").val();
+}
 
-    function getDeviceID() {
-        return $(".deviceID").val();
-    }
-    function getMeetingRole() {
-        return $(".meetingRole").val();
-    }
+function getDeviceID() {
+    return $(".deviceID").val();
+}
+function getMeetingRole() {
+    return $(".meetingRole").val();
+}
+
+
+
+//===============================
+
+$(function () {
+    
 
     $(document).on("click", "#newPeople", function () {
         window.location.href = "/User/Add_organizor";
     });
 
     $(document).on("click", ".cancel", function () {
-
+        var meetingID = getMeetingID();
+        window.location.href = "/Delegate/Index_organizor?meetingID=" + meetingID;
     });
 
     $(document).on("click", ".save", function () {
@@ -46,7 +54,7 @@
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     window.location.href = "/Delegate/Index_organizor?meetingID="+meetingID;
                 }

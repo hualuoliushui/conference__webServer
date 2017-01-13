@@ -1,8 +1,13 @@
-﻿//加载界面和动态创建
+﻿///
+function getMeetingID() {
+    return $("#meetingID").val();
+}
+
+//===============================
+
+//加载界面和动态创建
 $(function () {
-    function getMeetingID() {
-        return $("#meetingID").val();
-    }
+    
 
     //进入会议项页面
     $(document).on("click", ".returnIndex", function () {
@@ -39,14 +44,14 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: "/Delegate/Update_organizor",
+            url: "/Delegate/Edit_organizor",
             data: str,
             dataType: "json",
             headers: {
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 console.log(respond);
             }
         });

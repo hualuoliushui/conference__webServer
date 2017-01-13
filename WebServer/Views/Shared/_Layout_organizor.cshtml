@@ -18,7 +18,8 @@
     <script src="/node_modules/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"> </script>
   
     <link type="text/css" rel="stylesheet" href="~/less/common/organizor.less" />
-    
+    <script src="~/js/common/organizor.js"></script>
+
     @RenderSection("BodyLess", required: false);
 </head>
     @*@{
@@ -34,7 +35,15 @@
             </div>
             <p class="navbar-text col-md-7">中佰会议系统会议组织者界面</p>
             <ul class="col-md-3" id="signUpWindow">
-                <ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>@Session["userName"]</b></ol>
+                @if (Session["userName"] != null)
+                {
+                    <input type="button" class="glyphicon-log-out logout" value="退出系统" />
+                    <ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>@Session["userName"]</b></ol>
+                }
+                else
+                {
+                    <ol class="col-md-6"><a href="/Account/Index">请登录</a></ol>
+                }
                 <ol class="col-md-4">
                     <button type="button" class="btn btn-xs">
                         <!--超小按钮-->
@@ -48,7 +57,6 @@
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")
-    <script src="~/js/common/organizor.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

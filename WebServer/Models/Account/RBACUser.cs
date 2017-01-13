@@ -99,8 +99,7 @@ namespace WebServer.Models
                     break;
                 }
             }
-            //return bFound;
-            return true;
+            return bFound;
         }
 
         public bool HasRole(string role)

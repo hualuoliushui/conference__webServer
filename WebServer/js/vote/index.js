@@ -63,9 +63,9 @@ $(function () {
     $(document).on("click", ".deleteMutiple", function () {
         var item;
         $(".list_index").each(function () {
-            console.log($(this).children("input:checkbox").attr("checked"));
-            if ($(this).children("input:checkbox").attr("checked")) {
-                item = $(this).children(".ID").val();
+            console.log($(this).find("input:checkbox").attr("checked"));
+            if ($(this).find("input:checkbox").attr("checked")) {
+                item = $(this).find(".ID").val();
                 $(this).remove();
                 $deletedList.push($(this));
                 IDlist.push(item);
@@ -77,7 +77,7 @@ $(function () {
     $(document).on("click", ".delete", function () {
         var item;
         var list_index = $(this).parent().parent();
-        item = list_index.children(".ID").val();
+        item = list_index.find(".ID").val();
         list_index.remove();
         $deletedList.push(list_index);
         IDlist.push(item);
@@ -90,7 +90,8 @@ $(function () {
             $(".contentRightListGroupOutWindowList").append($deletedList[i]);
         }
         //每次恢复删除后，将Array置为空，防止内容重复
-        //alert($deletedList.length);
+        console.log("数组长度");
+        console.log($deletedList.length);
         $deletedList = new Array();
         IDlist = new Array();
     });
@@ -117,7 +118,7 @@ $(function () {
             },
             success: function (respond) {
                 console.log(respond);
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     $deletedList = new Array();
                     IDlist = new Array();

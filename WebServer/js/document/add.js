@@ -21,7 +21,7 @@ function startConvert() {
         success: function (respond) {
             console.log("转换:");
             console.log(respond);
-            $("#Status").text(respond.Message);
+            setStatus(respond);
         }
     });
 }
@@ -77,7 +77,7 @@ function upload() {
     //设置回调函数
     xhr.onreadystatechange = uploadReady;
     //发送文件和表单自定义参数
-    xhr.open("POST", "/Document/Upload", true);
+    xhr.open("POST", "/Document/Add_organizor", true);
 
     xhr.send(fd);
 }
@@ -88,9 +88,11 @@ function uploadReady() {
         var respond = JSON.parse(xhr.response);
         console.log("上传:");
         console.log(respond);
-        $("#Status").text(respond.Message);
         if (respond.Code == 0) {
+            $("#Status").text("转换中...");
             startConvert();
+        } else {
+            setStatus(respond);
         }
     }
 }

@@ -13,30 +13,30 @@ namespace WebServer.Controllers
 {
     public class DocumentController : Controller
     {
-        //[RBAC]
         [HttpGet]
+        [RBAC]
         public ActionResult Index_organizor(int agendaID)
         {
-            Session["agendaID"] = agendaID;
-
             RespondModel respond = new RespondModel();
 
             List<Document> documents;
             //调用附件服务
             Status status = new DocumentService().getAll(agendaID, out documents);
 
+            Session["agendaID"] = agendaID;
             return View(documents);
         }
 
         [HttpGet]
+        [RBAC]
         public ActionResult Add_organizor(int agendaID){
-            ViewBag.agendaID = agendaID;
+            Session["agendaID"] = agendaID;
             return View();
         }
 
-        //[RBAC]
         [HttpPost]
-        public JsonResult Upload()
+        [RBAC]
+        public JsonResult Add_organizor()
         {
             Status status = Status.SUCCESS;//初始化为SUCCESS
 
@@ -67,6 +67,7 @@ namespace WebServer.Controllers
             return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
         }
 
+        [RBAC]
         public JsonResult StartConvert(int agendaID)
         {
             //调用服务
@@ -91,6 +92,7 @@ namespace WebServer.Controllers
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Delete_organizor(List<int> IDs)
         {
             Status status = Status.SUCCESS;

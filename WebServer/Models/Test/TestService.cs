@@ -217,7 +217,15 @@ namespace WebServer.Models.Test
             //默认为无权限角色："成员"角色，roleID=3
             for (int i = 0; i < deviceNum; i++)
             {
-                person_roles.Add(new Person_RoleVO { person_roleID = person_roleIDs[i], roleID = 3, personID = personIDs[i] });
+               
+                if (i == 3)
+                {
+                    person_roles.Add(new Person_RoleVO { person_roleID = person_roleIDs[i], roleID = 2, personID = personIDs[i] });
+                }
+                else
+                {
+                    person_roles.Add(new Person_RoleVO { person_roleID = person_roleIDs[i], roleID = 3, personID = personIDs[i] });
+                }
             }
             Console.WriteLine("添加用户角色关联");
             for (int i = 0; i < deviceNum; i++)

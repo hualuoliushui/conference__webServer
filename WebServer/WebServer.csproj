@@ -211,6 +211,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Agenda\AgendaInfo.cs" />
     <Compile Include="Models\Agenda\AgendaService.cs" />
     <Compile Include="Models\Agenda\CreateAgenda.cs" />
@@ -324,9 +325,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="js\account\index.js" />
     <Content Include="js\agenda\add.js" />
     <Content Include="js\agenda\edit.js" />
     <Content Include="js\agenda\index.js" />
+    <Content Include="js\common\admin.js" />
     <Content Include="js\common\jquery\jquery-1.5.1.min.js" />
     <Content Include="js\common\organizor.js" />
     <Content Include="js\delegate\add.js" />
@@ -341,7 +344,6 @@
     <Content Include="js\meeting\add.js" />
     <Content Include="js\meeting\edit.js" />
     <Content Include="js\meeting\show.js" />
-    <Content Include="js\meeting\shows.js" />
     <Content Include="js\user\add_organizor.js" />
     <Content Include="js\user\edit.js" />
     <Content Include="js\user\add.js" />
@@ -3444,6 +3446,8 @@
     <Content Include="less\delegate\index.less" />
     <Content Include="less\user\add_organizor.less" />
     <Content Include="less\vote\index.less" />
+    <Content Include="less\account\admin.less" />
+    <Content Include="less\account\organizor.less" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
@@ -3566,6 +3570,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Meeting\attribute\" />
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>

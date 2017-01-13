@@ -185,7 +185,7 @@ namespace WebServer.Models.User
             personVo.personDescription = newUser.userDescription;
 
             //如果插入用户失败，返回error
-            if (personDao.insert<PersonVO>(personVo) != 1) 
+            if (personDao.insert<PersonVO>(personVo) < 0) 
                 return Status.FAILURE;
 
             //如果插入用户角色关联失败，则删除之前添加的数据，并返回error
@@ -196,7 +196,7 @@ namespace WebServer.Models.User
                     person_roleID = Person_RoleDAO.getID(),
                     personID = personVo.personID,
                     roleID = newUser.roleID
-                }) != 1)
+                }) < 0)
             {
                 personDao.delete(personVo.personID);
                 return Status.DATABASE_OPERATOR_ERROR;
@@ -408,7 +408,7 @@ namespace WebServer.Models.User
 
 
             //更新user表
-            if( personDao.update(wherelist,user.userID) != 1 )//如果失败
+            if( personDao.update(wherelist,user.userID) < 0 )//如果失败
             {
                 return Status.DATABASE_OPERATOR_ERROR;
             }
@@ -418,7 +418,7 @@ namespace WebServer.Models.User
             setlist.Add("roleID", user.roleID);
             wherelist.Clear();
             wherelist.Add("personID", user.userID);
-            if (person_roleDao.update(setlist,wherelist)!=1){//如果更新原来的关联失败
+            if (person_roleDao.update(setlist,wherelist) < 0){//如果更新原来的关联失败
                 return Status.DATABASE_OPERATOR_ERROR;
             }
 
@@ -452,7 +452,7 @@ namespace WebServer.Models.User
 
             setlist.Clear();
             setlist.Add("personState",available);
-            if (personDao.update(setlist,userID) != 1)
+            if (personDao.update(setlist,userID) < 0)
             {
                 return Status.FAILURE;
             }

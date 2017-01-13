@@ -1,48 +1,11 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿@{
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    ViewBag.Title = "中佰会议系统管理员";
+}
+@section BodyLess{
+    <link href="~/less/device/add.less" type="text/css" rel="stylesheet">
+}
 
-<head>
-    <title>中佰会议系统管理员</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/less/device/add.less" type="text/less" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-</head>
-
-<body>
-    <div class="navbar navbar-fixed-top" id="mainMenu">
-        <div class="container">
-            <div class="navbar-header col-md-2">
-                <a class="navbar-brand" href="#">
-                    <img alt="Brand" src="/images/u46.png">
-                </a>
-            </div>
-            <p class="navbar-text col-md-6">中佰会议管理员界面</p>
-            <ul class="col-md-3" id="signUpWindow">
-                <ol class="col-md-6"><b>管理员</b>&nbsp&nbsp<b>张三</b></ol>
-                <ol class="col-md-4">
-                    <button type="button" class="btn btn-xs">
-                        <!--超小按钮-->
-                        <span class="glyphicon glyphicon-user"></span>
-                        <!--这些图标的使用要引入boorstrap的font-->
-                    </button>
-                </ol>
-            </ul>
-        </div>
-    </div>
-    <div class="container" id="mainContent">
-        <div class="panel panel-default col-md-2" id="mainContentLeft">
-            <div class="panel-heading">
-                <p class="panel-title">管理导航</p>
-            </div>
-            <ul class="nav nav-stacked panel-body" role="tablist">
-                <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
-                <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
-                <li role="presentation"><a href="/User/Index_admin">人员管理</a></li>
-                <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
-                <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
-            </ul>
-        </div>
 
         <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
             <div>
@@ -83,14 +46,5 @@
                     <button class="btn btn-default" type="button" id="keep" href="#">保 存</button>
                 </div>
             </div>
-        </div>
 
-        <script src="/node_modules/less/dist/less.js"></script>
-        <script src="/node_modules/jquery/dist/jquery.js"></script>
-        <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="/node_modules/angular/angular.js">
-        </script>
         <script src="~/js/device/add.js"></script>
-</body>
-
-</html>

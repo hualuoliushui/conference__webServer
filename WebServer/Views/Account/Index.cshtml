@@ -1,35 +1,58 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
 <html>
 <head lang="en">
     <title>登录界面</title>
-    <meta charset="utf-8" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+  
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"> </script>
+
+
     <link type="text/css" rel="stylesheet" href="~/less/account/index.less" />
 </head>
 <body>
     <fieldset id="login">
         <p><strong>中佰会议管理系统</strong></p>
         <p><strong>登录界面</strong></p>
-        <form method="post" action="/Account/Login">
-            <div id="input">
-                <div id="userName">
-                    <label>用户名</label>
-                    <input type="text" name="userName" id="userNameInput"  value="彭洪云"/>
-                </div>
-                <div id="password">
-                    <label>密码</label>
-                    <input type="password" name="password" id="passwordInput" value="123456"/>
-                </div>
+        <div>
+            <span id="Status">
+
+            </span>
+        </div>
+        <div id="input">
+            <div id="userName">
+                <label for="userNameInput">用户名</label>
+                <input type="text" name="userName" class="userName" id="userNameInput" value="林连南" />
             </div>
-            <div id="select">
-                <label>系统 :</label>
-                <input type="radio" name="system" value="0"  />
-                <label>管理员</label>
-                <input type="radio" name="system" value="1" checked />
-                <label>会议组织者</label>
+            <div id="password">
+                <label for="passwordInput">密码</label>
+                <input type="password" name="password" class="password" id="passwordInput" value="123456" />
             </div>
-            <hr />
-            <button type="submit" value="登录" id="loginBtn">登 录</button>
-        </form>
+        </div>
+        <div id="select">
+            <label>系统 :</label>
+            <input type="radio" name="system" class="system" id="admin" value="Admin" checked />
+            <label for="admin">管理员</label>
+            <input type="radio" name="system" class="system" id="organizor" value="Organizor"  />
+            <label for="organizor">会议组织者</label>
+        </div>
+        <hr />
+        <input type="button" value="登录" id="loginBtn" />
     </fieldset>
+
+    <script src="~/js/account/index.js" type="text/javascript"></script>
 </body>
 </html>

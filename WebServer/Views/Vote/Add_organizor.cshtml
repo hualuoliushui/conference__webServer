@@ -6,7 +6,10 @@
     <link href="~/less/vote/add.less" type="text/css" rel="stylesheet">
 }
 
-<input type="hidden" class="agendaID" value="@Session["agendaID"]" />
+<div>
+    <input type="hidden" id="agendaID" value="@Session["agendaID"]" />
+    <input type="hidden" id="meetingID" value="@Session["meetingID"]" />
+</div>
 
 <div class="container" id="mainContent">
     <div class="panel panel-default" id="mainContentRight">

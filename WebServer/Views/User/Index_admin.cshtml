@@ -1,116 +1,72 @@
-﻿<!DOCTYPE html>
-<html lang="zh-CN">
+﻿@{
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+    ViewBag.Title = "中佰会议系统管理员";
+}
+@section BodyLess{
+    <link href="~/less/user/index.less" type="text/css" rel="stylesheet">
+}
 
-<head>
-    <title>中佰会议系统管理员</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/less/user/index.less" type="text/less" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
-</head>
-
-<body>
-    <div class="navbar navbar-fixed-top" id="mainMenu">
-        <div class="container">
-            <div class="navbar-header col-md-2">
-                <a class="navbar-brand" href="index.html">
-                    <img alt="Brand" src="~/images/u46.png">
-                </a>
-            </div>
-            <p class="navbar-text col-md-6">中佰会议管理员界面</p>
-            <ul class="col-md-3" id="signUpWindow">
-                <ol class="col-md-5"><b>管理员</b>&nbsp<b>张三</b></ol>
-                <ol class="col-md-1">
-                    <button type="button" class="btn btn-xs">
-                        <!--超小按钮-->
-                        <span class="glyphicon glyphicon-user"></span>
-                        <!--这些图标的使用要引入boorstrap的font-->
-                    </button>
-                </ol>
-            </ul>
-        </div>
-    </div>
-    <div class="container" id="mainContent">
-        <div class="panel panel-default col-md-2" id="mainContentLeft">
-            <div class="panel-heading">
-                <p class="panel-title">管理导航</p>
-            </div>
-            <ul class="nav nav-stacked panel-body" role="tablist">
-                <li role="presentation" class="active"><a href="/Account/Admin">首页</a></li>
-                <li role="presentation"><a href="/MeetingPlace/Index_admin">会场管理</a></li>
-                <li role="presentation"><a href="/User/Index_admin">人员管理</a></li>
-                <li role="presentation"><a href="/Role/Index_admin">角色管理</a></li>
-                <li role="presentation"><a href="/Device/Index_admin">设备管理</a></li>
-            </ul>
-        </div>
-        <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
-            <div id="ContentRightHead" class="col-md-12">
-                <p id="ContentRightHeadTitle" class="col-md-4"><strong>人员管理</strong></p>
-                <ol class="breadcrumb col-md-3">
-                    <li><a href="/Account/Admin">首页</a></li>
-                    <li class="active">人员管理</li>
-                </ol>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                        </span>
-                    </div>
-                </div>
-                <button class="btn btn-default col-md-2 returnIndex" type="button">返回主页</button>
-                <span id="ContentRightHeadState">
-                    状态:<span id="Status"></span>
+    
+<div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
+    <div id="ContentRightHead" class="col-md-12">
+        <p id="ContentRightHeadTitle" class="col-md-4"><strong>人员管理</strong></p>
+        <ol class="breadcrumb col-md-3">
+            <li><a href="/Account/Admin">首页</a></li>
+            <li class="active">人员管理</li>
+        </ol>
+        <div class="col-md-3">
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
                 </span>
             </div>
-            <div class="ContentRightButtonGroup">
-                <button class="btn btn-default new" type="button">新增人员</button>
-            </div>
-            <div id="ContentRightList">
-                <div id="contentRightListGroup">
-                    <ul class="list-group contentRightListGroupBanderList">
-                        <li href="#" class="list-group-item disabled container-fluid">
-                            <label class="col-md-2 list-If">
-                                人员名字
-                            </label>
-                            <label class="col-md-2 list-If">
-                                人员部门
-                            </label>
-                            <label class="col-md-2 list-If">
-                                人员职位
-                            </label>
-                            <label class="col-md-2 list-If">
-                                人员角色
-                            </label>
-                        </li>
-                    </ul>
-                    <ul class="list-group contentRightListGroupOutWindow">
-                        <ul class="list-group contentRightListGroupOutWindowList"></ul>
-                    </ul>
-                </div>
-                <nav class="text-center" id="paginationOutWindow">
-                    <ul class="pagination">
-                        <!--<li><a href="#">&laquo;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&raquo;</a></li>-->
-                    </ul>
-                </nav>
-            </div>
-            <div id="buttonGroup" class="col-md-2 col-md-offset-10">
-                <button class="btn btn-default returnIndex" type="button">返回主页</button>
-            </div>
         </div>
+        <button class="btn btn-default col-md-2 returnIndex" type="button">返回主页</button>
+        <span id="ContentRightHeadState">
+            状态:<span id="Status"></span>
+        </span>
     </div>
-    <script src="~/node_modules/jquery/dist/jquery.js"></script>
-    <script src="~/node_modules/less/dist/less.js"></script>
-    <script src="~/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="~/node_modules/angular/angular.js">
-    </script>
-    <script src="~/js/user/index.js"></script>
-</body>
+    <div class="ContentRightButtonGroup">
+        <button class="btn btn-default new" type="button">新增人员</button>
+    </div>
+    <div id="ContentRightList">
+        <div id="contentRightListGroup">
+            <ul class="list-group contentRightListGroupBanderList">
+                <li href="#" class="list-group-item disabled container-fluid">
+                    <label class="col-md-2 list-If">
+                        人员名字
+                    </label>
+                    <label class="col-md-2 list-If">
+                        人员部门
+                    </label>
+                    <label class="col-md-2 list-If">
+                        人员职位
+                    </label>
+                    <label class="col-md-2 list-If">
+                        人员角色
+                    </label>
+                </li>
+            </ul>
+            <ul class="list-group contentRightListGroupOutWindow">
+                <ul class="list-group contentRightListGroupOutWindowList"></ul>
+            </ul>
+        </div>
+        <nav class="text-center" id="paginationOutWindow">
+            <ul class="pagination">
+                <!--<li><a href="#">&laquo;</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&raquo;</a></li>-->
+            </ul>
+        </nav>
+    </div>
+    <div id="buttonGroup" class="col-md-2 col-md-offset-10">
+        <button class="btn btn-default returnIndex" type="button">返回主页</button>
+    </div>
 
-</html>
+
+<script src="~/js/user/index.js"></script>

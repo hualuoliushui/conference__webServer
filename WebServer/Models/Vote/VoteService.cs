@@ -138,6 +138,7 @@ namespace WebServer.Models.Vote
             }
 
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
+            VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
@@ -164,15 +165,21 @@ namespace WebServer.Models.Vote
                 //初始化会场操作
                 meeting_initOperator(agendaVo.meetingID);
 
-                    //判断会议是否 未开启,如果 不是”未开启“，直接退出
-                    if (!meeting_isNotOpen())
-                    {
-                        return Status.FAILURE;
-                    }
-                    //更新其他投票的序号信息
-                    voteDao.updateIndex(voteVo.agendaID, voteVo.voteIndex);
-                    //删除当前投票
-                    voteDao.delete(voteVo.voteID);
+                //判断会议是否 未开启,如果 不是”未开启“，直接退出
+                if (!meeting_isNotOpen())
+                {
+                    return Status.FAILURE;
+                }
+                //删除选项
+                wherelist.Clear();
+                wherelist.Add("voteID", voteID);
+                voteOptionDao.delete(wherelist);
+
+                //更新其他投票的序号信息
+                voteDao.updateIndex(voteVo.agendaID, voteVo.voteIndex);
+                //删除当前投票
+                voteDao.delete(voteVo.voteID);
+                    
 
             }
             return Status.SUCCESS;
@@ -189,7 +196,21 @@ namespace WebServer.Models.Vote
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
             VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
             wherelist.Add("agendaID", agendaID);
-            voteOptionDao.delete(wherelist);//删除选项
+
+            var voteVolist = voteDao.getAll<VoteVO>(wherelist);
+            if (voteVolist != null)
+            {
+                foreach (var voteVo in voteVolist)
+                {
+                    wherelist.Clear();
+                    wherelist.Add("voteID", voteVo.voteID);
+                    voteOptionDao.delete(wherelist);
+                }
+            }
+
+            wherelist.Clear();
+            wherelist.Add("agendaID", agendaID);
+
             voteDao.delete(wherelist);//删除表决
             return Status.SUCCESS;
         }
@@ -331,7 +352,7 @@ namespace WebServer.Models.Vote
                         voteStatus = 1, // 未开
                         agendaID = vote.agendaID,
                         isUpdate = isUpdate
-                    }) != 1)
+                    }) < 0)
             {
                 return Status.FAILURE;
             }

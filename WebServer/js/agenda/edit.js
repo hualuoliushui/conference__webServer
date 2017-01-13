@@ -1,4 +1,10 @@
-$(function(){
+function getMeetingID() {
+    return $("#meetingID").val();
+}
+
+//**************************************************//
+
+$(function () {
    $(":input").focus(function(){
      $(this).addClass("focus");  
    }).blur(function(){
@@ -7,10 +13,10 @@ $(function(){
 });
 
 $(function () {
-    $(document).on("click", "cancel", function () {
+    $(document).on("click", ".cancel", function () {
         //需要从服务器上获取
-        //var meetingID = $(".meetingID").val();
-        //window.location.href = "/Agenda/Index_organizor?meetingID=" + meetingID;
+        var meetingID = getMeetingID();
+        window.location.href = "/Agenda/Index_organizor?meetingID=" + meetingID;
     });
 
     $(document).on("click", ".keep", function () {
@@ -30,7 +36,10 @@ $(function () {
             },
             dataType: "json",
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
+                if (respond.Code == 0) {
+                    window.location.href = "/Agenda/Index_organizor?meetingID=" + getMeetingID();
+                }
             }
         });
     });

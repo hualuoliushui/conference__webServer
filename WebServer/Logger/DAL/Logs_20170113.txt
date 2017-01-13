@@ -1,0 +1,735 @@
+
+----------------------header--------------------------
+2017-01-13 17:26:58,500 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:26:59,092 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 17:26:59,095 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 17:26:59,096 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:26:59,097 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 17:26:59,099 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:26:59,100 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:26:59,102 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:26:59,103 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:26:59,104 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:26:59,106 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:26:59,108 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:26:59,109 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:26:59,111 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-13 17:26:59,254 [1] INFO  DalLogger - mysql 非查询执行 : delete from person where personID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot delete or update a parent row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,323 [1] INFO  DalLogger - mysql 非查询执行 : insert into person (personID,personName,personPassword,personDepartment,personJob,personDescription,personState,isAdmin )  values(@personID,@personName,@personPassword,@personDepartment,@personJob,@personDescription,@personState,@isAdmin);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry '彭洪云' for key 'personName'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,386 [1] INFO  DalLogger - mysql 非查询执行 : delete from person where personID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot delete or update a parent row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,444 [1] INFO  DalLogger - mysql 非查询执行 : insert into person (personID,personName,personPassword,personDepartment,personJob,personDescription,personState,isAdmin )  values(@personID,@personName,@personPassword,@personDepartment,@personJob,@personDescription,@personState,@isAdmin);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry '赵丽萍' for key 'personName'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,500 [1] INFO  DalLogger - mysql 非查询执行 : delete from person where personID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot delete or update a parent row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,561 [1] INFO  DalLogger - mysql 非查询执行 : insert into person (personID,personName,personPassword,personDepartment,personJob,personDescription,personState,isAdmin )  values(@personID,@personName,@personPassword,@personDepartment,@personJob,@personDescription,@personState,@isAdmin);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry '黄文欣' for key 'personName'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,620 [1] INFO  DalLogger - mysql 非查询执行 : delete from person where personID=@id;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot delete or update a parent row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,693 [1] INFO  DalLogger - mysql 非查询执行 : insert into person (personID,personName,personPassword,personDepartment,personJob,personDescription,personState,isAdmin )  values(@personID,@personName,@personPassword,@personDepartment,@personJob,@personDescription,@personState,@isAdmin);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Duplicate entry '林连南' for key 'personName'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,753 [1] INFO  DalLogger - mysql 非查询执行 : insert into person_role (person_roleID,personID,roleID )  values(@person_roleID,@personID,@roleID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,817 [1] INFO  DalLogger - mysql 非查询执行 : insert into person_role (person_roleID,personID,roleID )  values(@person_roleID,@personID,@roleID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,920 [1] INFO  DalLogger - mysql 非查询执行 : insert into person_role (person_roleID,personID,roleID )  values(@person_roleID,@personID,@roleID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:26:59,980 [1] INFO  DalLogger - mysql 非查询执行 : insert into person_role (person_roleID,personID,roleID )  values(@person_roleID,@personID,@roleID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`person_role`, CONSTRAINT `FK_PERSON_ROLE_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:12,979 [1] INFO  DalLogger - mysql 非查询执行 : insert into meeting (meetingID,meetingName,meetingSummary,meetingDuration,meetingToStartTime,meetingStartedTime,meetingStatus,delegateUpdateStatus,agendaUpdateStatus,fileUpdateStatus,voteUpdateStatus,meetingPlaceID,personID )  values(@meetingID,@meetingName,@meetingSummary,@meetingDuration,@meetingToStartTime,@meetingStartedTime,@meetingStatus,@delegateUpdateStatus,@agendaUpdateStatus,@fileUpdateStatus,@voteUpdateStatus,@meetingPlaceID,@personID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`meeting`, CONSTRAINT `FK_MEETING_PERSONID` FOREIGN KEY (`personID`) REFERENCES `person` (`personID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,027 [1] INFO  DalLogger - mysql 非查询执行 : insert into delegate (delegateID,isSignIn,personMeetingRole,deviceID,meetingID,personID,isUpdate )  values(@delegateID,@isSignIn,@personMeetingRole,@deviceID,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`delegate`, CONSTRAINT `FK_DELEGATE_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,071 [1] INFO  DalLogger - mysql 非查询执行 : insert into delegate (delegateID,isSignIn,personMeetingRole,deviceID,meetingID,personID,isUpdate )  values(@delegateID,@isSignIn,@personMeetingRole,@deviceID,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`delegate`, CONSTRAINT `FK_DELEGATE_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,118 [1] INFO  DalLogger - mysql 非查询执行 : insert into delegate (delegateID,isSignIn,personMeetingRole,deviceID,meetingID,personID,isUpdate )  values(@delegateID,@isSignIn,@personMeetingRole,@deviceID,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`delegate`, CONSTRAINT `FK_DELEGATE_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,171 [1] INFO  DalLogger - mysql 非查询执行 : insert into delegate (delegateID,isSignIn,personMeetingRole,deviceID,meetingID,personID,isUpdate )  values(@delegateID,@isSignIn,@personMeetingRole,@deviceID,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`delegate`, CONSTRAINT `FK_DELEGATE_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,231 [1] INFO  DalLogger - mysql 非查询执行 : insert into agenda (agendaID,agendaName,agendaIndex,agendaDuration,meetingID,personID,isUpdate )  values(@agendaID,@agendaName,@agendaIndex,@agendaDuration,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`agenda`, CONSTRAINT `FK_AGENDA_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,289 [1] INFO  DalLogger - mysql 非查询执行 : insert into agenda (agendaID,agendaName,agendaIndex,agendaDuration,meetingID,personID,isUpdate )  values(@agendaID,@agendaName,@agendaIndex,@agendaDuration,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`agenda`, CONSTRAINT `FK_AGENDA_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,341 [1] INFO  DalLogger - mysql 非查询执行 : insert into agenda (agendaID,agendaName,agendaIndex,agendaDuration,meetingID,personID,isUpdate )  values(@agendaID,@agendaName,@agendaIndex,@agendaDuration,@meetingID,@personID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`agenda`, CONSTRAINT `FK_AGENDA_MEETINGID` FOREIGN KEY (`meetingID`) REFERENCES `meeting` (`meetingID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,399 [1] INFO  DalLogger - mysql 非查询执行 : insert into vote (voteID,voteName,voteIndex,voteDescription,voteType,voteStatus,agendaID,isUpdate )  values(@voteID,@voteName,@voteIndex,@voteDescription,@voteType,@voteStatus,@agendaID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`vote`, CONSTRAINT `FK_VOTE_AGENDAID` FOREIGN KEY (`agendaID`) REFERENCES `agenda` (`agendaID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,448 [1] INFO  DalLogger - mysql 非查询执行 : insert into vote (voteID,voteName,voteIndex,voteDescription,voteType,voteStatus,agendaID,isUpdate )  values(@voteID,@voteName,@voteIndex,@voteDescription,@voteType,@voteStatus,@agendaID,@isUpdate);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`vote`, CONSTRAINT `FK_VOTE_AGENDAID` FOREIGN KEY (`agendaID`) REFERENCES `agenda` (`agendaID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,500 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,548 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,609 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,654 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,699 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+2017-01-13 17:27:13,745 [1] INFO  DalLogger - mysql 非查询执行 : insert into voteOption (voteOptionID,voteOptionName,voteOptionIndex,voteID )  values(@voteOptionID,@voteOptionName,@voteOptionIndex,@voteID);
+MySql.Data.MySqlClient.MySqlException (0x80004005): Cannot add or update a child row: a foreign key constraint fails (`testdal`.`voteoption`, CONSTRAINT `FK_VOTEOPTION_VOTEID` FOREIGN KEY (`voteID`) REFERENCES `vote` (`voteID`))
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteNonQuery()
+   在 DAL.DB.MysqlDB.ExecuteNonQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 33
+
+----------------------header--------------------------
+2017-01-13 17:29:41,286 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:29:41,611 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 17:29:41,614 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 17:29:41,616 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:41,617 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 17:29:41,619 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:29:41,621 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:29:41,622 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:29:41,624 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:29:41,625 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:29:41,627 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:29:41,629 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:29:41,630 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:29:41,632 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-13 17:29:59,648 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:29:59,653 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:29:59,654 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 17:29:59,657 [6] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 17:29:59,660 [6] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 17:29:59,662 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,664 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,665 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,666 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,667 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,667 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,668 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,669 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,670 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,671 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,672 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,673 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,674 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,675 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,676 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,677 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,677 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,678 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,680 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,681 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,682 [6] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:29:59,721 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:50,441 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:50,446 [10] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:30:50,446 [10] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:30:50,457 [10] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:30:50,457 [10] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:30:50,457 [10] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:30:50,473 [10] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:30:53,664 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:53,669 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:53,669 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:30:53,669 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:30:53,674 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:30:53,674 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:30:53,674 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:30:58,133 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:58,135 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:30:58,135 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:30:58,135 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:30:58,141 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:30:58,141 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:30:58,278 [8] INFO  DalLogger - mysql 查询执行 : select * from person where meetingID=@meetingID and personState=@personState;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingID' in 'where clause'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 63
+2017-01-13 17:31:29,486 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:31:29,488 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:31:29,488 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:31:29,488 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:31:29,491 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:31:29,491 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:31:29,602 [8] INFO  DalLogger - mysql 查询执行 : select * from person where meetingID=@meetingID and personState=@personState;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingID' in 'where clause'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 63
+2017-01-13 17:32:29,246 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:32:29,248 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:32:29,248 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:32:29,248 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:32:29,251 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:32:29,251 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:32:29,364 [8] INFO  DalLogger - mysql 查询执行 : select * from person where meetingID=@meetingID and personState=@personState;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingID' in 'where clause'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 63
+2017-01-13 17:32:48,675 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:32:48,677 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:32:48,677 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:32:48,677 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:32:48,681 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:32:48,681 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:32:48,824 [8] INFO  DalLogger - mysql 查询执行 : select * from person where meetingID=@meetingID and personState=@personState;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingID' in 'where clause'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 63
+2017-01-13 17:33:16,310 [9] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:33:16,313 [9] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:33:16,313 [9] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:33:16,313 [9] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:33:16,320 [9] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:16,320 [9] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:33:16,490 [9] INFO  DalLogger - mysql 查询执行 : select * from person where meetingID=@meetingID and personState=@personState;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'meetingID' in 'where clause'
+   在 MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   在 MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   在 MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   在 MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 MySql.Data.MySqlClient.MySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   在 System.Data.Common.DbCommand.System.Data.IDbCommand.ExecuteReader(CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   在 System.Data.Common.DbDataAdapter.Fill(DataSet dataSet)
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 63
+2017-01-13 17:33:19,487 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:33:19,489 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:33:19,489 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:33:19,489 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:33:19,493 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:33:19,493 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:33:19,493 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:24,327 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:33:24,329 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:33:24,329 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:24,335 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:33:24,335 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:33:24,335 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:24,344 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:33:25,962 [9] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:33:25,962 [9] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:29,100 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:33:31,584 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:33:31,584 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:32,851 [10] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:33:33,836 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:33:33,836 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:33:34,851 [10] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:33:34,852 [10] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:33:40,781 [12] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:33:40,782 [12] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:33:43,672 [9] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:33:43,673 [9] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:33:46,019 [10] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:33:46,019 [10] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:34:11,768 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:34:11,768 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:35:21,363 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:35:21,364 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+
+----------------------header--------------------------
+2017-01-13 17:40:20,336 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:40:20,909 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 17:40:20,912 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 17:40:20,913 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:20,914 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 17:40:20,915 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:40:20,916 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:40:20,917 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:40:20,919 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:40:20,920 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:40:20,922 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:40:20,924 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:40:20,928 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:40:20,931 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-13 17:40:31,721 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:40:31,728 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:40:31,730 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 17:40:31,735 [7] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 17:40:31,738 [7] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 17:40:31,741 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,742 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,744 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,745 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,746 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,747 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,748 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,750 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,751 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,752 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,753 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,754 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,754 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,755 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,756 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,757 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,759 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,760 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,761 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,762 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,763 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:31,764 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 17:40:36,584 [9] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:40:41,464 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:40:41,468 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:40:41,468 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:40:41,475 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:40:41,475 [8] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:40:41,475 [8] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:40:41,489 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:40:46,970 [7] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:40:46,970 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:41:00,335 [7] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:41:00,337 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:41:00,344 [7] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:41:00,347 [7] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:41:00,347 [7] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:41:11,824 [8] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:41:11,826 [8] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:41:11,830 [8] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 17:41:11,835 [8] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:41:11,836 [8] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 17:41:17,561 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 17:41:17,563 [7] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 17:41:17,563 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:41:17,570 [7] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 17:41:17,570 [7] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 17:41:17,570 [7] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 17:41:17,597 [7] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 17:41:23,400 [7] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 17:41:23,402 [7] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+
+----------------------header--------------------------
+2017-01-13 22:13:56,755 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:13:58,150 [1] INFO  DalLogger - mysql 查询执行 : select max(personID) from person;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 52
+2017-01-13 22:13:58,238 [1] INFO  DalLogger - 数据库访问异常
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.TypeInitializationException: “DAL.DAO.PersonDAO”的类型初始值设定项引发异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 DAL.Base.DAOBase.getIDMax(String tableName) 位置 d:\c#_workspace\DAL\DAL\Base\DAOBase.cs:行号 63
+   在 DAL.DAO.PersonDAO..cctor() 位置 d:\c#_workspace\DAL\DAL\DAO\PersonDAO.cs:行号 19
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DAL.DAO.PersonDAO..ctor()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.Activator.CreateInstance[T]()
+   在 DAL.DAOFactory.Factory.getInstance[T]() 位置 d:\c#_workspace\DAL\DAL\DAOFactory\Factory.cs:行号 12
+
+----------------------header--------------------------
+2017-01-13 22:15:09,517 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:15:10,283 [1] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 22:15:10,288 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 22:15:10,293 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:15:10,298 [1] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 22:15:10,302 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 22:15:10,306 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 22:15:10,309 [1] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 22:15:10,313 [1] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 22:15:10,316 [1] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 22:15:10,320 [1] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 22:15:10,324 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteDAO
+2017-01-13 22:15:10,327 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionDAO
+2017-01-13 22:15:10,331 [1] DEBUG DalLogger - 访问数据库DAL.DAO.VoteOptionPersonResultDAO
+2017-01-13 22:34:24,257 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:24,847 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:24,849 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 22:34:24,858 [13] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 22:34:24,864 [13] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 22:34:24,870 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,874 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,875 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,876 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,877 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,878 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,879 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,880 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,881 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,883 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,884 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,885 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,886 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,888 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,889 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,890 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,892 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,894 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,895 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,896 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,896 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:24,898 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,498 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:27,500 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:27,501 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 22:34:27,503 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 22:34:27,504 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 22:34:27,506 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,507 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,508 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,509 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,510 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,511 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,512 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,513 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,514 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,515 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,516 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,517 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,518 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,519 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,521 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,522 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,523 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,525 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,526 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,527 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,528 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:27,530 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:34:32,872 [26] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 22:34:42,210 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 22:34:42,214 [12] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 22:34:42,214 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:42,223 [12] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 22:34:42,223 [12] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 22:34:42,223 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:42,245 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 22:34:49,425 [12] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 22:34:53,432 [13] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 22:34:53,432 [13] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:34:58,321 [12] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 22:34:58,325 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:27,645 [27] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 22:35:27,645 [27] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:30,894 [12] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO
+2017-01-13 22:35:36,313 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:36,315 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:36,316 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Person_RoleDAO
+2017-01-13 22:35:36,317 [12] DEBUG DalLogger - 访问数据库DAL.DAO.RoleDAO
+2017-01-13 22:35:36,318 [12] DEBUG DalLogger - 访问数据库DAL.DAO.Role_PermissionDAO
+2017-01-13 22:35:36,320 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,321 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,322 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,324 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,325 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,326 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,327 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,329 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,330 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,331 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,332 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,333 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,334 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,335 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,336 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,337 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,338 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,339 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,340 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,341 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,342 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,342 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PermissionDAO
+2017-01-13 22:35:36,361 [27] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 22:35:39,234 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingDAO
+2017-01-13 22:35:39,236 [12] DEBUG DalLogger - 访问数据库DAL.DAO.AgendaDAO
+2017-01-13 22:35:39,236 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:39,242 [12] DEBUG DalLogger - 访问数据库DAL.DAO.DelegateDAO
+2017-01-13 22:35:39,242 [12] DEBUG DalLogger - 访问数据库DAL.DAO.DeviceDAO
+2017-01-13 22:35:39,242 [12] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-01-13 22:35:39,253 [12] DEBUG DalLogger - 访问数据库DAL.DAO.MeetingPlaceDAO
+2017-01-13 22:35:42,221 [12] DEBUG DalLogger - 访问数据库DAL.DAO.FileDAO

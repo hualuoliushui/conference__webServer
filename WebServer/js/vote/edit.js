@@ -30,6 +30,8 @@ $(function () {
     })
 
     $(document).on("click", ".keep", function () {
+        var agendaID = getAgendaID();
+
         var voteID = $(".voteID").val();
         var voteName = $(".voteName").val();
         var voteDescription = $(".voteDescription").val();
@@ -59,8 +61,11 @@ $(function () {
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 console.log(JSON.stringify(respond));
+                if (respond.Code == 0) {
+                    window.location.href = "/Vote/Index_organizor?agendaID=" + agendaID;
+                }
             }
         });
     });

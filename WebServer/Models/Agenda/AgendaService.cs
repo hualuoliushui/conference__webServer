@@ -41,7 +41,7 @@ namespace WebServer.Models.Agenda
 
             if (AgendaVolist == null)
             {
-                return Status.NONFOUND;
+                return Status.SUCCESS;
             }
 
             foreach (AgendaVO agendaVo in AgendaVolist)
@@ -222,7 +222,7 @@ namespace WebServer.Models.Agenda
             foreach(int agendaID in agendaIDs)
             {
                  //获取议程所属会议
-                 AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaIDs[0]);
+                 AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(agendaID);
 
                 if( agendaVo == null){
                    return Status.NONFOUND;

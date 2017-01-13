@@ -38,7 +38,7 @@ $(function () {
     })
 
     $(document).on("click", ".keep", function () {
-        var agendaID = $(".agendaID").val();
+        var agendaID = getAgendaID();
         var voteName = $(".voteName").val();
         var voteDescription = $(".voteDescription").val();
         var voteType = $(".voteType option:selected").val();
@@ -67,9 +67,11 @@ $(function () {
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 console.log(JSON.stringify(respond));
-                window.location.href = "/Vote/Index_organizor?agendaID=" + agendaID;
+                if (respond.Code == 0) {
+                    window.location.href = "/Vote/Index_organizor?agendaID=" + agendaID;
+                }
             }
         });
     });

@@ -15,10 +15,9 @@ namespace WebServer.Controllers
     public class DelegateController : Controller
     {
         [HttpGet]
+        [RBAC]
         public ActionResult Index_organizor(int meetingID)
         {
-            Session["meetingID"] = meetingID;
-
             Status status = Status.SUCCESS;
 
             MeetingService meetingService = new MeetingService();
@@ -36,11 +35,13 @@ namespace WebServer.Controllers
 
             status = delegateService.getAll(meetingID,out delegates);
 
+            Session["meetingID"] = meetingID;
             return View(Tuple.Create(delegates,devices));
         }
 
         [HttpPost]
-        public JsonResult Update_organizor(UpdateDelegate model)
+        [RBAC]
+        public JsonResult Edit_organizor(UpdateDelegate model)
         {
             if (ModelState.IsValid)
             {
@@ -60,10 +61,9 @@ namespace WebServer.Controllers
         }
 
         [HttpGet]
+        [RBAC]
         public ActionResult Add_organizor(int meetingID)
         {
-            Session["meetingID"] = meetingID;
-
             Status status = Status.SUCCESS;
 
             MeetingService meetingService = new MeetingService();
@@ -81,10 +81,13 @@ namespace WebServer.Controllers
 
             status = userService.getNewForDelegate(meetingID, out users);
 
+            Session["meetingID"] = meetingID;
+
             return View(Tuple.Create(users, devices));
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Add_organizor(CreateDelegate model)
         {
             Status status = Status.SUCCESS;
@@ -106,6 +109,7 @@ namespace WebServer.Controllers
         }
 
         [HttpPost]
+        [RBAC]
         public JsonResult Delete_organizor(List<int> delegateIDs)
         {
             Status status = Status.SUCCESS;

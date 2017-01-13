@@ -1,6 +1,13 @@
 ﻿$("#timeSelect1").datetimepicker();
 $("#timeSelect2").datetimepicker();
 
+
+$(function () {
+    $(document).on("click", ".cancel", function () {
+        window.location.href = "/Account/Organizor";
+    })
+})
+
 $(function () {
     $("#delegates").hide();
     $(document).on("click", "#addMeeting_next", function () {
@@ -154,7 +161,7 @@ $(function () {
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     window.location.href= "/Account/Organizor";
                 }

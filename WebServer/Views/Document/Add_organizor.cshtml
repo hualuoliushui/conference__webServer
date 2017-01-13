@@ -11,6 +11,11 @@
     <link href="~/less/document/add.less" type="text/css" rel="stylesheet" />
 }
 
+<div>
+    <input type="hidden" id="agendaID" class="agendaID" value="@Session["agendaID"]" />
+    <input type="hidden" id="meetingID" class="meetingID" value="@Session["meetingID"]" />
+</div>
+
 <div class="container" id="mainContent">
     <div class="panel panel-default" id="mainContentRight">
         <div>
@@ -30,7 +35,6 @@
         </div>
         <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
         <div id="newAppendix">
-            <input type="hidden" id="agendaID" class="agendaID" value="@ViewBag.agendaID" />
             <input type="file" id="file_upload" name="file" />
             <div style="background:#848484;width:100px;height:10px;margin-top:5px">
                 <div id="progressNumber" style="background:#428bca;width:0px;height:10px">

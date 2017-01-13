@@ -179,7 +179,7 @@ namespace WebServer.Models.Role
                 new RoleVO {
                     roleID = roleID, 
                     roleName = role.roleName 
-                }) != 1)
+                }) < 0)
             {
                 return Status.FAILURE;
             }
