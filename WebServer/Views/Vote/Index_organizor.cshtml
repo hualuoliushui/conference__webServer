@@ -16,8 +16,8 @@
 <div class="container" id="mainContent">
     <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
         <div id="ContentRightHead" class="col-md-12">
-            <p id="ContentRightHeadTitle" class="col-md-4"><strong>表决</strong></p>
-            <div class="col-md-3">
+            <div class="col-md-6">
+                <p id="ContentRightHeadTitle"><strong>表决</strong></p>
             </div>
             <div class="col-md-3">
                 <div class="input-group">
@@ -27,11 +27,12 @@
                     </span>
                 </div>
             </div>
-            <button class="btn btn-default col-md-2 returnIndex" type="button">返回</button>
-            <span id="ContentRightHeadState">
-                状态:<span id="Status"></span>
-            </span>
-        </div>
+            <div class="col-md-3">
+                <p><button class="btn btn-default returnIndex" type="button">返回</button></p>
+                    <div id="ContentRightHeadState">
+                        状态:<span id="Status"></span>
+                    </div>
+            </div>
         <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
         <div class="ContentRightButtonGroup">
             <button class="btn btn-default new" type="button">添加</button>
@@ -40,9 +41,10 @@
         </div>
         <div id="ContentRightList">
             <div id="contentRightListGroup">
-                <ul class="list-group contentRightListGroupBanderList">
+                <ul class="list-group1 contentRightListGroupBanderList">
                     <li href="#" class="list-group-item disabled container-fluid">
-                        <label class="col-md-3 col-md-offset-1 list-If">
+                        <input type="checkbox" value="" class="col-md-1 contentRightListGroupBanderListInput check" id="selectAll">
+                        <label class="col-md-3 list-If">
                             名称
                         </label>
                         <label class="col-md-3 list-If">
@@ -51,49 +53,53 @@
                         <label class="col-md-3 list-If">
                             类型
                         </label>
+                        <label class="col-md-2 list-If">
+                            编辑
+                        </label>
                     </li>
                 </ul>
 
-                <ul class="list-group contentRightListGroupOutWindow">
-                    <ul class="list-group contentRightListGroupOutWindowList"></ul>
-                    @foreach (var vote in Model)
-                    {
-                        <li class="list-group-item disabled container-fluid list_index">
-                            <input type="hidden" class="ID voteID" value="@vote.voteID" />
-                            <input type="checkbox" class="col-md-1 check">
-                            <label class="col-md-3 list-If">
-                                @vote.voteName
-                            </label>
-                            <label class="col-md-3 list-If">
-                                @vote.voteDescription
-                            </label>
-                            <label class="col-md-3 list-If">
-                                @{
-                                    var voteTypeText = "";
-                                }
-                                @switch (vote.voteType)
-                                {
-                                    case 0:
-                                        voteTypeText = "任选";
-                                        break;
-                                    case 1:
-                                        voteTypeText = "单选";
-                                        break;
-                                    case 2:
-                                    default:
-                                        voteTypeText = "双选";
-                                        break;
-                                }
-                                @voteTypeText
-                            </label>
-                            <label class="col-md-2 list-If">
-                                <img class="edit" src="~/images/10.bmp" />
-                            </label>
-                            <label>
-                                <img class="delete" src="~/images/13.bmp" />
-                            </label>
-                        </li>
-                    }
+                <ul class="list-group2 contentRightListGroupOutWindow">
+                    <div class="list-group2 contentRightListGroupOutWindowList table-responsive">
+                        @foreach (var vote in Model)
+                        {
+                            <li class="list-group-item disabled container-fluid list_index">
+                                <input type="hidden" class="ID voteID" value="@vote.voteID" />
+                                <input type="checkbox" class="col-md-1 check">
+                                <label class="col-md-3 list-If">
+                                    @vote.voteName
+                                </label>
+                                <label class="col-md-3 list-If">
+                                    @vote.voteDescription
+                                </label>
+                                <label class="col-md-3 list-If">
+                                    @{
+                            var voteTypeText = "";
+                                    }
+                                    @switch (vote.voteType)
+                                    {
+                                        case 0:
+                                            voteTypeText = "任选";
+                                            break;
+                                        case 1:
+                                            voteTypeText = "单选";
+                                            break;
+                                        case 2:
+                                        default:
+                                            voteTypeText = "双选";
+                                            break;
+                                    }
+                                    @voteTypeText
+                                </label>
+                                <label class="col-md-2 list-If">
+                                    <img class="edit" src="~/images/u127.png" />
+                                </label>
+                                <label>
+                                    <img class="delete" src="~/images/delete.png" />
+                                </label>
+                            </li>
+                        }
+                    </div>
                 </ul>
             </div>
             <nav class="text-center" id="paginationOutWindow">

@@ -91,7 +91,7 @@ namespace WebServer.Controllers
 
         //[RBAC]
         [HttpPost]
-        public ActionResult Import(FormCollection form)
+        public JsonResult Import()
         {
             RespondModel respond = new RespondModel();
             Status status = Status.SUCCESS;//初始化为SUCCESS
@@ -124,7 +124,6 @@ namespace WebServer.Controllers
                     Log.DebugInfo("上传“导入文件”时间：" + (DateTime.Now - start).TotalMilliseconds + "ms");
                     FileInfo fi = new FileInfo(fileFullPath);
 
-                    string userName = HttpContext.User.Identity.Name;//登录时的用户名
                     //将文件信息写入数据库
                     status = userService.createMultiple(fileFullPath,tableName,ref checkList);
                     //删除临时文件
@@ -140,11 +139,7 @@ namespace WebServer.Controllers
                 status = Status.FILE_PATH_ERROR;
             }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = checkList;
-
-            return RedirectToAction("Index_admin");
+            return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
         }
 
         [RBAC]

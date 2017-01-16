@@ -26,7 +26,10 @@ namespace WebServer.Controllers
             {
                 if (!Forms.Verigy(model.userName, model.password))
                 {
-                    return Json(new RespondModel(Status.FAILURE, ""), JsonRequestBehavior.AllowGet);
+                    RespondModel respond = new RespondModel();
+                    respond.Code = -1;
+                    respond.Message = "用户名或密码出错，请重新输入";
+                    return Json(respond, JsonRequestBehavior.AllowGet);
                 }
 
                 Session["userName"] = model.userName;

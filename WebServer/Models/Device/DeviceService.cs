@@ -7,6 +7,7 @@ using DAL.DAO;
 using DAL.DAOFactory;
 using WebServer.Models.Role;
 using WebServer.App_Start;
+using System.Configuration;
 
 namespace WebServer.Models.Device
 {
@@ -25,16 +26,13 @@ namespace WebServer.Models.Device
         {
             try
             {
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
                 Log.DebugInfo(device.ToString());
-                //检查参数
-                if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
-                {
-                    return Status.ARGUMENT_ERROR;
-                }
                 //创建设备ID
                 int deviceID = DeviceDAO.getID();
-
-                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+              
                 //插入数据
                 if (deviceDao.insert<DeviceVO>(
                     new DeviceVO
@@ -45,7 +43,7 @@ namespace WebServer.Models.Device
                         deviceState = 0
                     }) < 0)
                 {
-                    return Status.FAILURE;
+                    return Status.NAME_EXIST;
                 }
 
                 return Status.SUCCESS;
@@ -101,14 +99,25 @@ namespace WebServer.Models.Device
 
             List<MeetingVO> meetingVolist = meetingDao.getAll<MeetingVO>();
 
-            int dx = 1;
+            int dx;
+            if (ConfigurationManager.AppSettings["DeviceOccupyTimeInterval"] == null)
+            {
+                dx = 30;
+            }else{
+                dx = Int32.Parse(ConfigurationManager.AppSettings["DeviceOccupyTimeInterval"]);
+                if (dx < 1)
+                {
+                    dx = 30;
+                }
+            }
+          
             var tempMeetings = meetingVolist
-                .Where(
-                m => (Math.Abs((m.meetingToStartTime - start).TotalHours) < dx ||
-                    Math.Abs((m.meetingToStartTime - end).TotalHours) < dx ||
-                    Math.Abs((m.meetingStartedTime - start).TotalHours) < dx ||
-                    Math.Abs((m.meetingStartedTime - end).TotalHours) < dx)
-                    )
+                .Where( //包括与本次会议在几乎同一时间开启或结束的会议
+                m => (Math.Abs((m.meetingToStartTime - start).TotalMinutes) < dx ||
+                    Math.Abs((m.meetingToStartTime - end).TotalMinutes) < dx ||
+                    Math.Abs((m.meetingStartedTime - start).TotalMinutes) < dx ||
+                    Math.Abs((m.meetingStartedTime - end).TotalMinutes) < dx)
+                    ) //包括已开或正在开启的会议
                     .Where(m=>m.meetingStatus==1 || m.meetingStatus == 2);
 
             wherelist.Clear();
@@ -133,6 +142,7 @@ namespace WebServer.Models.Device
                             {
                                 if (deviceVolist[i].deviceID == delegateVo.deviceID)
                                 {
+                                    //去除已使用的设备
                                     deviceVolist.RemoveAt(i);
                                     break;
                                 }
@@ -199,12 +209,14 @@ namespace WebServer.Models.Device
             Log.DebugInfo(device.ToString());
             try
             {
-                if (string.IsNullOrWhiteSpace(device.IMEI) || device.deviceIndex < 0)
+                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                var deviceVo = deviceDao.getOne<DeviceVO>(device.deviceID);
+                if (deviceVo == null)
                 {
-                    return Status.ARGUMENT_ERROR;
+                    return Status.NONFOUND;
                 }
 
-                DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
+                Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
                 Dictionary<string, object> setlist = new Dictionary<string, object>();
                 setlist.Add("IMEI", device.IMEI);
@@ -218,7 +230,7 @@ namespace WebServer.Models.Device
             catch (Exception e)
             {
                 Log.ErrorInfo(e.StackTrace);
-                return Status.SERVER_EXCEPTION;
+                return Status.NAME_EXIST;
             }
         }
 

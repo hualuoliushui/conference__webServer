@@ -82,7 +82,8 @@ namespace WebServer.Controllers
         public void Download(string fileName)
         {
             Response.ContentType = "application/x-zip-compressed";
-            Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName);//以附件形式下载
+            Response.AddHeader("Content-Disposition", "attachment;filename="
+                + (new DocumentService()).getOriginFileName(fileName));//以附件形式下载
             string SaveDir = ConfigurationManager.AppSettings["SaveDir"];
             string fileFullPath = SaveDir + fileName;//文件存储在服务器的相对路径
             if (System.IO.File.Exists(fileFullPath))

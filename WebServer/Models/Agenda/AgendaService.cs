@@ -11,20 +11,6 @@ namespace WebServer.Models.Agenda
 {
     public class AgendaService : Organizor
     {
-        private static int AgendaNameMin = 2;
-        private static int AgendaNameMax = 16;
-
-
-        //检查参数格式
-        private bool checkFormat(string agendaName,int agendaDuration)
-        {
-            return ( agendaName.Length >= AgendaNameMin 
-                && agendaName.Length <= AgendaNameMax
-                && agendaDuration > 0
-                && agendaDuration < 2147483647); // 议程时长必需大于0,小于2的31次方减1
-        }
-
-
         //获取指定会议的议程
         public Status getAll(int meetingID, out List<AgendaInfo> agendas)
         {
@@ -98,17 +84,6 @@ namespace WebServer.Models.Agenda
 
         public Status create(CreateAgenda createAgenda)
         {
-            if(string.IsNullOrWhiteSpace(createAgenda.agendaName))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-
-            //修正字符串
-            createAgenda.agendaName = createAgenda.agendaName.Trim();
-            //检查参数格式
-            if(!checkFormat(createAgenda.agendaName,createAgenda.agendaDuration)){
-                return Status.FORMAT_ERROR;
-            }
             //初始化会议操作
             meeting_initOperator(createAgenda.meetingID);
 
@@ -130,6 +105,7 @@ namespace WebServer.Models.Agenda
             Dictionary<string,object> wherelist = new Dictionary<string,object>();
 
             //获取当前议程的个数
+            wherelist.Clear();
             wherelist.Add("meetingID",createAgenda.meetingID);
             List<AgendaVO> agendaVolist = agendaDao.getAll<AgendaVO>(wherelist);
 
@@ -165,18 +141,6 @@ namespace WebServer.Models.Agenda
 
         public Status update(UpdateAgenda updateAgenda)
         {
-            if (string.IsNullOrWhiteSpace(updateAgenda.agendaName))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-            //修正字符串
-            updateAgenda.agendaName = updateAgenda.agendaName.Trim();
-            //检查参数格式
-            if (!checkFormat(updateAgenda.agendaName, updateAgenda.agendaDuration))
-            {
-                return Status.FORMAT_ERROR;
-            }
-
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(updateAgenda.agendaID);
 
@@ -219,6 +183,10 @@ namespace WebServer.Models.Agenda
             if (agendaIDs == null || agendaIDs.Count == 0)
                 return Status.SUCCESS;
 
+            //出错后恢复数据
+            var backup = new List<AgendaVO>();
+            Status status = Status.SUCCESS;
+
             foreach(int agendaID in agendaIDs)
             {
                  //获取议程所属会议
@@ -238,16 +206,39 @@ namespace WebServer.Models.Agenda
                 }
                 
                 //修改其他议程的序号
-                agendaDao.updateIndex(agendaVo.meetingID, agendaVo.agendaIndex);
+                if (agendaDao.updateIndex(agendaVo.meetingID, agendaVo.agendaIndex) < 0)
+                {
+                    status = Status.FAILURE;
+                    break;
+                }
 
                 //删除该议程下的附件
-                new DocumentService().deleteAll(agendaVo.agendaID);
+                if ((status = new DocumentService().deleteAll(agendaVo.agendaID)) != Status.SUCCESS)
+                {
+                    break;
+                }
                 //删除该议程下的表决
-                new VoteService().deleteAll(agendaVo.agendaID);
+                if ((status = new VoteService().deleteAll(agendaVo.agendaID)) != Status.SUCCESS)
+                {
+                    break;
+                }
+
+                backup.Add(agendaVo);
                 //删除该议程
-                agendaDao.delete(agendaID);
+                if (agendaDao.delete(agendaID) < 0)
+                {
+                    status = Status.FAILURE;
+                    break;
+                }
             }
-            return Status.SUCCESS;
+            if (status != Status.SUCCESS)
+            {
+                foreach (var agendaVo in backup)
+                {
+                    agendaDao.insert<AgendaVO>(agendaVo);
+                }
+            }
+            return status;
         }
 
         /// <summary>
@@ -269,7 +260,9 @@ namespace WebServer.Models.Agenda
                 {
                     documentService.deleteAll(agendaVo.agendaID);
                     voteService.deleteAll(agendaVo.agendaID);
+                    agendaDao.delete(agendaVo.agendaID);
                 }
+               
             }
             return Status.SUCCESS;
         }

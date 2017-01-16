@@ -39,8 +39,8 @@ namespace WebServer.App_Start
             base.OnAuthorization(filterContext);
             filterContext.Result = new RedirectToRouteResult(
                              new System.Web.Routing.RouteValueDictionary{
-                        {"action","Index"},
-                        {"controller","Account"}
+                        {"action","PermissionDenied"},
+                        {"controller","Error"}
                     });
         }
     }

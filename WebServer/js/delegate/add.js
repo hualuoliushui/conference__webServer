@@ -31,6 +31,9 @@ $(function () {
     });
 
     $(document).on("click", ".save", function () {
+        $(this).attr("disabled", true);
+        var cur = $(this);
+
         var userID = getUserID();
         var meetingID = getMeetingID();
         var deviceID = getDeviceID();
@@ -59,6 +62,8 @@ $(function () {
                     window.location.href = "/Delegate/Index_organizor?meetingID="+meetingID;
                 }
             }
+        }).done(function () {
+            cur.removeAttr("disabled");
         });
     });
 });

@@ -9,40 +9,19 @@
                font-size: 179%;
            }
            #ContentRightHeadState{
-               top: 60%;
-               position: absolute;
-               right:0;
+               position:relative;
+               left:0;
                /*这里不指定宽度不然会换行*/
            }
        }
-       #ContentRightList{
-           #contentRightListGroup{
-               font-size:120%;
-               .contentRightListGroupOutWindow{
-                    height: 276px;
-                    overflow: hidden;
-                    position: relative;
-                    .contentRightListGroupOutWindowList{
-                        overflow-y:scroll;
-                        position: absolute;
-                        width: 100%;
-                    }
-               }
-            .list-group{
-                text-align: center;
-                margin-bottom: 0;
-                /*.close{
-                    background-image: url(../images/u637.png);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    height: 30px;
-                }
-                */
-            }
-          }
-       }
+       
        #buttonGroup{
                 margin-bottom: 3%;
+       }
+       .pull-right{
+           position:absolute;
+           bottom:10px;
+           right:30px;
        }
     }
 }

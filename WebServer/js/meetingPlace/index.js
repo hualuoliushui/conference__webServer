@@ -9,7 +9,7 @@ $(function() {
             var appendListHtml = "";
             var itemCount = 0;
             var FreezeStateBtn = ["btn-default", ""];
-            var FreezeStateString = ["冻结", "已冻结"];
+            var FreezeStateString = ["锁定", "激活"];
             $.each(response.Result, function(i, item) {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
@@ -125,6 +125,7 @@ $(function() {
     });
     $(document).on("click", ".freeze", function() {
         var meetingPlaceID = $(this).parent().attr("meetingPlaceID");
+        var freeze = $(this);
         //alert(userID);
         if ($(this).attr("buttonType") == 1) {
             $.ajax({
@@ -137,11 +138,13 @@ $(function() {
                 dataType: "json",
                 success: function(response) {
                     $("#Status").text(data.Message);
+                    if (response.Code == 0) {
+                        freeze.attr("buttonType", 0);
+                        freeze.addClass("btn-default");
+                        freeze.html("锁定");
+                    }
                 }
             });
-            $(this).attr("buttonType", 0);
-            $(this).addClass("btn-default");
-            $(this).html("冻结");
         } else {
             $.ajax({
                 type: "POST",
@@ -153,11 +156,13 @@ $(function() {
                 dataType: "json",
                 success: function(response) {
                     $("#Status").text(data.Message);
+                    if (response.Code == 0) {
+                        freeze.attr("buttonType", 1);
+                        freeze.addClass("btn-default");
+                        freeze.html("激活");
+                    }
                 }
             });
-            $(this).attr("buttonType", 1);
-            $(this).removeClass("btn-default");
-            $(this).html("已冻结");
         };
     });
 });

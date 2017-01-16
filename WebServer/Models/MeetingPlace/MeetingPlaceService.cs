@@ -8,34 +8,16 @@ namespace WebServer.Models.MeetingPlace
 {
     public class MeetingPlaceService
     {
-        private static int MeetingPlaceNameMin = 2;
-        private static int MeetingPlaceNameMax = 20;
-
-        //检查会场名称的长度是否符合要求
-        private bool checkFormat(string meetingPlaceName){
-
-            return (meetingPlaceName.Length >= MeetingPlaceNameMin &&
-                meetingPlaceName.Length <= MeetingPlaceNameMax);
-        }
-
         public Status create(CreateMeetingPlace meetingPlace)
         {
-            if (string.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-            //修正字符串
-            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
-            //检查长度规范
-            if (!checkFormat(meetingPlace.meetingPlaceName))
-            {
-                return Status.FORMAT_ERROR;
-            }
 
+            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+          
             //获取新会场ID
             int meetingPlaceID = MeetingDAO.getID();
 
-            MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+           
             if (meetingPlaceDao.insert<MeetingPlaceVO>(
                 new MeetingPlaceVO {
                     meetingPlaceID = meetingPlaceID,
@@ -44,7 +26,7 @@ namespace WebServer.Models.MeetingPlace
                     meetingPlaceState = 0
                 }) != 1 )
             {
-                return Status.FAILURE;
+                return Status.NAME_EXIST;
             }
             return Status.SUCCESS;
         }
@@ -125,27 +107,14 @@ namespace WebServer.Models.MeetingPlace
 
         public Status update(UpdateMeetingPlace meetingPlace)
         {
-            if (string.IsNullOrWhiteSpace(meetingPlace.meetingPlaceName))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-            //修正字符串
-            meetingPlace.meetingPlaceName = meetingPlace.meetingPlaceName.Trim();
-            //检查长度规范
-            if (!checkFormat(meetingPlace.meetingPlaceName))
-            {
-                return Status.FORMAT_ERROR;
-            }
-
-            Dictionary<string, object> setlist = new Dictionary<string, object>();
-
             MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+            Dictionary<string, object> setlist = new Dictionary<string, object>();
 
             setlist.Add("meetingPlaceName", meetingPlace.meetingPlaceName);
             setlist.Add("meetingPlaceCapacity", meetingPlace.meetingPlaceCapacity);
             if (meetingPlaceDao.update(setlist,meetingPlace.meetingPlaceID)  < 0 )
             {
-                return Status.FAILURE;
+                return Status.NAME_EXIST;
             }
             
             return Status.SUCCESS;

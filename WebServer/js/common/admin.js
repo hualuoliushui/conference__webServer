@@ -15,9 +15,22 @@
 });
 
 //=================================
+function isEmptyObject(e) {
+    var t;
+    for (t in e)
+        return !1;
+    return !0;
+}
 function setStatus(respond) {
     $("#Status").text(respond.Message);
     if (respond.Code == 5) {
-        $("#Status").append(JSON.stringify(respond.Result));
+        if (typeof (respond.Result) == undefined) {
+            return;
+        }
+        $("#Status").append("<br/>");
+        $.each(respond.Result, function () {
+            var str = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + JSON.stringify($(this)[0]) + "<br/>";
+            $("#Status").append(str);
+        });
     }
 }

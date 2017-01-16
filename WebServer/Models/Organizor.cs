@@ -165,5 +165,18 @@ namespace WebServer.Models
                 return true;
             return false;
         }
+
+        public bool unique<T,K>(Dictionary<string,object> wherelist)
+            where T : DAL.Base.DAOBase, new()
+            where K : new()
+        {
+            T t = Factory.getInstance<T>();
+            var list = t.getAll<K>(wherelist);
+            if (list != null && list.Count > 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

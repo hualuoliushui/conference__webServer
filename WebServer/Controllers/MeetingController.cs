@@ -66,9 +66,7 @@ namespace WebServer.Controllers
                     status = delegateService.createMultiple(devices,meeting.meetingID,addMeetingModel.delegates);
                     if (status != Status.SUCCESS)
                     {
-                        List<int> meetingIDs = new List<int>();
-                        meetingIDs.Add(meeting.meetingID);
-                        service.deleteMultipe(meetingIDs);
+                        service.deleteMultipe(meeting.meetingID);
                     }
                 }
                 return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
@@ -144,19 +142,29 @@ namespace WebServer.Controllers
         [HttpPost]
         public JsonResult Edit_organizor(MeetingInfo meeting)
         {
-            //调用服务
-            Status status = new MeetingService().update(meeting);
+            if (ModelState.IsValid)
+            {
+                //调用服务
+                Status status = new MeetingService().update(meeting);
 
-            return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(
+               new RespondModel(
+                   Status.ARGUMENT_ERROR,
+                   ModelStateHelper.errorMessages(ModelState)),
+                   JsonRequestBehavior.AllowGet);
+            } 
         }
 
-        [HttpPost]
+        [HttpGet]
         [RBAC]
-        public JsonResult Delete_organizor(List<int> meetingIDs)
+        public JsonResult Delete_organizor(int meetingID)
         {
             //调用服务
-            string userName = HttpContext.User.Identity.Name;
-            Status status = new MeetingService().deleteMultipe(meetingIDs);
+            Status status = new MeetingService().deleteMultipe(meetingID);
 
             return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
         }

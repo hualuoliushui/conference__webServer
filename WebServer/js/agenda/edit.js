@@ -20,6 +20,9 @@ $(function () {
     });
 
     $(document).on("click", ".keep", function () {
+        $(this).attr("disabled", true);
+        var cur = $(this);
+
         var agendaID = $(".agendaID").val();
         var agendaName = $(".agendaName").val();
         var agendaDuration = $(".agendaDuration").val();
@@ -41,6 +44,8 @@ $(function () {
                     window.location.href = "/Agenda/Index_organizor?meetingID=" + getMeetingID();
                 }
             }
+        }).done(function () {
+            cur.removeAttr("disabled");
         });
     });
 });

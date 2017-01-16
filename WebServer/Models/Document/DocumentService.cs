@@ -1,21 +1,15 @@
 ﻿using System.Collections.Generic;
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Web;
-using System.Web.Mvc;
 
 using DAL.DAO;
 using DAL.DAOVO;
 using DAL.DAOFactory;
-using System.IO;
 using System.Configuration;
-using System;
-using System.Text;
 using WebServer.Models.Document.FileConvertService;
 using WebServer.App_Start;
-using System.Web;
 
 namespace WebServer.Models.Document
 {
@@ -127,10 +121,6 @@ namespace WebServer.Models.Document
                 files[i].SaveAs(completeFileName);
 
                 FileInfo fi = new FileInfo(completeFileName);
-                if (fi == null)
-                {
-                    return Status.FILE_ALREADY_EXIST;
-                }
 
                 //插入数据库
                 if ((status = addFile(agendaID, fileName, fi.Length, saveFileName)) != Status.SUCCESS)
@@ -192,18 +182,6 @@ namespace WebServer.Models.Document
                 agendaID = agendaID,
                 isUpdate = isUpdate //判断是否属于会议中新加入的信息
             };
-
-            //检查是否存在同一议程下文件名相同
-            Dictionary<string, object> where = new Dictionary<string, object>();
-           
-            where.Clear();
-            where.Add("agendaID", agendaID);
-            where.Add("filePath", saveFileName);
-            var checkFileVo = fileDao.getOne<FileVO>(where);
-            if (checkFileVo != null)
-            {
-                return Status.FILE_ALREADY_EXIST;
-            }
 
             Log.DebugInfo("待插入的文件路径:"+saveFileName);
             int num = fileDao.insert<FileVO>(fileVo);
@@ -316,6 +294,10 @@ namespace WebServer.Models.Document
                 return Status.ARGUMENT_ERROR;
             }
 
+            //出错后恢复数据
+            var backup = new List<FileVO>();
+            Status status = Status.SUCCESS;
+
             FileDAO fileDao = Factory.getInstance<FileDAO>();
             AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
@@ -325,7 +307,10 @@ namespace WebServer.Models.Document
                 //获取附件信息
                 FileVO fileVo = fileDao.getOne<FileVO>(documentID);
                 if (fileVo == null)
-                    continue;
+                {
+                    status = Status.NONFOUND;
+                    break;
+                }
 
                 //获取议程信息
                 AgendaVO agendaVo = agendaDao.getOne<AgendaVO>(fileVo.agendaID);
@@ -335,19 +320,33 @@ namespace WebServer.Models.Document
                 }
                 //初始化会议操作
                 meeting_initOperator(agendaVo.meetingID);
-
+                //判断会议是否 未开启,如果 不是”未开启“，直接退出
+                if (!meeting_isNotOpen())
                 {
-                    //判断会议是否 未开启,如果 不是”未开启“，直接退出
-                    if (!meeting_isNotOpen())
-                    {
-                        return Status.FAILURE;
-                    }
-                    //更新其他附件的序号信息
-                    fileDao.updateIndex(fileVo.agendaID, fileVo.fileIndex);
-                    //删除当前附件
-                    fileDao.delete(fileVo.fileID);
+                    return Status.FAILURE;
+                }
+                //更新其他附件的序号信息
+                if (fileDao.updateIndex(fileVo.agendaID, fileVo.fileIndex) < 0)
+                {
+                    status = Status.FAILURE;
+                    break;
                 }
 
+                backup.Add(fileVo);
+
+                //删除当前附件
+                if (fileDao.delete(fileVo.fileID) < 0)
+                {
+                    status = Status.FAILURE;
+                    break;
+                }
+            }
+            if (status != Status.SUCCESS)
+            {
+                foreach (var fileVo in backup)
+                {
+                    fileDao.insert<FileVO>(fileVo);
+                }
             }
             return Status.SUCCESS;
         }
@@ -364,6 +363,19 @@ namespace WebServer.Models.Document
             wherelist.Add("agendaID", agendaID);
             fileDao.delete(wherelist);//删除数据库中附件对应的记录
             return Status.SUCCESS;
+        }
+
+        public string getOriginFileName(string filePath)
+        {
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            FileDAO fileDao = Factory.getInstance<FileDAO>();
+            wherelist.Add("filePath", filePath);
+            var fileVo = fileDao.getOne<FileVO>(wherelist);
+            if (fileVo != null)
+            {
+                return fileVo.fileName;
+            }
+            return "";
         }
     }
 }

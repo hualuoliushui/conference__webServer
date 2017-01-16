@@ -16,7 +16,7 @@ namespace WebServer.Models.Agenda
         [Range(1, 10000, ErrorMessage = "议程时长必须在{1}和{2}之间")]
         public int agendaDuration { set; get; }
 
-        [Required(ErrorMessage = "主讲人ID不为空")]
+        [Range(1, 2147483647, ErrorMessage = "主讲人不为空")]
         public int userID { set; get; }
 
         [Required(ErrorMessage = "会议名称不为空")]

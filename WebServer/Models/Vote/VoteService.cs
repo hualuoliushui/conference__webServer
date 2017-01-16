@@ -11,32 +11,20 @@ namespace WebServer.Models.Vote
 {
     public class VoteService : Organizor
     {
-        private static int VoteNameMin = 1;
-        private static int VoteNameMax = 50;
-
-        private static int VoteDescriptionMax = 255;
-
         private static int VoteOptionMin = 1;
         private static int VoteOptionMax = 50;
 
-        private bool checkFormat(string voteName, string voteDescription, List<string> voteOptions)
+        private bool checkFormat(List<string> voteOptions)
         {
-            if (voteName.Length >= VoteNameMin
-                && voteName.Length <= VoteNameMax
-                && voteDescription.Length <= VoteDescriptionMax)
+            foreach (string item in voteOptions)
             {
-                foreach (string item in voteOptions)
+                if (item.Length < VoteOptionMin
+                    || item.Length > VoteOptionMax)
                 {
-                    if (item.Length < VoteOptionMin
-                        || item.Length > VoteOptionMax)
-                    {
-                        return false;
-                    }
+                    return false;
                 }
-                return true; //所有项均符合
             }
-            else
-                return false;
+            return true;
         }
 
         public Status getAll(int agendaID, out List<VoteInfo> votes)
@@ -59,13 +47,17 @@ namespace WebServer.Models.Vote
                 VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
                 wherelist.Add("voteID", voteVo.voteID);
                 List<VoteOptionVO> voteOptionVolist = voteOptionDao.getAll<VoteOptionVO>(wherelist);
-                //将选项按序号排序
-                voteOptionVolist.Sort((x, y) => x.voteOptionIndex - y.voteOptionIndex);
-
+               
                 List<String> optionList = new List<string>();
-                foreach (VoteOptionVO voteOptionVo in voteOptionVolist)
+                if (voteOptionVolist != null)
                 {
-                    optionList.Add(voteOptionVo.voteOptionName);
+                    //将选项按序号排序
+                    voteOptionVolist.Sort((x, y) => x.voteOptionIndex - y.voteOptionIndex);
+
+                    foreach (VoteOptionVO voteOptionVo in voteOptionVolist)
+                    {
+                        optionList.Add(voteOptionVo.voteOptionName);
+                    }
                 }
                 votes.Add(
                     new VoteInfo
@@ -134,7 +126,7 @@ namespace WebServer.Models.Vote
         {
             if (votes == null || votes.Count == 0)
             {
-                return Status.ARGUMENT_ERROR;
+                return Status.SUCCESS;
             }
 
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
@@ -179,8 +171,6 @@ namespace WebServer.Models.Vote
                 voteDao.updateIndex(voteVo.agendaID, voteVo.voteIndex);
                 //删除当前投票
                 voteDao.delete(voteVo.voteID);
-                    
-
             }
             return Status.SUCCESS;
         }
@@ -229,7 +219,7 @@ namespace WebServer.Models.Vote
             vote.voteDescription = vote.voteDescription.Trim();
 
             //检查参数格式
-            if (!checkFormat(vote.voteName, vote.voteDescription, vote.voteOptions))
+            if (!checkFormat(vote.voteOptions))
             {
                 return Status.FORMAT_ERROR;
             }
@@ -259,7 +249,7 @@ namespace WebServer.Models.Vote
             wherelist.Add("voteName", vote.voteName);
             wherelist.Add("voteDescription", vote.voteDescription);
             wherelist.Add("voteType", vote.voteType);
-            if (voteDao.update(wherelist, vote.voteID) != 1)
+            if (voteDao.update(wherelist, vote.voteID) < 0)
             {
                 return Status.FAILURE;
             }
@@ -272,22 +262,26 @@ namespace WebServer.Models.Vote
 
             // 重写投票选项列表
             int index = 1;
-            foreach (string voteOption in vote.voteOptions)
+            if (vote.voteOptions != null)
             {
-                int newVoteOptionID = VoteOptionDAO.getID();
-                if (voteOptionDao.insert<VoteOptionVO>(
-                    new VoteOptionVO
-                    {
-                        voteOptionID = newVoteOptionID,
-                        voteOptionName = voteOption,
-                        voteOptionIndex = index,
-                        voteID = vote.voteID
-                    }) < 0)
+                HashSet<string> hs = new HashSet<string>(vote.voteOptions);
+                foreach (string voteOption in hs)
                 {
-                    return Status.FAILURE;
-                }
+                    int newVoteOptionID = VoteOptionDAO.getID();
+                    if (voteOptionDao.insert<VoteOptionVO>(
+                        new VoteOptionVO
+                        {
+                            voteOptionID = newVoteOptionID,
+                            voteOptionName = voteOption,
+                            voteOptionIndex = index,
+                            voteID = vote.voteID
+                        }) < 0)
+                    {
+                        return Status.FAILURE;
+                    }
 
-                ++index;
+                    ++index;
+                }
             }
 
             return Status.SUCCESS;
@@ -301,7 +295,7 @@ namespace WebServer.Models.Vote
             vote.voteDescription = vote.voteDescription.Trim();
 
             //检查参数格式
-            if (!checkFormat(vote.voteName, vote.voteDescription, vote.voteOptions))
+            if (!checkFormat(vote.voteOptions))
             {
                 return Status.FORMAT_ERROR;
             }
@@ -329,9 +323,10 @@ namespace WebServer.Models.Vote
                 return Status.FAILURE;
             }
 
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+
             // 插入投票
             VoteDAO voteDao = Factory.getInstance<VoteDAO>();
-            Dictionary<string,object> wherelist = new Dictionary<string,object>();
             wherelist.Clear();
             wherelist.Add("agendaID",vote.agendaID);
             List<VoteVO> voteVolist = voteDao.getAll<VoteVO>(wherelist);
@@ -360,21 +355,26 @@ namespace WebServer.Models.Vote
             // 插入投票选项列表
             int index = 1;
             VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
-            foreach (string voteOption in vote.voteOptions)
+            if (vote.voteOptions != null)
             {
-                if (voteOptionDao.insert<VoteOptionVO>(
-                    new VoteOptionVO
-                    {
-                        voteOptionID = VoteDAO.getID(),
-                        voteOptionName = voteOption,
-                        voteOptionIndex = index,
-                        voteID = newVoteID
-                    }) < 0 )
-                {
-                    return Status.FAILURE;
-                }
+                HashSet<string> hs = new HashSet<string>(vote.voteOptions);
 
-                ++index;
+                foreach (string voteOption in hs)
+                {
+                    if (voteOptionDao.insert<VoteOptionVO>(
+                        new VoteOptionVO
+                        {
+                            voteOptionID = VoteDAO.getID(),
+                            voteOptionName = voteOption,
+                            voteOptionIndex = index,
+                            voteID = newVoteID
+                        }) < 0)
+                    {
+                        return Status.FAILURE;
+                    }
+
+                    ++index;
+                }
             }
 
             return Status.SUCCESS;

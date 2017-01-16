@@ -17,60 +17,6 @@ namespace WebServer.Models.User
     /// </summary>
     public class UserService
     {
-        /// <summary>
-        /// 用户名
-        /// 长度规范
-        /// </summary>
-        private static int UserName_MinLength = 2;
-        private static int UserName_MaxLength = 12;
-
-        /// <summary>
-        /// 密码
-        /// 长度规范
-        /// </summary>
-        private static int UserPassword_MinLength = 6;
-        private static int UserPassword_MaxLength = 12;
-
-        /// <summary>
-        /// 用户单位名称
-        /// 长度规范
-        /// </summary>
-        private static int UserDepartment_MinLength = 2;
-        private static int UserDepartment_MaxLength = 20;
-
-        /// <summary>
-        /// 用户职务
-        /// 长度规范
-        /// </summary>
-        private static int UserJob_MinLenght = 2;
-        private static int UserJob_MaxLenght = 20;
-
-        /// <summary>
-        /// 用户描述
-        /// 最大长度规范
-        /// </summary>
-        private static int UserDescription_MaxLenght = 25;
-
-        /// <summary>
-        /// 检查参数是否符合长度规范
-        /// </summary>
-        /// <param name="userName"></param>
-        /// <param name="userDepartment"></param>
-        /// <param name="userJob"></param>
-        /// <param name="userDescription"></param>
-        /// <returns></returns>
-        private bool _checkFormat(string userName,string userDepartment,string userJob,string userDescription)
-        {
-            return (UserName_MinLength <= userName.Length
-                && UserName_MaxLength >= userName.Length
-                && UserDepartment_MinLength <= userDepartment.Length
-                && UserDepartment_MaxLength >= userDepartment.Length
-                && UserJob_MinLenght <= userJob.Length
-                && UserJob_MaxLenght >= userJob.Length
-                && UserDescription_MaxLenght >= userDescription.Length
-                );
-        }
-
         //为参会人员提供用户列表
         public Status getAllForDelegate(out List<UserForDelegate> users)
         {
@@ -101,7 +47,7 @@ namespace WebServer.Models.User
         }
 
         //为参会人员提供用户列表//排除已有参会人员
-        public Status getNewForDelegate(int meetingID , out List<UserForDelegate> users)
+        public Status getNewForDelegate(int meetingID, out List<UserForDelegate> users)
         {
             users = new List<UserForDelegate>();
 
@@ -114,6 +60,7 @@ namespace WebServer.Models.User
             wherelist.Add("meetingID", meetingID);
             var delegateVolist = delegateDao.getAll<DelegateVO>(wherelist);
 
+            wherelist.Clear();
             wherelist.Add("personState", 0);
             //获取未冻结的用户信息
             List<PersonVO> personVolist = personDao.getAll<PersonVO>(wherelist);
@@ -125,12 +72,18 @@ namespace WebServer.Models.User
 
             foreach (PersonVO vo in personVolist)
             {
-                foreach (var delegateVo in delegateVolist)
+                DelegateVO delegateVoTemp = null;
+
+                if (delegateVolist != null)
+                    foreach (var delegateVo in delegateVolist)
+                        if (delegateVo.personID == vo.personID)
+                        {
+                            delegateVoTemp = delegateVo;
+                            break;
+                        }
+
+                if (delegateVoTemp == null)
                 {
-                    if (delegateVo.personID == vo.personID)
-                    {
-                        continue;
-                    }
                     users.Add(
                     new UserForDelegate
                     {
@@ -139,8 +92,10 @@ namespace WebServer.Models.User
                     });
                 }
             }
+
             return Status.SUCCESS;
         }
+
 
         /// <summary>
         /// 创建用户
@@ -149,32 +104,10 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status create(CreateUser newUser)
         {
-            if(string.IsNullOrWhiteSpace(newUser.userName)
-                || string.IsNullOrWhiteSpace(newUser.userDepartment)
-                || string.IsNullOrWhiteSpace(newUser.userJob)
-                || string.IsNullOrWhiteSpace(newUser.userDescription))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-            try
-            {
-                //字符串截去头尾
-                newUser.userName = newUser.userName.Trim();
-                newUser.userDepartment = newUser.userDepartment.Trim();
-                newUser.userJob = newUser.userJob.Trim();
-                newUser.userDescription = newUser.userDescription.Trim();
-                //格式是否满足需求, //人员描述可为空
-                if (!_checkFormat(newUser.userName, newUser.userDepartment,
-                    newUser.userJob, newUser.userDescription))
-                    return Status.FORMAT_ERROR;
-            }
-            catch (ArgumentNullException e)
-            {
-                return Status.ARGUMENT_ERROR;
-            }
+            PersonDAO personDao = Factory.getInstance<PersonDAO>();
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();  
 
             PersonVO personVo = new PersonVO();
-            PersonDAO personDao = Factory.getInstance<PersonDAO>();
 
             personVo.personID = PersonDAO.getID();
             personVo.personName = newUser.userName;
@@ -186,7 +119,7 @@ namespace WebServer.Models.User
 
             //如果插入用户失败，返回error
             if (personDao.insert<PersonVO>(personVo) < 0) 
-                return Status.FAILURE;
+                return Status.NAME_EXIST;
 
             //如果插入用户角色关联失败，则删除之前添加的数据，并返回error
             Person_RoleDAO person_roleDao = Factory.getInstance<Person_RoleDAO>();
@@ -199,7 +132,7 @@ namespace WebServer.Models.User
                 }) < 0)
             {
                 personDao.delete(personVo.personID);
-                return Status.DATABASE_OPERATOR_ERROR;
+                return Status.NAME_EXIST;
             }
 
             return Status.SUCCESS;
@@ -229,15 +162,6 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status createForDelegate(CreateUserForDelegate user)
         {
-            if(string.IsNullOrWhiteSpace(user.userName)
-                || string.IsNullOrWhiteSpace(user.userDepartment)
-                || string.IsNullOrWhiteSpace(user.userJob)
-                || string.IsNullOrWhiteSpace(user.userDescription)
-                )
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-
             //默认是“成员”角色//基础角色ID为3，默认无权限
             int roleID = 3;
 
@@ -362,26 +286,6 @@ namespace WebServer.Models.User
         /// <returns></returns>
         public Status update(UpdateUser user)
         {
-            if(string.IsNullOrWhiteSpace(user.userName)
-                || string.IsNullOrWhiteSpace(user.userDepartment)
-                || string.IsNullOrWhiteSpace(user.userJob)
-                || string.IsNullOrWhiteSpace(user.userDescription))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
-            //字符串截去头尾
-            user.userName = user.userName.Trim();
-            user.userDepartment = user.userDepartment.Trim();
-            user.userJob = user.userJob.Trim();
-            user.userDescription = user.userDescription.Trim();
-
-            //检查长度规范
-            if ( !_checkFormat(user.userName, user.userDepartment,
-                user.userJob, user.userDescription))
-            {
-                return Status.FORMAT_ERROR;
-            }
-
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
             PersonDAO personDao = Factory.getInstance<PersonDAO>();
@@ -390,6 +294,7 @@ namespace WebServer.Models.User
             PersonVO personVo = personDao.getOne<PersonVO>(user.userID);
             if (personVo == null)
                 return Status.NONFOUND;
+
             if (personVo.isAdmin) //不允许修改超级管理员
             {
                 return Status.PERMISSION_DENIED;
@@ -410,7 +315,7 @@ namespace WebServer.Models.User
             //更新user表
             if( personDao.update(wherelist,user.userID) < 0 )//如果失败
             {
-                return Status.DATABASE_OPERATOR_ERROR;
+                return Status.NAME_EXIST;
             }
 
             //更新user_role关联表

@@ -9,7 +9,7 @@ $(function() {
             var appendListHtml = "";
             var itemCount = 0;
             var FreezeStateBtn = ["btn-default", ""];
-            var FreezeStateString = ["冻结", "已冻结"];
+            var FreezeStateString = ["锁定", "激活"];
             $.each(response.Result, function(i, item) {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
@@ -143,7 +143,7 @@ $(function() {
                     if (response.Code == 0) {
                         freeze.attr("buttonType", 0);
                         freeze.addClass("btn-default");
-                        freeze.html("冻结");
+                        freeze.html("锁定");
                     }
                 }
             });
@@ -164,7 +164,7 @@ $(function() {
                     if (response.Code == 0) {
                         freeze.attr("buttonType", 1);
                         freeze.addClass("btn-default");
-                        freeze.html("已冻结");
+                        freeze.html("激活");
                     }
                 }
             });

@@ -89,7 +89,7 @@ function uploadReady() {
         console.log("上传:");
         console.log(respond);
         if (respond.Code == 0) {
-            $("#Status").text("转换中...");
+            $("#Status").empty().append("<b>转换中...</b>");
             startConvert();
         } else {
             setStatus(respond);

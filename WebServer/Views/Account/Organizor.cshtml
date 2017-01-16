@@ -5,43 +5,66 @@
 }
 
 @section BodyLess{
-    <link href="~/less/meeting/add.less" type="text/css" rel="stylesheet">
+    <link href="~/less/account/organizor.less" type="text/css" rel="stylesheet" />
+    <link href="~/node_modules/jquery/src/jquery-confirm.less" type="text/css" rel="stylesheet" />
 }
 
 <div class="container" id="mainContent">
-    @if (Model != null)
-    {
-        var meetingStatus = "";
-        <div>
-            @foreach (var item in Model)
-            {
-                switch (item.meetingStatus)
-                {
-                    case 1:
-                        meetingStatus = "未开启";
-                        break;
-                    case 2:
-                        meetingStatus = "正在进行";
-                        break;
-                    case 16:
-                        meetingStatus = "已结束";
-                        break;
-                    default:
-                        meetingStatus = "状态出错";
-                        break;
-                }
-                <input type="hidden" class="meetingID" value="@item.meetingID" />
-                <a href="/Meeting/Show_organizor?meetingID=@item.meetingID">
-                    会议名称： @item.meetingName ，会议状态：@meetingStatus
-                </a>
-            }
+    <div class="panel panel-default col-md-9 col-md-offset-1" id="mainContentRight">
+        <div id="contentRightHead">
+            <div class="col-md-6">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active all_meeting"><a href="#">全部会议</a></li>
+                    <li role="presentation" class="unopen_meeting"><a href="#">未开始</a></li>
+                    <li role="presentation" class="opening_meeting"><a href="#">正进行</a></li>
+                    <li role="presentation" class="opened_meeting"><a href="#">已结束</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="searchInput">
+                    <span class="input-group-btn" id="searchBtn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col-md-8"></div>
+                    <div class="col-md-4" id="ContentRightHeadState">
+                        状态:<span id="Status"></span>
+                    </div>
+                </div>
+            </div>
+            <div id="contentRightBody">
+                <div class="table-responsive" id="scrollTable">
+                    <div>
+                        <div class="addMeeting new">
+                            <img src="/images/add.png" id="add">
+                        </div>
+                        @foreach (var meeting in Model)
+                        {
+                            <div class="meetingGroup list_index" value="@meeting.meetingID" meetingstatus="@meeting.meetingStatus"
+                                 data-container="body" data-toggle="popover" data-placement="top"
+                                 data-content="@meeting.meetingName">
+                                <img src="/images/delete.png" class="m_delete" id="delete">
+                                <div class="content show">
+                                    <div class="picture">
+                                        <img src="/images/11120.png" class="image">
+                                    </div>
+                                    <div class="name">
+                                        <label class="searchStr">@meeting.meetingName</label>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-
-    }
-    <div>
-        <a href="/Meeting/Add_organizor">创建会议</a>
     </div>
 </div>
 
-<script src="~/js/common/organizor.js"></script>
+<script src="/node_modules/jquery/src/jquery-confirm.js"></script>
+<script src="~/js/account/organizor.js"></script>
 

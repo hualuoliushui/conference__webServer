@@ -1,6 +1,10 @@
 #mainContent{
     margin-top:10%;  
     #mainContentRight{
+        .check{
+            width:20px;
+            height:20px;
+        }
        #ContentRightHead{
            padding-top:3%;
            padding-bottom: 3%;
@@ -9,38 +13,16 @@
            }
            #ContentRightHeadState{
                top: 60%;
-               position: absolute;
-               right:0;
+               position: relative;
+               right:-110px;
                /*这里不指定宽度不然会换行*/
            }
        }
-       #ContentRightList{
-           #contentRightListGroup{
-               font-size:120%;
-               .contentRightListGroupOutWindow{
-                    height: 276px;
-                    overflow: hidden;
-                    position: relative;
-                    .contentRightListGroupOutWindowList{
-                        position: absolute;
-                        width: 100%;
-                    }
-               }
-            .list-group{
-                text-align: center;
-                margin-bottom: 0;
-                /*.close{
-                    background-image: url(../images/u637.png);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    height: 30px;
-                }
-                */
-            }
-          }
-       }
-       #buttonGroup{
-                margin-bottom: 3%;
+     
+       .pull-right{
+           position:relative;
+           bottom:30px;
+           right:50px;
        }
     }
 }

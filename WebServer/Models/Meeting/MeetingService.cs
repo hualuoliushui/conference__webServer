@@ -22,39 +22,29 @@ namespace WebServer.Models.Meeting
 {
     public class MeetingService : Organizor
     {
-        private static int MeetingNameMin = 2;
-        private static int MeetingNameMax = 100;
-
-        private static int MeetingSummaryMax = 100;
 
         //检查参数格式
-        private bool checkFormat(string meetingName, string meetingSummary, DateTime meetingToStartTime)
+        private bool checkFormat(DateTime meetingToStartTime, DateTime meetingStartedTime)
         {
-            return (meetingName.Length >= MeetingNameMin
-                && meetingName.Length <= MeetingNameMax
-                && meetingSummary.Length <= MeetingSummaryMax
-                && (meetingToStartTime - DateTime.Now).TotalSeconds >= 0 );  //时间：必须是未来
+            return (
+                (meetingToStartTime - DateTime.Now).TotalSeconds >= 0 //时间：必须是未来
+                && (meetingStartedTime - meetingToStartTime).TotalSeconds >= 0);    //结束时间必须晚于开始时间
+
         }
 
         public Status create(ref MeetingInfo meeting)
         {
-            if(string.IsNullOrWhiteSpace(meeting.meetingName)
-                || string.IsNullOrWhiteSpace(meeting.meetingSummary))
-            {
-                return Status.ARGUMENT_ERROR;
-            }
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
             meeting.meetingSummary = meeting.meetingSummary.Trim();
             //检查参数格式
-            if (!checkFormat(meeting.meetingName, meeting.meetingSummary, meeting.meetingToStartTime))
+            if (!checkFormat(meeting.meetingToStartTime,meeting.meetingStartedTime))
             {
-                return Status.FORMAT_ERROR;
+                return Status.TIME_SET_ERROR;
             }
 
             PersonDAO personDao = Factory.getInstance < PersonDAO>();
-            Dictionary<string, object> wherelist = new Dictionary<string, object>();
-
+           
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
             meeting.meetingID = MeetingDAO.getID();
             if (meetingDao.insert<MeetingVO>(
@@ -77,8 +67,6 @@ namespace WebServer.Models.Meeting
             {
                 return Status.FAILURE;
             }
-
-
             return Status.SUCCESS;
         }
 
@@ -90,22 +78,19 @@ namespace WebServer.Models.Meeting
 
             List<MeetingVO> meetingVolist = meetingDao.getAll<MeetingVO>();
 
-            if (meetingVolist == null)
+            if (meetingVolist != null)
             {
-                return Status.NONFOUND;
+                foreach (MeetingVO meetingVo in meetingVolist)
+                {
+                    meetings.Add(
+                        new TipMeeting
+                        {
+                            meetingID = meetingVo.meetingID,
+                            meetingName = meetingVo.meetingName,
+                            meetingStatus = meetingVo.meetingStatus
+                        });
+                }
             }
-
-            foreach (MeetingVO meetingVo in meetingVolist)
-            {
-                meetings.Add(
-                    new TipMeeting
-                    {
-                        meetingID = meetingVo.meetingID,
-                        meetingName = meetingVo.meetingName,
-                        meetingStatus = meetingVo.meetingStatus
-                    });
-            }
-
             return Status.SUCCESS;
         }
 
@@ -121,20 +106,20 @@ namespace WebServer.Models.Meeting
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
             MeetingVO meetingVo = meetingDao.getOne<MeetingVO>(meetingID);
 
-            if (meetingVo == null)
+            if (meetingVo != null)
             {
-                return Status.NONFOUND;
+                meeting.meetingID = meetingVo.meetingID;
+                meeting.meetingName = meetingVo.meetingName;
+                meeting.meetingPlaceID = meetingVo.meetingPlaceID;
+                meeting.meetingSummary = meetingVo.meetingSummary;
+                meeting.meetingStartedTime = meetingVo.meetingStartedTime;
+                meeting.meetingToStartTime = meetingVo.meetingToStartTime;
+                meeting.meetingStatus = meetingVo.meetingStatus;
+
+                return Status.SUCCESS;
             }
 
-            meeting.meetingID = meetingVo.meetingID;
-            meeting.meetingName = meetingVo.meetingName;
-            meeting.meetingPlaceID = meetingVo.meetingPlaceID;
-            meeting.meetingSummary = meetingVo.meetingSummary;
-            meeting.meetingStartedTime = meetingVo.meetingStartedTime;
-            meeting.meetingToStartTime = meetingVo.meetingToStartTime;
-            meeting.meetingStatus = meetingVo.meetingStatus;
-
-            return Status.SUCCESS;
+            return Status.NONFOUND;
         }
 
         /// <summary>
@@ -152,11 +137,12 @@ namespace WebServer.Models.Meeting
             //修正字符串
             meeting.meetingName = meeting.meetingName.Trim();
             meeting.meetingSummary = meeting.meetingSummary.Trim();
-            //检查参数格式
-            if (!checkFormat(meeting.meetingName, meeting.meetingSummary, meeting.meetingToStartTime))
+            //检查时间参数
+            if (!checkFormat( meeting.meetingToStartTime,meeting.meetingStartedTime))
             {
-                return Status.FORMAT_ERROR;
+                return Status.TIME_SET_ERROR;
             }
+
 
             //初始化会议操作
             meeting_initOperator(meeting.meetingID);
@@ -170,11 +156,11 @@ namespace WebServer.Models.Meeting
             {
                 return Status.FAILURE;
             }
-
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
             MeetingVO meetingVo = meetingDao.getOne<MeetingVO>(meeting.meetingID);
-           
+         
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            
             wherelist.Add("meetingName", meeting.meetingName);
             wherelist.Add("meetingPlaceID", meeting.meetingPlaceID);
             wherelist.Add("meetingSummary", meeting.meetingSummary);
@@ -190,38 +176,29 @@ namespace WebServer.Models.Meeting
             return Status.SUCCESS;
         }
 
-        public Status deleteMultipe(List<int> meetingIDs)
+        public Status deleteMultipe(int meetingID)
         {
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
-            if (meetingIDs == null && meetingIDs.Count == 0)
+            //初始化会议操作
+            meeting_initOperator(meetingID);
+
+            //判断会议是否 未开启,如果 不是”未开启“，直接退出
+            if (!meeting_isNotOpen())
             {
-                return Status.SUCCESS;
+                return Status.MEETING_OPENED;
             }
+            AgendaService agendaService = new AgendaService();
+            DelegateService delegateService = new DelegateService();
 
-            foreach (int meetingID in meetingIDs)
-            {
-                //初始化会议操作
-                meeting_initOperator(meetingID);
-
-                {
-                    //判断会议是否 未开启,如果 不是”未开启“，直接退出
-                    if (!meeting_isNotOpen())
-                    {
-                        return Status.FAILURE;
-                    }
-                    AgendaService agendaService = new AgendaService();
-                    DelegateService delegateService = new DelegateService();
-
-                    //注意调用会议中其他内容的服务，级联删除。
-                    //删除议程
-                    agendaService.deleteAll(meetingID);
-                    //删除参会人员
-                    delegateService.deleteAll(meetingID);
-                    //删除当前会议
-                    meetingDao.delete(meetingID);
-                }
-            }
+            //注意调用会议中其他内容的服务，级联删除。
+            //删除议程
+            agendaService.deleteAll(meetingID);
+            //删除参会人员
+            delegateService.deleteAll(meetingID);
+            //删除当前会议
+            int checkNum = meetingDao.delete(meetingID);
+         
             return Status.SUCCESS;
         }
     }

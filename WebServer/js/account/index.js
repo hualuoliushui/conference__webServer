@@ -22,11 +22,12 @@
             },
             success: function (respond) {
                 console.log(respond);
-                $("#Status").text(respond.Message);
                 if (respond.Code == 0) {
                     if (system) {
                         window.location.href = "/Account/" + system;
                     }
+                } else {
+                    alert(respond.Message);
                 }
             }
         });

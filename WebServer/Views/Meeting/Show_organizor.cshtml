@@ -16,7 +16,7 @@
 
 <div class="container" id="mainContent">
     <div>
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-2">
         </div>
         <div class="col-md-5">
             <br />
@@ -30,12 +30,16 @@
                 </li>
             </ol>
         </div>
-        <div class="col-md-4 ">
-        <br/>
-            <button class="btn btn-default returnIndex" type="button" href="#">返回</button>
-            状态：<span id="Status"></span>
-        </div>
+        <div class="col-md-5" id="return">
+            <br/>
+        <p><button class="btn btn-default returnIndex" type="button">返回</button></p>
+            <div id="ContentRightHeadState">
+                状态:<span id="Status"></span>
+            </div>
+            </div>
     </div>
+    
+        
 
     <div id="mainContentRight">
         <div class="row">
@@ -43,16 +47,17 @@
                 <div class="panel panel-default" id="meetingInfo">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <div class="row">
+                            <div class="row meeting">
                                 <div class="col-md-5"><h3><strong>会议信息</strong></h3></div>
                                 <div class="col-md-2 col-md-offset-5">
                                     <br />
-                                    <img class="meeting" src="~/images/u129.png" />
+                                    <img src="~/images/u129.png" />
                                 </div>
                             </div>
                         </div>
                         </div>
                         <div class="panel-body">
+                            <div class="table-responsive scrollTable">
                             <p>
                                 <label class="">会议名称：</label>
                                 <span>
@@ -101,126 +106,130 @@
                                 </span>
                             </p>
                         </div>
+                            </div>
                     </div>
                 <div class="panel panel-default" id="meetingPeopleDevice">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <div class="row">
+                            <div class="row tempDelegate">
                                 <div class="col-md-5"><h3><strong>参会人员与设备</strong></h3></div>
                                 <div class="col-md-2 col-md-offset-5">
-                                    <br/>
-                                    <img class="tempDelegate" src="~/images/u129.png" />
+                                    <br />
+                                    <img src="~/images/u129.png" />
                                 </div>
                             </div>
                        
                             </div>
                     </div>
                     <div class="panel-body">
-                        <div id="contentListGroup1">
-                            <ul class="list-group contentListGroupBanderList1">
-                                <li href="#" class="list-group-item disabled container-fluid">
-                                    <label class="col-md-3 list-If">
-                                        人员名字
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        部门
-                                    </label>
-                                    <label class="col-md-3 list-If">
-                                        职务
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        角色
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        设备编号
-                                    </label>
-                                   
-                                </li>
-                            </ul>
-                            <ul class="list-group contentListGroupOutWindow1">
-                                @*<ul class="list-group contentListGroupOutWindowList1">*@
+                        <div>
+                            <div id="contentListGroup1">
+                                <ul class="list-group contentListGroupBanderList1">
+                                    <li href="#" class="list-group-item disabled container-fluid">
+                                        <label class="col-md-3 list-If">
+                                            人员名字
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            部门
+                                        </label>
+                                        <label class="col-md-3 list-If">
+                                            职务
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            角色
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            设备编号
+                                        </label>
+
+                                    </li>
+                                </ul>
+                                <ul class="list-group contentListGroupOutWindow1 table-responsive scrollTable">
+                                    @*<ul class="list-group contentListGroupOutWindowList1">*@
                                     @if (Model.delegates != null)
                                     {
                                         foreach (var delegateItem in Model.delegates)
                                         {
-                                           <li>
-                                               <label class="col-md-3 list-If">
-                                                   @delegateItem.userName
-                                               </label>
-                                               <label class="col-md-2 list-If">
-                                                   @delegateItem.userDepartment
-                                               </label>
-                                               <label class="col-md-3 list-If">
-                                                   @delegateItem.userJob
-                                               </label>
-                                               <label class="col-md-2 list-If">
-                                                   @{
-                                                      var meetingRole = "";
-                                                      switch (@delegateItem.userMeetingRole)
-                                                      {
-                                                          case 0:
-                                                              meetingRole = "参会人员";
-                                                              break;
-                                                          case 1:
-                                                              meetingRole = "主持人";
-                                                              break;
-                                                          case 2:
-                                                          default:
-                                                              meetingRole = "主讲人";
-                                                              break;
-                                                      }
-                                                   }
-                                                   @meetingRole
-                                               </label>
-                                               <label class="col-md-2 list-If">
-                                                   @delegateItem.deviceIndex
-                                               </label>    
-                                           </li>    
+                                            <li>
+                                                <label class="col-md-3 list-If">
+                                                    @delegateItem.userName
+                                                </label>
+                                                <label class="col-md-2 list-If">
+                                                    @delegateItem.userDepartment
+                                                </label>
+                                                <label class="col-md-3 list-If">
+                                                    @delegateItem.userJob
+                                                </label>
+                                                <label class="col-md-2 list-If">
+                                                    @{
+                                            var meetingRole = "";
+                                            switch (@delegateItem.userMeetingRole)
+                                            {
+                                                case 0:
+                                                    meetingRole = "参会人员";
+                                                    break;
+                                                case 1:
+                                                    meetingRole = "主持人";
+                                                    break;
+                                                case 2:
+                                                default:
+                                                    meetingRole = "主讲人";
+                                                    break;
+                                            }
+                                                    }
+                                                    @meetingRole
+                                                </label>
+                                                <label class="col-md-2 list-If">
+                                                    @delegateItem.deviceIndex
+                                                </label>
+                                            </li>
                                             <br />
                                         }
-                                      }
-                                @*</ul>*@
-                            </ul>
+                                    }
+                                    @*</ul>*@
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-default" id="meetingAgenda">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            <div class="row">
+                            <div class="row agenda">
                                 <div class="col-md-5"><h3><strong>议程</strong></h3></div>
                                 <div class="col-md-2 col-md-offset-5">
                                     <br />
-                                    <img class="agenda" src="~/images/u129.png" />
+                                    <img class="" src="~/images/u129.png" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="panel-body">
-                        <div id="contentListGroup2">
-                            <ul class="list-group contentListGroupBanderList2">
-                                <li href="#" class="list-group-item disabled container-fluid">
-                                    <label class="col-md-3 list-If">
-                                        名称
-                                    </label>
-                                    <label class="col-md-3 list-If">
-                                        主讲人
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        时长
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        附件
-                                    </label>
-                                    <label class="col-md-2 list-If">
-                                        投票信息
-                                    </label>
-                                </li>
-                            </ul>
-                            <ul class="list-group contentListGroupOutWindow2">
-                                @*<ul class="list-group contentListGroupOutWindowList2">*@
+                        <div>
+                            <div id="contentListGroup2">
+                                <ul class="list-group contentListGroupBanderList2">
+                                    <li href="#" class="list-group-item disabled container-fluid">
+                                        <label class="col-md-3 list-If">
+                                            名称
+                                        </label>
+                                        <label class="col-md-3 list-If">
+                                            主讲人
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            时长
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            附件
+                                        </label>
+                                        <label class="col-md-2 list-If">
+                                            投票信息
+                                        </label>
+                                    </li>
+                                </ul>
+                                <ul class="list-group contentListGroupOutWindow2 table-responsive scrollTable">
+                                    @*<ul class="list-group contentListGroupOutWindowList2">*@
                                     @if (Model.agendas != null)
                                     {
                                         foreach (var agendaItem in Model.agendas)
@@ -248,10 +257,11 @@
                                             </li>
                                         }
                                     }
-                                @*</ul>*@
-                            </ul>
+                                    @*</ul>*@
+                                </ul>
+                            </div>
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>

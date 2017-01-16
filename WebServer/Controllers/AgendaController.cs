@@ -20,9 +20,6 @@ namespace WebServer.Controllers
             List<AgendaInfo> agendas = null;
             Status status = agendaService.getAll(meetingID, out agendas);
 
-            if (status != Status.SUCCESS)
-                return RedirectToAction("Error", "Error");
-
             Session["meetingID"] = meetingID;
 
             return View(agendas);
@@ -35,9 +32,6 @@ namespace WebServer.Controllers
             DelegateService delegateService = new DelegateService();
             List<SpeakerForAgenda> speakersForAgenda = null;
             Status status = delegateService.getSpeakerForAgenda(meetingID, out speakersForAgenda);
-
-            if (status != Status.SUCCESS)
-                return RedirectToAction("Error", "Error");
 
             Session["meetingID"] = meetingID;
 
@@ -73,15 +67,9 @@ namespace WebServer.Controllers
             AgendaInfo agenda = null;
             Status status = agendaService.getOne(agendaID, out agenda);
 
-            if (status != Status.SUCCESS)
-                return RedirectToAction("Error", "Error");
-
             DelegateService delegateService = new DelegateService();
             List<SpeakerForAgenda> speakersForAgenda = null;
             status = delegateService.getSpeakerForAgenda(agenda.meetingID, out speakersForAgenda);
-
-            if (status != Status.SUCCESS)
-                return RedirectToAction("Error", "Error");
 
             Session["meetingID"] = agenda.meetingID;
 

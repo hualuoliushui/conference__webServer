@@ -40,7 +40,7 @@ namespace WebServer.Models
             if (person.personPassword.CompareTo((password)) != 0) 
                 return false;
 
-            Login(person.personName,30);
+            Login(person.personName, 1440);
 
             return true;
         }

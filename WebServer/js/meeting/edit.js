@@ -20,6 +20,10 @@ $(function () {
     });
 
     $(document).on("click", ".keep", function () {
+
+        $(this).attr("disabled", true);
+        var cur = $(this);
+
         var meetingID = getMeetingID();
         var meetingName = $(".meetingName").val();
         var meetingPlaceID = $(".meetingPlaceID").val();
@@ -51,6 +55,8 @@ $(function () {
                     window.location.href = "/Meeting/Show_organizor?meetingID="+meetingID;
                 }
             }
+        }).done(function () {
+            cur.removeAttr("disabled");
         });
     });
  });

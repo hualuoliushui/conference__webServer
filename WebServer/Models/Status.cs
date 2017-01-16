@@ -37,8 +37,17 @@ namespace WebServer.Models
         FILE_CONVERT_FAIL=12,
         //文件转换异常
         FILE_CONVERT_EXCEPTION=13,
-        //文件已存在
-        FILE_ALREADY_EXIST=14
+        //时间设置错误
+        TIME_SET_ERROR = 14,
+
+        //设备不足
+        DEVICE_LACK = 15,
+        //已存在
+        NAME_EXIST = 16,
+        //设备已占用
+        DEVICE_OCCUPY = 17,
+        //主讲人已被议程使用
+        DELEGATE_USED = 18
     }
 
     public class Message
@@ -49,7 +58,7 @@ namespace WebServer.Models
             msgs = new Dictionary<int, string>();
             msgs.Add((int)Status.SUCCESS, "操作成功");
             msgs.Add((int)Status.FAILURE, "操作失败");
-            msgs.Add((int)Status.ARGUMENT_ERROR, "参数不为空");
+            msgs.Add((int)Status.ARGUMENT_ERROR, "参数错误");
             msgs.Add((int)Status.FORMAT_ERROR, "参数格式出错");
             msgs.Add((int)Status.PERMISSION_DENIED, "无权限");
             msgs.Add((int)Status.NONFOUND, "无数据");
@@ -62,7 +71,11 @@ namespace WebServer.Models
             msgs.Add((int)Status.MEETING_OPENED, "会议已结束");
             msgs.Add((int)Status.FILE_CONVERT_FAIL, "文件转换失败");
             msgs.Add((int)Status.FILE_CONVERT_EXCEPTION, "文件转换异常");
-            msgs.Add((int)Status.FILE_ALREADY_EXIST, "文件已存在");
+            msgs.Add((int)Status.TIME_SET_ERROR, "时间设置错误");
+            msgs.Add((int)Status.DEVICE_LACK, "设备数量不足");
+            msgs.Add((int)Status.NAME_EXIST, "名称已存在");
+            msgs.Add((int)Status.DEVICE_OCCUPY, "设备已占用");
+            msgs.Add((int)Status.DELEGATE_USED, "主讲人已绑定议程");
         }
     }
 

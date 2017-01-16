@@ -11,13 +11,6 @@ namespace WebServer.Models.Role
     public class RoleService
     {
         /// <summary>
-        /// 角色名
-        /// 长度规范
-        /// </summary>
-        private static int RoleNameMin = 2;
-        private static int RoleNameMax = 12;
-
-        /// <summary>
         /// 检查角色长度规范
         /// </summary>
         /// <param name="roleName"></param>
@@ -181,7 +174,7 @@ namespace WebServer.Models.Role
                     roleName = role.roleName 
                 }) < 0)
             {
-                return Status.FAILURE;
+                return Status.NAME_EXIST;
             }
             //插入角色、权限关联
             Queue<int> role_permissionIDs = new Queue<int>();

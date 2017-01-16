@@ -3,7 +3,11 @@
     #mainContentRight{
             margin:0 auto;
             width: 850px;
-            height:500px;
+            height:550px;
+        #ContentRightHeadState{
+            position:relative;
+            left:0;
+        }
         #editVoteInfo{
             padding-top: 20px;
             padding-left: 5%;
@@ -43,6 +47,9 @@
             position:relative;
             top:20px;
             left:10px;
+            overflow-x:hidden;
+            overflow-y:scroll;
+            height:220px;
         }
         form{
             border: 1px solid lightgrey;
@@ -50,8 +57,10 @@
             height:250px;
             margin-left: 100px;
         }
-        #buttonGroup{
-            margin-top: 3%;
+        #keep{
+            position:absolute;
+            bottom:50px;
+            right:-150px;
         }
         button{
             padding:5px 25px 5px 25px;

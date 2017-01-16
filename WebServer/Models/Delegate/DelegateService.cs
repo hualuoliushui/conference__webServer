@@ -39,6 +39,7 @@ namespace WebServer.Models.Delegate
                 DeviceVO deviceVo = deviceDao.getOne<DeviceVO>(delegateVo.deviceID);
                 //获取用户信息
                 PersonVO personVo = personDao.getOne<PersonVO>(delegateVo.personID);
+
                 if (deviceVo == null || personVo == null)
                 {
                     return Status.FAILURE;
@@ -84,6 +85,35 @@ namespace WebServer.Models.Delegate
 
             //更新参会人员信息
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
+            DelegateVO delegateVo = delegateDao.getOne<DelegateVO>(updateDelegate.delegateID);
+            if (delegateVo == null)
+            {
+                return Status.NONFOUND;
+            }
+
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            //检查是否存在主讲的议程，如果存在，直接返回
+            wherelist.Clear();
+            wherelist.Add("meetingID", delegateVo.meetingID);
+            wherelist.Add("personID", delegateVo.personID);
+            var tempAgenda = agendaDao.getAll<DelegateVO>(wherelist);
+            if (tempAgenda != null && tempAgenda.Count > 0)
+            {
+                return Status.DELEGATE_USED;
+            }
+
+            if(delegateVo.deviceID!=updateDelegate.deviceID)//设备改变
+            {
+                wherelist.Clear();
+                wherelist.Add("meetingID", updateDelegate.meetingID);
+                wherelist.Add("deviceID", updateDelegate.deviceID);
+                if (!unique<DelegateDAO, DelegateVO>(wherelist))
+                {
+                    return Status.DEVICE_OCCUPY;
+                }
+            }
+            
 
             Dictionary<string, object> setlist = new Dictionary<string, object>();
 
@@ -117,6 +147,17 @@ namespace WebServer.Models.Delegate
             else if (meeting_isOpended())//如果会议已结束，直接退出
             {
                 return Status.FAILURE;
+            }
+
+            Dictionary<string, object> wherelist = new Dictionary<string, object>();
+            //验证同名参会人员是否存在
+            wherelist.Clear();
+            wherelist.Add("meetingID", createDelegate.meetingID);
+            wherelist.Add("deviceID", createDelegate.deviceID);
+            wherelist.Add("personID", createDelegate.userID);
+            if (!unique<DelegateDAO, DelegateVO>(wherelist))
+            {
+                return Status.NAME_EXIST;
             }
 
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
@@ -159,9 +200,23 @@ namespace WebServer.Models.Delegate
           
             Status status = Status.SUCCESS;
 
-            int delegateNum = 1 +
-                (delegates.speakerIDs != null ? delegates.speakerIDs.Count : 0) +
-                (delegates.otherIDs != null ? delegates.otherIDs.Count : 0);
+            int delegateNum = 1;
+            if (delegates.speakerIDs != null)
+            {
+                if (delegates.speakerIDs.Contains(delegates.hostID))
+                {
+                    delegates.speakerIDs.Remove(delegates.hostID);
+                }
+                delegateNum += delegates.speakerIDs.Count;
+            }
+            if (delegates.otherIDs != null)
+            {
+                if (delegates.otherIDs.Contains(delegates.hostID))
+                {
+                    delegates.otherIDs.Remove(delegates.hostID);
+                }
+                delegateNum += delegates.otherIDs.Count;
+            }
 
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
@@ -171,7 +226,7 @@ namespace WebServer.Models.Delegate
                 //如果设备数量不足则失败
                 if (devices == null || devices.Count < delegateNum)
                 {
-                    status = Status.FAILURE;
+                    status = Status.DEVICE_LACK;
                     break;
                 }
 
@@ -179,6 +234,16 @@ namespace WebServer.Models.Delegate
                 tempDelegateID = DelegateDAO.getID();
                 tempDevice = devices[0];
                 devices.Remove(tempDevice);
+
+                //验证同名参会人员是否存在
+                wherelist.Clear();
+                wherelist.Add("meetingID", meetingID);
+                wherelist.Add("personID",delegates.hostID );
+                if (!unique<DelegateDAO, DelegateVO>(wherelist))
+                {
+                    return Status.NAME_EXIST;
+                }
+
                 tempDelegate = new DelegateVO
                 {
                     delegateID = tempDelegateID,
@@ -207,6 +272,16 @@ namespace WebServer.Models.Delegate
                         tempDelegateID = DelegateDAO.getID();
                         tempDevice = devices[0];
                         devices.Remove(tempDevice);
+
+                        //验证同名参会人员是否存在
+                        wherelist.Clear();
+                        wherelist.Add("meetingID", meetingID);
+                        wherelist.Add("personID", speakerID);
+                        if (!unique<DelegateDAO, DelegateVO>(wherelist))
+                        {
+                            continue;
+                        }
+
                         tempDelegate = new DelegateVO
                         {
                             delegateID = tempDelegateID,
@@ -230,13 +305,23 @@ namespace WebServer.Models.Delegate
                 }
 
                 //添加参会人员
-                if (delegates.speakerIDs != null)
+                if (delegates.otherIDs != null)
                 {
                     foreach (var otherID in delegates.otherIDs)
                     {
                         tempDelegateID = DelegateDAO.getID();
                         tempDevice = devices[0];
                         devices.Remove(tempDevice);
+
+                        //验证同名参会人员是否存在
+                        wherelist.Clear();
+                        wherelist.Add("meetingID", meetingID);
+                        wherelist.Add("personID", otherID);
+                        if (!unique<DelegateDAO, DelegateVO>(wherelist))
+                        {
+                            continue;
+                        }
+
                         tempDelegate = new DelegateVO
                         {
                             delegateID = tempDelegateID,
@@ -263,6 +348,7 @@ namespace WebServer.Models.Delegate
 
             if (status != Status.SUCCESS)
             {
+                //删除之前添加的参会人员
                 foreach (var delegateID in delegateIDs)
                 {
                     delegateDao.delete(delegateID);
@@ -281,31 +367,59 @@ namespace WebServer.Models.Delegate
         {
             if (delegates == null || delegates.Count == 0)
             {
-                return Status.ARGUMENT_ERROR;
+                return Status.SUCCESS;
             }
 
+            //用于出错后恢复数据
+            var backup = new List<DelegateVO>();
+            Status status = Status.SUCCESS;
+
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
+            AgendaDAO agendaDao = Factory.getInstance<AgendaDAO>();
             foreach (int delegateID in delegates)
             {
                 DelegateVO delegateVo = delegateDao.getOne<DelegateVO>(delegateID);
                 if (delegateVo == null)
                 {
-                    return Status.NONFOUND;
+                    status = Status.NONFOUND;
                 }
+
                 //初始化会议操作
                 meeting_initOperator(delegateVo.meetingID);
-                    //判断会议是否开启，如果不是”未开启“，直接退出
-                    if (!meeting_isNotOpen())
-                    {
-                        return Status.MEETING_OPENING;
-                    }
-            
-                    if (delegateDao.delete(delegateID) < 0)//删除失败就跳过
-                    {
-                        continue;
-                    }   
+                //判断会议是否开启，如果不是”未开启“，直接退出
+                if (!meeting_isNotOpen())
+                {
+                    status = Status.MEETING_OPENING;
+                    break;
+                }
+
+                Dictionary<string, object> wherelist = new Dictionary<string, object>();
+                //检查是否为主讲人，且是否存在主讲的议程，如果存在，直接返回
+                wherelist.Clear();
+                wherelist.Add("meetingID", delegateVo.meetingID);
+                wherelist.Add("personID", delegateVo.personID);
+                var tempAgenda = agendaDao.getAll<AgendaVO>(wherelist);
+                if (tempAgenda != null && tempAgenda.Count > 0)
+                {
+                    status = Status.DELEGATE_USED;
+                    break;
+                }
+
+                backup.Add(delegateVo);
+                if (delegateDao.delete(delegateID) < 0)//删除失败就 恢复数据，返回
+                {
+                    status = Status.FAILURE;
+                    break;
+                }      
             }
-            return Status.SUCCESS;
+            if (status != Status.SUCCESS)
+            {
+                foreach (var delegateVo in backup)
+                {
+                    delegateDao.insert<DelegateVO>(delegateVo);
+                }
+            }
+            return status;
         }
 
 

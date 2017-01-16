@@ -54,3 +54,84 @@ $(function () {
         }
     });
 });
+
+var file = null;
+var isUploading = false;
+
+$(function () {
+    $(".upload").click(function () {
+        if (isUploading) {
+            return;
+        }
+        upload();
+        isUploading = true;
+    });
+});
+
+
+///////////////////////////////////////======================================
+//上传文件
+
+var input = document.getElementById("file_upload");
+
+//文件域选择文件时, 执行readFile函数
+input.addEventListener('change', readFile, false);
+
+function readFile() {
+    file = this.files[0];
+}
+
+/*******************************************/
+
+var xhr;
+
+function createXmlHttpRequest() {
+    if (window.ActiveXObject) {
+        //IE
+        return new ActiveXObject("Microsoft.XMLHTTP");
+    } else if (window.XMLHttpRequest) {
+        return new XMLHttpRequest();
+    }
+}
+
+//上传文件
+function upload() {
+    xhr = createXmlHttpRequest();
+
+    var fd = new FormData();
+
+    fd.append("file", file);
+
+    //监听事件
+    xhr.upload.addEventListener("progress", uploadProgress, false);
+
+    //设置回调函数
+    xhr.onreadystatechange = uploadReady;
+    //发送文件和表单自定义参数
+    xhr.open("POST","/User/Import", true);
+
+    xhr.send(fd);
+}
+
+function uploadReady() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        isUploading = false;
+        var respond = JSON.parse(xhr.response);
+        console.log("上传:");
+        console.log(respond);
+        setStatus(respond);
+        if (respond.Code == 0) {
+            window.location.href = "/User/Index_admin";
+        }
+    }
+}
+
+function uploadProgress(evt) {
+    if (evt.lengthComputable) {
+        //evt.loaded：文件上传的大小 evt.total：文件总的大小
+        var percentComplete = Math.round((evt.loaded) * 100 / evt.total);
+        //加载进度条，同时显示信息
+        $("#percent").html(percentComplete + '%')
+        $("#progressNumber").css("width", "" + percentComplete + "px");
+    }
+}

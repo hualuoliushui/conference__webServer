@@ -31,23 +31,31 @@
                 </a>
             </div>
             <p class="navbar-text col-md-6">中佰会议管理员界面</p>
-            <ul class="col-md-3" id="signUpWindow">
+            <ul class="col-md-4" id="signUpWindow">
+
                 @if (Session["userName"] != null)
                 {
-                    <input type="button" class="glyphicon-log-out logout" value="退出系统" />
-                    <ol class="col-md-6"><b>会议组织者</b>&nbsp;&nbsp;<b>@Session["userName"]</b></ol>
+                    <ol class="col-md-6">
+                        <b>管理员</b>&nbsp;&nbsp;
+                        <b>@Session["userName"]</b>
+                        <button type="button" class="btn btn-xs">
+                            <!--超小按钮-->
+                            <span class="glyphicon glyphicon-user"></span>
+                            <!--这些图标的使用要引入boorstrap的font-->
+                        </button>
+                    </ol>
+                    <ol class="col-md-2"></ol>
+                    <ol class="col-md-4">
+                        <button type="button" class="btn btn-xs logout">
+                            退出系统
+                        </button>
+                    </ol>
                 }
                 else
                 {
                     <ol class="col-md-6"><a href="/Account/Index">请登录</a></ol>
                 }
-                <ol class="col-md-1">
-                    <button type="button" class="btn btn-xs">
-                        <!--超小按钮-->
-                        <span class="glyphicon glyphicon-user"></span>
-                        <!--这些图标的使用要引入boorstrap的font-->
-                    </button>
-                </ol>
+
             </ul>
         </div>
     </div>

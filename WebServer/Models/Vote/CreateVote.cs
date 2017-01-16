@@ -22,6 +22,7 @@ namespace WebServer.Models.Vote
         [Range(0, 2, ErrorMessage = "Value for {0} must be between {1} and {2}.")]
         public int voteType { set; get; }
 
+        [Required(ErrorMessage="投票选项不为空")]
         public List<string> voteOptions { set; get; }
     }
 }

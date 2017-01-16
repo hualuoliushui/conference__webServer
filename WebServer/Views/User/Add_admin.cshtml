@@ -23,18 +23,26 @@
                 <br />
                 <button class="btn btn-default" type="button" id="cancel1" href="#">取消编辑</button>
             </div>
-            <span id="ContentRightHeadState">
-                状态:<span id="Status"></span>
-            </span>
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4" id="ContentRightHeadState">
+                    状态:<span id="Status"></span>
+                </div>
+            </div>
         </div>
 
-        <div id="importExcel">
-            <form action="/User/Import" method="post" enctype="multipart/form-data">
-                <label>
-                    导入Excel文件<input type="file" name="file" title="导入Excel文件" />
-                </label>
-                <input type="submit" value="导入" />
-            </form>
+        <div id="importExcel">   
+            <label for="file_upload">
+                导入Excel文件(sheet页名必须为user)
+            </label>
+            <input type="file" id="file_upload" name="file" />
+            <div style="background:#848484;width:100px;height:10px;margin-top:5px">
+                <div id="progressNumber" style="background:#428bca;width:0px;height:10px">
+                </div>
+            </div>
+            <font id="percent">0%</font>        
+            
+            <input type="button" class="upload" value="导入" />   
         </div>
 
         <div id="inputaddemployee">

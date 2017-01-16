@@ -38,6 +38,9 @@ $(function () {
     })
 
     $(document).on("click", ".keep", function () {
+        $(this).attr("disabled", true);
+        var cur = $(this);
+
         var agendaID = getAgendaID();
         var voteName = $(".voteName").val();
         var voteDescription = $(".voteDescription").val();
@@ -73,6 +76,8 @@ $(function () {
                     window.location.href = "/Vote/Index_organizor?agendaID=" + agendaID;
                 }
             }
+        }).done(function () {
+            cur.removeAttr("disabled");
         });
     });
 });

@@ -63,9 +63,6 @@ namespace WebServer.Controllers
             VoteInfo vote = null;
             Status status = voteService.getOne(voteID, out vote);
 
-            if (status != Status.SUCCESS)
-                return RedirectToAction("Error", "Error");
-
             Session["agendaID"] = vote.agendaID;
             return View(vote);
         }

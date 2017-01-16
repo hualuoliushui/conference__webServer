@@ -14,18 +14,16 @@
 <div class="container" id="mainContent">
     <div class="panel panel-default" id="mainContentRight">
         <div>
-            <div class="col-md-6">
+            <div class="col-md-8">
                 <h2><strong>编辑投票</strong></h2>
             </div>
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-2 ">
+            <div class="col-md-4 ">
                 <br />
-                <button class="btn btn-default cancel" type="button" id="cancel1">返回</button>
-            </div>
-            <span id="ContentRightHeadState">
-                状态:<span id="Status"></span>
-            </span>
+                <p><button class="btn btn-default cancel" type="button" id="cancel1">返回</button></p>
+                <div id="ContentRightHeadState">
+                    状态:<span id="Status"></span>
+                </div>
+                </div>
         </div>
         <hr style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 size=3>
         <div id="editVoteInfo">
@@ -58,11 +56,13 @@
                     <div>
                         <div id="optionContent">选项内容：</div>
                         <form>
-                            <div id="inputGroup">
+                            <div id="input">
+                            <div id="inputGroup" class="table-responsive">
                                 @*<p>1. <input type="text" id="input1"></p>
                                 <p>2. <input type="text" id="input2"></p>
                                 <p>3. <input type="text" id="input3"></p>*@
                             </div>
+                                </div>
                         </form>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-3"></div>
-            <div class="col-md-5 col-md-offset-2" id="buttonGroup">
+            <div class="col-md-5 col-md-offset-2" id="keep">
                 <button class="btn btn-default keep" type="button" >保存</button>
             </div>
         </div>
