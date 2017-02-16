@@ -364,7 +364,7 @@ namespace WebServer.Models.Vote
                     if (voteOptionDao.insert<VoteOptionVO>(
                         new VoteOptionVO
                         {
-                            voteOptionID = VoteDAO.getID(),
+                            voteOptionID = VoteOptionDAO .getID(),
                             voteOptionName = voteOption,
                             voteOptionIndex = index,
                             voteID = newVoteID

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebServer.App_Start;
 using WebServer.Models;
 using WebServer.Models.Role;
+using WebServer.Models.Tools;
 
 namespace WebServer.Controllers
 {
@@ -75,15 +76,14 @@ namespace WebServer.Controllers
         [RBAC]
         public JsonResult CreateRole(CreateRole role)
         {
-            RespondModel respond = new RespondModel();
-            //调用角色服务
-            Status status = new RoleService().create(role);
+            if (ModelState.IsValid)
+            {
+                //调用角色服务
+                Status status = new RoleService().create(role);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
     }
 }

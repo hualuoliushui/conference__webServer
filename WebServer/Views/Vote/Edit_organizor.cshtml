@@ -47,11 +47,9 @@
                     <div>
                         <div id="voteType">投票类型：</div>
                         <div class="btn-group voteType" id="select">
-                            <select name="select" id="select" class="xla_k">
-                                <option value="0" id="select1" @(Model.voteID == 0 ? "selected" : "")>任选</option>
-                                <option value="1" id="select2" @(Model.voteID == 1 ? "selected" : "")>单选</option>
-                                <option value="2" id="select3" @(Model.voteID == 2 ? "selected" : "")>双选</option>
-                            </select>
+                            <label for="selectOptionNum">可选选项数量</label>
+                            <input name="select" id="selectOptionNum" class="xla_k" type="number"
+                                   value="@Model.voteType" />
                         </div>
                     </div>
                 </div>
@@ -88,4 +86,4 @@
     </div>
 </div>
 
-<script src="~/js/vote/edit.js"></script>
+<script src="~/js/vote/edit.js" charset="gbk"></script>

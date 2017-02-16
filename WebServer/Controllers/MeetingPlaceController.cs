@@ -3,6 +3,7 @@ using WebServer.Models;
 using WebServer.Models.MeetingPlace;
 using System.Collections.Generic;
 using WebServer.App_Start;
+using WebServer.Models.Tools;
 
 namespace WebServer.Controllers
 {
@@ -74,30 +75,28 @@ namespace WebServer.Controllers
         [RBAC]
         public JsonResult CreateMeetingPlace(CreateMeetingPlace meetingPlace)
         {
-            RespondModel respond = new RespondModel();
-            //调用会场服务
-            Status status = new MeetingPlaceService().create(meetingPlace);
+            if (ModelState.IsValid)
+            {
+                //调用会场服务
+                Status status = new MeetingPlaceService().create(meetingPlace);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
 
         //更新会场信息
         [RBAC]
         public JsonResult UpdateMeetingPlace(UpdateMeetingPlace meetingPlace)
         {
-            RespondModel respond = new RespondModel();
+            if (ModelState.IsValid)
+            {
+                //调用会场服务
+                Status status = new MeetingPlaceService().update(meetingPlace);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            Status status = new MeetingPlaceService().update(meetingPlace);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
 
         [RBAC]

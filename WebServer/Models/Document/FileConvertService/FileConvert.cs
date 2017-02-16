@@ -12,7 +12,8 @@ namespace WebServer.Models.Document.FileConvertService
         {
             string fileExtension = System.IO.Path.GetExtension(sourcePath);
 
-            FileConvertBase method = new OfficeMethod();
+            FileConvertBase method = new 
+                AsposeMethod();
             try
             {
                 switch (fileExtension)
@@ -20,6 +21,7 @@ namespace WebServer.Models.Document.FileConvertService
                     //转换word
                     case ".doc":
                     case ".docx":
+                        method = new OfficeMethod();
                         if (!method.Word2HTML(sourcePath, targetPath, targetRelativeDirectory))
                         {//文件转换失败
                             Log.DebugInfo("word文件转换失败");
@@ -30,6 +32,7 @@ namespace WebServer.Models.Document.FileConvertService
                     //转换excel
                     case ".xls":
                     case ".xlsx":
+                        method = new OfficeMethod();
                         if (!method.Excel2HTML(sourcePath, targetPath, targetRelativeDirectory))
                         {//文件转换失败
                             Log.DebugInfo("excel文件转换失败");
@@ -40,6 +43,7 @@ namespace WebServer.Models.Document.FileConvertService
                     //转换ppt
                     case ".ppt":
                     case ".pptx":
+                        method = new OfficeMethod();
                         if (!method.PPT2HTML(sourcePath, targetPath, targetRelativeDirectory))
                         {//文件转换失败
                             Log.DebugInfo("ppt文件转换失败");

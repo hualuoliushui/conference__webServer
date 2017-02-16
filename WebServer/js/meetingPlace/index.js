@@ -137,7 +137,7 @@ $(function() {
                 },
                 dataType: "json",
                 success: function(response) {
-                    $("#Status").text(data.Message);
+                    $("#Status").text(response.Message);
                     if (response.Code == 0) {
                         freeze.attr("buttonType", 0);
                         freeze.addClass("btn-default");
@@ -155,7 +155,7 @@ $(function() {
                 },
                 dataType: "json",
                 success: function(response) {
-                    $("#Status").text(data.Message);
+                    $("#Status").text(response.Message);
                     if (response.Code == 0) {
                         freeze.attr("buttonType", 1);
                         freeze.addClass("btn-default");

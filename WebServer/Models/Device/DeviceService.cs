@@ -216,21 +216,20 @@ namespace WebServer.Models.Device
                     return Status.NONFOUND;
                 }
 
-                Dictionary<string, object> wherelist = new Dictionary<string, object>();
 
                 Dictionary<string, object> setlist = new Dictionary<string, object>();
                 setlist.Add("IMEI", device.IMEI);
                 setlist.Add("deviceIndex", device.deviceIndex);
                 if (deviceDao.update(
                     setlist, device.deviceID) < 0)
-                    return Status.FAILURE;
+                    return Status.NAME_EXIST;
 
                 return Status.SUCCESS;
             }
             catch (Exception e)
             {
                 Log.ErrorInfo(e.StackTrace);
-                return Status.NAME_EXIST;
+                return Status.FAILURE;
             }
         }
 

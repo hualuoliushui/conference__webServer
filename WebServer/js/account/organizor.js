@@ -8,7 +8,7 @@ $(function () {
     }, function () {
         $(this).popover('hide');
     });
-    
+
 
     $(document).on("click", ".show", function () {
         var meetingID = getMeetingID($(this).parent());

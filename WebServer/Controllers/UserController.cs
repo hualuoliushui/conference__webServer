@@ -4,6 +4,7 @@ using System.IO;
 using System.Web.Mvc;
 using WebServer.App_Start;
 using WebServer.Models;
+using WebServer.Models.Tools;
 using WebServer.Models.User;
 
 namespace WebServer.Controllers
@@ -128,6 +129,10 @@ namespace WebServer.Controllers
                     status = userService.createMultiple(fileFullPath,tableName,ref checkList);
                     //删除临时文件
                     fi.Delete();
+                    if (status != Status.SUCCESS)
+                    {
+                        return Json(new RespondModel(status, checkList), JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
@@ -146,45 +151,43 @@ namespace WebServer.Controllers
         [HttpPost]
         public JsonResult CreateUser(CreateUser user)
         {
-            RespondModel respond = new RespondModel();
-            //调用用户服务
-            Status status = new UserService().create(user);
+            if (ModelState.IsValid)
+            {
+                //调用用户服务
+                Status status = new UserService().create(user);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
 
         //[RBAC]
         [HttpPost]
         public JsonResult Add_organizor(CreateUserForDelegate user)
         {
-            RespondModel respond = new RespondModel();
-            //调用用户服务
-            Status status = new UserService().createForDelegate(user);
+            if (ModelState.IsValid)
+            {
+                //调用用户服务
+                Status status = new UserService().createForDelegate(user);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
 
         [RBAC]
         [HttpPost]
         public JsonResult UpdateUser(UpdateUser user)
         {
-            RespondModel respond = new RespondModel();
-            //调用用户服务
-            Status status = new UserService().update(user);
+            if (ModelState.IsValid)
+            {
+                //调用用户服务
+                Status status = new UserService().update(user);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
+           
         }
 
         [RBAC]

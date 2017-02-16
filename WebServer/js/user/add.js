@@ -30,7 +30,7 @@ $(function () {
             userDescription: $("#description").val(),
             roleID:roleID
         }, function (data, textStatus) {
-            $("#Status").text(data.Message);
+            setStatus(data);
             if (data.Code == 0) {
                 window.location.href = "/User/Index_admin"
             }
@@ -109,6 +109,8 @@ function upload() {
     xhr.onreadystatechange = uploadReady;
     //发送文件和表单自定义参数
     xhr.open("POST","/User/Import", true);
+
+    $("#Status").text("导入中。。。");
 
     xhr.send(fd);
 }

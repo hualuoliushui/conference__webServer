@@ -46,15 +46,16 @@ function isEmptyObject(e) {
 }
 function setStatus(respond) {
     $("#Status").empty().append("<b>"+respond.Message+"</b>");
-    if (respond.Code == 5) {
+    if (respond.Code) {
         if (typeof (respond.Result) == undefined) {
             return;
         }
         $("#Status").append("<br/>");
-        $.each(respond.Result, function () {
-            var str = "<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + JSON.stringify($(this)[0]) + "<br/><b>";
+        console.log(respond.Result);
+        for(var i=0;i<respond.Result.length;i++){
+            var str = "<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + respond.Result[i] + "<br/><b>";
             $("#Status").append(str);
-        });
+        }  
     }
 }
 

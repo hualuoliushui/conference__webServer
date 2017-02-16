@@ -40,11 +40,8 @@
                     <div>
                         <div id="voteType">投票类型：</div>
                         <div class="btn-group voteType" id="select">
-                            <select name="select" id="select" class="xla_k">
-                                <option value="0">任选</option>
-                                <option value="1">单选</option>
-                                <option value="2">双选</option>
-                            </select>
+                            <label for="selectOptionNum">可选选项数量</label>
+                            <input name="select" id="selectOptionNum" class="xla_k" type="number" />
                         </div>
                     </div>
                 </div>
@@ -77,4 +74,4 @@
     </div>
 </div>
 
-<script src="~/js/vote/add.js"></script>
+<script src="~/js/vote/add.js" charset="gbk"></script>

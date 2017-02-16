@@ -7,6 +7,7 @@ using WebServer.Models;
 using WebServer.Models.Device;
 using DAL.DAOVO;
 using WebServer.App_Start;
+using WebServer.Models.Tools;
 
 namespace WebServer.Controllers
 {
@@ -63,28 +64,26 @@ namespace WebServer.Controllers
         [RBAC]
         public JsonResult CreateDevice(CreateDevice device)
         {
-            RespondModel respond = new RespondModel();
-            //调用设备服务
-            Status status = new DeviceService().create(device);
+            if (ModelState.IsValid)
+            {
+                Status status = new DeviceService().create(device);
 
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
+                return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
+            }
 
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
+
         [RBAC]
         public JsonResult UpdateDevice(UpdateDevice device)
         {
-            RespondModel respond = new RespondModel();
-            //调用设备服务
-            Status status = new DeviceService().update(device);
-
-            respond.Code = (int)status;
-            respond.Message = Message.msgs[respond.Code];
-            respond.Result = "";
-
-            return Json(respond, JsonRequestBehavior.AllowGet);
+            if (ModelState.IsValid)
+            {
+                //调用设备服务
+                Status status = new DeviceService().update(device);
+                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+            }
+            return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);
         }
         [RBAC]
         public JsonResult UpdateDeviceAvailable(int deviceID, int deviceFreezeState)//FreezeState对应数据库中的available字段

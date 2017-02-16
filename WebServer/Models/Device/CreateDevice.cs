@@ -10,7 +10,7 @@ namespace WebServer.Models.Device
     public class CreateDevice
     {
         [Required(ErrorMessage = "设备IMEI不为空")]
-        [StringLength(15, MinimumLength = 15, ErrorMessage = "设备IMEI长度不为15")]
+        [StringLength(15, MinimumLength = 15, ErrorMessage = "设备IMEI长度应为15")]
         public string IMEI { set; get; }
 
         [Required(ErrorMessage = "设备索引不为空")]

@@ -84,7 +84,7 @@ $(function(){
           userDescription: $("#description").val(),
           roleID : roleID
        }, function (data, textStatus) {
-           $("#Status").text(data.Message);
+           setStatus(data);
            if (data.Code == 0)
                window.location.href = "/User/Index_admin";
        },"json");

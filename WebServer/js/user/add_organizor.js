@@ -51,7 +51,7 @@
                 "Content-Type": "application/json"
             },
             success: function (respond) {
-                $("#Status").text(respond.Message);
+                setStatus(respond);
                 if (respond.Code == 0) {
                     var meetingID = getMeetingID();
                     window.location.href = "/Delegate/Index_organizor?meetingID=" + meetingID;
@@ -113,7 +113,9 @@
         //设置回调函数
         xhr.onreadystatechange = uploadReady;
         //发送文件和表单自定义参数
-        xhr.open("POST","/User/Import", true);
+        xhr.open("POST", "/User/Import", true);
+
+        $("#Status").text("导入中。。。");
 
         xhr.send(fd);
     }

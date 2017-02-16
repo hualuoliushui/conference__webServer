@@ -24,7 +24,7 @@ namespace WebServer.Models.MeetingPlace
                     meetingPlaceName = meetingPlace.meetingPlaceName,
                     meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity,
                     meetingPlaceState = 0
-                }) != 1 )
+                }) < 0 )
             {
                 return Status.NAME_EXIST;
             }

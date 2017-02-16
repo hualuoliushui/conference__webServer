@@ -1,5 +1,5 @@
-﻿using Microsoft.Office.Core;
-using Microsoft.Office.Interop.Word;
+﻿using Microsoft;
+using Microsoft.Office.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +28,7 @@ namespace WebServer.Models.Document.FileConvertService
 
                 // 缺省参数 
                 object Unknown = Type.Missing;
+                object object_True = true;
 
                 //如果已存在，则重新生成
                 if (File.Exists(targetPath))
@@ -71,6 +72,7 @@ namespace WebServer.Models.Document.FileConvertService
                 doc.ShowSpellingErrors = false;
                 doc.ShowGrammaticalErrors = false;
 
+
                 Log.DebugInfo("word src Path : " + sourcePath);
                 Log.DebugInfo("word target Path : " + targetPath);
 
@@ -105,6 +107,9 @@ namespace WebServer.Models.Document.FileConvertService
             //Log.DebugInfo("修改html文件中的src元素的路径");
             changeSrc(targetPath, targetRelativeDirectory);
             return true;
+
+
+            //throw new NotImplementedException();
         }
 
         public override bool Excel2HTML(string sourcePath, string targetPath, string targetRelativeDirectory)
@@ -132,15 +137,15 @@ namespace WebServer.Models.Document.FileConvertService
                 }
                 Log.DebugInfo("excel srcPath: " + sourcePath);
                 Log.DebugInfo("excel targetPath: " + targetPath);
-                
+
                 object target = targetPath;
                 object type = targetType;
                 Microsoft.Office.Interop.Excel.Workbooks workbooks = excelApp.Workbooks;
-                
 
-                    workbook = workbooks.Open(sourcePath, missing, missing, missing, missing, missing,
-                        missing, missing, missing, missing, missing, missing, missing, missing, missing);
-                    workbook.SaveAs(target, type, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
+
+                workbook = workbooks.Open(sourcePath, missing, missing, missing, missing, missing,
+                    missing, missing, missing, missing, missing, missing, missing, missing, missing);
+                workbook.SaveAs(target, type, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange, missing, missing, missing, missing, missing);
 
             }
             catch (Exception e)
@@ -170,11 +175,13 @@ namespace WebServer.Models.Document.FileConvertService
             }
 
             return true;
+
+            //throw new NotImplementedException();
         }
 
         public override bool PPT2HTML(string sourcePath, string targetPath, string targetRelativeDirectory)
         {
-            Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType targetFileType = Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsPNG;
+            Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType targetFileType = Microsoft.Office.Interop.PowerPoint.PpSaveAsFileType.ppSaveAsJPG;
             object missing = Type.Missing;
             Microsoft.Office.Interop.PowerPoint.Application pptApp = null;
             Microsoft.Office.Interop.PowerPoint.Presentation presentation = null;
@@ -193,8 +200,8 @@ namespace WebServer.Models.Document.FileConvertService
                 pptApp = new Microsoft.Office.Interop.PowerPoint.ApplicationClass();
                 Microsoft.Office.Interop.PowerPoint.Presentations presentations = pptApp.Presentations;
                
-                    presentation = presentations.Open(sourcePath, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
-                    presentation.SaveAs(targetPath, targetFileType, Microsoft.Office.Core.MsoTriState.msoTriStateMixed);
+                presentation = presentations.Open(sourcePath, MsoTriState.msoTrue, MsoTriState.msoFalse, MsoTriState.msoFalse);
+                presentation.SaveAs(targetPath, targetFileType, Microsoft.Office.Core.MsoTriState.msoTrue);
             }
             catch (Exception e)
             {
@@ -248,6 +255,7 @@ namespace WebServer.Models.Document.FileConvertService
             }
             Comparison<string> comparison = new Comparison<string>((string x, string y) =>
             {
+                //默认图片文件名为“幻灯片i.jpg'
                 int a_point_position = x.LastIndexOf('.');
                 int b_point_position = y.LastIndexOf('.');
                 int a = Int32.Parse(x.Substring(3, a_point_position - 3));

@@ -1,0 +1,446 @@
+
+----------------------header--------------------------
+2017-02-15 10:19:08,464 [1] INFO  WebLogger - 系统启动
+2017-02-15 10:19:11,068 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 10:19:11,807 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 10:21:09,705 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-21-09-697.doc
+
+----------------------header--------------------------
+2017-02-15 10:32:43,179 [1] INFO  WebLogger - 系统启动
+2017-02-15 10:32:45,103 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 10:32:45,627 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 10:33:14,839 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-33-14-832.doc
+2017-02-15 10:35:04,719 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-35-04-714.doc
+2017-02-15 10:35:37,343 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-35-37-337.doc
+2017-02-15 10:36:29,076 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-36-29-072.doc
+2017-02-15 10:36:48,079 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-36-48-074.doc
+2017-02-15 10:37:13,504 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-37-13-500.doc
+2017-02-15 10:37:21,029 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-37-21-025.doc
+2017-02-15 10:37:21,510 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-37-21-502.doc
+2017-02-15 10:37:21,679 [17] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-37-21-675.doc
+2017-02-15 10:37:22,815 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-37-22-810.doc
+2017-02-15 10:38:53,337 [26] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-38-53-332.doc
+2017-02-15 10:41:35,367 [31] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-41-35-362.doc
+2017-02-15 10:41:42,168 [31] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-41-42-162.doc
+2017-02-15 10:45:37,189 [39] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-45-36-939.doc
+2017-02-15 10:47:32,421 [39] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-47-32-416.doc
+2017-02-15 10:47:40,221 [39] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-47-40-216.doc
+2017-02-15 10:49:25,346 [40] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-49-25-341.doc
+2017-02-15 10:50:06,844 [45] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-50-06-839.doc
+2017-02-15 10:51:23,721 [50] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-51-23-716.doc
+
+----------------------header--------------------------
+2017-02-15 10:52:30,073 [1] INFO  WebLogger - 系统启动
+2017-02-15 10:52:32,078 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 10:52:32,502 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 10:52:56,169 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-15-10-52-56-162.doc
+2017-02-15 10:52:59,863 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-10-52-56-162.doc
+2017-02-15 10:52:59,863 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-10-52-56-162\2017-02-15-10-52-56-162.html
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-02-15 11:11:31,687 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:11:34,259 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:11:34,838 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:12:03,141 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-12-03-133.doc
+2017-02-15 11:12:05,244 [10] INFO  WebLogger - word转换html:
+System.ArgumentException: 值不在预期的范围内。
+   在 Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.Word2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 62
+2017-02-15 11:12:05,291 [10] DEBUG WebLogger - word文件转换失败
+2017-02-15 11:12:05,322 [10] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 11:14:26,998 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:14:29,546 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:14:30,008 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:14:56,576 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-14-56-568.doc
+2017-02-15 11:14:58,553 [9] INFO  WebLogger - word转换html:
+System.ArgumentException: 值不在预期的范围内。
+   在 Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.Word2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 62
+2017-02-15 11:14:58,600 [9] DEBUG WebLogger - word文件转换失败
+2017-02-15 11:14:58,615 [9] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 11:15:25,558 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:15:27,996 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:15:28,534 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:18:41,518 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-18-41-518.doc
+2017-02-15 11:18:43,561 [6] INFO  WebLogger - word转换html:
+System.ArgumentException: 值不在预期的范围内。
+   在 Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.Word2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 62
+2017-02-15 11:18:43,623 [6] DEBUG WebLogger - word文件转换失败
+2017-02-15 11:18:43,639 [6] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 11:19:18,032 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:19:19,913 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:19:20,303 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:19:47,020 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-19-47-014.doc
+2017-02-15 11:19:48,826 [11] INFO  WebLogger - word转换html:
+System.ArgumentException: 值不在预期的范围内。
+   在 Microsoft.Office.Interop.Word.Documents.Open(Object& FileName, Object& ConfirmConversions, Object& ReadOnly, Object& AddToRecentFiles, Object& PasswordDocument, Object& PasswordTemplate, Object& Revert, Object& WritePasswordDocument, Object& WritePasswordTemplate, Object& Format, Object& Encoding, Object& Visible, Object& OpenAndRepair, Object& DocumentDirection, Object& NoEncodingDialog, Object& XMLTransform)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.Word2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 62
+2017-02-15 11:19:48,857 [11] DEBUG WebLogger - word文件转换失败
+2017-02-15 11:19:48,888 [11] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 11:20:11,446 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:20:13,404 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:20:13,822 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:20:59,307 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-20-59-301.doc
+2017-02-15 11:21:01,401 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-11-20-59-301.doc
+2017-02-15 11:21:01,401 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-20-59-301\2017-02-15-11-20-59-301.html
+2017-02-15 11:21:14,547 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-21-14-543.doc
+2017-02-15 11:21:16,522 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-11-21-14-543.doc
+2017-02-15 11:21:16,522 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-21-14-543\2017-02-15-11-21-14-543.html
+
+----------------------header--------------------------
+2017-02-15 11:22:23,157 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:22:25,151 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:22:25,586 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:23:00,956 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-23-00-948.doc
+2017-02-15 11:24:36,774 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-24-36-769.xls
+
+----------------------header--------------------------
+2017-02-15 11:25:37,846 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:25:40,155 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:25:40,851 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:26:12,067 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-26-12-059.xls
+2017-02-15 11:27:08,342 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-27-08-336.docx
+2017-02-15 11:27:49,708 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-27-49-676.pptx
+
+----------------------header--------------------------
+2017-02-15 11:30:31,587 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:30:33,965 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:30:34,572 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:31:08,522 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-31-08-518.doc
+2017-02-15 11:31:10,320 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-31-10-314.doc
+2017-02-15 11:31:34,969 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-31-34-953.pptx
+2017-02-15 11:32:14,334 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-32-14-329.xlsx
+2017-02-15 11:34:09,738 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-34-09-733.docx
+2017-02-15 11:35:42,444 [20] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-35-42-444.docx
+
+----------------------header--------------------------
+2017-02-15 11:36:42,381 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:36:44,749 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:36:45,236 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:37:25,356 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-37-25-341.docx
+2017-02-15 11:37:36,705 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-37-36-700.xls
+2017-02-15 11:38:01,089 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-38-01-077.pptx
+2017-02-15 11:38:04,333 [14] INFO  WebLogger - 文件转换异常
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-38-01-077\2017-02-15-11-38-01-077”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetFiles(String path)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.pptHelper(String targetPath, String targetRelativeDirctory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 242
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 221
+   在 WebServer.Models.Document.FileConvertService.FileConvert.run(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\FileConvert.cs:行号 45
+2017-02-15 11:38:04,380 [14] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 11:39:42,268 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:39:44,029 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:39:44,429 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:40:11,202 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-40-11-197.pptx
+2017-02-15 11:40:12,111 [9] INFO  WebLogger - 文件转换异常
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-40-11-197\2017-02-15-11-40-11-197”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetFiles(String path)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.pptHelper(String targetPath, String targetRelativeDirctory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 242
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 221
+   在 WebServer.Models.Document.FileConvertService.FileConvert.run(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\FileConvert.cs:行号 45
+2017-02-15 11:40:12,142 [9] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 11:40:22,038 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-40-22-033.doc
+2017-02-15 11:40:24,195 [14] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-11-40-22-033.doc
+2017-02-15 11:40:24,195 [14] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-40-22-033\2017-02-15-11-40-22-033.html
+2017-02-15 11:40:35,631 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-40-35-615.doc
+2017-02-15 11:40:37,663 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-11-40-35-615.doc
+2017-02-15 11:40:37,663 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-40-35-615\2017-02-15-11-40-35-615.html
+
+----------------------header--------------------------
+2017-02-15 11:42:48,596 [1] INFO  WebLogger - 系统启动
+2017-02-15 11:42:48,723 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 11:42:49,275 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 11:43:14,626 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-43-14-617.pptx
+2017-02-15 11:44:53,313 [11] INFO  WebLogger - 文件转换异常
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-11-43-14-617\2017-02-15-11-43-14-617”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetFiles(String path)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.pptHelper(String targetPath, String targetRelativeDirctory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 242
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 221
+   在 WebServer.Models.Document.FileConvertService.FileConvert.run(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\FileConvert.cs:行号 45
+2017-02-15 11:44:53,343 [11] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 11:44:59,488 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-11-44-59-473.pptx
+
+----------------------header--------------------------
+2017-02-15 12:36:20,703 [1] INFO  WebLogger - 系统启动
+2017-02-15 12:36:20,824 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 12:36:21,465 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 12:36:55,711 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-12-36-55-695.pptx
+2017-02-15 12:36:56,703 [5] INFO  WebLogger - 文件转换异常
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-12-36-55-695\2017-02-15-12-36-55-695”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetFiles(String path)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.pptHelper(String targetPath, String targetRelativeDirctory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 242
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 221
+   在 WebServer.Models.Document.FileConvertService.FileConvert.run(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\FileConvert.cs:行号 45
+2017-02-15 12:36:56,735 [5] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 12:37:34,476 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-12-37-34-461.pptx
+
+----------------------header--------------------------
+2017-02-15 12:40:46,668 [1] INFO  WebLogger - 系统启动
+2017-02-15 12:40:48,674 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 12:40:49,145 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 12:41:22,157 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-15-12-41-22-140.pptx
+
+----------------------header--------------------------
+2017-02-15 12:47:12,382 [1] INFO  WebLogger - 系统启动
+2017-02-15 12:47:14,039 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 12:47:14,526 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 12:47:46,102 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-15-12-47-46-087.pptx
+2017-02-15 12:47:51,750 [10] INFO  WebLogger - 文件转换异常
+System.IO.DirectoryNotFoundException: 未能找到路径“D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-12-47-46-087\2017-02-15-12-47-46-087”的一部分。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetFiles(String path)
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.pptHelper(String targetPath, String targetRelativeDirctory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 242
+   在 WebServer.Models.Document.FileConvertService.OfficeMethod.PPT2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\OfficeMethod.cs:行号 221
+   在 WebServer.Models.Document.FileConvertService.FileConvert.run(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\FileConvert.cs:行号 45
+2017-02-15 12:47:51,791 [10] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 12:48:02,391 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-15-12-48-02-379.pptx
+
+----------------------header--------------------------
+2017-02-15 13:02:56,171 [1] INFO  WebLogger - 系统启动
+2017-02-15 13:02:57,824 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 13:02:58,350 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 13:04:06,264 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-01-04-06-248.doc
+2017-02-15 13:04:08,907 [9] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-01-04-06-248.doc
+2017-02-15 13:04:08,907 [9] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-01-04-06-248\2017-02-15-01-04-06-248.html
+2017-02-15 13:04:45,162 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-15-01-04-45-146.doc
+2017-02-15 13:04:47,926 [9] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-01-04-45-146.doc
+2017-02-15 13:04:47,926 [9] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-01-04-45-146\2017-02-15-01-04-45-146.html
+
+----------------------header--------------------------
+2017-02-15 13:49:51,948 [1] INFO  WebLogger - 系统启动
+2017-02-15 13:49:53,911 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 13:49:54,482 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 13:50:29,793 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-01-50-29-787.doc
+2017-02-15 13:50:32,301 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-01-50-29-787.doc
+2017-02-15 13:50:32,301 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-01-50-29-787\2017-02-15-01-50-29-787.html
+
+----------------------header--------------------------
+2017-02-15 14:12:44,052 [1] INFO  WebLogger - 系统启动
+2017-02-15 14:12:45,950 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 14:12:46,492 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 14:14:05,513 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-02-14-05-513.doc
+2017-02-15 14:14:07,909 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-02-14-05-513.doc
+2017-02-15 14:14:07,909 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-02-14-05-513\2017-02-15-02-14-05-513.html
+
+----------------------header--------------------------
+2017-02-15 14:15:58,895 [1] INFO  WebLogger - 系统启动
+2017-02-15 14:16:00,613 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 14:16:01,022 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-15 14:16:26,443 [1] INFO  WebLogger - 系统启动
+2017-02-15 14:16:26,589 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 14:16:27,170 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 14:17:32,872 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-15-02-17-32-872.doc
+2017-02-15 14:17:35,608 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-15-02-17-35-599.doc
+2017-02-15 14:18:11,708 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-15-02-18-11-695.pptx
+2017-02-15 14:33:32,975 [23] DEBUG WebLogger - 待插入的文件路径:2017-02-15-02-33-32-790.pptx
+
+----------------------header--------------------------
+2017-02-15 15:41:20,542 [1] INFO  WebLogger - 系统启动
+2017-02-15 15:41:22,381 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 15:41:22,855 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 15:41:57,216 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-41-57-216.doc
+2017-02-15 15:42:27,698 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-42-27-698.doc
+2017-02-15 15:42:41,222 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-42-41-209.pptx
+
+----------------------header--------------------------
+2017-02-15 15:45:20,161 [1] INFO  WebLogger - 系统启动
+2017-02-15 15:45:21,629 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 15:45:21,992 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 15:45:54,305 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-45-54-270.pptx
+2017-02-15 15:46:23,620 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-46-23-616.doc
+2017-02-15 15:47:46,963 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-47-46-958.doc
+2017-02-15 15:48:55,779 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-48-55-774.doc
+
+----------------------header--------------------------
+2017-02-15 15:53:06,858 [1] INFO  WebLogger - 系统启动
+2017-02-15 15:53:07,002 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 15:53:07,601 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 15:54:40,883 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-54-40-883.docx
+2017-02-15 15:56:08,629 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-56-08-623.xlsx
+2017-02-15 15:56:57,198 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-56-57-193.xlsx
+2017-02-15 15:58:28,841 [16] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-58-28-837.xlsx
+2017-02-15 15:59:19,811 [16] DEBUG WebLogger - 待插入的文件路径:2017-02-15-03-59-19-806.xlsx
+2017-02-15 16:00:20,909 [17] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-00-20-905.xlsx
+2017-02-15 16:00:21,102 [23] INFO  WebLogger - aspose转换excel文档
+System.ArgumentException: Invalid tick labels rotation.
+   在 Aspose.Cells.Charts.TickLabels.set_RotationAngle(Int32 value)
+   在 ?.?.?(TickLabels ?, Chart ?, WorksheetCollection ?)
+   在 ?.?.?(XmlTextReader ?, String ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(? ?)
+   在 ?.?.?(XmlElement ?, ? ?)
+   在 ?.?.?(XmlElement ?, ? ?, Int32 ?, Boolean ?)
+   在 ?.?.?()
+   在 ?.←.?(? ?)
+   在 ?.←.?(? ?, String ?)
+   在 ?.←.?()
+   在 ?.←.?()
+   在 ?.?.?(Workbook ?, Stream ?)
+   在 Aspose.Cells.Workbook.?(Stream ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook.?(String ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook..ctor(String file)
+   在 WebServer.Models.Document.FileConvertService.AsposeMethod.Excel2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\AsposeMethod.cs:行号 55
+2017-02-15 16:00:21,118 [23] DEBUG WebLogger - excel文件转换失败
+2017-02-15 16:00:21,134 [23] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 16:02:11,597 [17] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-02-11-593.xlsx
+2017-02-15 16:02:11,683 [17] INFO  WebLogger - aspose转换excel文档
+System.ArgumentException: Invalid tick labels rotation.
+   在 Aspose.Cells.Charts.TickLabels.set_RotationAngle(Int32 value)
+   在 ?.?.?(TickLabels ?, Chart ?, WorksheetCollection ?)
+   在 ?.?.?(XmlTextReader ?, String ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(? ?)
+   在 ?.?.?(XmlElement ?, ? ?)
+   在 ?.?.?(XmlElement ?, ? ?, Int32 ?, Boolean ?)
+   在 ?.?.?()
+   在 ?.←.?(? ?)
+   在 ?.←.?(? ?, String ?)
+   在 ?.←.?()
+   在 ?.←.?()
+   在 ?.?.?(Workbook ?, Stream ?)
+   在 Aspose.Cells.Workbook.?(Stream ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook.?(String ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook..ctor(String file)
+   在 WebServer.Models.Document.FileConvertService.AsposeMethod.Excel2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\AsposeMethod.cs:行号 55
+2017-02-15 16:02:11,683 [17] DEBUG WebLogger - excel文件转换失败
+2017-02-15 16:02:11,714 [17] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+2017-02-15 16:02:25,285 [17] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-02-25-279.xlsx
+2017-02-15 16:02:25,350 [22] INFO  WebLogger - aspose转换excel文档
+System.ArgumentException: Invalid tick labels rotation.
+   在 Aspose.Cells.Charts.TickLabels.set_RotationAngle(Int32 value)
+   在 ?.?.?(TickLabels ?, Chart ?, WorksheetCollection ?)
+   在 ?.?.?(XmlTextReader ?, String ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(? ?)
+   在 ?.?.?(XmlElement ?, ? ?)
+   在 ?.?.?(XmlElement ?, ? ?, Int32 ?, Boolean ?)
+   在 ?.?.?()
+   在 ?.←.?(? ?)
+   在 ?.←.?(? ?, String ?)
+   在 ?.←.?()
+   在 ?.←.?()
+   在 ?.?.?(Workbook ?, Stream ?)
+   在 Aspose.Cells.Workbook.?(Stream ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook.?(String ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook..ctor(String file)
+   在 WebServer.Models.Document.FileConvertService.AsposeMethod.Excel2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\AsposeMethod.cs:行号 55
+2017-02-15 16:02:25,350 [22] DEBUG WebLogger - excel文件转换失败
+2017-02-15 16:02:25,381 [22] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 16:02:55,540 [1] INFO  WebLogger - 系统启动
+2017-02-15 16:02:55,694 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 16:02:56,172 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 16:03:27,937 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-03-27-931.xlsx
+2017-02-15 16:03:28,529 [9] INFO  WebLogger - aspose转换excel文档
+System.ArgumentException: Invalid tick labels rotation.
+   在 Aspose.Cells.Charts.TickLabels.set_RotationAngle(Int32 value)
+   在 ?.?.?(TickLabels ?, Chart ?, WorksheetCollection ?)
+   在 ?.?.?(XmlTextReader ?, String ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(XmlTextReader ?)
+   在 ?.?.?(? ?)
+   在 ?.?.?(XmlElement ?, ? ?)
+   在 ?.?.?(XmlElement ?, ? ?, Int32 ?, Boolean ?)
+   在 ?.?.?()
+   在 ?.←.?(? ?)
+   在 ?.←.?(? ?, String ?)
+   在 ?.←.?()
+   在 ?.←.?()
+   在 ?.?.?(Workbook ?, Stream ?)
+   在 Aspose.Cells.Workbook.?(Stream ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook.?(String ?, LoadOptions ?)
+   在 Aspose.Cells.Workbook..ctor(String file)
+   在 WebServer.Models.Document.FileConvertService.AsposeMethod.Excel2HTML(String sourcePath, String targetPath, String targetRelativeDirectory) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\FileConvertService\AsposeMethod.cs:行号 55
+2017-02-15 16:03:28,529 [9] DEBUG WebLogger - excel文件转换失败
+2017-02-15 16:03:28,560 [9] INFO  WebLogger - 文件转换失败
+System.Exception: 文件转换失败
+   在 WebServer.Models.Document.DocumentService.convertFile(Int32 agendaID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Document\DocumentService.cs:行号 242
+
+----------------------header--------------------------
+2017-02-15 16:07:19,122 [1] INFO  WebLogger - 系统启动
+2017-02-15 16:07:20,784 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 16:07:21,154 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 16:07:42,778 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-07-42-772.xlsx
+2017-02-15 16:07:44,541 [9] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-04-07-42-772.xlsx
+2017-02-15 16:07:44,541 [9] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-04-07-42-772\2017-02-15-04-07-42-772.html
+2017-02-15 16:08:13,713 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-08-13-708.docx
+
+----------------------header--------------------------
+2017-02-15 16:09:55,044 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-02-15 16:10:32,108 [1] INFO  WebLogger - 系统启动
+2017-02-15 16:10:33,696 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-15 16:10:34,074 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-15 16:10:56,847 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-10-56-840.docx
+2017-02-15 16:10:59,768 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-04-10-56-840.docx
+2017-02-15 16:10:59,769 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-04-10-56-840\2017-02-15-04-10-56-840.html
+2017-02-15 16:11:30,526 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-11-30-521.docx
+2017-02-15 16:11:33,551 [14] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-04-11-30-521.docx
+2017-02-15 16:11:33,551 [14] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-04-11-30-521\2017-02-15-04-11-30-521.html
+2017-02-15 16:11:50,804 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-11-50-799.xlsx
+2017-02-15 16:11:51,877 [11] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-04-11-50-799.xlsx
+2017-02-15 16:11:51,877 [11] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-04-11-50-799\2017-02-15-04-11-50-799.html
+2017-02-15 16:12:58,438 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-15-04-12-58-423.docx
+2017-02-15 16:13:01,016 [11] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-15-04-12-58-423.docx
+2017-02-15 16:13:01,016 [11] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-15-04-12-58-423\2017-02-15-04-12-58-423.html

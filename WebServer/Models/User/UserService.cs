@@ -146,13 +146,18 @@ namespace WebServer.Models.User
             {
                 return status;
             }
-
+            int index = 1;
             foreach (CreateUserForDelegate user in list)
             {
                 Status createStatus = createForDelegate(user);
-                checkList.Add(Message.msgs[(int)createStatus]);
+                if (createStatus != Status.SUCCESS)
+                {
+                    checkList.Add("数据"+index+":"+Message.msgs[(int)createStatus]);
+                    status = createStatus;
+                }
+                index++;
             }
-            return Status.SUCCESS;
+            return status;
         }
 
         /// <summary>

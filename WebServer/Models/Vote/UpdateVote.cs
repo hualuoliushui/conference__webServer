@@ -15,11 +15,12 @@ namespace WebServer.Models.Vote
         [StringLength(100, MinimumLength = 2, ErrorMessage = "投票名称2-100个字符")]
         public string voteName { set; get; }
 
-        [StringLength(1000, MinimumLength = 0, ErrorMessage = "投票描述0-1000个字符")]
+        [Required(ErrorMessage = "投票描述不为空")]
+        [StringLength(1000, MinimumLength = 0, ErrorMessage = "投票描述1-1000个字符")]
         public string voteDescription { get; set; }
 
         [Required(ErrorMessage = "投票类型未选择")]
-        [Range(0, 2, ErrorMessage = "投票类型必须在{1}和{2}之间")]
+        [Range(1, int.MaxValue, ErrorMessage = "投票类型{0}：可选数量在{1}到{2}之间.")]
         public int voteType { set; get; }
 
         public List<string> voteOptions { set; get; }

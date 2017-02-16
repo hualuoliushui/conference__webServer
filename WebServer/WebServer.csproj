@@ -326,8 +326,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="js\account\index.js" />
+    <Content Include="images\add.png" />
+    <Content Include="images\delete.png" />
+    <Content Include="js\account\admin.js" />
     <Content Include="js\account\organizor.js" />
+    <Content Include="js\account\index.js" />
     <Content Include="js\agenda\add.js" />
     <Content Include="js\agenda\edit.js" />
     <Content Include="js\agenda\index.js" />
@@ -1390,6 +1393,7 @@
     <Content Include="node_modules\jquery\src\event\trigger.js" />
     <Content Include="node_modules\jquery\src\exports\amd.js" />
     <Content Include="node_modules\jquery\src\exports\global.js" />
+    <Content Include="node_modules\jquery\src\jquery-confirm.js" />
     <Content Include="node_modules\jquery\src\jquery.js" />
     <Content Include="node_modules\jquery\src\manipulation.js" />
     <Content Include="node_modules\jquery\src\manipulation\buildFragment.js" />
@@ -3452,6 +3456,7 @@
     <Content Include="less\account\admin.less" />
     <Content Include="less\account\organizor.less" />
     <Content Include="less\error\permissionDenied.less" />
+    <Content Include="node_modules\jquery\src\jquery-confirm.less" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
@@ -3595,7 +3600,6 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
     </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Excel">
       <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
@@ -3605,7 +3609,6 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
     </COMReference>
     <COMReference Include="Microsoft.Office.Interop.PowerPoint">
       <Guid>{91493440-5A91-11CF-8700-00AA0060263B}</Guid>
@@ -3615,7 +3618,6 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
     </COMReference>
     <COMReference Include="Microsoft.Office.Interop.Word">
       <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
@@ -3625,7 +3627,6 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>False</EmbedInteropTypes>
-      <Private>True</Private>
     </COMReference>
     <COMReference Include="Office">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
@@ -3655,6 +3656,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

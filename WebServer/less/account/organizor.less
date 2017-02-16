@@ -9,11 +9,15 @@
         #contentRightHead{
             margin-top: 3%;
         }
+        #ContentRightHeadState{
+            position:relative;
+            right:140px;
+        }
         #contentRightBody{
             width:800px;
         }
         #scrollTable{
-            overflow-x:hidden;
+            /*overflow-x:scroll;*/
             overflow-y: scroll;
             width:800px;
             height:350px;
@@ -23,9 +27,9 @@
             border:1px solid lightgray;
             width:120px;
             height:120px;
-            position:relative;
-            top:-55px;
-            display: inline-block;
+            position:absolute;
+            top:80px;
+            display:inline-block;
             #add{
                 width:60px;
                 height:60px;
@@ -34,13 +38,13 @@
             }
         }
         .meetingGroup{
-            margin-top: 3%;
+            margin-top: 2px;
             margin-left: 2%;
             border:1px solid lightgray;
             width:120px;
             height:120px;
             position:relative;
-            top:25px;
+            left:150px;
             display: inline-block;
             .m_delete{
                 position:relative;

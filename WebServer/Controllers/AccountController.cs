@@ -8,6 +8,11 @@ using WebServer.App_Start;
 using WebServer.Models.Meeting;
 using WebServer.Models.Account;
 using WebServer.Models.Tools;
+using DAL.DAO;
+using WebServer.Models.MeetingPlace;
+using WebServer.Models.Device;
+using WebServer.Models.User;
+using WebServer.Models.Role;
 
 namespace WebServer.Controllers
 {
@@ -45,7 +50,28 @@ namespace WebServer.Controllers
         [HttpGet]
         public ActionResult Admin()
         {
-            return View("Admin");
+            int meetingPlaceNum, deviceNum, userNum, roleNum;
+
+            List<MeetingPlace> meetingPlaces = null;
+            //调用会场服务
+            new MeetingPlaceService().getAll(out meetingPlaces);
+            meetingPlaceNum = meetingPlaces.Count;
+
+            List<Device> devices;
+            //调用设备服务
+            new DeviceService().getAll(out devices);
+            deviceNum = devices.Count;
+
+            List<User> users;
+            //调用用户服务
+            new UserService().getAll(out users);
+            userNum = users.Count;
+
+            //调用角色服务
+            List<RoleForUser> roles = null;
+            new RoleService().getAllForUser(out roles);
+            roleNum = roles.Count;
+            return View(Tuple.Create<int,int,int,int>(meetingPlaceNum,deviceNum,userNum,roleNum));
         }
 
         [RBAC]

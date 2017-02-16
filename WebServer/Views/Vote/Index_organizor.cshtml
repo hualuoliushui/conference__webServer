@@ -74,20 +74,7 @@
                                 </label>
                                 <label class="col-md-3 list-If">
                                     @{
-                            var voteTypeText = "";
-                                    }
-                                    @switch (vote.voteType)
-                                    {
-                                        case 0:
-                                            voteTypeText = "任选";
-                                            break;
-                                        case 1:
-                                            voteTypeText = "单选";
-                                            break;
-                                        case 2:
-                                        default:
-                                            voteTypeText = "双选";
-                                            break;
+                                        var voteTypeText = "可选"+vote.voteType;
                                     }
                                     @voteTypeText
                                 </label>

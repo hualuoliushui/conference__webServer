@@ -39,13 +39,18 @@ $(function () {
 });
 
 $(function(){
-    $("#keep").click(function(){
+    $("#keep").click(function () {
+        var meetingPlaceCapacity = $("#input2").val();
+        if (meetingPlaceCapacity < 0) {
+            $("#Status").text("会场容量不小于0");
+            return;
+        }
        $.post("/MeetingPlace/UpdateMeetingPlace",{
            meetingPlaceID : $("#input1").attr("meetingPlaceID"),
            meetingPlaceName : $("#input1").val(),
            meetingPlaceCapacity : $("#input2").val()
        }, function (data, textStatus) {
-           $("#Status").text(data.Message);
+           setStatus(data);
            if (data.Code == 0) {
                window.location.href="/MeetingPlace/Index_admin"
            }

@@ -73,7 +73,21 @@ namespace WebServer.Controllers
             //调用服务
             Status status = new DocumentService().convertFile(agendaID);
 
-            return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
+            //测试：
+            var filePathList = new List<string>();
+            var fileDao = DAL.DAOFactory.Factory.getInstance<DAL.DAO.FileDAO>();
+            var wherelist = new Dictionary<string, object>();
+            wherelist.Add("agendaID", agendaID);
+            var fileVolist = fileDao.getAll<DAL.DAOVO.FileVO>(wherelist);
+            if (fileVolist != null)
+            {
+                foreach (var item in fileVolist)
+                {
+                    filePathList.Add(item.filePath);
+                }
+            }
+
+            return Json(new RespondModel(status,filePathList), JsonRequestBehavior.AllowGet);
         }
 
         //通过服务器相对路径进行文件下载，已完成----李杭澍

@@ -244,3 +244,14 @@ System.Web.HttpParseException (0x80004005): Sections cannot be empty.  The "@sec
 2017-01-16 18:36:58,761 [26] DEBUG WebLogger - 待插入的文件路径:2017-01-16-06-36-58-752.xls
 2017-01-16 18:37:02,637 [28] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-01-16-06-36-58-752.xls
 2017-01-16 18:37:02,637 [28] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-01-16-06-36-58-752\2017-01-16-06-36-58-752.html
+
+----------------------header--------------------------
+2017-01-16 23:07:34,846 [1] INFO  WebLogger - 系统启动
+2017-01-16 23:07:35,060 [1] DEBUG WebLogger - 测试数据初始化...
+2017-01-16 23:07:36,332 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-01-16 23:33:05,465 [21] DEBUG WebLogger - 待插入的文件路径:2017-01-16-11-33-05-453.docx
+2017-01-16 23:33:09,553 [21] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-01-16-11-33-05-453.docx
+2017-01-16 23:33:09,553 [21] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-01-16-11-33-05-453\2017-01-16-11-33-05-453.html
+2017-01-16 23:33:15,268 [21] DEBUG WebLogger - 待插入的文件路径:2017-01-16-11-33-15-262.xls
+2017-01-16 23:33:20,392 [26] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-01-16-11-33-15-262.xls
+2017-01-16 23:33:20,393 [26] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-01-16-11-33-15-262\2017-01-16-11-33-15-262.html

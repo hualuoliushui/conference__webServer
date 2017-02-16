@@ -44,12 +44,18 @@ $(function () {
         var agendaID = getAgendaID();
         var voteName = $(".voteName").val();
         var voteDescription = $(".voteDescription").val();
-        var voteType = $(".voteType option:selected").val();
+        var voteType = Number($("#selectOptionNum").val());
         var voteOptions = new Array();
 
         $(".voteOption").each(function () {
             voteOptions.push($(this).val());
         });
+
+        if (voteType <= 0 || voteType > voteOptions.length) {
+            $("#Status").text("可选数量不合理");
+            cur.removeAttr("disabled");
+            return;
+        }
 
         var obj = {
             agendaID: agendaID,

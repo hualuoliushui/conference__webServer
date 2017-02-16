@@ -23,7 +23,7 @@ function isEmptyObject(e) {
 }
 function setStatus(respond) {
     $("#Status").text(respond.Message);
-    if (respond.Code == 5) {
+    if (respond.Code) {
         if (typeof (respond.Result) == undefined) {
             return;
         }
