@@ -51,6 +51,9 @@
     <Reference Include="Aspose.Words">
       <HintPath>..\..\APIServer\APIServer\bin\Aspose.Words.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
@@ -206,6 +209,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\MeetingPlaceController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VoteController.cs" />
@@ -239,6 +243,12 @@
     <Compile Include="Models\Meeting\AddMeetingModel.cs" />
     <Compile Include="Models\Meeting\EditMeetingModel.cs" />
     <Compile Include="Models\Organizor.cs" />
+    <Compile Include="Models\Report\ReportInfo\AgendaInfo.cs" />
+    <Compile Include="Models\Report\ReportInfo\DelegateInfo.cs" />
+    <Compile Include="Models\Report\ReportInfo\FileInfo.cs" />
+    <Compile Include="Models\Report\ReportInfo\MeetingInfo.cs" />
+    <Compile Include="Models\Report\ReportInfo\VoteInfo.cs" />
+    <Compile Include="Models\Report\ReportService.cs" />
     <Compile Include="Models\Role\CreateRole.cs" />
     <Compile Include="Models\Role\Permission.cs" />
     <Compile Include="Models\Role\Role.cs" />
@@ -3457,6 +3467,7 @@
     <Content Include="less\account\organizor.less" />
     <Content Include="less\error\permissionDenied.less" />
     <Content Include="node_modules\jquery\src\jquery-confirm.less" />
+    <Content Include="Models\Report\Templet\templet.docx" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
@@ -3659,6 +3670,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

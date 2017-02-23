@@ -1,0 +1,26 @@
+
+----------------------header--------------------------
+2017-02-18 13:09:41,907 [1] DEBUG DalLogger - 访问数据库DAL.DAO.PersonDAO
+2017-02-18 13:09:43,140 [1] INFO  DalLogger - mysql 查询执行 : select max(personID) from person;
+MySql.Data.MySqlClient.MySqlException (0x80004005): Unable to connect to any of the specified MySQL hosts.
+   在 MySql.Data.MySqlClient.NativeDriver.Open()
+   在 MySql.Data.MySqlClient.Driver.Open()
+   在 MySql.Data.MySqlClient.Driver.Create(MySqlConnectionStringBuilder settings)
+   在 MySql.Data.MySqlClient.MySqlPool.CreateNewPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.GetPooledConnection()
+   在 MySql.Data.MySqlClient.MySqlPool.TryToGetDriver()
+   在 MySql.Data.MySqlClient.MySqlPool.GetConnection()
+   在 MySql.Data.MySqlClient.MySqlConnection.Open()
+   在 DAL.DB.MysqlDB.ExecuteQuery(String commandText, List`1 parameters) 位置 d:\c#_workspace\DAL\DAL\DB\MysqlDB.cs:行号 52
+2017-02-18 13:09:43,200 [1] INFO  DalLogger - 数据库访问异常
+System.Reflection.TargetInvocationException: 调用的目标发生了异常。 ---> System.TypeInitializationException: “DAL.DAO.PersonDAO”的类型初始值设定项引发异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 DAL.Base.DAOBase.getIDMax(String tableName) 位置 d:\c#_workspace\DAL\DAL\Base\DAOBase.cs:行号 63
+   在 DAL.DAO.PersonDAO..cctor() 位置 d:\c#_workspace\DAL\DAL\DAO\PersonDAO.cs:行号 19
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DAL.DAO.PersonDAO..ctor()
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   在 System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   在 System.Activator.CreateInstance[T]()
+   在 DAL.DAOFactory.Factory.getInstance[T]() 位置 d:\c#_workspace\DAL\DAL\DAOFactory\Factory.cs:行号 12

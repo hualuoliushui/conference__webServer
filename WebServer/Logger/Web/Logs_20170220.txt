@@ -1,0 +1,35 @@
+
+----------------------header--------------------------
+2017-02-20 09:32:39,309 [1] INFO  WebLogger - 系统启动
+2017-02-20 09:32:41,265 [1] DEBUG WebLogger - 测试数据初始化...
+
+----------------------header--------------------------
+2017-02-20 09:33:13,470 [1] INFO  WebLogger - 系统启动
+2017-02-20 09:33:13,640 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-20 09:33:14,497 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-20 09:35:37,126 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-20-09-35-37-120.docx
+2017-02-20 09:35:40,649 [12] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-20-09-35-37-120.docx
+2017-02-20 09:35:40,649 [12] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-20-09-35-37-120\2017-02-20-09-35-37-120.html
+2017-02-20 09:35:54,101 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-20-09-35-54-100.xls
+2017-02-20 09:35:54,784 [6] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-20-09-35-54-100.xls
+2017-02-20 09:35:54,784 [6] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-20-09-35-54-100\2017-02-20-09-35-54-100.html
+2017-02-20 09:40:30,656 [10] DEBUG WebLogger - {添加设备:设备IMEI:862823023300520,设备编号123}
+2017-02-20 09:40:36,373 [20] DEBUG WebLogger - {添加设备:设备IMEI:862823023300521,设备编号123}
+
+----------------------header--------------------------
+2017-02-20 09:45:17,408 [1] INFO  WebLogger - 系统启动
+2017-02-20 09:45:17,520 [1] DEBUG WebLogger - 测试数据初始化...
+
+----------------------header--------------------------
+2017-02-20 09:46:09,793 [1] INFO  WebLogger - 系统启动
+2017-02-20 09:46:12,526 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-20 09:46:16,990 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-20 09:49:45,034 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-20-09-49-45-027.xls
+2017-02-20 09:49:45,701 [12] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-20-09-49-45-027.xls
+2017-02-20 09:49:45,701 [12] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-20-09-49-45-027\2017-02-20-09-49-45-027.html
+2017-02-20 09:49:57,538 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-20-09-49-57-534.xls
+2017-02-20 09:49:58,067 [13] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-20-09-49-57-534.xls
+2017-02-20 09:49:58,067 [13] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-20-09-49-57-534\2017-02-20-09-49-57-534.html
+2017-02-20 09:50:04,059 [6] DEBUG WebLogger - 待插入的文件路径:2017-02-20-09-50-04-055.docx
+2017-02-20 09:50:06,442 [12] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-20-09-50-04-055.docx
+2017-02-20 09:50:06,442 [12] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-20-09-50-04-055\2017-02-20-09-50-04-055.html

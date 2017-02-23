@@ -260,8 +260,8 @@ namespace WebServer.Models.Test
             meeting.meetingName = "二零一六年年度股东大会暨股东扩大会议";
             meeting.meetingSummary = "";
             meeting.meetingStatus = 1;
-            meeting.meetingStartedTime = (new DateTime(DateTime.Now.AddDays(5).Ticks));
-            meeting.meetingToStartTime = (new DateTime(DateTime.Now.AddDays(6).Ticks));
+            meeting.meetingStartedTime = (new DateTime(DateTime.Now.AddDays(6).Ticks));
+            meeting.meetingToStartTime = (new DateTime(DateTime.Now.AddDays(5).Ticks));
             meeting.meetingDuration = 150;
             meeting.personID = personIDs[0];
 

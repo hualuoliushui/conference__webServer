@@ -26,8 +26,9 @@ function startConvert() {
             var arr = respond.Result;
             console.log("文件路径数组:");
             console.log(arr);
-            if ((filePath = arr.pop()) != undefined)
+            if ((filePath = arr.pop()) != undefined) {
                 window.open('http://localhost:61058/api/Common/DownloadDocument?documentPath=' + filePath);
+            }            
         }
     });
 }

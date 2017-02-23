@@ -1,0 +1,637 @@
+
+----------------------header--------------------------
+2017-02-17 09:36:11,854 [1] INFO  WebLogger - 系统启动
+2017-02-17 09:36:16,332 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 09:36:16,877 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 09:36:35,843 [8] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Export' was not found on controller 'WebServer.Controllers.MeetingController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-02-17 09:36:52,866 [9] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Export' was not found on controller 'WebServer.Controllers.MeetingController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 09:40:13,199 [1] INFO  WebLogger - 系统启动
+2017-02-17 09:40:14,833 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 09:40:15,197 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 09:41:46,277 [1] INFO  WebLogger - 系统启动
+2017-02-17 09:41:47,864 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 09:41:48,287 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 09:44:54,647 [1] INFO  WebLogger - 系统启动
+2017-02-17 09:44:56,249 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 09:44:56,625 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 09:45:13,838 [8] INFO  WebLogger - 服务器异常
+CrystalDecisions.CrystalReports.Engine.LogOnException: 数据库登录失败。 ---> System.Runtime.InteropServices.COMException: 数据库登录失败。
+   在 CrystalDecisions.ReportAppServer.Controllers.ReportSourceClass.Export(ExportOptions pExportOptions, RequestContext pRequestContext)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CrystalDecisions.ReportAppServer.ConvertDotNetToErom.ThrowDotNetException(Exception e)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.FormatEngine.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportOptions options)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportFormatType formatType)
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 55
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 10:01:03,884 [1] INFO  WebLogger - 系统启动
+2017-02-17 10:01:06,473 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 10:01:06,977 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 10:02:57,893 [5] INFO  WebLogger - 服务器异常
+CrystalDecisions.CrystalReports.Engine.LogOnException: 数据库登录失败。 ---> System.Runtime.InteropServices.COMException: 数据库登录失败。
+   在 CrystalDecisions.ReportAppServer.Controllers.ReportSourceClass.Export(ExportOptions pExportOptions, RequestContext pRequestContext)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 CrystalDecisions.ReportAppServer.ConvertDotNetToErom.ThrowDotNetException(Exception e)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.FormatEngine.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportOptions options)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportFormatType formatType)
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 55
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 10:07:30,886 [1] INFO  WebLogger - 系统启动
+2017-02-17 10:07:33,623 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 10:07:34,117 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 10:10:20,575 [1] INFO  WebLogger - 系统启动
+2017-02-17 10:10:22,832 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 10:10:23,282 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 10:31:57,246 [1] INFO  WebLogger - 系统启动
+2017-02-17 10:31:59,403 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 10:31:59,896 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 12:16:43,363 [1] INFO  WebLogger - 系统启动
+2017-02-17 12:16:45,217 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 12:16:45,610 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 12:18:05,005 [1] INFO  WebLogger - 系统启动
+2017-02-17 12:18:06,576 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 12:18:06,961 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 12:23:47,566 [1] INFO  WebLogger - 系统启动
+2017-02-17 12:23:47,733 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 12:23:48,469 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 12:29:32,447 [1] INFO  WebLogger - 系统启动
+2017-02-17 12:29:34,218 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 12:29:34,591 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 12:39:06,327 [1] INFO  WebLogger - 系统启动
+2017-02-17 12:39:08,221 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 12:39:08,653 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 13:25:52,069 [1] INFO  WebLogger - 系统启动
+2017-02-17 13:25:54,587 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 13:25:55,048 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 13:44:52,506 [1] INFO  WebLogger - 系统启动
+2017-02-17 13:44:54,170 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 13:44:54,522 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 14:31:08,982 [1] INFO  WebLogger - 系统启动
+2017-02-17 14:31:10,830 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 14:31:11,246 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 14:31:54,276 [12] INFO  WebLogger - 服务器异常
+System.Runtime.InteropServices.COMException (0x80004005): 系统找不到指定的路径。
+   在 CrystalDecisions.ReportAppServer.Controllers.ReportSourceClass.Export(ExportOptions pExportOptions, RequestContext pRequestContext)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.FormatEngine.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportOptions options)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportFormatType formatType)
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 38
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-02-17 14:33:28,094 [8] INFO  WebLogger - 服务器异常
+System.Runtime.InteropServices.COMException (0x80004005): 系统找不到指定的路径。
+   在 CrystalDecisions.ReportAppServer.Controllers.ReportSourceClass.Export(ExportOptions pExportOptions, RequestContext pRequestContext)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.FormatEngine.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportOptions options)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportFormatType formatType)
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 38
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-02-17 14:33:53,021 [8] INFO  WebLogger - 服务器异常
+System.Runtime.InteropServices.COMException (0x80004005): 系统找不到指定的路径。
+   在 CrystalDecisions.ReportAppServer.Controllers.ReportSourceClass.Export(ExportOptions pExportOptions, RequestContext pRequestContext)
+   在 CrystalDecisions.ReportSource.EromReportSourceBase.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.FormatEngine.ExportToStream(ExportRequestContext reqContext)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportOptions options)
+   在 CrystalDecisions.CrystalReports.Engine.ReportDocument.ExportToStream(ExportFormatType formatType)
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 38
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 14:59:18,098 [1] INFO  WebLogger - 系统启动
+2017-02-17 14:59:19,831 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 14:59:20,266 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:02:14,977 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:02:16,562 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:02:16,946 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:06:15,260 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:06:15,393 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:06:15,879 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 15:06:19,196 [8] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x800704CD): 远程主机关闭了连接。错误代码是 0x800704CD。
+   在 System.Web.Hosting.IIS7WorkerRequest.RaiseCommunicationError(Int32 result, Boolean throwOnDisconnect)
+   在 System.Web.Hosting.IIS7WorkerRequest.ExplicitFlush()
+   在 System.Web.HttpResponse.Flush(Boolean finalFlush, Boolean async)
+   在 System.Web.HttpResponse.Flush()
+   在 System.Web.HttpWriter.WriteFromStream(Byte[] data, Int32 offset, Int32 size)
+   在 System.Web.HttpResponseStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   在 System.Web.Mvc.FileStreamResult.WriteFile(HttpResponseBase response)
+   在 System.Web.Mvc.FileResult.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 15:14:40,652 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:14:42,279 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:14:42,643 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 15:15:21,913 [5] INFO  WebLogger - 服务器异常
+System.ArgumentException: 这些列当前不具有唯一值。
+   在 System.Data.ConstraintCollection.AddUniqueConstraint(UniqueConstraint constraint)
+   在 System.Data.ConstraintCollection.Add(Constraint constraint, Boolean addUniqueWhenAddingForeign)
+   在 System.Data.ConstraintCollection.Add(Constraint constraint, Boolean addUniqueWhenAddingForeign)
+   在 System.Data.DataRelationCollection.DataSetRelationCollection.AddCore(DataRelation relation)
+   在 System.Data.DataRelationCollection.Add(DataRelation relation)
+   在 System.Data.DataRelationCollection.Add(DataColumn parentColumn, DataColumn childColumn)
+   在 WebServer.Models.Report.ReportService.getAgendaInfo(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Report\ReportService.cs:行号 164
+   在 WebServer.Models.Report.ReportService.SetSource(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Report\ReportService.cs:行号 37
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 37
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 15:18:17,432 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:18:18,962 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:18:19,302 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:19:52,485 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:19:52,599 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:19:53,039 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:20:20,784 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:20:22,298 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:20:22,630 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:25:31,497 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:25:32,993 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:25:33,353 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:39:36,298 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:39:37,901 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:39:38,261 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:41:16,677 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:41:18,213 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:41:18,553 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:45:05,986 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:45:07,520 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:45:07,862 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:49:19,792 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:49:21,413 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:49:21,765 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 15:52:19,757 [1] INFO  WebLogger - 系统启动
+2017-02-17 15:52:19,888 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 15:52:20,384 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 17:16:27,766 [1] INFO  WebLogger - 系统启动
+2017-02-17 17:16:29,686 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 17:16:30,288 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 17:24:42,708 [1] INFO  WebLogger - 系统启动
+2017-02-17 17:24:44,401 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 17:24:44,788 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 17:33:00,359 [1] INFO  WebLogger - 系统启动
+2017-02-17 17:33:02,378 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 17:33:02,794 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 17:33:40,622 [5] INFO  WebLogger - 服务器异常
+System.IO.IOException: 文件“D:\c#_workspace\WebServer\WebServer\Models\Report\Templet\60.docx”正由另一进程使用，因此该进程无法访问此文件。
+   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.File.InternalDelete(String path, Boolean checkHost)
+   在 System.IO.File.Delete(String path)
+   在 WebServer.Models.Report.ReportService.Export() 位置 d:\c#_workspace\WebServer\WebServer\Models\Report\ReportService.cs:行号 86
+   在 WebServer.Controllers.ReportController.Export(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\ReportController.cs:行号 33
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.<>c__DisplayClass1.<WrapVoidAction>b__0(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-17 17:35:09,231 [1] INFO  WebLogger - 系统启动
+2017-02-17 17:35:10,726 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 17:35:11,096 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 18:06:42,097 [1] INFO  WebLogger - 系统启动
+2017-02-17 18:06:43,730 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 18:06:44,162 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 18:07:53,219 [1] INFO  WebLogger - 系统启动
+2017-02-17 18:07:55,396 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 18:07:55,923 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-02-17 19:44:57,825 [1] INFO  WebLogger - 系统启动
+2017-02-17 19:44:59,964 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 19:45:00,422 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 19:45:41,102 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-45-41-093.docx
+2017-02-17 19:45:44,436 [12] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-45-41-093.docx
+2017-02-17 19:45:44,436 [12] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-45-41-093\2017-02-17-07-45-41-093.html
+2017-02-17 19:45:51,192 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-45-51-187.docx
+2017-02-17 19:45:53,554 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-45-51-187.docx
+2017-02-17 19:45:53,554 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-45-51-187\2017-02-17-07-45-51-187.html
+
+----------------------header--------------------------
+2017-02-17 19:48:50,982 [1] INFO  WebLogger - 系统启动
+2017-02-17 19:48:52,608 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 19:48:53,005 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 19:49:12,954 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-49-12-948.docx
+2017-02-17 19:49:15,387 [13] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-49-12-948.docx
+2017-02-17 19:49:15,387 [13] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-49-12-948\2017-02-17-07-49-12-948.html
+2017-02-17 19:49:22,078 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-49-22-071.docx
+2017-02-17 19:49:24,387 [13] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-49-22-071.docx
+2017-02-17 19:49:24,387 [13] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-49-22-071\2017-02-17-07-49-22-071.html
+
+----------------------header--------------------------
+2017-02-17 19:51:06,696 [1] INFO  WebLogger - 系统启动
+2017-02-17 19:51:08,287 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 19:51:08,688 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 19:51:40,281 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-51-40-268.docx
+2017-02-17 19:51:42,829 [12] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-51-40-268.docx
+2017-02-17 19:51:42,829 [12] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-51-40-268\2017-02-17-07-51-40-268.html
+2017-02-17 19:52:18,424 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-52-18-416.docx
+2017-02-17 19:52:20,855 [13] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-52-18-416.docx
+2017-02-17 19:52:20,855 [13] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-52-18-416\2017-02-17-07-52-18-416.html
+
+----------------------header--------------------------
+2017-02-17 19:54:40,803 [1] INFO  WebLogger - 系统启动
+2017-02-17 19:54:42,406 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 19:54:42,807 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 19:55:46,536 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-55-46-527.docx
+2017-02-17 19:55:49,791 [10] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-55-46-527.docx
+2017-02-17 19:55:49,791 [10] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-55-46-527\2017-02-17-07-55-46-527.html
+2017-02-17 19:55:52,750 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-55-52-743.docx
+2017-02-17 19:55:55,034 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-55-52-743.docx
+2017-02-17 19:55:55,034 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-55-52-743\2017-02-17-07-55-52-743.html
+2017-02-17 19:57:11,059 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-57-11-053.docx
+2017-02-17 19:57:14,230 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-57-11-053.docx
+2017-02-17 19:57:14,230 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-57-11-053\2017-02-17-07-57-11-053.html
+2017-02-17 19:57:30,222 [8] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-57-30-214.docx
+2017-02-17 19:57:33,364 [6] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-57-30-214.docx
+2017-02-17 19:57:33,364 [6] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-57-30-214\2017-02-17-07-57-30-214.html
+2017-02-17 19:57:36,263 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-57-36-259.docx
+2017-02-17 19:57:38,563 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-57-36-259.docx
+2017-02-17 19:57:38,563 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-57-36-259\2017-02-17-07-57-36-259.html
+2017-02-17 19:57:39,871 [14] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-57-39-865.docx
+2017-02-17 19:57:42,181 [8] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-57-39-865.docx
+2017-02-17 19:57:42,181 [8] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-57-39-865\2017-02-17-07-57-39-865.html
+2017-02-17 19:57:46,936 [7] DEBUG WebLogger - 待插入的文件路径:2017-02-17-07-57-46-931.xls
+2017-02-17 19:57:48,901 [7] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-07-57-46-931.xls
+2017-02-17 19:57:48,901 [7] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-07-57-46-931\2017-02-17-07-57-46-931.html
+
+----------------------header--------------------------
+2017-02-17 20:54:13,425 [1] INFO  WebLogger - 系统启动
+2017-02-17 20:54:15,069 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 20:54:15,500 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 20:54:33,702 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-08-54-33-696.xls
+2017-02-17 20:54:34,476 [13] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-08-54-33-696.xls
+2017-02-17 20:54:34,476 [13] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-08-54-33-696\2017-02-17-08-54-33-696.html
+2017-02-17 20:54:37,550 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-08-54-37-546.xlsx
+2017-02-17 20:54:38,066 [11] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-08-54-37-546.xlsx
+2017-02-17 20:54:38,066 [11] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-08-54-37-546\2017-02-17-08-54-37-546.html
+2017-02-17 20:54:41,167 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-08-54-41-162.xls
+2017-02-17 20:54:41,862 [12] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-08-54-41-162.xls
+2017-02-17 20:54:41,862 [12] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-08-54-41-162\2017-02-17-08-54-41-162.html
+
+----------------------header--------------------------
+2017-02-17 21:00:28,911 [1] INFO  WebLogger - 系统启动
+2017-02-17 21:00:30,486 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 21:00:30,912 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 21:00:46,941 [9] DEBUG WebLogger - 待插入的文件路径:2017-02-17-09-00-46-934.xls
+2017-02-17 21:00:47,722 [11] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-09-00-46-934.xls
+2017-02-17 21:00:47,722 [11] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-09-00-46-934\2017-02-17-09-00-46-934.html
+2017-02-17 21:00:51,326 [11] DEBUG WebLogger - 待插入的文件路径:2017-02-17-09-00-51-320.xls
+2017-02-17 21:00:51,965 [11] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-09-00-51-320.xls
+2017-02-17 21:00:51,965 [11] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-09-00-51-320\2017-02-17-09-00-51-320.html
+
+----------------------header--------------------------
+2017-02-17 21:08:08,510 [1] INFO  WebLogger - 系统启动
+2017-02-17 21:08:10,107 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 21:08:10,507 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 21:08:50,433 [10] DEBUG WebLogger - 待插入的文件路径:2017-02-17-09-08-50-423.xls
+2017-02-17 21:08:51,215 [7] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-09-08-50-423.xls
+2017-02-17 21:08:51,215 [7] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-09-08-50-423\2017-02-17-09-08-50-423.html
+
+----------------------header--------------------------
+2017-02-17 21:10:51,433 [1] INFO  WebLogger - 系统启动
+2017-02-17 21:10:53,699 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-17 21:10:54,115 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-17 21:11:34,937 [12] DEBUG WebLogger - 待插入的文件路径:2017-02-17-09-11-34-930.xls
+2017-02-17 21:11:35,746 [8] DEBUG WebLogger - excel srcPath: D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-09-11-34-930.xls
+2017-02-17 21:11:35,746 [8] DEBUG WebLogger - excel targetPath: D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-09-11-34-930\2017-02-17-09-11-34-930.html
+2017-02-17 21:11:48,272 [13] DEBUG WebLogger - 待插入的文件路径:2017-02-17-09-11-48-266.docx
+2017-02-17 21:11:50,541 [11] DEBUG WebLogger - word src Path : D:\c#_workspace\WebServer\WebServer\Upload\2017-02-17-09-11-48-266.docx
+2017-02-17 21:11:50,541 [11] DEBUG WebLogger - word target Path : D:\c#_workspace\APIServer\APIServer\Download\2017-02-17-09-11-48-266\2017-02-17-09-11-48-266.html

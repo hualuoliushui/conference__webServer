@@ -113,7 +113,7 @@ namespace WebServer.Models.Document
 
                 string fileExtension = System.IO.Path.GetExtension(fileName);
 
-                string saveFileName = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss-fff")
+                string saveFileName = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss-fff")
                     + fileExtension;
 
                 string completeFileName = saveDir + saveFileName;
