@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div id="importExcel">   
+        <div id="importExcel" class="col-xs-2">   
             <label for="file_upload">
                 导入Excel文件(sheet页名必须为user)
             </label>
@@ -45,13 +45,22 @@
             <input type="button" class="upload" value="导入" />   
         </div>
 
-        <div id="inputaddemployee">
+        <div id="inputaddemployee" class="col-xs-10">
             <p id="addemployee1"><strong>姓名：</strong><input id="input1" type="text" name="addperson"></p>
             <p id="addemployee2"><strong>部门单位：</strong><input id="input2" type="text" name="addperson"></p>
             <p id="addemployee3"><strong>职务：</strong><input id="input3" type="text" name="addperson"></p>
             <div>
                 <strong>角色：</strong>
                 <select name="select" id="select" class="xla_k"></select>
+            </div>
+            <div>
+                <strong>等级：</strong>
+                <select name="selectLevel" id="selectLevel" class="xla_k">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
             </div>
 
             <div><strong>详细描述：</strong></div><textarea id="description"></textarea>
@@ -62,8 +71,8 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="col-md-4 col-md-offset-4" id="cancel2keep">
-                <button class="btn btn-default" type="button" id="cancel2" href="#">取消编辑</button>&nbsp;&nbsp;
-                <button class="btn btn-default" type="button" id="keep" href="#">保存编辑</button>
+                <button class="btn btn-default" type="button" id="cancel2" href="#">取 消</button>&nbsp;&nbsp;
+                <button class="btn btn-default" type="button" id="keep" href="#">保 存</button>
             </div>
         </div>
 

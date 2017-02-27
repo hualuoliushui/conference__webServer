@@ -31,5 +31,7 @@ namespace WebServer.Models.User
         public string userDescription { set; get; }
 
         public int roleID { set; get; }
+
+        public int userLevel { set; get; }
     }
 }

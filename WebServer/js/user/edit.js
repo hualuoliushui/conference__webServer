@@ -51,6 +51,7 @@ function getUserForUpdate() {
         var userDepartment = data.Result.userDepartment;
         var userJob = data.Result.userJob;
         var roleID = data.Result.roleID;
+        var userLevel = data.Result.userLevel;
         var userDescription = data.Result.userDescription;
 
         $("#input1").attr("userID", userID);
@@ -61,6 +62,11 @@ function getUserForUpdate() {
 
         $("#select option").each(function (i) {
             if (this.value == roleID) {
+                this.selected = true;
+            }
+        });
+        $("#selectLevel option").each(function (i) {
+            if (this.value == userLevel) {
                 this.selected = true;
             }
         });
@@ -76,13 +82,20 @@ $(function(){
                 roleID = this.value;
             }
         });
+        var userLevel;
+        $("#selectLevel option").each(function (i) {
+            if (this.selected == true) {
+                userLevel = this.value;
+            }
+        });
        $.post("/User/UpdateUser", {
           userID : $("#input1").attr("userID"),
           userName : $("#input1").val(),
           userDepartment : $("#input2").val(),
           userJob : $("#input3").val(),
           userDescription: $("#description").val(),
-          roleID : roleID
+          roleID: roleID,
+          userLevel:userLevel
        }, function (data, textStatus) {
            setStatus(data);
            if (data.Code == 0)

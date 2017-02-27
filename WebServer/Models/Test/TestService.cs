@@ -31,6 +31,8 @@ namespace WebServer.Models.Test
             DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
             MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
 
+            LongTableDAO longTableDao = Factory.getInstance<LongTableDAO>();
+
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
@@ -44,6 +46,20 @@ namespace WebServer.Models.Test
              VoteOptionDAO voteOptionDao = Factory.getInstance<VoteOptionDAO>();
             
             VoteOptionPersonResultDAO voteOptionPersonResultDao = Factory.getInstance<VoteOptionPersonResultDAO>();
+
+            //删除数据
+            voteOptionPersonResultDao.deleteAll_test("voteOptionPersonResult");
+            voteOptionDao.deleteAll_test("voteOption");
+            voteDao.deleteAll_test("vote");
+            fileDao.deleteAll_test("file");
+            agendaDao.deleteAll_test("agenda");
+            delegateDao.deleteAll_test("delegate");
+            meetingDao.deleteAll_test("meeting");
+
+            longTableDao.deleteAll_test("longTable");
+            meetingPlaceDao.deleteAll_test("meetingPlace");
+            deviceDao.deleteAll_test("device");
+            personDao.deleteAll_test("person");
 
             #region 会议测试数据
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
@@ -91,15 +107,21 @@ namespace WebServer.Models.Test
 
 
             Dictionary<String, MeetingPlaceVO> meetingPlaces = new Dictionary<string, MeetingPlaceVO>();
+            List<LongTableVO> longTables =new List<LongTableVO>();
+
             int meetingPlaceNum = 2;
             int[] meetingPlaceIDs = new int[meetingPlaceNum];
+            int[] longTableIDs = new int[meetingPlaceNum];
+
             string[] meetingPlaceNames = new string[meetingPlaceNum];
             for (int i = 0; i < meetingPlaceNum; i++)
             {
                 meetingPlaceIDs[i] = MeetingPlaceDAO.getID();
+                longTableIDs[i] = LongTableDAO.getID();
             }
             meetingPlaceNames[0] = "学术会议室";
             meetingPlaceNames[1] = "决策室";
+
             for (int i = 0; i < meetingPlaceNum; i++)
             {
                 meetingPlaces.Add(meetingPlaceNames[i],
@@ -108,24 +130,26 @@ namespace WebServer.Models.Test
                         meetingPlaceID = meetingPlaceIDs[i],
                         meetingPlaceName = meetingPlaceNames[i],
                         meetingPlaceCapacity = 200,
-                        meetingPlaceState = 0
+                        meetingPlaceState = 0,
+                        seatType = 0
                     });
+                longTables.Add(new LongTableVO
+                {
+                    longTableID = longTableIDs[i],
+                    meetingPlaceID = meetingPlaceIDs[i],
+                    upNum = 2,
+                    downNum = 3,
+                    leftNum = 4,
+                    rightNum = 5
+                });
             }
 
             //////////////////////////////////
-            Console.WriteLine("添加会场");
+            Console.WriteLine("添加会场及对应的会场类型");
             for (int i = 0; i < meetingPlaceNum;i++)
             {
-                wherelist.Clear();
-                wherelist.Add("meetingPlaceName",meetingPlaceNames[i]);
-                MeetingPlaceVO tempVo = meetingPlaceDao.getOne<MeetingPlaceVO>(wherelist);
-                if (tempVo != null)
-                {
-                    meetingPlaces[meetingPlaceNames[i]] = tempVo;
-                    meetingPlaceIDs[i] = tempVo.meetingPlaceID;
-                    continue;
-                }
                 Console.WriteLine(meetingPlaceDao.insert<MeetingPlaceVO>(meetingPlaces[meetingPlaceNames[i]]));
+                Console.WriteLine(longTableDao.insert<LongTableVO>(longTables[i]));
             }
 
 

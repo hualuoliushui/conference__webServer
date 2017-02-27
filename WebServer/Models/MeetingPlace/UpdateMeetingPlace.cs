@@ -20,6 +20,8 @@ namespace WebServer.Models.MeetingPlace
         [Range(1, 10000, ErrorMessage = "会场容量必须在{1}和{2}之间")]
         public int meetingPlaceCapacity { set; get; }
 
+        [Required(ErrorMessage = "座位类型不为空")]
+        public int seatType { set; get; }
 
         public override String ToString()
         {
@@ -27,6 +29,7 @@ namespace WebServer.Models.MeetingPlace
                 "会场ID：" + meetingPlaceID +
                 ",会场名称：" + meetingPlaceName +
                 ",会场容量：" + meetingPlaceCapacity +
+                ",座位类型：" + seatType +
                 "}";
         }
     }

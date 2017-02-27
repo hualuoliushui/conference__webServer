@@ -14,35 +14,24 @@ using System.Reflection;
 using WebServer.Models.Meeting;
 using WebServer.Models.Agenda;
 using WebServer.Models.Report;
+using WebServer.Models;
+using WebServer.Models.Report.ReportInfo;
 
 namespace WebServer.Controllers
 {
     public class ReportController : Controller
     {
-         
-
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+       
         [HttpGet]
-        public void Export(int meetingID)
+        public ActionResult Index(int meetingID)
         {
+             Status status = Status.SUCCESS;
+
              var service = new ReportService(meetingID);
-             var pdfFileName = service.Export();
 
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
+             Session["meetingID"] = meetingID;
 
-            Response.ContentType = "application/x-zip-compressed";
-            Response.AddHeader("Content-Disposition", "attachment;filename="
-                + pdfFileName);//以附件形式下载
-            if (System.IO.File.Exists(service.pdfFullName))
-            {
-                Response.TransmitFile(service.pdfFullName);
-            } 
+             return View(service.run());
         }
     }
 }

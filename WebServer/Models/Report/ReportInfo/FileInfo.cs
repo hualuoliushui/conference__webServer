@@ -7,8 +7,9 @@ namespace WebServer.Models.Report.ReportInfo
 {
     public class FileInfo
     {
+        public int agendaID { set; get; }
         public int fileID { set; get; }
         public string fileName { set; get; }
-        public string fileSize { set; get; }
+        public int fileSize { set; get; }
     }
 }

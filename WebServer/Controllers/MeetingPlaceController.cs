@@ -24,6 +24,7 @@ namespace WebServer.Controllers
         {
             return View();
         }
+
         [RBAC]
         public JsonResult GetMeetingPlacesForMeeting()
         {
@@ -55,6 +56,7 @@ namespace WebServer.Controllers
 
             return Json(respond, JsonRequestBehavior.AllowGet);
         }
+
         [RBAC]
         public JsonResult GetMeetingPlaceForUpdate(int meetingPlaceID)
         {
@@ -78,8 +80,9 @@ namespace WebServer.Controllers
             if (ModelState.IsValid)
             {
                 //调用会场服务
-                Status status = new MeetingPlaceService().create(meetingPlace);
-                return Json(new RespondModel(status, ""), JsonRequestBehavior.AllowGet);
+                int meetingPlaceID;
+                Status status = new MeetingPlaceService().create(meetingPlace, out meetingPlaceID);
+                return Json(new RespondModel(status, meetingPlaceID), JsonRequestBehavior.AllowGet);
             }
 
             return Json(new RespondModel(Status.ARGUMENT_ERROR, ModelStateHelper.errorMessages(ModelState)), JsonRequestBehavior.AllowGet);

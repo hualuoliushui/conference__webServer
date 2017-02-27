@@ -15,6 +15,10 @@
         return $("#userJob").val();
     }
 
+    function getUserLevel() {
+        return $("#userLevel").val();
+    }
+
     function getUserDescription() {
         return $("#userDescription").val();
     }
@@ -31,12 +35,14 @@
         var userName = getUserName();
         var userDepartment = getUserDepartment();
         var userJob = getUserJob();
+        var userLevel = getUserLevel();
         var userDescription = getUserDescription();
 
         var obj = {
             userName: userName,
             userDepartment: userDepartment,
             userJob: userJob,
+            userLevel:userLevel,
             userDescription: userDescription
         };
 

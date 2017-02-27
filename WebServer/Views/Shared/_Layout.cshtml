@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-datetimepicker-master/less/datetimepicker.less">
+    <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap-datetimepicker-master/css/jquery-ui.css">
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/less/dist/less.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"> </script>
+
+    @RenderSection("BodyLess", required: false);
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

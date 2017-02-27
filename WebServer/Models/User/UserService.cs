@@ -116,6 +116,7 @@ namespace WebServer.Models.User
             //默认密码："123456"
             personVo.personPassword = "123456";
             personVo.personDescription = newUser.userDescription;
+            personVo.personLevel = newUser.userLevel;
 
             //如果插入用户失败，返回error
             if (personDao.insert<PersonVO>(personVo) < 0) 
@@ -176,7 +177,8 @@ namespace WebServer.Models.User
                 userDepartment = user.userDepartment,
                 userJob = user.userJob,
                 userDescription = user.userDescription,
-                roleID = roleID
+                roleID = roleID,
+                userLevel=user.userLevel
             };
             return create(createUser);
         }
@@ -231,8 +233,10 @@ namespace WebServer.Models.User
                             role.roleID == person_roleVolist[0].roleID)
                             .Select(p => p.roleName))
                             .ToList().First(),
+                        userLevel=vo.personLevel,
                         userFreezeState = vo.personState
                     });
+                    
                 }
                 catch (Exception e)
                 {
@@ -280,6 +284,7 @@ namespace WebServer.Models.User
              user.userJob = personVo.personJob;
              user.userDescription = personVo.personDescription;
              user.roleID = person_roleVolist[0].roleID; // 现在，用户与角色为 多对一 关系
+             user.userLevel = personVo.personLevel;
 
             return Status.SUCCESS;
         }
@@ -309,12 +314,14 @@ namespace WebServer.Models.User
             personVo.personDepartment = user.userDepartment;
             personVo.personJob = user.userJob;
             personVo.personDescription = user.userDescription;
+            personVo.personLevel = user.userLevel;
 
             wherelist.Clear();
             wherelist.Add("personName", user.userName);
             wherelist.Add("personDepartment", user.userDepartment);
             wherelist.Add("personJob", user.userJob);
             wherelist.Add("personDescription", user.userDescription);
+            wherelist.Add("personLevel", user.userLevel);
 
 
             //更新user表

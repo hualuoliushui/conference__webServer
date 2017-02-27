@@ -1,0 +1,68 @@
+﻿@model WebServer.Models.Delegate.SeatArrange_LongTableModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "中佰会议系统组织者";
+}
+@section BodyLess{
+    <link href="~/less/delegate/seatArrange_LongTable.less" type="text/css" rel="stylesheet">
+}
+
+@section scripts{
+    <script src="~/Js/Canvas/fabric.js/1.7.6/fabric.min.js" type="text/javascript"></script>
+    <script src="~/js/delegate/seatArrange_LongTable.js" type="text/javascript"></script>
+}
+
+<div>
+    <input type="hidden" id="meetingID" value="@Session["meetingID"]" />
+
+    <input type="hidden" id="upNum" value="@(Model.upNum)" />
+    <input type="hidden" id="downNum" value="@(Model.downNum)" />
+    <input type="hidden" id="leftNum" value="@(Model.leftNum)" />
+    <input type="hidden" id="rightNum" value="@(Model.rightNum)" />
+</div>
+
+<div class="container" id="mainContent">
+    <div class="seatInfos col-md-2">
+        <select id="seatInfos" size="5">
+            @foreach (var seatInfo in Model.seatInfos)
+            {
+                <option value="@(seatInfo.delegateID)"
+                        seatindex="@(seatInfo.seatIndex)"
+                        userLevel="@(seatInfo.userLevel)">@seatInfo.userName</option>
+            }
+            @*@for (var i = 0; i < 10; i++)
+            {
+                <option value="@i"
+                        seatindex="0"
+                        userlevel="0">人员 @(i+1)</option>
+            }*@
+        </select>
+    </div>
+    <div id="seat_functions">
+        <button id="reset" >重置并自动排序</button>
+        <button id="byhand">重置座位信息</button>
+        <button id="gobackCenter">回到中心</button>
+        <button id="save">保存</button>
+        <button id="return">返回</button>
+        <label>座位总数：@(Model.upNum+Model.downNum+Model.leftNum+Model.rightNum)</label>
+        <label>人员总数：@(Model.seatInfos.Count)</label>
+    </div>
+    <div>
+        <fieldset>
+            <legend>操作说明</legend>
+            <ol>
+                <li>会场以上方为主位</li>
+                <li>红色矩形：会议桌；绿色矩形：空座位；黑色矩形：已安排人员就坐</li>
+                <li>重置并自动排序：清除所有布置信息，按照预设规则进行排序</li>
+                <li>重置座位信息:只清除所有布置信息，不进行排座</li>
+                <li>回到中心：如果会场偏离中心太远，可以使其回到中心位置</li>
+                <li>手动排序：点击左边人员列表中的某一项，然后会场中，点击想要安排到的座位即可；可以手动移动已在会场中的人员</li>
+            </ol>
+        </fieldset>
+    </div>
+
+    <div class="seatArrange-box" id="seatArrange-box">
+        <canvas id="seatArrange" width="3200" height="1200" contextmenu=undefined>不支持canvas</canvas>
+    </div>
+    
+</div>

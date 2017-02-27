@@ -51,9 +51,54 @@
     <Reference Include="Aspose.Words">
       <HintPath>..\..\APIServer\APIServer\bin\Aspose.Words.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.TemplateEngine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.Data.AdoDotNetInterop, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Enterprise.Viewing.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportAppServer.ObjectFactory, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.Prompting, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.VSDesigner, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <HintPath>..\packages\dotless.1.5.2\lib\dotless.Core.dll</HintPath>
       <Private>True</Private>
@@ -65,6 +110,7 @@
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Apache\mysql-5.7.15-winx64\Assemblies\v4.5\MySql.Data.dll</HintPath>
@@ -207,6 +253,7 @@
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\LongTableController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\MeetingPlaceController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -224,6 +271,7 @@
     <Compile Include="Models\Delegate\CreateDelegate.cs" />
     <Compile Include="Models\Delegate\DelegateInfo.cs" />
     <Compile Include="Models\Delegate\DelegateService.cs" />
+    <Compile Include="Models\Delegate\SeatInfo.cs" />
     <Compile Include="Models\Delegate\SpeakerForAgenda.cs" />
     <Compile Include="Models\Delegate\UpdateDelegate.cs" />
     <Compile Include="Models\Device\CreateDevice.cs" />
@@ -239,6 +287,10 @@
     <Compile Include="Models\Document\FileConvertService\FileConvertBase.cs" />
     <Compile Include="Models\Document\FileConvertService\OfficeMethod.cs" />
     <Compile Include="Models\Excel\Excel.cs" />
+    <Compile Include="Models\LongTable\CreateLongTable.cs" />
+    <Compile Include="Models\LongTable\LongTableInfo.cs" />
+    <Compile Include="Models\LongTable\LongTableService.cs" />
+    <Compile Include="Models\LongTable\UpdateLongTable.cs" />
     <Compile Include="Models\MeetingPlace\MeetingPlaceForMeeting.cs" />
     <Compile Include="Models\Meeting\AddMeetingModel.cs" />
     <Compile Include="Models\Meeting\EditMeetingModel.cs" />
@@ -247,6 +299,7 @@
     <Compile Include="Models\Report\ReportInfo\DelegateInfo.cs" />
     <Compile Include="Models\Report\ReportInfo\FileInfo.cs" />
     <Compile Include="Models\Report\ReportInfo\MeetingInfo.cs" />
+    <Compile Include="Models\Report\ReportInfo\ReportInfo.cs" />
     <Compile Include="Models\Report\ReportInfo\VoteInfo.cs" />
     <Compile Include="Models\Report\ReportService.cs" />
     <Compile Include="Models\Role\CreateRole.cs" />
@@ -344,11 +397,15 @@
     <Content Include="js\agenda\add.js" />
     <Content Include="js\agenda\edit.js" />
     <Content Include="js\agenda\index.js" />
+    <Content Include="js\canvas\fabric.js\1.7.6\fabric.min.js" />
+    <Content Include="js\canvas\flotr2.min.js" />
     <Content Include="js\common\admin.js" />
     <Content Include="js\common\jquery\jquery-1.5.1.min.js" />
     <Content Include="js\common\organizor.js" />
     <Content Include="js\delegate\add.js" />
     <Content Include="js\delegate\index.js" />
+    <Content Include="js\delegate\seatArrange_LongTable.js" />
+    <Content Include="js\delegate\temp.js" />
     <Content Include="js\device\add.js" />
     <Content Include="js\document\add.js" />
     <Content Include="js\document\index.js" />
@@ -360,6 +417,7 @@
     <Content Include="js\meeting\add.js" />
     <Content Include="js\meeting\edit.js" />
     <Content Include="js\meeting\show.js" />
+    <Content Include="js\report\index.js" />
     <Content Include="js\user\add_organizor.js" />
     <Content Include="js\user\edit.js" />
     <Content Include="js\user\add.js" />
@@ -369,6 +427,8 @@
     <Content Include="js\vote\add.js" />
     <Content Include="js\vote\edit.js" />
     <Content Include="js\vote\index.js" />
+    <Content Include="less\report\index.css" />
+    <Content Include="less\report\print.css" />
     <Content Include="node_modules\.0.0.0%40prr\prr.js" />
     <Content Include="node_modules\.0.0.0%40prr\test.js" />
     <Content Include="node_modules\.0.0.8%40minimist\example\parse.js" />
@@ -3467,7 +3527,7 @@
     <Content Include="less\account\organizor.less" />
     <Content Include="less\error\permissionDenied.less" />
     <Content Include="node_modules\jquery\src\jquery-confirm.less" />
-    <Content Include="Models\Report\Templet\templet.docx" />
+    <Content Include="less\delegate\seatArrange_LongTable.less" />
     <None Include="Properties\PublishProfiles\web.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="images\01120.png" />
@@ -3588,6 +3648,10 @@
     <Content Include="Views\User\Add_organizor.cshtml" />
     <Content Include="Views\Vote\Index_organizor.cshtml" />
     <Content Include="Views\Error\PermissionDenied.cshtml" />
+    <Content Include="Views\Delegate\SeatArrange_LongTable_organizor.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout_ForReport.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

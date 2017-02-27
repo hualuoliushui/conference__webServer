@@ -1,0 +1,194 @@
+
+----------------------header--------------------------
+2017-02-25 09:14:11,247 [1] INFO  WebLogger - 系统启动
+2017-02-25 09:14:13,601 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 09:14:20,000 [1] INFO  WebLogger - 服务器异常
+System.TypeInitializationException: “DAL.DAO.PersonDAO”的类型初始值设定项引发异常。 ---> System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 DAL.Base.DAOBase.getIDMax(String tableName) 位置 d:\c#_workspace\DAL\DAL\Base\DAOBase.cs:行号 63
+   在 DAL.DAO.PersonDAO..cctor() 位置 d:\c#_workspace\DAL\DAL\DAO\PersonDAO.cs:行号 19
+   --- 内部异常堆栈跟踪的结尾 ---
+   在 DAL.DAOFactory.Factory.getInstance[T]() 位置 d:\c#_workspace\DAL\DAL\DAOFactory\Factory.cs:行号 17
+   在 WebServer.Models.Test.TestService.init() 位置 d:\c#_workspace\WebServer\WebServer\Models\Test\TestService.cs:行号 25
+   在 WebServer.MvcApplication.Application_Start() 位置 d:\c#_workspace\WebServer\WebServer\Global.asax.cs:行号 31
+
+----------------------header--------------------------
+2017-02-25 09:14:41,198 [1] INFO  WebLogger - 系统启动
+2017-02-25 09:14:41,312 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 09:14:41,857 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-25 09:21:39,149 [7] INFO  WebLogger - getSeatInfos(2):
+System.Exception: 会场不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 529
+2017-02-25 09:28:04,189 [21] INFO  WebLogger - getSeatInfos(2):
+System.Exception: 会场不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 529
+2017-02-25 09:29:13,530 [19] INFO  WebLogger - getSeatInfos(2):
+System.Exception: 会场不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 529
+2017-02-25 09:29:43,382 [19] INFO  WebLogger - getSeatInfos(2):
+System.Exception: 会场不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 529
+
+----------------------header--------------------------
+2017-02-25 09:46:48,164 [1] INFO  WebLogger - 系统启动
+2017-02-25 09:46:51,038 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 09:46:51,596 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-25 09:47:08,791 [9] INFO  WebLogger - getSeatInfos(3):
+System.Exception: 会场不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 529
+
+----------------------header--------------------------
+2017-02-25 09:55:05,502 [1] INFO  WebLogger - 系统启动
+2017-02-25 09:55:07,997 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 09:55:08,655 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-25 09:55:40,412 [11] INFO  WebLogger - 服务器异常
+System.Exception: 会场不存在
+   在 WebServer.Controllers.DelegateController.SeatArrange_organizor(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DelegateController.cs:行号 134
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-02-25 09:57:34,262 [8] INFO  WebLogger - 服务器异常
+System.Exception: 会场不存在
+   在 WebServer.Controllers.DelegateController.SeatArrange_organizor(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DelegateController.cs:行号 134
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-02-25 09:58:50,821 [8] INFO  WebLogger - 服务器异常
+System.Exception: 会场不存在
+   在 WebServer.Controllers.DelegateController.SeatArrange_organizor(Int32 meetingID) 位置 d:\c#_workspace\WebServer\WebServer\Controllers\DelegateController.cs:行号 134
+   在 lambda_method(Closure , ControllerBase , Object[] )
+   在 System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   在 System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+
+----------------------header--------------------------
+2017-02-25 10:03:33,871 [1] INFO  WebLogger - 系统启动
+2017-02-25 10:03:35,777 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 10:03:36,295 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-02-25 18:08:41,002 [1] INFO  WebLogger - 系统启动
+2017-02-25 18:08:41,134 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 18:08:42,087 [1] DEBUG WebLogger - 测试数据初始化结束
+2017-02-25 18:08:42,560 [55] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:08:47,703 [63] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:09:23,624 [35] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:09:51,409 [55] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:10:09,804 [35] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:11:41,572 [35] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:12:23,999 [35] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:13:10,808 [50] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:22:51,136 [62] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-02-25 18:23:10,993 [62] INFO  WebLogger - getSeatInfos(5):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+
+----------------------header--------------------------
+2017-02-25 18:56:50,537 [1] INFO  WebLogger - 系统启动
+2017-02-25 18:56:53,127 [1] DEBUG WebLogger - 测试数据初始化...
+2017-02-25 18:56:53,722 [1] DEBUG WebLogger - 测试数据初始化结束

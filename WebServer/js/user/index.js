@@ -14,12 +14,13 @@ $(function() {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
                     "<li href='#' class='list-group-item container-fluid' userID=" + item.userID + ">" +
-                    "<label class='col-md-2 list-If'>" + item.userName + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.userDepartment + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.userJob + "</label>" +
-                    "<label class='col-md-2 list-If'>" + item.roleName + "</label>" +
-                    "<button class='btn btn-default col-md-1 col-md-offset-1 edit' type='button'>编辑</button>" +
-                    "<button class='" + FreezeStateBtn[item.userFreezeState] + " " + "btn col-md-1 col-md-offset-1 freeze' buttonType=" + item.userFreezeState + " type='button'>" + FreezeStateString[item.userFreezeState] + "</button>" +
+                    "<label class='col-xs-2 list-If'>" + item.userName + "</label>" +
+                    "<label class='col-xs-2 list-If'>" + item.userDepartment + "</label>" +
+                    "<label class='col-xs-2 list-If'>" + item.userJob + "</label>" +
+                    "<label class='col-xs-2 list-If'>" + item.roleName + "</label>" +
+                    "<label class='col-xs-2 list-If'>" + item.userLevel + "</label>" +
+                    "<button class='btn btn-default col-xs-1  edit' type='button'>编辑</button>" +
+                    "<button class='" + FreezeStateBtn[item.userFreezeState] + " " + "btn col-xs-1 freeze' buttonType=" + item.userFreezeState + " type='button'>" + FreezeStateString[item.userFreezeState] + "</button>" +
                     "</li>"; //漏了一个空格
             });
             //alert(appendHtml);//测试完成

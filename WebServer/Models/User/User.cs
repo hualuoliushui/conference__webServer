@@ -17,5 +17,6 @@ namespace WebServer.Models.User
         public string userJob { set; get; }
         public string roleName { set; get; }
         public int userFreezeState { set; get; }
+        public int userLevel { set; get; }
     }
 }

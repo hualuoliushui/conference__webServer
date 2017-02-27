@@ -9,11 +9,12 @@ namespace WebServer.Models.Report.ReportInfo
     {
         public int agendaID { set; get; }
         public string agendaName { set; get; }
-        public string agendaIndex { set; get; }
+        public int agendaIndex { set; get; }
         public string agendaSpeakerName { set; get; }
-        public string agendaDuration { set; get; }
+        public int agendaDuration { set; get; }
 
-        public List<ReportInfo.FileInfo> fileInfos { set; get; }
-        public List<ReportInfo.VoteInfo> voteInfos { set; get; }
+        public List<Report.ReportInfo.FileInfo> fileInfos { set; get; }
+
+        public List<Report.ReportInfo.VoteInfo> voteInfos { set; get; }
     }
 }

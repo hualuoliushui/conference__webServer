@@ -118,5 +118,48 @@ namespace WebServer.Controllers
             status = delegateService.deleteMultipe(delegateIDs);
             return Json(new RespondModel(status,""), JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public ActionResult SeatArrange_organizor(int meetingID)
+        {
+            Session["meetingID"] = meetingID;
+
+            DelegateService delegateService = new DelegateService();
+
+            int meetingPlaceID = -1;
+            var seatType = delegateService.getSeatType(meetingID,out meetingPlaceID);
+
+            if (meetingPlaceID == -1)
+            {
+                throw new System.Exception("会场不存在");
+            }
+            
+            switch (seatType)
+            {
+                case 0:
+                    return RedirectToAction("SeatArrange_LongTable_organizor", new { meetingID = meetingID, meetingPlaceID = meetingPlaceID });
+                    break;
+                default:
+                    return RedirectToAction("SeatArrange_LongTable_organizor", new { meetingID = meetingID, meetingPlaceID = meetingPlaceID });
+                    break;
+            }
+        }
+
+        [HttpGet]
+        public ActionResult SeatArrange_LongTable_organizor(int meetingID, int meetingPlaceID)
+        {
+            DelegateService service = new DelegateService();
+
+            return View(service.getSeatInfos_LongTable(meetingID, meetingPlaceID));
+        }
+
+        [HttpPost]
+        public JsonResult SeatArrange_organizor(List<SeatInfo> seatInfos)
+        {
+            DelegateService delegateService = new DelegateService();
+            Status status = delegateService.updateSeatInfos(seatInfos);
+
+            return Json(new RespondModel(status,""),JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -5,6 +5,8 @@ using DAL.DAOVO;
 using DAL.DAOFactory;
 using WebServer.Models.Meeting;
 using WebServer.Models.Device;
+using WebServer.App_Start;
+using System;
 
 namespace WebServer.Models.Delegate
 {
@@ -472,6 +474,171 @@ namespace WebServer.Models.Delegate
             delegateDao.delete(wherelist);
             return Status.SUCCESS;
         }
-        
+
+        public int getSeatType(int meetingID,out int meetingPlaceID)
+        {
+            meetingPlaceID = -1;
+            try
+            {
+                var wherelist = new Dictionary<string, object>();
+
+                //查询会场布局信息
+                var meetingDao = Factory.getInstance<MeetingDAO>();
+                var meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+                var longTableDao = Factory.getInstance<LongTableDAO>();
+
+                var meetingVo = meetingDao.getOne<MeetingVO>(meetingID);
+                if (meetingVo == null)
+                {
+                    throw new Exception("会议不存在");
+                }
+
+                wherelist.Clear();
+                wherelist.Add("meetingPlaceID", meetingVo.meetingPlaceID);
+
+                var meetingPlaceVo = meetingPlaceDao.getOne<MeetingPlaceVO>(wherelist);
+
+                if (meetingPlaceVo == null)
+                {
+                    throw new Exception("会场不存在");
+                }
+                meetingPlaceID = meetingPlaceVo.meetingPlaceID;
+
+                return meetingPlaceVo.seatType;
+            }
+            catch (Exception e)
+            {
+                Log.LogInfo("getSeatType(" + meetingID + "):", e);
+                return -1;
+            }
+
+        }
+
+        public SeatArrange_LongTableModel getSeatInfos_LongTable(int meetingID,int meetingPlaceID)
+        {
+            SeatArrange_LongTableModel model = new SeatArrange_LongTableModel();
+
+            try
+            {
+                do
+                {
+                    var wherelist = new Dictionary<string, object>();
+
+                    //查询会场布局信息
+                    var meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
+                    var longTableDao = Factory.getInstance<LongTableDAO>();
+
+                    wherelist.Clear();
+                    wherelist.Add("meetingPlaceID", meetingPlaceID);
+
+                    var longTableVo = longTableDao.getOne<LongTableVO>(wherelist);
+
+                    if (longTableVo == null)
+                    {
+                        throw new Exception("长桌会场类型参数不存在");
+                    }
+
+                    model.upNum = longTableVo.upNum;
+                    model.downNum = longTableVo.downNum;
+                    model.leftNum = longTableVo.leftNum;
+                    model.rightNum = longTableVo.rightNum;
+
+                    //获取现有座位信息
+                    model.seatInfos = getSeatInfos(meetingID);
+
+                } while (false);
+
+                return model;
+            }
+            catch (System.Exception e)
+            {
+                Log.LogInfo("getSeatInfos(" + meetingID + "):", e);
+                model.seatInfos = new List<SeatInfo>();
+                return model;//返回空列表
+            }
+        }
+
+        public Status updateSeatInfos(List<SeatInfo> seatInfos)
+        {
+            try
+            {
+                do
+                {
+                    if (seatInfos == null || seatInfos.Count == 0)
+                        break;//跳出执行
+
+                    var delegateDao = Factory.getInstance<DelegateDAO>();
+
+                    var setlist = new Dictionary<string, object>();
+                    foreach (var seatInfo in seatInfos)
+                    {
+                        setlist.Clear();
+                        setlist.Add("seatIndex", seatInfo.seatIndex);
+
+                        delegateDao.update(setlist, seatInfo.delegateID);
+                    }
+
+                } while (false);
+            }
+            catch (System.Exception e)
+            {
+                Log.LogInfo("updateSeatInfos():", e);
+                return Status.FAILURE;
+            }
+
+            return Status.SUCCESS;
+        }
+
+
+        ///////////=========================================================
+        private List<SeatInfo> getSeatInfos(int meetingID)
+        {
+            try
+            {
+                var wherelist = new Dictionary<string, object>();
+
+                //查询参会人员信息
+                var seatInfos = new List<SeatInfo>();
+
+                wherelist.Clear();
+                wherelist.Add("meetingID", meetingID);
+
+                var delegateDao = Factory.getInstance<DelegateDAO>();
+                var deviceDao = Factory.getInstance<DeviceDAO>();
+                var personDao = Factory.getInstance<PersonDAO>();
+
+                var delegateVos = delegateDao.getAll<DelegateVO>(wherelist);
+                if (delegateVos != null)
+                {
+                    foreach (var delegateVo in delegateVos)
+                    {
+                        var seatInfo = new SeatInfo();
+
+                        seatInfo.delegateID = delegateVo.delegateID;
+                        seatInfo.seatIndex = delegateVo.seatIndex;
+
+                        var deviceVo = deviceDao.getOne<DeviceVO>(delegateVo.deviceID);
+                        if (deviceVo == null)
+                            continue;
+                        seatInfo.deviceIndex = deviceVo.deviceIndex;
+
+                        var personVo = personDao.getOne<PersonVO>(delegateVo.personID);
+                        if (personVo == null)
+                            continue;
+                        seatInfo.userName = personVo.personName;
+                        seatInfo.userLevel = personVo.personLevel;
+
+                        //添加到座位安排列表
+                        seatInfos.Add(seatInfo);
+                    }
+                }
+                return seatInfos;
+            }
+            catch (System.Exception e)
+            {
+                Log.LogInfo("getSeatInfos(" + meetingID + "):", e);
+                return new List<SeatInfo>();//返回空列表
+            }
+        }
     }
 }

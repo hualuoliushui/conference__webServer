@@ -18,6 +18,12 @@ $(function () {
         window.location.href = "/Delegate/Add_organizor?meetingID=" + meetingID;
     });
 
+    //进入排座界面
+    $(document).on("click", ".seatArrange", function () {
+        var meetingID = getMeetingID();
+        window.location.href = "/Delegate/SeatArrange_organizor?meetingID=" + meetingID;
+    });
+
     //======================================
 
     function device_role_change(the) {

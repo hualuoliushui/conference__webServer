@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   @* <meta name="viewport" content="width=device-width, initial-scale=1">*@
+    <title>@ViewBag.Title</title>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+
+    @*<script src="~/js/canvas/Chart.js" type="text/javascript"></script>*@
+
+    <script src="~/js/canvas/flotr2.min.js" type="text/javascript"></script>
+    
+    @RenderSection("BodyLess", required: false)
+</head>
+<body>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

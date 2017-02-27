@@ -22,5 +22,7 @@ namespace WebServer.Models.User
 
         [StringLength(1000, MinimumLength = 0, ErrorMessage = "用户描述0-1000个字符")]
         public string userDescription { set; get; }
+
+        public int userLevel { set; get; }
     }
 }

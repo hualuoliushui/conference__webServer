@@ -23,12 +23,19 @@ $(function () {
                 roleID = this.value;
             }
         });
+        var userLevel;
+        $("#selectLevel option").each(function (i) {
+            if (this.selected == true) {
+                userLevel = this.value;
+            }
+        });
         $.post("/User/CreateUser", {
             userName: $("#input1").val(),
             userDepartment: $("#input2").val(),
             userJob: $("#input3").val(),
             userDescription: $("#description").val(),
-            roleID:roleID
+            roleID: roleID,
+            userLevel: userLevel
         }, function (data, textStatus) {
             setStatus(data);
             if (data.Code == 0) {

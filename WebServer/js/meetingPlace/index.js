@@ -14,10 +14,11 @@ $(function() {
                 itemCount = i; //i循环是从0开始
                 appendListHtml +=
                     "<li href='#' class='list-group-item container-fluid' meetingPlaceID=" + item.meetingPlaceID + ">" +
-                    "<label class='col-md-4 list-If'>" + item.meetingPlaceName + "</label>" +
-                    "<label class='col-md-4 list-If'>" + item.meetingPlaceCapacity + "</label>" +
-                    "<button class='btn btn-default col-md-1 col-md-offset-1 edit' type='button'>编辑</button>" +
-                    "<button class='" + FreezeStateBtn[item.meetingPlaceFreezeState] + " " + "btn col-md-1 col-md-offset-1 freeze' buttonType=" + item.meetingPlaceFreezeState + " type='button'>" + FreezeStateString[item.meetingPlaceFreezeState] + "</button>" +
+                    "<label class='col-xs-3 list-If'>" + item.meetingPlaceName + "</label>" +
+                    "<label class='col-xs-3 list-If'>" + item.meetingPlaceCapacity + "</label>" +
+                    "<label class='col-xs-3 list-If'>" + item.seatType + "</label>" +
+                    "<button class='btn btn-default  edit' type='button'>编辑</button>" +
+                    "<button class='" + FreezeStateBtn[item.meetingPlaceFreezeState] + " " + "btn  freeze' buttonType=" + item.meetingPlaceFreezeState + " type='button'>" + FreezeStateString[item.meetingPlaceFreezeState] + "</button>" +
                     "</li>"; //漏了一个空格
             });
             //alert(appendHtml);//测试完成
