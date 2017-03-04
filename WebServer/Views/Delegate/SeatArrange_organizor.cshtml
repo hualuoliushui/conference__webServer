@@ -1,0 +1,77 @@
+﻿@model List<WebServer.Models.Delegate.SeatInfo>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "中佰会议系统组织者";
+}
+@section BodyLess{
+    <link href="~/less/delegate/seatArrange_LongTable.less" type="text/css" rel="stylesheet">
+}
+
+@section scripts{
+    <script src="~/Js/Canvas/fabric.js/1.7.6/fabric.min.js" type="text/javascript"></script>
+    <script src="~/js/delegate/seatArrange_LongTable.js" type="text/javascript"></script>
+}
+
+<div>
+    <input type="hidden" id="meetingID" value="@Session["meetingID"]" />
+</div>
+
+<div class="container" id="mainContent">
+
+   
+
+    <div class="seatInfos">
+        <select id="seatInfos" size="5">
+            @foreach (var seatInfo in Model)
+            {
+                <option value="@(seatInfo.delegateID)"
+                        seatindex="@(seatInfo.seatIndex)"
+                        userlevel="@(seatInfo.userLevel)">@seatInfo.userName
+                    </option>
+            }
+            @*@for (var i = 0; i < 10; i++)
+                {
+                    <option value="@i"
+                            seatindex="0"
+                            userlevel="0">人员 @(i+1)</option>
+                }*@
+        </select>
+    </div>
+
+
+    <div class="seatArrange-box" id="seatArrange-box">
+        <canvas id="seatArrange" width="600" height="450" contextmenu=undefined>不支持canvas</canvas>
+    </div>
+
+    <div class="content-right">
+        <div class="introduction">
+            <fieldset>
+                <legend>操作说明</legend>
+                <ol>
+                    <li>红色矩形：会议桌；绿色矩形：空座位；黑色矩形：已安排人员就坐</li>
+                    <li>会场以1号座位为主位</li>
+                    <li>排座（按钮）：清除所有布置信息，按照预设规则进行排座</li>
+                    <li>清除（按钮）:只清除所有布置信息，不进行排座</li>
+                </ol>
+                <hr />
+                <ol> 
+                    <li>手动排序：点击左边人员列表中的某一项，然后会场中，点击想要安排到的座位即可；也可以使用鼠标移动已在会场中的人员</li>
+                    <li><b>注意：</b>由于客户端页面大小限制，此处设置座位的参会人员，最多10人</li>
+                </ol>
+            </fieldset>
+        </div>
+
+        <hr />
+
+        <div id="seat_functions">
+            <button id="reset">排座</button>
+            <button id="byhand">清除</button>
+            <button id="save">保存</button>
+            <button id="return">返回</button>
+            <br />
+            <hr />
+            <label>座位总数：10</label>
+            <label>人员总数：@(Model.Count)</label>
+        </div>
+    </div>
+</div>

@@ -16,7 +16,6 @@ $(function() {
                     "<li href='#' class='list-group-item container-fluid' meetingPlaceID=" + item.meetingPlaceID + ">" +
                     "<label class='col-xs-3 list-If'>" + item.meetingPlaceName + "</label>" +
                     "<label class='col-xs-3 list-If'>" + item.meetingPlaceCapacity + "</label>" +
-                    "<label class='col-xs-3 list-If'>" + item.seatType + "</label>" +
                     "<button class='btn btn-default  edit' type='button'>编辑</button>" +
                     "<button class='" + FreezeStateBtn[item.meetingPlaceFreezeState] + " " + "btn  freeze' buttonType=" + item.meetingPlaceFreezeState + " type='button'>" + FreezeStateString[item.meetingPlaceFreezeState] + "</button>" +
                     "</li>"; //漏了一个空格

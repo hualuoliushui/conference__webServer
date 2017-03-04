@@ -6,11 +6,10 @@ using System;
 using DAL.DAOFactory;
 using DAL.DAOVO;
 using DAL.DB;
-using WebServer.App_Start;
-using WebServer.Models.Document;
 using System.IO;
+using DAL;
 
-namespace WebServer.Models.Test
+namespace Test
 {
     public class TestService
     {
@@ -31,8 +30,6 @@ namespace WebServer.Models.Test
             DeviceDAO deviceDao = Factory.getInstance<DeviceDAO>();
             MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
 
-            LongTableDAO longTableDao = Factory.getInstance<LongTableDAO>();
-
             MeetingDAO meetingDao = Factory.getInstance<MeetingDAO>();
 
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
@@ -47,7 +44,8 @@ namespace WebServer.Models.Test
             
             VoteOptionPersonResultDAO voteOptionPersonResultDao = Factory.getInstance<VoteOptionPersonResultDAO>();
 
-            //删除数据
+            //============================
+
             voteOptionPersonResultDao.deleteAll_test("voteOptionPersonResult");
             voteOptionDao.deleteAll_test("voteOption");
             voteDao.deleteAll_test("vote");
@@ -56,10 +54,11 @@ namespace WebServer.Models.Test
             delegateDao.deleteAll_test("delegate");
             meetingDao.deleteAll_test("meeting");
 
-            longTableDao.deleteAll_test("longTable");
-            meetingPlaceDao.deleteAll_test("meetingPlace");
             deviceDao.deleteAll_test("device");
-            personDao.deleteAll_test("person");
+            meetingPlaceDao.deleteAll_test("meetingPlace");
+
+            person_roleDao.deleteAll();
+            personDao.deleteAll();
 
             #region 会议测试数据
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
@@ -107,17 +106,14 @@ namespace WebServer.Models.Test
 
 
             Dictionary<String, MeetingPlaceVO> meetingPlaces = new Dictionary<string, MeetingPlaceVO>();
-            List<LongTableVO> longTables =new List<LongTableVO>();
 
             int meetingPlaceNum = 2;
             int[] meetingPlaceIDs = new int[meetingPlaceNum];
-            int[] longTableIDs = new int[meetingPlaceNum];
 
             string[] meetingPlaceNames = new string[meetingPlaceNum];
             for (int i = 0; i < meetingPlaceNum; i++)
             {
                 meetingPlaceIDs[i] = MeetingPlaceDAO.getID();
-                longTableIDs[i] = LongTableDAO.getID();
             }
             meetingPlaceNames[0] = "学术会议室";
             meetingPlaceNames[1] = "决策室";
@@ -133,15 +129,6 @@ namespace WebServer.Models.Test
                         meetingPlaceState = 0,
                         seatType = 0
                     });
-                longTables.Add(new LongTableVO
-                {
-                    longTableID = longTableIDs[i],
-                    meetingPlaceID = meetingPlaceIDs[i],
-                    upNum = 2,
-                    downNum = 3,
-                    leftNum = 4,
-                    rightNum = 5
-                });
             }
 
             //////////////////////////////////
@@ -149,7 +136,6 @@ namespace WebServer.Models.Test
             for (int i = 0; i < meetingPlaceNum;i++)
             {
                 Console.WriteLine(meetingPlaceDao.insert<MeetingPlaceVO>(meetingPlaces[meetingPlaceNames[i]]));
-                Console.WriteLine(longTableDao.insert<LongTableVO>(longTables[i]));
             }
 
 
@@ -175,7 +161,8 @@ namespace WebServer.Models.Test
                    personJob = "董事长",
                    personDescription = "测试",
                    personPassword = "123456",
-                   personState = 0
+                   personState = 0,
+                   personLevel = 1
                });
             personIndex++;
             persons.Add(personNames[personIndex],
@@ -187,7 +174,8 @@ namespace WebServer.Models.Test
                    personJob = "股东",
                    personDescription = "测试",
                    personPassword = "123456",
-                   personState = 0
+                   personState = 0,
+                   personLevel = 3
                });
             personIndex++;
             persons.Add(personNames[personIndex],
@@ -199,7 +187,8 @@ namespace WebServer.Models.Test
                    personJob = "股东",
                    personDescription = "测试",
                    personPassword = "123456",
-                   personState = 0
+                   personState = 0,
+                   personLevel = 4
                });
             personIndex++;
             persons.Add(personNames[personIndex],
@@ -211,7 +200,8 @@ namespace WebServer.Models.Test
                    personJob = "股东",
                    personDescription = "测试",
                    personPassword = "123456",
-                   personState = 0
+                   personState = 0,
+                   personLevel = 2
                });
             personIndex++;
 
@@ -264,16 +254,6 @@ namespace WebServer.Models.Test
                 Console.WriteLine(person_roleDao.insert<Person_RoleVO>(person_roles[i]));
             }
 
-
-            //删除表决、附件、议程、参会人员、会议
-            voteOptionPersonResultDao.deleteAll_test("voteOptionPersonResult");
-            voteOptionDao.deleteAll_test("voteOption");
-            voteDao.deleteAll_test("vote");
-            fileDao.deleteAll_test("file");
-            agendaDao.deleteAll_test("agenda");
-            delegateDao.deleteAll_test("delegate");
-            meetingDao.deleteAll_test("meeting");
-
             ///////////////////////////////////////
             Console.WriteLine("添加会议");
 
@@ -287,7 +267,7 @@ namespace WebServer.Models.Test
             meeting.meetingStartedTime = (new DateTime(DateTime.Now.AddDays(6).Ticks));
             meeting.meetingToStartTime = (new DateTime(DateTime.Now.AddDays(5).Ticks));
             meeting.meetingDuration = 150;
-            meeting.personID = personIDs[0];
+            meeting.personID = 1;
 
             do
             {
@@ -441,6 +421,7 @@ namespace WebServer.Models.Test
 
             Console.WriteLine("添加表决");
             //表决
+            int voteStatus = 0;
             votes.Add(
                 new VoteVO
                 {
@@ -449,7 +430,7 @@ namespace WebServer.Models.Test
                     voteName = "测试表决1",
                     voteDescription = "表决谁做助理",
                     voteIndex = 1,
-                    voteStatus = 1,
+                    voteStatus = voteStatus,
                     voteType = 1 //单选
                 });
 
@@ -461,7 +442,7 @@ namespace WebServer.Models.Test
                     voteName = "测试表决2",
                     voteDescription = "表决谁做coding",
                     voteIndex = 1,
-                    voteStatus = 1,
+                    voteStatus = voteStatus,
                     voteType = 2 //最多双选
                 });
 

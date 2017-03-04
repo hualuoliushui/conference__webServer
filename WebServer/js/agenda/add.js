@@ -20,10 +20,8 @@ $(function () {
 
         var meetingID = $(".meetingID").val();
         var agendaName = $(".agendaName").val();
-        var agendaDuration = Number($(".agendaDuration").val());
-        if (!isInteger(agendaDuration)) {
-            return;
-        }
+        var agendaDuration = parseInt($(".agendaDuration").val());
+
         var userID = $(".userID option:selected").val();
         var test = "";
         $.ajax({

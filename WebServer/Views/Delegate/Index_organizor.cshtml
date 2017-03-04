@@ -69,11 +69,17 @@
                         </label>
                     </li>
                 </ul>
+                <div>
+                    @foreach (var device in Model.Item2)
+                    {
+                        <input class="leftOption" type="hidden" value="@(device.deviceID)" index="@(device.deviceIndex)" />
+                    }
+                </div>
                 <ul class="list-group2 contentRightListGroupOutWindow">
                     <div class="list-group2 contentRightListGroupOutWindowList  table-responsive">
                         @foreach (var tempDelegate in Model.Item1)
                         {
-                            <li href="#" class="list-group-item disabled container-fluid delegate list_index">
+                            <li href="#" class="list-group-item disabled container-fluid delegate list_index" delegateID="@tempDelegate.delegateID">
                                 <input type="hidden" class="delegateID ID" value="@tempDelegate.delegateID" />
                                 <input type="checkbox" class="col-md-1 check">
                                 <label class="col-md-2 list-If  searchStr">
@@ -86,7 +92,7 @@
                                     @tempDelegate.userJob
                                 </label>
                                 <label class="col-md-2 list-If">
-                                    <select class="userMeetingRole">
+                                    <select class="userMeetingRole" delegateid="@tempDelegate.delegateID">
                                         @{
                             var selected = "";
                             if (tempDelegate.userMeetingRole == 0)
@@ -114,12 +120,8 @@
                                     </select>
                                 </label>
                                 <label class="col-md-2 list-If">
-                                    <select class="deviceID">
+                                    <select class="deviceID" delegateID="@tempDelegate.delegateID">
                                         <option value="@tempDelegate.deviceID">@tempDelegate.deviceIndex</option>
-                                        @foreach (var device in Model.Item2)
-                                        {
-                                            <option value="@device.deviceID">@device.deviceIndex</option>
-                                        }
                                     </select>
                                 </label>
                                 <label>

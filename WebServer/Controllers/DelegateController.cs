@@ -126,31 +126,10 @@ namespace WebServer.Controllers
 
             DelegateService delegateService = new DelegateService();
 
-            int meetingPlaceID = -1;
-            var seatType = delegateService.getSeatType(meetingID,out meetingPlaceID);
+            List<SeatInfo> seatInfos = null;
+            delegateService.getSeatInfos(meetingID,out seatInfos);
 
-            if (meetingPlaceID == -1)
-            {
-                throw new System.Exception("会场不存在");
-            }
-            
-            switch (seatType)
-            {
-                case 0:
-                    return RedirectToAction("SeatArrange_LongTable_organizor", new { meetingID = meetingID, meetingPlaceID = meetingPlaceID });
-                    break;
-                default:
-                    return RedirectToAction("SeatArrange_LongTable_organizor", new { meetingID = meetingID, meetingPlaceID = meetingPlaceID });
-                    break;
-            }
-        }
-
-        [HttpGet]
-        public ActionResult SeatArrange_LongTable_organizor(int meetingID, int meetingPlaceID)
-        {
-            DelegateService service = new DelegateService();
-
-            return View(service.getSeatInfos_LongTable(meetingID, meetingPlaceID));
+            return View(seatInfos);
         }
 
         [HttpPost]

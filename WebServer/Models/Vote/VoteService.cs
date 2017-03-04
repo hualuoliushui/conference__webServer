@@ -344,7 +344,7 @@ namespace WebServer.Models.Vote
                         voteName = vote.voteName,
                         voteDescription = vote.voteDescription,
                         voteType = vote.voteType,
-                        voteStatus = 1, // 未开
+                        voteStatus = 0, // 未开
                         agendaID = vote.agendaID,
                         isUpdate = isUpdate
                     }) < 0)

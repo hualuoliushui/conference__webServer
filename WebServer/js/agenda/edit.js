@@ -25,7 +25,7 @@ $(function () {
 
         var agendaID = $(".agendaID").val();
         var agendaName = $(".agendaName").val();
-        var agendaDuration = $(".agendaDuration").val();
+        var agendaDuration = parseInt($(".agendaDuration").val());
         var userID = $(".userID option:selected").val();
         var test = "";
         $.ajax({

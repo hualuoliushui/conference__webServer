@@ -64,7 +64,7 @@ function init_chartStructs() {
             }
             var optionResults = option.find(".optionResult");
             if (optionResults) {
-                chartStruct.optionResults.push([index,Number(optionResults[0].innerText)+10]);
+                chartStruct.optionResults.push([index,Number(optionResults[0].innerText)]);
             }
             index++;
         });

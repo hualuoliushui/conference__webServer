@@ -16,8 +16,6 @@ namespace WebServer.Models.MeetingPlace
 
         public int meetingPlaceFreezeState { set; get; }
 
-        public int seatType { set; get; }
-
         public override String ToString()
         {
             return "{会场：" +
@@ -25,7 +23,6 @@ namespace WebServer.Models.MeetingPlace
                 ",会场名称：" + meetingPlaceName +
                 ",会场容量：" + meetingPlaceCapacity +
                 ",会场状态：" + meetingPlaceFreezeState +
-                ",座位类型：" + seatType +
                 "}";
         }
     }

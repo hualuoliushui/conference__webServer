@@ -1,0 +1,56 @@
+
+----------------------header--------------------------
+2017-03-03 10:38:05,586 [1] INFO  WebLogger - 系统启动
+2017-03-03 10:42:30,085 [6] INFO  WebLogger - getSeatInfos(4):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 540
+
+----------------------header--------------------------
+2017-03-03 11:11:32,072 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-03-03 11:14:22,891 [1] INFO  WebLogger - 系统启动
+
+----------------------header--------------------------
+2017-03-03 11:18:35,865 [1] INFO  WebLogger - 系统启动
+2017-03-03 11:22:02,850 [8] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.MeetingPlaceController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-03-03 11:22:28,434 [8] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): A public action method 'Index' was not found on controller 'WebServer.Controllers.MeetingPlaceController'.
+   在 System.Web.Mvc.Controller.HandleUnknownAction(String actionName)
+   在 System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__18(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   在 System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   在 System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2017-03-03 11:33:00,917 [25] DEBUG WebLogger - 上传“导入文件”时间：1.5007ms
+2017-03-03 11:33:01,692 [25] DEBUG WebLogger - 导入数据，花费时间:2.0014ms
+
+----------------------header--------------------------
+2017-03-03 12:57:54,731 [1] INFO  WebLogger - 系统启动

@@ -89,6 +89,9 @@ var tableBottom_RowIndex;
 
 //定义桌子参数//以像素为基本单位
 var table;
+
+var add_tableHeight = 1;//已座位高度为基本单位
+
 var tableLeft;
 var tableTop;
 var tableWidth;
@@ -166,50 +169,6 @@ function draw_grid() {
 //绘制桌子
 function draw_table() {
     canvas.add(make_Rect(tableLeft, tableTop, tableWidth, tableHeight, 'red', false));
-}
-
-//画布中，座位图形坐标修正// 避免重叠，符合网格
-function position_change(left, top) { // x,y
-
-    //以座位尺寸为基本单位
-    left = Math.floor(left / seatWidth);
-    top = Math.floor(top / seatHeight);
-
-    //避免与桌子边框坐标重叠
-    if (top >= tableTop_RowIndex
-        && left >= tableLeft_ColumnIndex
-        && top < tableBottom_RowIndex
-        && left < tableRight_ColumnIndex) { //位于桌子中间
-        console.log("与桌子重叠");
-        //坐标修正 以桌子的一半为分割线 修正竖直方向
-        if (top > (tableTop_RowIndex + tableBottom_RowIndex) / 2) {
-            //修正
-            top = tableBottom_RowIndex;
-        } else {
-            top = tableTop_RowIndex - 1;
-        }
-        //避免 出 座位网格边缘
-    } else {
-        if (top < tableTop_RowIndex && (left < tableLeft_ColumnIndex
-            || left >= tableRight_ColumnIndex)) {
-            console.log("位于左上方或右上方");
-            top = tableTop_RowIndex;
-        } else if (top >= tableBottom_RowIndex && (left < tableLeft_ColumnIndex
-            || left >= tableRight_ColumnIndex)) {
-            console.log("/位于左下方或右下方");
-            top = tableBottom_RowIndex - 1;
-        }
-    }
-
-    //console.log("left:" + left + " top:" + top);
-    //恢复原来的基础像素单位
-    left *= seatWidth;
-    top *= seatHeight;
-
-    if (!seat_isEmpty(left, top)) {
-        alert("位置重叠");
-    }
-    return { x: left, y: top };
 }
 
 //检测当前位置是否为空
@@ -354,10 +313,23 @@ function get_seatIndex_left_top(left, top) {
 
 //修正对应rect对象的seatInfos中的seatIndex
 function change_seatIndex(rect, seatIndex) {
+    var oldSeatIndex = 0;
     for (var i = 0 ; i < seatInfos.length; i++) {
         if (seatInfos[i].seatIndex != 0 && seatInfos[i].rect == rect) {
+            oldSeatIndex = seatInfos[i].seatIndex;
             seatInfos[i].rect = rect;
             seatInfos[i].seatIndex = seatIndex;
+        } 
+    }
+    if (oldSeatIndex == 0) {
+        return;
+    }
+
+    for (var i = 0 ; i < seatInfos.length; i++) {
+        if (seatInfos[i].seatIndex == seatIndex && seatInfos[i].rect != rect) {
+            seatInfos[i].seatIndex = oldSeatIndex;
+            var positionLT = get_left_top(oldSeatIndex);
+            seatInfos[i].rect.set({ 'left': positionLT.left, 'top': positionLT.top });
         }
     }
 }
@@ -367,7 +339,7 @@ function get_left_top_via(direction, index) { //index >=1
     var left;
     var top;
     switch (direction) {
-        case 'top'://top
+        case 'up'://top
             left = (tableLeft_ColumnIndex + index - 1 ) * seatWidth;
             top = (tableTop_RowIndex - 1) * seatHeight;
             break;
@@ -393,105 +365,33 @@ function get_left_top_via(direction, index) { //index >=1
 //根据给定座位编号,及桌子每边可容纳人数、画布大小、桌子大小，获取画布坐标
 function get_left_top(seatIndex) { //seatIndex >= 1
     //对于座位的计算，以上边开始，即
-    //  右卑       3   1   2       左尊
-    //         5   0   0   0   4
-    //         7   0   0   0   6
-    //         8   0   0   0   
-    //            10   9   
+    //  左尊       2   4   6   8          右卑 
+    //         1   0   0   0   0    10
+    //             3   5   7   9
     
-    if (seatIndex <= table_upNum
+    if (seatIndex <= table_leftNum
         && seatIndex >= 1 )
-    {//从上边开始//以上边为主
-        if (seatIndex == table_upNum) {
+    {//左
+        if (seatIndex == table_leftNum) {
             var index = 1;
-            return get_left_top_via('top', index);
-        }
-        if (table_upNum % 2 == 0) {
-            //偶数
-            
-            //获取中间值,
-            var center = (table_upNum / 2 + 1);
-            //如果seatIndex==1
-            if (seatIndex == 1) {
-                return get_left_top_via('top', center);
-            }
-
-            //面向屏幕时 左边为偶数，右边为奇数
-            if (seatIndex % 2 == 1) {
-                var count = (seatIndex - 1) / 2;
-                var index = center + count;
-                return get_left_top_via('top', index);
-            } else {
-                var count = seatIndex / 2;
-                var index = center - count;
-                return get_left_top_via('top', index);
-            }
-        } else {
-            //获取中间值,向上取整
-            var center = Math.ceil(table_upNum / 2);
-            //如果seatIndex==1
-            if (seatIndex == 1) {
-                return get_left_top_via('top', center);
-            }
-
-            //面向屏幕时 右边为偶数，左边为奇数
-            if (seatIndex % 2 == 1) {
-                var count = (seatIndex - 1) / 2;
-                var index = center - count;
-                return get_left_top_via('top', index);
-            } else {
-                var count = seatIndex / 2;
-                var index = center + count;
-                return get_left_top_via('top', index);
-            }
+            return get_left_top_via('left', index);
         }
     }
-    else if (seatIndex > (table_upNum + table_leftNum + table_rightNum)
+    else if (seatIndex > (table_upNum + table_leftNum + table_downNum)
         && seatIndex <= (table_upNum + table_leftNum + table_rightNum + table_downNum))
-    {//判断是否位于下边
-        var downIndex = seatIndex - (table_upNum + table_leftNum + table_rightNum);
-
-        if (downIndex == 1) {
-            //位置为下边最后一个
-            var index = table_downNum;
+    {//右
+        var downIndex = seatIndex - (table_upNum + table_leftNum + table_downNum);
+        return get_left_top_via('right', downIndex);
+    } else if (seatIndex < (table_upNum + table_leftNum + table_rightNum + table_downNum)
+        && seatIndex > table_leftNum){
+        if (seatIndex % 2 == 0) {
+            //偶数
+            var index = seatIndex / 2;
+            return get_left_top_via('up', index);
+        } {
+            //奇数
+            var index = (seatIndex - 1) / 2;
             return get_left_top_via('down', index);
-        }
-
-        //面向屏幕时 左边为偶数，右边为奇数
-        if (downIndex % 2 == 0) {
-            var index = (downIndex) / 2;
-            return get_left_top_via('down', index);
-        } else {
-            var index = table_downNum - (downIndex - 1) / 2;
-            return get_left_top_via('down', index);
-        }
-    } else if(seatIndex <= ((table_upNum + table_leftNum + table_rightNum))
-        && seatIndex > table_upNum){
-        //在左边或者右边
-        var lrIndex = seatIndex - table_upNum;
-
-        //取两边中最小值
-        var minValue = Math.min(table_leftNum, table_rightNum);
-
-        if (lrIndex <= minValue * 2) {
-            //lrIndex遵循 奇数在 right边 偶数在 left边
-            if (lrIndex % 2 == 0) {
-                var index = lrIndex / 2;
-                return get_left_top_via('left', index);
-            } else {
-                var index = (lrIndex + 1) / 2;
-                return get_left_top_via('right', index);
-            }
-        }
-
-        if (minValue == table_leftNum) {
-            //桌子右边还有剩余座位
-            var index = (lrIndex - minValue);
-            return get_left_top_via('right', index);
-        } else {
-            //桌子左边还有剩余
-            var index = (lrIndex - minValue);
-            return get_left_top_via('left', index);
         }
     } else {
         alert("座位编号不合理");
@@ -527,10 +427,6 @@ function get_seatInfos() {
 
     options.each(function () {
         var option = $(this);
-        //console.log(option.val());
-        //console.log(option.text());
-        //console.log(option.attr("seatIndex"));
-        //console.log(option.attr("userLevel"));
         tempSeatInfos.push(
             new SeatClass(
                 option.val(),
@@ -543,10 +439,10 @@ function get_seatInfos() {
 
 //设置长桌每边可容纳人数
 function setTable_up_down_left_right() {
-    table_upNum = parseInt($("#upNum").val());
-    table_downNum = parseInt($("#downNum").val());
-    table_leftNum = parseInt($("#leftNum").val());
-    table_rightNum = parseInt($("#rightNum").val());
+    table_upNum = 4;//parseInt($("#upNum").val());
+    table_downNum = 4;// parseInt($("#downNum").val());
+    table_leftNum = 1;//parseInt($("#leftNum").val());
+    table_rightNum = 1;//parseInt($("#rightNum").val());
 }
 
 //全局数据初始化//以座位为单位的 桌子宽、高
@@ -557,7 +453,7 @@ function init() {
 
     //设置桌子 以座位尺寸为基础 的width height 取桌子对边可容纳人数的最大值
     tableWidth_NumColumns = Math.max(table_upNum, table_downNum);
-    tableHeight_NumRows = Math.max(table_leftNum, table_rightNum);
+    tableHeight_NumRows = Math.max(table_leftNum, table_rightNum)+add_tableHeight;
 
     //设置存储座位信息的数组
     seatInfos = get_seatInfos();
@@ -675,6 +571,8 @@ $(function () {
             var rect = e.target;
             //物体位置修正
             var positionLT = get_seatIndex_left_top(rect.get('left'), rect.get('top'));
+
+
 
             rect.set({ left: positionLT.left, top: positionLT.top });
             //console.log(seatInfos);
@@ -807,6 +705,9 @@ $(function () {
             },
             success: function (respond) {
                 console.log(respond);
+                if (respond.Code == 0) {
+                    alert(respond.Message);
+                }
             }
         });
     });
@@ -822,7 +723,7 @@ $(function () {
 //###################################################################
 //载入时调用
 document.body.oncontextmenu = function () {
-    return false;
+    //return false;
 }
 
 //调节滑动条位置 \ //滚动条滑到中间

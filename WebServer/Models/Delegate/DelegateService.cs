@@ -105,16 +105,18 @@ namespace WebServer.Models.Delegate
                 return Status.DELEGATE_USED;
             }
 
-            if(delegateVo.deviceID!=updateDelegate.deviceID)//设备改变
-            {
-                wherelist.Clear();
-                wherelist.Add("meetingID", updateDelegate.meetingID);
-                wherelist.Add("deviceID", updateDelegate.deviceID);
-                if (!unique<DelegateDAO, DelegateVO>(wherelist))
-                {
-                    return Status.DEVICE_OCCUPY;
-                }
-            }
+            //此处限制某一设备在一个会议中，如果已经分配，则无法改变其分配情况，
+            //但现在，需要交换同一个会议中的两台已分配的设备，故删去此限制
+            //if(delegateVo.deviceID!=updateDelegate.deviceID)//设备改变
+            //{
+            //    wherelist.Clear();
+            //    wherelist.Add("meetingID", updateDelegate.meetingID);
+            //    wherelist.Add("deviceID", updateDelegate.deviceID);
+            //    if (!unique<DelegateDAO, DelegateVO>(wherelist))
+            //    {
+            //        return Status.DEVICE_OCCUPY;
+            //    }
+            //}
             
 
             Dictionary<string, object> setlist = new Dictionary<string, object>();
@@ -475,48 +477,10 @@ namespace WebServer.Models.Delegate
             return Status.SUCCESS;
         }
 
-        public int getSeatType(int meetingID,out int meetingPlaceID)
+        //获取座位信息
+        public Status getSeatInfos(int meetingID,out List<SeatInfo> seatInfos)
         {
-            meetingPlaceID = -1;
-            try
-            {
-                var wherelist = new Dictionary<string, object>();
-
-                //查询会场布局信息
-                var meetingDao = Factory.getInstance<MeetingDAO>();
-                var meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
-                var longTableDao = Factory.getInstance<LongTableDAO>();
-
-                var meetingVo = meetingDao.getOne<MeetingVO>(meetingID);
-                if (meetingVo == null)
-                {
-                    throw new Exception("会议不存在");
-                }
-
-                wherelist.Clear();
-                wherelist.Add("meetingPlaceID", meetingVo.meetingPlaceID);
-
-                var meetingPlaceVo = meetingPlaceDao.getOne<MeetingPlaceVO>(wherelist);
-
-                if (meetingPlaceVo == null)
-                {
-                    throw new Exception("会场不存在");
-                }
-                meetingPlaceID = meetingPlaceVo.meetingPlaceID;
-
-                return meetingPlaceVo.seatType;
-            }
-            catch (Exception e)
-            {
-                Log.LogInfo("getSeatType(" + meetingID + "):", e);
-                return -1;
-            }
-
-        }
-
-        public SeatArrange_LongTableModel getSeatInfos_LongTable(int meetingID,int meetingPlaceID)
-        {
-            SeatArrange_LongTableModel model = new SeatArrange_LongTableModel();
+            seatInfos = new List<SeatInfo>();
 
             try
             {
@@ -524,37 +488,17 @@ namespace WebServer.Models.Delegate
                 {
                     var wherelist = new Dictionary<string, object>();
 
-                    //查询会场布局信息
-                    var meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
-                    var longTableDao = Factory.getInstance<LongTableDAO>();
-
-                    wherelist.Clear();
-                    wherelist.Add("meetingPlaceID", meetingPlaceID);
-
-                    var longTableVo = longTableDao.getOne<LongTableVO>(wherelist);
-
-                    if (longTableVo == null)
-                    {
-                        throw new Exception("长桌会场类型参数不存在");
-                    }
-
-                    model.upNum = longTableVo.upNum;
-                    model.downNum = longTableVo.downNum;
-                    model.leftNum = longTableVo.leftNum;
-                    model.rightNum = longTableVo.rightNum;
-
                     //获取现有座位信息
-                    model.seatInfos = getSeatInfos(meetingID);
+                    seatInfos = getSeatInfos(meetingID);
 
                 } while (false);
 
-                return model;
+                return Status.SUCCESS;
             }
             catch (System.Exception e)
             {
                 Log.LogInfo("getSeatInfos(" + meetingID + "):", e);
-                model.seatInfos = new List<SeatInfo>();
-                return model;//返回空列表
+                return Status.FAILURE;//返回空列表
             }
         }
 
@@ -632,6 +576,16 @@ namespace WebServer.Models.Delegate
                         seatInfos.Add(seatInfo);
                     }
                 }
+
+                seatInfos.Sort((x, y) =>
+                {
+                    if (x.userLevel >= y.userLevel)
+                    {
+                        return 1;
+                    }
+                    else
+                        return -1;
+                });
                 return seatInfos;
             }
             catch (System.Exception e)

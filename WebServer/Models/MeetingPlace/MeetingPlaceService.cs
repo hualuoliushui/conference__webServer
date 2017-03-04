@@ -2,7 +2,6 @@
 using DAL.DAOVO;
 using DAL.DAO;
 using DAL.DAOFactory;
-using WebServer.Models.LongTable;
 
 namespace WebServer.Models.MeetingPlace
 {
@@ -20,26 +19,11 @@ namespace WebServer.Models.MeetingPlace
                     meetingPlaceID = meetingPlaceID,
                     meetingPlaceName = meetingPlace.meetingPlaceName,
                     meetingPlaceCapacity = meetingPlace.meetingPlaceCapacity,
-                    seatType = meetingPlace.seatType,
                     meetingPlaceState = 0
                 }) < 0 )
             {
                 return Status.NAME_EXIST;
             }
-
-            LongTableDAO longTableDao = Factory.getInstance<LongTableDAO>();
-
-            //int longTableID = LongTableDAO.getID();
-
-            //if (longTableDao.insert<LongTableVO>(
-            //    new LongTableVO
-            //    {
-            //        longTableID = longTableID,
-            //        meetingPlaceID = meetingPlaceID,
-            //    }) < 0)
-            //{
-            //    return Status.FAILURE;
-            //}
 
             return Status.SUCCESS;
         }
@@ -92,8 +76,7 @@ namespace WebServer.Models.MeetingPlace
                     meetingPlaceID = vo.meetingPlaceID,
                     meetingPlaceName = vo.meetingPlaceName,
                     meetingPlaceCapacity = vo.meetingPlaceCapacity,
-                    meetingPlaceFreezeState = vo.meetingPlaceState,
-                    seatType = vo.seatType
+                    meetingPlaceFreezeState = vo.meetingPlaceState
                 });
             }
 
@@ -114,7 +97,6 @@ namespace WebServer.Models.MeetingPlace
             meetingPlace.meetingPlaceID = vo.meetingPlaceID;
             meetingPlace.meetingPlaceName = vo.meetingPlaceName;
             meetingPlace.meetingPlaceCapacity = vo.meetingPlaceCapacity;
-            meetingPlace.seatType = vo.seatType;
 
             return Status.SUCCESS;
         }
@@ -124,16 +106,8 @@ namespace WebServer.Models.MeetingPlace
             MeetingPlaceDAO meetingPlaceDao = Factory.getInstance<MeetingPlaceDAO>();
             Dictionary<string, object> setlist = new Dictionary<string, object>();
 
-            switch (meetingPlace.seatType)
-            {
-                case 1:
-                    new LongTableService().delete(meetingPlace.meetingPlaceID);
-                    break;
-            }
-
             setlist.Add("meetingPlaceName", meetingPlace.meetingPlaceName);
             setlist.Add("meetingPlaceCapacity", meetingPlace.meetingPlaceCapacity);
-            setlist.Add("seatType", meetingPlace.seatType);
 
             if (meetingPlaceDao.update(setlist,meetingPlace.meetingPlaceID)  < 0 )
             {

@@ -24,11 +24,7 @@ $(function () {
             }
         });
         var userLevel;
-        $("#selectLevel option").each(function (i) {
-            if (this.selected == true) {
-                userLevel = this.value;
-            }
-        });
+        var userLevel = parseInt($("#selectLevel").val());
         $.post("/User/CreateUser", {
             userName: $("#input1").val(),
             userDepartment: $("#input2").val(),

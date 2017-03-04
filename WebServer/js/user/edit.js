@@ -65,11 +65,7 @@ function getUserForUpdate() {
                 this.selected = true;
             }
         });
-        $("#selectLevel option").each(function (i) {
-            if (this.value == userLevel) {
-                this.selected = true;
-            }
-        });
+        $("#selectLevel").val(userLevel);
 
     }, "json");
 }
@@ -82,12 +78,8 @@ $(function(){
                 roleID = this.value;
             }
         });
-        var userLevel;
-        $("#selectLevel option").each(function (i) {
-            if (this.selected == true) {
-                userLevel = this.value;
-            }
-        });
+        var userLevel =parseInt( $("#selectLevel").val());
+
        $.post("/User/UpdateUser", {
           userID : $("#input1").attr("userID"),
           userName : $("#input1").val(),

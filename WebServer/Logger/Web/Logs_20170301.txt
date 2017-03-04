@@ -1,0 +1,43 @@
+
+----------------------header--------------------------
+2017-03-01 09:33:29,168 [1] INFO  WebLogger - 系统启动
+2017-03-01 09:33:29,431 [1] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 09:33:31,857 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-03-01 10:39:10,416 [1] INFO  WebLogger - 系统启动
+2017-03-01 10:39:14,093 [1] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 10:39:15,477 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------header--------------------------
+2017-03-01 11:40:46,054 [1] INFO  WebLogger - 系统启动
+2017-03-01 11:40:46,283 [1] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 11:40:48,079 [1] DEBUG WebLogger - 测试数据初始化结束
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-03-01 12:43:24,322 [33] INFO  WebLogger - 系统启动
+2017-03-01 12:43:24,968 [33] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 12:43:29,951 [33] DEBUG WebLogger - 测试数据初始化结束
+2017-03-01 12:43:30,622 [38] INFO  WebLogger - getSeatInfos(22):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+2017-03-01 12:43:36,492 [40] INFO  WebLogger - getSeatInfos(22):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-03-01 13:08:00,694 [42] INFO  WebLogger - 系统启动
+2017-03-01 13:08:01,064 [42] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 13:08:02,778 [42] DEBUG WebLogger - 测试数据初始化结束
+2017-03-01 13:08:03,039 [11] INFO  WebLogger - getSeatInfos(23):
+System.Exception: 长桌会场类型参数不存在
+   在 WebServer.Models.Delegate.DelegateService.getSeatInfos_LongTable(Int32 meetingID, Int32 meetingPlaceID) 位置 d:\c#_workspace\WebServer\WebServer\Models\Delegate\DelegateService.cs:行号 538
+
+----------------------header--------------------------
+2017-03-01 13:56:39,447 [1] INFO  WebLogger - 系统启动
+2017-03-01 13:56:43,172 [1] DEBUG WebLogger - 测试数据初始化...
+2017-03-01 13:56:44,749 [1] DEBUG WebLogger - 测试数据初始化结束

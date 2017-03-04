@@ -16,7 +16,6 @@ namespace WebServer.Models.MeetingPlace
             return "{会场：" +
                 "会场ID：" + meetingPlaceID +
                 ",会场名称：" + meetingPlaceName +
-                ",座位类型：" + seatType +
                 "}";
         }
     }

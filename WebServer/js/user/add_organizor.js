@@ -16,7 +16,7 @@
     }
 
     function getUserLevel() {
-        return $("#userLevel").val();
+        return parseInt($("#userLevel").val());
     }
 
     function getUserDescription() {
