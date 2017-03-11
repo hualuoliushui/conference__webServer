@@ -161,7 +161,7 @@ namespace WebServer.Models
         /// <returns></returns>
         public bool IsNotOpen_Vote(int voteStatus)
         {
-            if (voteStatus == 1)
+            if (voteStatus == 0)
                 return true;
             return false;
         }

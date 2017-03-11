@@ -337,6 +337,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\add.png" />
     <Content Include="images\delete.png" />
+    <Content Include="images\yes.png" />
     <Content Include="js\account\admin.js" />
     <Content Include="js\account\organizor.js" />
     <Content Include="js\account\index.js" />

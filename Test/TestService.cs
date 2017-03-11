@@ -146,10 +146,10 @@ namespace Test
             {
                 personIDs[i] = PersonDAO.getID();
             }
-            personNames[0] = "彭洪云";
-            personNames[1] = "赵丽萍";
-            personNames[2] = "黄文欣";
-            personNames[3] = "林连南";
+            personNames[0] = "张丰";
+            personNames[1] = "李志强";
+            personNames[2] = "欧阳致远";
+            personNames[3] = "杨棠";
 
             int personIndex = 0;
             persons.Add(personNames[personIndex],
@@ -410,10 +410,10 @@ namespace Test
                 voteIDs[i] = VoteDAO.getID();
             }
 
-            int voteOptionNum = 3;
+            int voteOptionNum = 4;
             int[] vote1OptionIDs = new int[voteOptionNum];
             int[] vote2OptionIDs = new int[voteOptionNum];
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 vote1OptionIDs[i] = VoteOptionDAO.getID();
                 vote2OptionIDs[i] = VoteOptionDAO.getID();
@@ -425,46 +425,91 @@ namespace Test
             votes.Add(
                 new VoteVO
                 {
-                    agendaID = agendaIDs[0],
+                    agendaID = agendaIDs[2],
                     voteID = voteIDs[0],
-                    voteName = "测试表决1",
-                    voteDescription = "表决谁做助理",
+                    voteName = "选举董事会成员、监事会成员",
+                    voteDescription = "选举本公司第二届董事会成员、第二届监事会成员",
                     voteIndex = 1,
                     voteStatus = voteStatus,
-                    voteType = 1 //单选
+                    voteType = 2 //双选
                 });
 
             votes.Add(
                 new VoteVO
                 {
-                    agendaID = agendaIDs[1],
+                    agendaID = agendaIDs[2],
                     voteID = voteIDs[1],
-                    voteName = "测试表决2",
-                    voteDescription = "表决谁做coding",
+                    voteName = "提请人选的决议",
+                    voteDescription = "提请公司董事会关于董事长人选的决议",
                     voteIndex = 1,
                     voteStatus = voteStatus,
-                    voteType = 2 //最多双选
+                    voteType = 1 
                 });
-
-            for (int i = 0; i < 3; i++)
-            {
-                vote1Options.Add(
+            vote1Options.Add(
                    new VoteOptionVO
                    {
                        voteID = voteIDs[0],
-                       voteOptionID = vote1OptionIDs[i],
+                       voteOptionID = vote1OptionIDs[0],
                        voteOptionIndex = 0,
-                       voteOptionName = "A" + vote1OptionIDs[i]
+                       voteOptionName = "张丰"
                    });
-                vote2Options.Add(
-                  new VoteOptionVO
-                  {
-                      voteID = voteIDs[1],
-                      voteOptionID = vote2OptionIDs[i],
-                      voteOptionIndex = 0,
-                      voteOptionName = "B" + vote2OptionIDs[i]
-                  });
-            }
+            vote1Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[0],
+                       voteOptionID = vote1OptionIDs[1],
+                       voteOptionIndex = 0,
+                       voteOptionName = "欧阳致远"
+                   });
+            vote1Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[0],
+                       voteOptionID = vote1OptionIDs[2],
+                       voteOptionIndex = 0,
+                       voteOptionName = "杨棠"
+                   });
+            vote1Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[0],
+                       voteOptionID = vote1OptionIDs[3],
+                       voteOptionIndex = 0,
+                       voteOptionName = "李志强"
+                   });
+
+            vote2Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[1],
+                       voteOptionID = vote2OptionIDs[0],
+                       voteOptionIndex = 0,
+                       voteOptionName = "张丰"
+                   });
+            vote2Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[1],
+                       voteOptionID = vote2OptionIDs[1],
+                       voteOptionIndex = 0,
+                       voteOptionName = "李志强"
+                   });
+            vote2Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[1],
+                       voteOptionID = vote2OptionIDs[2],
+                       voteOptionIndex = 0,
+                       voteOptionName = "欧阳致远"
+                   });
+            vote2Options.Add(
+                   new VoteOptionVO
+                   {
+                       voteID = voteIDs[1],
+                       voteOptionID = vote2OptionIDs[3],
+                       voteOptionIndex = 0,
+                       voteOptionName = "杨棠"
+                   });
 
             foreach (VoteVO vo in votes)
             {

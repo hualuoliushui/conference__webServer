@@ -1,0 +1,18 @@
+
+----------------------header--------------------------
+2017-03-06 11:40:29,368 [1] INFO  WebLogger - 系统启动
+
+----------------------footer--------------------------
+
+----------------------header--------------------------
+2017-03-06 11:40:38,054 [12] INFO  WebLogger - 系统启动
+2017-03-06 11:40:39,263 [11] INFO  WebLogger - 服务器异常
+System.Web.HttpException (0x80004005): The controller for path '/__browserLink/requestData/100b017673b04d69beb5a2ec080d260a' was not found or does not implement IController.
+   在 System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   在 System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   在 System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   在 System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   在 System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   在 System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)

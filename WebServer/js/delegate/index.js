@@ -47,6 +47,16 @@ function getDevices() {
     $(".leftOption").each(function () {
         var deviceID = $(this).val();
         var deviceIndex = $(this).attr("index");
+        var checkSame = 0;
+        for (var i = 0;i<devices.length; i++) {
+            if (devices[i].deviceID == deviceID) {
+                checkSame = 1;
+                break;
+            }
+        }
+        if (checkSame == 1) {
+            return true;
+        }
         devices.push({
             deviceID: deviceID,
             deviceIndex: deviceIndex

@@ -430,13 +430,24 @@ namespace WebServer.Models.Delegate
         public Status getSpeakerForAgenda(int meetingID, out List<SpeakerForAgenda> speakers)
         {
             speakers = new List<SpeakerForAgenda>();
-            //获取会议中的全部主讲人
+            //获取会议中的全部主讲人和主持人
             Dictionary<string, object> wherelist = new Dictionary<string, object>();
             wherelist.Add("meetingID", meetingID);
-            wherelist.Add("personMeetingRole", 2);//主讲人
+            //wherelist.Add("personMeetingRole", 2);//主讲人
 
             DelegateDAO delegateDao = Factory.getInstance<DelegateDAO>();
             List<DelegateVO> delegateVolist = delegateDao.getAll<DelegateVO>(wherelist);
+            delegateVolist.RemoveAll(x =>
+            {
+                if (x.personMeetingRole == 1 || x.personMeetingRole == 2)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            });
             if (delegateVolist == null)
             {
                 return Status.NONFOUND;
