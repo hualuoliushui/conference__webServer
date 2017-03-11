@@ -58,58 +58,72 @@ namespace WebServer.Models.Excel
 
             //获取文件扩展名
             string fileExtension = System.IO.Path.GetExtension(excelFilePath).ToString().ToLower();
-
+            Log.DebugInfo("文件路径:" + excelFilePath);
             string connString;
 
             if (string.Compare(fileExtension, ".xlsx") == 0)
             {
                 connString = String.Format(XlsxConnString, excelFilePath);
+                Log.DebugInfo("文件为xlsx格式");
             }
             else if (string.Compare(fileExtension, ".xls") == 0)
             {
                 connString = String.Format(XlsConnString, excelFilePath);
+                Log.DebugInfo("文件为xls格式");
             }
             else
             {
                 return Status.FILE_NOT_SUPPORT;//只支持xlsx、xls文件
             }
-
-            using (OleDbConnection conn = new OleDbConnection(connString))
+            Log.DebugInfo("创建新的连接:");
+            try
             {
-                conn.Open();
-                using (OleDbCommand cmd = conn.CreateCommand())
+                using (OleDbConnection conn = new OleDbConnection(connString))
                 {
-                    //获取excel文件中的表格名称列表
-                    List<String> tableNames = new List<string>();
-                    DataTable tb = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
-                    foreach (DataRow row in tb.Rows)
+                    conn.Open();
+                    Log.DebugInfo("打开excel文件连接。。。");
+                    using (OleDbCommand cmd = conn.CreateCommand())
                     {
-                        tableNames.Add(row["TABLE_NAME"].ToString());
+                        //获取excel文件中的表格名称列表
+                        List<String> tableNames = new List<string>();
+                        DataTable tb = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                        foreach (DataRow row in tb.Rows)
+                        {
+                            tableNames.Add(row["TABLE_NAME"].ToString());
+                        }
+                        if (!tableNames.Contains(tableName + "$"))//表格名称:后加上$
+                        {
+                            //如果文件不包含该表格；
+                            return Status.NONFOUND;
+                        }
+                        cmd.CommandText = "select * from [" + tableName + "$]";
+                        OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+                        DataSet ds = new DataSet();
+                        Log.DebugInfo("导出到dataset：");
+                        adapter.Fill(ds, tableName);
+                        Log.DebugInfo("成功导出到dataset.");
+
+                        StringBuilder information = new StringBuilder();
+                        DataTable dt = ds.Tables[0];
+                        if (dt == null || dt.Rows.Count == 0)
+                        {
+                            return Status.NONFOUND;
+                        }
+                        DateTime start = DateTime.Now;
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            T t = new T();
+                            setT<T>(ref t, dr);
+                            tlist.Add(t);
+                        }
+                        Log.DebugInfo("导入数据，花费时间:" + (DateTime.Now - start).TotalMilliseconds + "ms");
                     }
-                    if (!tableNames.Contains(tableName + "$"))//表格名称:后加上$
-                    {
-                        //如果文件不包含该表格；
-                        return Status.NONFOUND;
-                    }
-                    cmd.CommandText = "select * from [" + tableName + "$]";
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-                    DataSet ds = new DataSet();
-                    adapter.Fill(ds, tableName);
-                    StringBuilder information = new StringBuilder();
-                    DataTable dt = ds.Tables[0];
-                    if (dt == null || dt.Rows.Count == 0 )
-                    {
-                        return Status.NONFOUND;
-                    }
-                    DateTime start = DateTime.Now;
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        T t = new T();
-                        setT<T>(ref t, dr);
-                        tlist.Add(t);
-                    }
-                    Log.DebugInfo("导入数据，花费时间:"+(DateTime.Now-start).TotalMilliseconds+"ms");
                 }
+            }
+            catch (Exception e)
+            {
+                Log.LogInfo("批量导入文件：获取文件中的信息:", e);
+                throw e;
             }
             return Status.SUCCESS;
         }

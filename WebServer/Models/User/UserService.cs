@@ -142,7 +142,9 @@ namespace WebServer.Models.User
         public Status createMultiple(String excelFilePath,String tableName,ref List<String> checkList)
         {
             List<CreateUserForDelegate> list;
+            Log.DebugInfo("准备获取信息。。。");
             Status status = new Excel.Excel().import<CreateUserForDelegate>(excelFilePath, tableName, out list);
+            Log.DebugInfo("已获取 文件中的信息，准备导入数据库");
             if (status != Status.SUCCESS)
             {
                 return status;
@@ -156,8 +158,13 @@ namespace WebServer.Models.User
                     checkList.Add("数据"+index+":"+Message.msgs[(int)createStatus]);
                     status = createStatus;
                 }
+                else
+                {
+                    Log.DebugInfo("导入数据：" + user.userName + ":" + user.userDepartment);
+                }
                 index++;
             }
+            Log.DebugInfo("导入完成");
             return status;
         }
 

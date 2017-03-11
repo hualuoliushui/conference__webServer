@@ -126,7 +126,9 @@ namespace WebServer.Controllers
                     FileInfo fi = new FileInfo(fileFullPath);
 
                     //将文件信息写入数据库
+                    Log.DebugInfo("导入文件 ，信息导入数据库，开始...");
                     status = userService.createMultiple(fileFullPath,tableName,ref checkList);
+                    Log.DebugInfo("导入文件接收");
                     //删除临时文件
                     fi.Delete();
                     if (status != Status.SUCCESS)
